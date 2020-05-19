@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { AngularMultiSelectModule } from "angular2-multiselect-dropdown";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { TagInputModule } from "ngx-chips";
 import { NouisliderModule } from "ng2-nouislider";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
@@ -29,11 +29,14 @@ import { EventComponent } from "./event/event.component";
 import { EventCreateComponent } from "./event-create/event-create.component";
 import { AboutComponent } from "./about/about.component";
 import { ComponentsModule } from "app/components/components.module";
+import { RouterModule } from "@angular/router";
 
 @NgModule({
     imports: [
         CommonModule,
+        RouterModule,
         FormsModule,
+        ReactiveFormsModule,
         NgbModule,
         TagInputModule,
         NouisliderModule,

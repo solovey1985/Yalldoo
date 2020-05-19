@@ -4,7 +4,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { Routes, RouterModule } from "@angular/router";
 import { ComponentsComponent } from "./components/components.component";
 import { AboutusComponent } from "./pages/aboutus/aboutus.component";
-import { BlogpostComponent } from "./pages/blogpost/blogpost.component";
+import { AboutComponent } from "./pages/about/about.component";
 import { ContactusComponent } from "./pages/contactus/contactus.component";
 import { LandingComponent } from "./pages/landing/landing.component";
 import { LoginComponent } from "./pages/login/login.component";
@@ -25,7 +25,7 @@ const routes: Routes = [
     { path: "components", component: ComponentsComponent },
     { path: "preferences", component: PreferencesComponent },
     { path: "team", component: AboutusComponent },
-    { path: "about", component: BlogpostComponent },
+    { path: "about", component: AboutComponent },
     { path: "feed", component: FeedComponent },
     { path: "event", component: EventComponent },
     { path: "create", component: EventCreateComponent },

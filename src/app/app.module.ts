@@ -5,14 +5,21 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { RouterModule } from "@angular/router";
 import { AppRoutingModule } from "./app.routing";
 import { ComponentsModule } from "./components/components.module";
-import { ExamplesModule } from "./pages/examples.module";
+import { PagesModule } from "./pages/pages.module";
 
 import { AppComponent } from "./app.component";
 import { NavbarComponent } from "./shared/navbar/navbar.component";
 
 @NgModule({
     declarations: [AppComponent, NavbarComponent],
-    imports: [BrowserAnimationsModule, NgbModule, FormsModule, RouterModule, AppRoutingModule, ComponentsModule, ExamplesModule],
+    imports: [
+        BrowserAnimationsModule,
+        NgbModule,
+        FormsModule,
+        RouterModule,
+        AppRoutingModule,
+        ComponentsModule,
+        PagesModule],
     providers: [],
     bootstrap: [AppComponent]
 })

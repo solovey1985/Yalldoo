@@ -10,9 +10,8 @@ import { AgmCoreModule } from "@agm/core";
 
 import { ImageUploadModule } from "../shared/image-upload/image-upload.module";
 
-import { ExamplesComponent } from "./examples.component";
+import { PagesComponent } from "./pages.component";
 import { AboutusComponent } from "./aboutus/aboutus.component";
-import { BlogpostComponent } from "./blogpost/blogpost.component";
 import { ContactusComponent } from "./contactus/contactus.component";
 import { LandingComponent } from "./landing/landing.component";
 import { LoginComponent } from "./login/login.component";
@@ -24,10 +23,12 @@ import { TwitterComponent } from "./twitter/twitter.component";
 import { Page404Component } from "./page404/page404.component";
 import { Page422Component } from "./page422/page422.component";
 import { Page500Component } from "./page500/page500.component";
-import { PreferencesComponent } from './preferences/preferences.component';
-import { FeedComponent } from './feed/feed.component';
-import { EventComponent } from './event/event.component';
-import { EventCreateComponent } from './event-create/event-create.component';
+import { PreferencesComponent } from "./preferences/preferences.component";
+import { FeedComponent } from "./feed/feed.component";
+import { EventComponent } from "./event/event.component";
+import { EventCreateComponent } from "./event-create/event-create.component";
+import { AboutComponent } from "./about/about.component";
+import { ComponentsModule } from "app/components/components.module";
 
 @NgModule({
     imports: [
@@ -38,15 +39,16 @@ import { EventCreateComponent } from './event-create/event-create.component';
         NouisliderModule,
         JwBootstrapSwitchNg2Module,
         AngularMultiSelectModule,
+        ComponentsModule,
         AgmCoreModule.forRoot({
             apiKey: "AIzaSyCZzR9wbOwxH0ejRE_OYJJTpOhtwg44lu8"
         }),
         ImageUploadModule
     ],
     declarations: [
-        ExamplesComponent,
+        PagesComponent,
         AboutusComponent,
-        BlogpostComponent,
+        AboutComponent,
         ContactusComponent,
         LandingComponent,
         LoginComponent,
@@ -64,4 +66,4 @@ import { EventCreateComponent } from './event-create/event-create.component';
         EventCreateComponent
     ]
 })
-export class ExamplesModule {}
+export class PagesModule {}

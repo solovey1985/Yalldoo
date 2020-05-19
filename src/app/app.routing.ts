@@ -21,7 +21,7 @@ import { FeedComponent } from "./pages/feed/feed.component";
 import { EventComponent } from "./pages/event/event.component";
 import { EventCreateComponent } from "./pages/event-create/event-create.component";
 import { AppLayoutComponent } from "./layouts/app-layout/app-layout.component";
-import { BareLayoutComponent } from "./layouts/bear-layout/bare-layout.component";
+import { BareLayoutComponent } from "./layouts/bare-layout/bare-layout.component";
 import { SiteLayoutComponent } from "./layouts/site-layout/site-layout.component";
 
 @NgModule({

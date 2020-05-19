@@ -1,30 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+    selector: "app-register",
+    templateUrl: "./register.component.html",
+    styleUrls: ["./register.component.scss"]
 })
 export class RegisterComponent implements OnInit {
+    public form: FormGroup;
+    data: Date = new Date();
 
-
-    data : Date = new Date();
-
-    constructor() { }
+    @ViewChild("registerForm")
+    formElement: ElementRef;
+    
+    constructor(private builder: FormBuilder) {}
 
     ngOnInit() {
-        var body = document.getElementsByTagName('body')[0];
-        body.classList.add('full-screen');
-        body.classList.add('register-page');
-        var navbar = document.getElementsByTagName('nav')[0];
-        navbar.classList.add('navbar-transparent');
-    }
-    ngOnDestroy(){
-        var body = document.getElementsByTagName('body')[0];
-        body.classList.remove('full-screen');
-        body.classList.remove('register-page');
-        var navbar = document.getElementsByTagName('nav')[0];
-        navbar.classList.remove('navbar-transparent');
+        this.form = this.builder.group({
+            name: ["", [Validators.required, Validators.minLength(2)]],
+            email: ["", [Validators.required, Validators.email]],
+            password: ["", [Validators.required, Validators.minLength(6)]],
+            confirmPassword: ["", [Validators.required, Validators.minLength(6)]],
+            acceptAgreement: [false, Validators.requiredTrue]
+        },{updateOn: "change"});
     }
 
+    formSubmit($event): void {
+        $event.preventDefault();
+        this.formElement.nativeElement.addClass('was-validated');
+    }
 }

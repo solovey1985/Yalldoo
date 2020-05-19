@@ -1,0 +1,37 @@
+@import '../../../assets/scss/paper-kit/variables';
+
+.filter {
+    &::after{
+        opacity: 0.7;
+    }
+}
+
+.yld-landing-header-title {
+    font-weight: bolder;
+    color: $white-color;
+    padding-top: 1em;
+    text-shadow: $black-color 2px 3px 2px;
+}
+
+.yld-landing-header-logo{
+    width: 85%;
+    padding: 2em;
+}
+
+.yld-landing-header-description {
+    font-weight: bolder;
+    color: $white-color;
+    text-shadow: $black-color 2px 3px 2px;
+    padding: 1em;
+}
+.yld-landing-header-btn {
+    border-color: $yld-color-primary;
+    border-width: 2px;
+    background-color: $yld-color-secondary;
+    font-size: 1.4em;
+    margin: 1em;
+    padding: .5em 1em;
+    &:hover {
+        background-color: $yld-color-primary !important;
+    }
+}

@@ -24,9 +24,12 @@ import { TablesAreasComponent } from './tables-areas/tables-areas.component';
 import { CommentsAreasComponent } from './comments-areas/comments-areas.component';
 import { CardsAreasComponent } from './cards-areas/cards-areas.component';
 import { FooterComponent } from './footer/footer.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     imports: [
+        RouterModule,
         CommonModule,
         FormsModule,
         NgbModule,
@@ -52,10 +55,13 @@ import { FooterComponent } from './footer/footer.component';
         TablesAreasComponent,
         CommentsAreasComponent,
         CardsAreasComponent,
-        FooterComponent
+        FooterComponent,
+        NavbarComponent
     ],
     exports: [
         ComponentsComponent,
-        FooterComponent]
+        FooterComponent,
+        NavbarComponent
+    ]
 })
 export class ComponentsModule { }

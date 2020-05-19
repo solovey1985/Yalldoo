@@ -8,10 +8,10 @@ import { ComponentsModule } from "./components/components.module";
 import { PagesModule } from "./pages/pages.module";
 
 import { AppComponent } from "./app.component";
-import { NavbarComponent } from "./shared/navbar/navbar.component";
+import { LayoutModule } from "./layouts/layout.module";
 
 @NgModule({
-    declarations: [AppComponent, NavbarComponent],
+    declarations: [AppComponent],
     imports: [
         BrowserAnimationsModule,
         NgbModule,
@@ -19,7 +19,9 @@ import { NavbarComponent } from "./shared/navbar/navbar.component";
         RouterModule,
         AppRoutingModule,
         ComponentsModule,
-        PagesModule],
+        PagesModule,
+        LayoutModule
+    ],
     providers: [],
     bootstrap: [AppComponent]
 })

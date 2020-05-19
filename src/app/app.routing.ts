@@ -20,36 +20,56 @@ import { PreferencesComponent } from "./pages/preferences/preferences.component"
 import { FeedComponent } from "./pages/feed/feed.component";
 import { EventComponent } from "./pages/event/event.component";
 import { EventCreateComponent } from "./pages/event-create/event-create.component";
-
-const routes: Routes = [
-    { path: "components", component: ComponentsComponent },
-    { path: "preferences", component: PreferencesComponent },
-    { path: "team", component: AboutusComponent },
-    { path: "about", component: AboutComponent },
-    { path: "feed", component: FeedComponent },
-    { path: "event", component: EventComponent },
-    { path: "create", component: EventCreateComponent },
-    { path: "contactus", component: ContactusComponent },
-    { path: "login", component: LoginComponent },
-    { path: "profile", component: ProfileComponent },
-    { path: "register", component: RegisterComponent },
-    { path: "search", component: SearchComponent },
-    { path: "me", component: SettingsComponent },
-    { path: "twitter", component: TwitterComponent },
-    { path: "page404", component: Page404Component },
-    { path: "page422", component: Page422Component },
-    { path: "page500", component: Page500Component },
-    { path: "", component: LandingComponent }
-];
+import { AppLayoutComponent } from "./layouts/app-layout/app-layout.component";
+import { BareLayoutComponent } from "./layouts/bear-layout/bare-layout.component";
+import { SiteLayoutComponent } from "./layouts/site-layout/site-layout.component";
 
 @NgModule({
     imports: [
         CommonModule,
         BrowserModule,
-        RouterModule.forRoot(routes, {
-            useHash: false
-        })
+        RouterModule.forRoot([
+            {
+                path: "",
+                component: SiteLayoutComponent,
+                children: [
+                    { path: "", component: LandingComponent },
+                    { path: "team", component: AboutusComponent },
+                    { path: "about", component: AboutComponent },
+                    { path: "contactus", component: ContactusComponent },
+                    { path: "home", component: LandingComponent }
+                ]
+            },
+            {
+                path: "",
+                component: AppLayoutComponent,
+                children: [
+                    { path: "feed", component: FeedComponent },
+                    { path: "event", component: EventComponent },
+                    { path: "create", component: EventCreateComponent },
+                    { path: "search", component: SearchComponent },
+                    { path: "me", component: SettingsComponent },
+                    { path: "twitter", component: TwitterComponent },
+                    { path: "preferences", component: PreferencesComponent },
+                    { path: "profile", component: ProfileComponent }
+                ]
+            },
+            {
+                path: "",
+                component: BareLayoutComponent,
+                children: [
+                    { path: "register", component: RegisterComponent },
+                    { path: "login", component: LoginComponent },
+                    { path: "page404", component: Page404Component },
+                    { path: "page422", component: Page422Component },
+                    { path: "page500", component: Page500Component }
+                ]
+            },
+
+            { path: "", redirectTo: "home", pathMatch: "full" },
+            { path: "**", redirectTo: "page404" }
+        ])
     ],
-    exports: []
+    exports: [RouterModule]
 })
 export class AppRoutingModule {}

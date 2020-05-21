@@ -6,7 +6,7 @@
 }
 .filter {
     &::after{
-        opacity: 0.7;
+        opacity: 0.4;
     }
 }
 
@@ -47,7 +47,7 @@
 .yld-landing-title {
     color: $yld-color-primary;
     font-weight: bolder;
-    text-shadow: $black-hr 1px 1px 2px;
+    text-shadow: $yld-color-secondary 1px 1px 1px;
     margin: 1em auto;
 }
 
@@ -56,4 +56,29 @@
     line-height: 1.5em;
     color: $black-hr;
     margin-bottom: 2em;
+}
+
+.yld-landing-info-title {
+    font-weight: bold;
+    color: $yld-color-secondary;
+}
+.yld-landing-info-description {
+    color: $font-color;
+    font-weight: bolder;
+}
+.nc-icon {
+    color: $yld-color-primary;
+}
+
+.yld-landing-bottom-image {
+    background: url('../../../assets/img/sections/landing/yld-landing-background-footer.jpg') no-repeat fixed center; 
+    height: 95vh;
+}
+.yld-landing-form-group {
+    padding: 3em;
+}
+.yld-landing-form-control {
+    width: 300px;
+    height: 50px;
+    margin: 0 auto 1em auto;
 }

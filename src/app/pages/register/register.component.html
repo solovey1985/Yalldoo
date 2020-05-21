@@ -3,6 +3,63 @@
         <div class="filter"></div>
         <div class="container">
             <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-5 col-12 mr-auto">
+                    <div class="card card-register">
+                        <h3 class="card-title text-center">Register</h3>
+                        <div class="social">
+                            <button class="btn btn-just-icon btn-facebook mr-1"><i class="fa fa-facebook"></i></button>
+                        </div>
+                        <div class="division">
+                            <div class="line l"></div>
+                            <span>or</span>
+                            <div class="line r"></div>
+                        </div>
+                        <form class="register-form" [formGroup]="form" #registerForm>
+                            <input type="text" class="form-control" [ngClass]="{'form-control-danger': isInvalid(form.get('name'))}" placeholder="Name" formControlName="name" />
+                            <div class="yld-errors-container">
+                                <div *ngFor="let validation of validation_messages.name" class="yld-register-invalid">
+                                    <span *ngIf="form.get('name').hasError(validation.type) && (form.get('name').dirty || form.get('name').touched)">{{validation.message}}</span>
+                                </div>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Email" formControlName="email" [ngClass]="{'form-control-danger': isInvalid(form.get('email'))}"/>
+                            <div class="yld-errors-container">
+                                <div *ngFor="let validation of validation_messages.email" class="yld-register-invalid">
+                                    <span *ngIf="form.get('email').hasError(validation.type) && (form.get('email').dirty || form.get('email').touched)">{{validation.message}}</span>
+                                </div>
+                            </div>
+                            <div formGroupName="matchingPasswordsGroup">
+                                <input type="password" class="form-control" placeholder="Password" formControlName="password" [ngClass]="{'form-control-danger': isInvalid(form.get('matchingPasswordsGroup').get('password'))}"/>
+                                <div class="yld-errors-container">
+                                    <div *ngFor="let validation of validation_messages.password"  class="yld-register-invalid">
+                                        <span *ngIf="form.get('matchingPasswordsGroup').get('password').hasError(validation.type) && (form.get('matchingPasswordsGroup').get('password').dirty || form.get('matchingPasswordsGroup').get('password').touched)">{{validation.message}}</span>
+                                    </div>
+                                </div>
+                                <input type="password" class="form-control" placeholder="Confirm Password" formControlName="confirmPassword" [ngClass]="{'form-control-danger': isInvalid(form.get('matchingPasswordsGroup').get('confirmPassword'))}"/>
+                                <div class="yld-errors-container">
+                                    <div *ngFor="let validation of validation_messages.confirm_password" class="yld-register-invalid">
+                                        <span *ngIf="(form.get('matchingPasswordsGroup').get('confirmPassword').hasError(validation.type) || form.get('matchingPasswordsGroup').hasError(validation.type)) && (form.get('matchingPasswordsGroup').get('confirmPassword').dirty || form.get('matchingPasswordsGroup').get('confirmPassword').touched)">{{validation.message}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" value="" formControlName="acceptAgreement" />
+                                    <span class="form-check-sign"></span>
+                                    <span class="yld-register-check-agreement-label">Accept agreement*</span>
+                                </label>
+                            </div>
+                            <div class="yld-errors-container">
+                                <div *ngFor="let validation of validation_messages.terms" class="yld-register-invalid">
+                                    <span *ngIf="form.get('name').hasError(validation.type) && (form.get('acceptAgreement').dirty || form.get('acceptAgreement').touched)">{{validation.message}}</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-block btn-round" type="submit" [disabled]="!form.valid">Register</button>
+                        </form>
+                        <div class="login">
+                            <p>Already have an account? <a [routerLink]="['/login']" routerLinkActive="login">Log in</a>.</p>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-lg-6 col-md-6 col-sm-7 col-12 ml-auto">
                     <div class="info info-horizontal">
                         <div class="icon">
@@ -29,40 +86,6 @@
                         <div class="description">
                             <h3>We value your privacy</h3>
                             <p>Completely synergize resource taxing relationships via premier niche markets.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-5 col-12 mr-auto">
-                    <div class="card card-register">
-                        <h3 class="card-title text-center">Register</h3>
-                        <div class="social">
-                            <button href="javascript:void(0)" class="btn btn-just-icon btn-facebook mr-1"><i class="fa fa-facebook"></i></button>
-                        </div>
-
-                        <div class="division">
-                            <div class="line l"></div>
-                            <span>or</span>
-                            <div class="line r"></div>
-                        </div>
-                        <form class="register-form" [formGroup]="form" #registerForm>
-                            <input type="text" class="form-control" placeholder="Name" formControlName="name" />
-                            <div *ngIf="!form.controls.name.valid && form.controls.name.touched" class="yld-register-invalid">
-                                Please choose a username.
-                            </div>
-                            <input type="text" class="form-control" placeholder="Email" formControlName="email" />
-                            <input type="password" class="form-control" placeholder="Password" formControlName="password" />
-                            <input type="password" class="form-control" placeholder="Confirm Password" formControlName="confirmPassword" />
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                  <input class="form-check-input" type="checkbox" value="" formControlName="acceptAgreement">
-                                  <span class="form-check-sign"></span>
-                                  <span class="yld-register-check-agreement-label">Accept agreement*</span>
-                                </label>
-                              </div>
-                            <button class="btn btn-block btn-round" type="submit" [disabled]="!form.valid">Register</button>
-                        </form>
-                        <div class="login">
-                            <p>Already have an account? <a [routerLink]="['/login']" routerLinkActive="login" >Log in</a>.</p>
                         </div>
                     </div>
                 </div>

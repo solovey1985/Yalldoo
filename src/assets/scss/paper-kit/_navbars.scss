@@ -13,13 +13,13 @@
     transition: all 0.4s;
     -webkit-transition: all 0.4s;
     padding: 0;
-    background: $white-color;
+    margin: 0;
+    background: rgba($white-color, 0.5);
     box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15);
 
     .navbar-brand{
         font-weight: $font-weight-bold;
         margin: $navbar-margin-brand;
-        padding: $navbar-padding-brand;
         font-size: $font-size-base;
         color: $default-color;
         text-transform: uppercase;
@@ -34,7 +34,7 @@
             font-size: $font-size-small;
             text-transform: uppercase;
             font-weight: 600;
-            color: $default-color;
+            color: $yld-color-secondary;
          }
         .nav-item .nav-link.btn{
             margin: $navbar-margin-a-btn;
@@ -111,7 +111,7 @@
        @include center-item();
     }
     &.navbar-transparent{
-        padding-top: 10px;
+        padding-top: 0px;
     }
     .logo-container{
         margin-top: 5px;

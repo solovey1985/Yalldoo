@@ -30,11 +30,14 @@
             margin: $navbar-margin-a;
             padding: $navbar-padding-a;
             min-width: 100px;
-            opacity: .8;
             font-size: $font-size-small;
             text-transform: uppercase;
             font-weight: 600;
             color: $yld-color-secondary;
+            &:hover {
+                cursor: pointer;
+                color: $yld-color-primary;
+            }
          }
         .nav-item .nav-link.btn{
             margin: $navbar-margin-a-btn;

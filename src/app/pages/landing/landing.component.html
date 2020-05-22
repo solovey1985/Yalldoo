@@ -6,7 +6,7 @@
         <div class="container">
             <div class="motto">
                 <h1 class="title yld-landing-header-title">Наповнюй життя подіями!</h1>
-                <img src="./assets/img/sections/landing/logo.png" alt="Yalldoo!" class="yld-landing-header-logo"/>
+                <img src="./assets/img/sections/landing/logo.png" alt="Yalldoo!" class="yld-landing-logo"/>
                 <h2 class="yld-landing-header-description">
                     Знайди собі компанію!
                     <br />
@@ -169,13 +169,13 @@
 
     <div class="section section-dark text-center landing-section yld-landing-bottom-image">
         <div class="container">
-            <img src="./assets/img/sections/landing/logo.png" alt="Yalldoo!" class="yld-landing-header-logo"/>
+            <img src="./assets/img/sections/landing/logo.png" alt="Yalldoo!" class="yld-landing-logo yld-landing-bottom-logo"/>
             <form role="form" method="POST" action="/login">
                 <div class="yld-landing-form-group">
                     <input class="form-control yld-landing-form-control" placeholder="Email" type="email">
                     <input class="form-control yld-landing-form-control" placeholder="Password" type="password">
                 </div>
-                <a href="#" class="btn btn-outline-neutral btn-round yld-landing-header-btn" role="button">Приєднатись</a>
+                <a href="#" class="btn btn-outline-neutral btn-round yld-landing-header-btn" role="button" [routerLink]="['/register']">Приєднатись</a>
                 <button href="#" class="btn btn-outline-neutral btn-round yld-landing-header-btn" type="submit">Увійти</button>
             </form>
         </div>

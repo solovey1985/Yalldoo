@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
                     Validators.compose([
                         Validators.required,
                         Validators.minLength(6),
-                        Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9!@#$%^&*()]+$")
+                        Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9!@#$%^&*()]$")
                     ])
                 ),
                 confirmPassword: new FormControl("", [Validators.required])
@@ -38,18 +38,19 @@ export class RegisterComponent implements OnInit {
                 return PasswordsValidator.areEqual(formGroup);
             }
         );
+
         this.form = this.builder.group(
             {
                 name: ["", Validators.compose([
                     UsernameValidator.validUsername,
                     Validators.maxLength(25),
                     Validators.minLength(2),
-                    Validators.pattern('^(?=.*[a-zA-Z])[a-zA-Z0-9]+$'),
+                    Validators.pattern(/^[a-zA-Z]*(?:[\s.]*[a-zA-Z0-9]*)*$/),
                     Validators.required
                 ])],
                 email: ["",  Validators.compose([
                     Validators.required,
-                    Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+                    Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]*$')
                 ])],
                 matchingPasswordsGroup: matchingPasswordsGroup,
                 acceptAgreement: [false, Validators.requiredTrue]
@@ -69,9 +70,6 @@ export class RegisterComponent implements OnInit {
     }
     public get messages() {
         return this.validation_messages;
-    }
-    showNotify() {
-        this.notifyService.success("Test....", {autoClose: true,  keepAfterRouteChange: true})
     }
     initValidationMessages() {
         this.validation_messages = {

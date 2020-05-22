@@ -11,9 +11,11 @@
             </button>
         </div>
         <div class="collapse navbar-collapse">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active"><a class="nav-link" [routerLink]="['/team']">About Us</a></li>
-                <li class="nav-item"><a class="nav-link" [routerLink]="['/contactus']">Contacts</a></li>
+            <ul class="navbar-nav text-center">
+                <li class="nav-item js-anchor js-yld-about" data-anchor="about"><a class="nav-link">About</a></li>
+                <li class="nav-item js-anchor js-yld-team" data-anchor="team"><a class="nav-link">Our Team</a></li>
+                <li class="nav-item js-anchor js-yld-contactus" data-anchor="contactus"><a class="nav-link">Contact Us</a></li>
+                <li class="nav-item js-anchor js-yld-login" data-anchor="login"><a class="nav-link">Sign In</a></li>
 
                 <div ngbDropdown class="nav-item dropdown">
                     <div class="nav-link dropdown-toggle" ngbDropdownToggle>MVP Pages</div>

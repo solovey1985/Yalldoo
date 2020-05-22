@@ -26,6 +26,7 @@ import { CardsAreasComponent } from './cards-areas/cards-areas.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RouterModule } from '@angular/router';
+import { NotifyComponent } from './notify/notify.component';
 
 @NgModule({
     imports: [
@@ -56,12 +57,14 @@ import { RouterModule } from '@angular/router';
         CommentsAreasComponent,
         CardsAreasComponent,
         FooterComponent,
-        NavbarComponent
+        NavbarComponent,
+        NotifyComponent
     ],
     exports: [
         ComponentsComponent,
         FooterComponent,
-        NavbarComponent
+        NavbarComponent,
+        NotifyComponent
     ]
 })
 export class ComponentsModule { }

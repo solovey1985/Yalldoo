@@ -2,6 +2,9 @@ import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { FormBuilder, FormGroup, Validators, FormControl, AbstractControl } from "@angular/forms";
 import { PasswordsValidator } from "app/core/form-validators/passwords.validator";
 import { UsernameValidator } from "app/core/form-validators/username.validator";
+import { NotifyService } from "app/services/notify-service/notify.service";
+import { Router } from "@angular/router";
+import { PreferencesComponent } from "../preferences/preferences.component";
 
 @Component({
     selector: "app-register",
@@ -15,7 +18,7 @@ export class RegisterComponent implements OnInit {
     @ViewChild("registerForm")
     formElement: ElementRef;
 
-    constructor(private builder: FormBuilder) {}
+    constructor(private builder: FormBuilder, private notifyService: NotifyService, private router: Router) {}
 
     ngOnInit() {
         this.initValidationMessages();
@@ -55,8 +58,10 @@ export class RegisterComponent implements OnInit {
         );
     }
 
-    formSubmit($event): void {
-       
+    formSubmit(event): void {
+       event.preventDefault();
+        this.notifyService.success("Resgistration successful. Please check mail box to confirm your email", { autoClose: true, keepAfterRouteChange: false })
+        setTimeout(() => { this.router.navigate(['/preferences'], { skipLocationChange: true }); }, 5000);
     }
 
     isInvalid(control: AbstractControl):boolean {
@@ -64,6 +69,9 @@ export class RegisterComponent implements OnInit {
     }
     public get messages() {
         return this.validation_messages;
+    }
+    showNotify() {
+        this.notifyService.success("Test....", {autoClose: true,  keepAfterRouteChange: true})
     }
     initValidationMessages() {
         this.validation_messages = {

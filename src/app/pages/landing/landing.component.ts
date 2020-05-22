@@ -25,7 +25,7 @@ export class LandingComponent implements OnInit {
     function scrollTo(element, to, duration) {
       if (duration <= 0) return;
       var difference = to - element.scrollTop;
-      var perTick = difference / duration * 5;
+      var perTick = difference / duration * 20;
       setTimeout(function() {
           element.scrollTop = element.scrollTop + perTick;
           if (element.scrollTop === to) return;
@@ -42,7 +42,7 @@ export class LandingComponent implements OnInit {
       });
     });
 
-    navbar.classList.add('navbar-transparent', 'navbar-landing');
+    navbar.classList.add('navbar-transparent');
     body.classList.add('landing-page');
 
     window.addEventListener('scroll', function() {
@@ -62,7 +62,7 @@ export class LandingComponent implements OnInit {
   }
   ngOnDestroy(){
     var navbar = document.getElementsByTagName('nav')[0];
-    navbar.classList.remove('navbar-landing');
+    navbar.classList.remove('navbar-transparent');
     var body = document.getElementsByTagName('body')[0];
     body.classList.remove('landing-page');
   }

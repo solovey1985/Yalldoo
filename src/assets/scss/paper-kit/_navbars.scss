@@ -14,7 +14,7 @@
     -webkit-transition: all 0.4s;
     padding: 0;
     margin: 0;
-    background: rgba($white-color, 0.5);
+    background: rgba($light-gray, 0.7);
     box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15);
 
     .navbar-brand{
@@ -33,7 +33,7 @@
             font-size: $font-size-small;
             text-transform: uppercase;
             font-weight: 600;
-            color: $yld-color-secondary;
+            color: $default-color;
             &:hover {
                 cursor: pointer;
                 color: $yld-color-primary;

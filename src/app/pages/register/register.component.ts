@@ -46,7 +46,7 @@ export class RegisterComponent implements OnInit {
                     UsernameValidator.validUsername,
                     Validators.maxLength(25),
                     Validators.minLength(2),
-                    Validators.pattern(/^[a-zA-Zа-яА-Я0-9]*(?:[\s.]*[a-zA-Zа-яА-Я0-9]*)*$/),
+                    Validators.pattern(/^[a-zA-Zа-яА-Я0-9іІїЇєЄ\'\"]*(?:[\s.]*[a-zA-Zа-яА-Я0-9іІїЇєЄ\'\"]*)*$/),
                     Validators.required
                 ])],
                 email: ["",  Validators.compose([

@@ -2,6 +2,9 @@ import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { FormBuilder, FormGroup, Validators, FormControl, AbstractControl } from "@angular/forms";
 import { PasswordsValidator } from "app/core/form-validators/passwords.validator";
 import { UsernameValidator } from "app/core/form-validators/username.validator";
+import { NotifyService } from "app/services/notify-service/notify.service";
+import { Router } from "@angular/router";
+import { PreferencesComponent } from "../preferences/preferences.component";
 
 @Component({
     selector: "app-register",
@@ -15,7 +18,7 @@ export class RegisterComponent implements OnInit {
     @ViewChild("registerForm")
     formElement: ElementRef;
 
-    constructor(private builder: FormBuilder) {}
+    constructor(private builder: FormBuilder, private notifyService: NotifyService, private router: Router) {}
 
     ngOnInit() {
         this.initValidationMessages();
@@ -26,7 +29,7 @@ export class RegisterComponent implements OnInit {
                     Validators.compose([
                         Validators.required,
                         Validators.minLength(6),
-                        Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9!@#$%^&*()]+$")
+                        Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9!@#$%^&*()]$")
                     ])
                 ),
                 confirmPassword: new FormControl("", [Validators.required])
@@ -35,18 +38,19 @@ export class RegisterComponent implements OnInit {
                 return PasswordsValidator.areEqual(formGroup);
             }
         );
+
         this.form = this.builder.group(
             {
                 name: ["", Validators.compose([
                     UsernameValidator.validUsername,
                     Validators.maxLength(25),
                     Validators.minLength(2),
-                    Validators.pattern('^(?=.*[a-zA-Z])[a-zA-Z0-9]+$'),
+                    Validators.pattern(/^[a-zA-Z]*(?:[\s.]*[a-zA-Z0-9]*)*$/),
                     Validators.required
                 ])],
                 email: ["",  Validators.compose([
                     Validators.required,
-                    Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+                    Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]*$')
                 ])],
                 matchingPasswordsGroup: matchingPasswordsGroup,
                 acceptAgreement: [false, Validators.requiredTrue]
@@ -55,8 +59,10 @@ export class RegisterComponent implements OnInit {
         );
     }
 
-    formSubmit($event): void {
-       
+    formSubmit(event): void {
+       event.preventDefault();
+        this.notifyService.success("Resgistration successful. Please check mail box to confirm your email", { autoClose: true, keepAfterRouteChange: false })
+        setTimeout(() => { this.router.navigate(['/preferences'], { skipLocationChange: true }); }, 5000);
     }
 
     isInvalid(control: AbstractControl):boolean {

@@ -14,6 +14,11 @@
     }
 
     .navbar-nav{
+        .nav-item {
+            &:hover {
+                background-color:rgba($white-color, 0.5);
+            }
+        }
         .nav-item .nav-link:not(.btn){
             color: $white-color;
             border-color: $white-color;

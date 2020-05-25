@@ -27,7 +27,7 @@ import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { NotifyComponent } from './notify/notify.component';
-import { BareNavbarComponent } from './bare-nav-bar/bare-navbar.component';
+import { BareNavbarComponent } from './bare-navbar/bare-navbar.component';
 
 @NgModule({
     imports: [

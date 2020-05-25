@@ -31,7 +31,11 @@
                                 <input type="password" class="form-control" placeholder="Password" formControlName="password" [ngClass]="{ 'form-control-danger': isInvalid(form.get('matchingPasswordsGroup').get('password')) }" />
                                 <div class="yld-errors-container">
                                     <div *ngFor="let validation of validation_messages.password" class="yld-register-invalid">
-                                        <span *ngIf="form.get('matchingPasswordsGroup').get('password').hasError(validation.type) && (form.get('matchingPasswordsGroup').get('password').dirty || form.get('matchingPasswordsGroup').get('password').touched)">
+                                        <span
+                                            *ngIf="
+                                                form.get('matchingPasswordsGroup').get('password').hasError(validation.type) && (form.get('matchingPasswordsGroup').get('password').dirty || form.get('matchingPasswordsGroup').get('password').touched)
+                                            "
+                                        >
                                             {{ validation.message }}
                                         </span>
                                     </div>
@@ -50,8 +54,8 @@
                                                 (form.get('matchingPasswordsGroup').get('confirmPassword').hasError(validation.type) || form.get('matchingPasswordsGroup').hasError(validation.type)) &&
                                                 (form.get('matchingPasswordsGroup').get('confirmPassword').dirty || form.get('matchingPasswordsGroup').get('confirmPassword').touched)
                                             "
-                                            >{{ validation.message }}</span
-                                        >
+                                            [innerHTML]="validation.message"
+                                        ></span>
                                     </div>
                                 </div>
                             </div>

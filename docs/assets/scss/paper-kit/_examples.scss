@@ -1,3 +1,4 @@
+
 .link-danger{
     color: $danger-color !important;
     &:focus,
@@ -78,6 +79,7 @@
     border-radius: 8px;
     color: #fff;
     max-width: 350px;
+    margin: 20px 0 70px;
     min-height: 400px;
     padding: 30px;
 }
@@ -112,17 +114,6 @@
         margin-top: 11%;
         position: relative;
         z-index: 3;
-    }
-    .demo-footer{
-        bottom: 10px;
-        left: 0;
-        color: #fff;
-        position: absolute;
-        z-index: 3;
-        width: 100%;
-    }
-    .demo-footer .fa-heart{
-        color: #EB5E28;
     }
     .demo-card{
         border-radius: 8px;
@@ -167,8 +158,6 @@
         .demo-card,
         .card-register{
             background-color: $white-color;
-            max-width: 360px;
-
             input{
                 margin-bottom: 8px;
             }

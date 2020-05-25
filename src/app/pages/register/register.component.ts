@@ -46,12 +46,12 @@ export class RegisterComponent implements OnInit {
                     UsernameValidator.validUsername,
                     Validators.maxLength(25),
                     Validators.minLength(2),
-                    Validators.pattern(/^[a-zA-Z]*(?:[\s.]*[a-zA-Z0-9]*)*$/),
+                    Validators.pattern(/^[a-zA-Zа-яА-Я0-9]*(?:[\s.]*[a-zA-Zа-яА-Я0-9]*)*$/),
                     Validators.required
                 ])],
                 email: ["",  Validators.compose([
                     Validators.required,
-                    Validators.pattern(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]*$/)
+                    Validators.pattern(/[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/)
                 ])],
                 matchingPasswordsGroup: matchingPasswordsGroup,
                 acceptAgreement: [false, Validators.requiredTrue]
@@ -91,8 +91,8 @@ export class RegisterComponent implements OnInit {
             ],
             password: [
                 { type: "required", message: "Password is required" },
-                { type: "minlength", message: "Password must be at least 5 characters long" },
-                { type: "pattern", message: "Your password must contain at least one uppercase, one lowercase, and one number" }
+                { type: "minlength", message: "Password must be at least 6 characters long" },
+                { type: "pattern", message: "Your password must contain at least one uppercase, one lowercase, and one number, only latin letters" }
             ],
             terms: [{ type: "pattern", message: "You must accept terms and conditions" }]
         };

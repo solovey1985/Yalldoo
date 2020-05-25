@@ -20,23 +20,22 @@
     .navbar-brand{
         font-weight: $font-weight-bold;
         margin: $navbar-margin-brand;
-        font-size: $font-size-base;
-        color: $default-color;
+        color: $yld-color-primary;
         text-transform: uppercase;
     }
     .navbar-nav{
         .nav-item .nav-link {
             line-height: 1.6;
             margin: $navbar-margin-a;
-            padding: $navbar-padding-a;
-            min-width: 120px;
-            font-size: $font-size-small;
+            padding: 10px;
+            min-width: 110px;
+            font-size: 1em;
             text-transform: uppercase;
             font-weight: 600;
             color: $default-color;
             &:hover {
                 cursor: pointer;
-                color: $yld-color-primary;
+                color: $yld-color-secondary;
             }
          }
         .nav-item .nav-link.btn{

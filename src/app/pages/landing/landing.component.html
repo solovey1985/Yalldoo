@@ -12,15 +12,14 @@
                     <br />
                     Дізнайся, що роблять люди навколо!
                 </h2>
-                <a href="#" class="btn btn-outline-neutral btn-round yld-landing-header-btn" role="button">Приєднатись</a>
-                <a href="#" class="btn btn-outline-neutral btn-round yld-landing-header-btn" role="button">Увійти</a>
+                <a href="#" class="btn yld-landing-header-btn" role="button" [routerLink]="['/register']">Приєднатись</a>
             </div>
         </div>
     </div>
 </div>
 
-<div class="wrapper js-yld-anchor-about">
-    <div class="section text-center landing-section yld-landing-grey-background">
+<div class="wrapper">
+    <div class="section text-center landing-section yld-landing-grey-background js-yld-anchor-about">
         <div class="container">
                 <h1 class="title yld-landing-title">Приєднуйся до цікавих подій, або створюй свої!</h1>
                 <h3 class="yld-landing-description">
@@ -30,8 +29,8 @@
                 </h3>
             <br /><br />
             <div class="row">
-                <div class="col-md-3 card">
-                    <div class="info">
+                <div class="col-md-3">
+                    <div class="info card yld-landing-card">
                         <div class="icon icon-danger">
                             <i class="nc-icon nc-user-run"></i>
                         </div>
@@ -41,8 +40,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 card">
-                    <div class="info">
+                <div class="col-md-3">
+                    <div class="info card yld-landing-card">
                         <div class="icon icon-danger">
                             <i class="nc-icon nc-bus-front-12"></i>
                         </div>
@@ -53,8 +52,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 card">
-                    <div class="info">
+                <div class="col-md-3">
+                    <div class="info card yld-landing-card">
                         <div class="icon icon-danger">
                             <i class="nc-icon nc-shop"></i>
                         </div>
@@ -64,8 +63,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 card">
-                    <div class="info">
+                <div class="col-md-3">
+                    <div class="info card yld-landing-card">
                         <div class="icon icon-danger">
                             <i class="nc-icon nc-bulb-63"></i>
                         </div>
@@ -78,7 +77,7 @@
             </div>
             <h2 class="title yld-landing-title">Наша мета: </h2> 
             <h3 class="yld-landing-description">
-                Дати можливість у будь-якій точці світу створювати та знаходити події на будь-який смак. 
+                Дати можливість людям у будь-якій точці світу створювати та знаходити події на будь-який смак.
             </h3>
         </div>
     </div>
@@ -96,10 +95,9 @@
                             <a href="javascript:void(0)">
                                 <div class="author">
                                     <h4 class="card-title">Henry Ford</h4>
-                                    <h6 class="card-category text-muted">Product Manager</h6>
                                 </div>
                             </a>
-                            <p class="card-description text-center">
+                            <p class="card-description text-center yld-landing-team-description">
                             Teamwork is so important that it is virtually impossible for you to reach the heights of your capabilities or make the money that you want without becoming very good at it.
                             </p>
                         </div>
@@ -120,10 +118,9 @@
                             <a href="javascript:void(0)">
                                 <div class="author">
                                     <h4 class="card-title">Robert Orben</h4>
-                                    <h6 class="card-category text-muted">Developer</h6>
                                 </div>
                             </a>
-                            <p class="card-description text-center">
+                            <p class="card-description text-center yld-landing-team-description">
                             The strength of the team is each individual member. The strength of each member is the team. If you can laugh together, you can work together, silence isn’t golden, it’s deadly.
                             </p>
                         </div>
@@ -138,46 +135,11 @@
         </div>
     </div>
 
-    <div class="section landing-section yld-landing-grey-background js-yld-anchor-contactus">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 ml-auto mr-auto">
-                    <h2 class="text-center">Keep in touch?</h2>
-                    <form class="contact-form">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Name</label>
-                                <input class="form-control" placeholder="Name">
-                            </div>
-                            <div class="col-md-6">
-                                <label>Email</label>
-                                <input class="form-control" placeholder="Email">
-                            </div>
-                        </div>
-                        <label>Message</label>
-                        <textarea class="form-control" rows="8" placeholder="Tell us your thoughts and feelings..."></textarea>
-                        <div class="row">
-                            <div class="col-md-4 offset-md-4">
-                                <button class="btn btn-outline-neutral btn-round yld-landing-header-btn-message">Send Message</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="section section-dark text-center landing-section yld-landing-bottom-image js-yld-anchor-login">
+    <div class="section section-dark text-center landing-section yld-landing-bottom-image">
         <div class="container">
             <img src="./assets/img/sections/landing/logo.png" alt="Yalldoo!" class="yld-landing-logo yld-landing-bottom-logo"/>
-            <form role="form" method="POST" action="/login">
-                <div class="yld-landing-form-group">
-                    <input class="form-control yld-landing-form-control" placeholder="Email" type="email">
-                    <input class="form-control yld-landing-form-control" placeholder="Password" type="password">
-                </div>
-                <a href="#" class="btn btn-outline-neutral btn-round yld-landing-header-btn" role="button" [routerLink]="['/register']">Приєднатись</a>
-                <button href="#" class="btn btn-outline-neutral btn-round yld-landing-header-btn" type="submit">Увійти</button>
-            </form>
+            <h1 class="title yld-landing-bottom-title">Пірнай у вир подій!</h1>
+            <a href="#" class="btn btn-outline-neutral btn-round yld-landing-header-btn" role="button" [routerLink]="['/register']">Приєднатись</a>
         </div>
     </div>
 </div>

@@ -27,6 +27,7 @@ import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { NotifyComponent } from './notify/notify.component';
+import { BareNavbarComponent } from './bare-nav-bar/bare-navbar.component';
 
 @NgModule({
     imports: [
@@ -58,13 +59,15 @@ import { NotifyComponent } from './notify/notify.component';
         CardsAreasComponent,
         FooterComponent,
         NavbarComponent,
-        NotifyComponent
+        NotifyComponent,
+        BareNavbarComponent
     ],
     exports: [
         ComponentsComponent,
         FooterComponent,
         NavbarComponent,
-        NotifyComponent
+        NotifyComponent,
+        BareNavbarComponent
     ]
 })
 export class ComponentsModule { }

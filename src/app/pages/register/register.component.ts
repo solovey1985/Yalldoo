@@ -29,7 +29,8 @@ export class RegisterComponent implements OnInit {
                     Validators.compose([
                         Validators.required,
                         Validators.minLength(6),
-                        Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9!@#$%^&*()]$")
+                        Validators.maxLength(25),
+                        Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9!@#$%^&*()]+$")
                     ])
                 ),
                 confirmPassword: new FormControl("", [Validators.required])
@@ -50,7 +51,7 @@ export class RegisterComponent implements OnInit {
                 ])],
                 email: ["",  Validators.compose([
                     Validators.required,
-                    Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]*$')
+                    Validators.pattern(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]*$/)
                 ])],
                 matchingPasswordsGroup: matchingPasswordsGroup,
                 acceptAgreement: [false, Validators.requiredTrue]

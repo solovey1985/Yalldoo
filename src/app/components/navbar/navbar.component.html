@@ -2,7 +2,7 @@
     <div class="container">
         <div class="navbar-translate">
             <div class="navbar-header">
-                <a class="navbar-brand" [routerLink]="['/']"><img src="./assets/img/sections/landing/logo.png" alt="Y'alldoo!" style="max-width: 12%"/></a>
+                <a class="navbar-brand" [routerLink]="['/']"><img src="./assets/img/sections/landing/logo.png" alt="Y'alldoo!" style="max-width: 20%"/></a>
             </div>
             <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
                 <span class="navbar-toggler-bar bar1"></span>
@@ -14,8 +14,9 @@
             <ul class="navbar-nav text-center">
                 <li class="nav-item js-anchor js-yld-about" data-anchor="about"><a class="nav-link">About</a></li>
                 <li class="nav-item js-anchor js-yld-team" data-anchor="team"><a class="nav-link">Our Team</a></li>
-                <li class="nav-item js-anchor js-yld-contactus" data-anchor="contactus"><a class="nav-link">Contact Us</a></li>
-                <li class="nav-item js-anchor js-yld-login" data-anchor="login"><a class="nav-link">Sign In</a></li>
+                <li class="nav-item"><a class="nav-link" [routerLink]="['/contactus']">Contact Us</a></li>
+                <li class="nav-item"><a class="nav-link" [routerLink]="['/login']">Sign In</a></li>
+                <li class="nav-item"><a class="nav-link" [routerLink]="['/register']">Sign Up</a></li>
 
                 <div ngbDropdown class="nav-item dropdown">
                     <div class="nav-link dropdown-toggle" ngbDropdownToggle>MVP Pages</div>

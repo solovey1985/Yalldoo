@@ -14,7 +14,7 @@
     font-size: 400%;
     font-weight: bolder;
     color: $white-color;
-    text-shadow: $black-color 2px 3px 2px;
+    text-shadow: $black-color 2px 1px 3px;
     margin-top: 2em;
 }
 
@@ -27,21 +27,24 @@
     font-size: 300%;
     font-weight: bolder;
     color: $white-color;
-    text-shadow: $black-color 2px 3px 2px;
+    text-shadow: $black-color 2px 1px 3px;
     margin-bottom: 1.5em;
     padding: 0;
 }
+
 .yld-landing-header-btn {
-    color: $black-hr;
-    border-color: $yld-color-primary;
-    background-color: $yld-color-secondary;
-    font-size: 1.1em;
-    line-height: 2em;
-    width: 200px;
+    color: $white-color;
+    border-color: $white-color;
+    background-color: $yld-color-primary;
+    font-size: 1.4em;
+    line-height: 3em;
+    width: 300px;
     margin: 0 1em 2em 1em;
+    border-radius: 8px;
     &:hover {
-        background-color: $yld-color-primary !important;
-        border-color: $yld-color-primary !important;
+        background-color: $yld-color-secondary !important;
+        border-color: $white-color !important;
+        color: $white-color !important;
     }
 }
 
@@ -50,14 +53,27 @@
     font-weight: bolder;
     margin: 1em auto;
 }
+
 .yld-landing-grey-background {
     background-color: rgba($light-gray, 0.2);
 }
+
 .yld-landing-description {
+    font-family: $font-family-serif;
     font-weight: bolder;
     line-height: 1.5em;
     color: $black-hr;
     margin-bottom: 2em;
+}
+
+.yld-landing-card {
+    padding: 1em;
+    min-height: 280px;
+}
+
+.yld-landing-team-description {
+    font-family: $font-family-serif;
+    padding: 0;
 }
 
 .yld-landing-info-title {
@@ -65,18 +81,9 @@
     color: $yld-color-secondary;
 }
 .yld-landing-info-description {
+    font-family: $font-family-serif;
     color: $font-color;
     font-weight: bolder;
-}
-.yld-landing-header-btn-message {
-    border-color: $yld-color-primary;
-    font-size: 1em;
-    width: 200px;
-    margin-top: 1.5em;
-    color: $yld-color-primary;
-    &:hover {
-        background-color: $yld-color-primary !important;
-    }
 }
 
 .nc-icon {
@@ -93,6 +100,12 @@
 .yld-landing-form-group {
     padding: 3em;
 }
+.yld-invalid-input {
+    color: red;
+    border: 2px solid red;
+    box-sizing: border-box;
+}
+
 .yld-landing-form-control {
     width: 300px;
     height: 50px;

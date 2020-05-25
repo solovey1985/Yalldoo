@@ -17,33 +17,11 @@ export class LandingComponent implements OnInit {
     var navbar = document.getElementsByTagName('nav')[0];
     var body = document.getElementsByTagName('body')[0];
 
-    var descriptionElement = document.querySelector('.js-yld-about');
-    var teamElement = document.querySelector('.js-yld-team');
-    var contactUsElement = document.querySelector('.js-yld-contactus');
-    var loginElement = document.querySelector('.js-yld-login');
-
-    function scrollTo(element, to, duration) {
-      if (duration <= 0) return;
-      var difference = to - element.scrollTop;
-      var perTick = difference / duration * 20;
-      setTimeout(function() {
-          element.scrollTop = element.scrollTop + perTick;
-          if (element.scrollTop === to) return;
-          scrollTo(element, to, duration - 5);
-      }, 10);
-    }
-
-    [descriptionElement, teamElement, contactUsElement, loginElement].map(function(element){
-      element.addEventListener('click', function() {
-        var anchorClass = '.js-yld-anchor-' + this.attributes['data-anchor'].nodeValue;
-        var elementToScroll = document.querySelector(anchorClass);
-        var scrollPoint = elementToScroll.getBoundingClientRect().top + window.scrollY;
-        scrollTo(document.documentElement, scrollPoint, 200);
-      });
-    });
-
     navbar.classList.add('navbar-transparent');
     body.classList.add('landing-page');
+
+    var descriptionElement = document.querySelector('.js-yld-about');
+    var teamElement = document.querySelector('.js-yld-team');
 
     window.addEventListener('scroll', function() {
       if (window.pageYOffset > 200 ) {
@@ -58,8 +36,27 @@ export class LandingComponent implements OnInit {
       }
     });
 
-    // element.scrollIntoView(alignToTop)
+    function scrollTo(element, to, duration) {
+      if (duration <= 0) return;
+      var difference = to - element.scrollTop;
+      var perTick = difference / duration * 5;
+      setTimeout(function() {
+          element.scrollTop = element.scrollTop + perTick;
+          if (element.scrollTop === to) return;
+          scrollTo(element, to, duration - 5);
+      }, 10);
+    }
+
+    [descriptionElement, teamElement].map(function(element){
+      element.addEventListener('click', function() {
+        var anchorClass = '.js-yld-anchor-' + this.attributes['data-anchor'].nodeValue;
+        var elementToScroll = document.querySelector(anchorClass);
+        var scrollPoint = elementToScroll.getBoundingClientRect().top + window.scrollY;
+        scrollTo(document.documentElement, scrollPoint, 200);
+      });
+    });
   }
+
   ngOnDestroy(){
     var navbar = document.getElementsByTagName('nav')[0];
     navbar.classList.remove('navbar-transparent');

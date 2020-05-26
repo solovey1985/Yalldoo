@@ -1,21 +1,40 @@
-<div class="wrapper">
+<div class="wrapper full-screen register-page">
     <div class="page-header" style="background-image: url('./assets/img/sections/bruno-abatti.jpg');">
         <div class="filter"></div>
         <div class="container">
             <div class="row">
-                <div class="col-md-4 col-sm-6 ml-auto mr-auto">
+                <div class="col-lg-5 col-md-7 col-sm-9 ml-auto mr-auto">
                     <div class="card card-register">
-                        <h3 class="card-title">Welcome</h3>
-                        <form class="register-form">
-                            <label>Email</label>
-                            <input type="email" class="form-control no-border" placeholder="Email" />
-
-                            <label>Password</label>
-                            <input type="password" class="form-control no-border" placeholder="Password" />
-                            <button class="btn btn-danger btn-block btn-round">Login</button>
+                        <h3 class="card-title">Login</h3>
+                        <div class="social">
+                            <button class="btn btn-just-icon btn-facebook mr-1"><i class="fa fa-facebook"></i></button>
+                        </div>
+                        <div class="division">
+                            <div class="line l"></div>
+                            <span>or</span>
+                            <div class="line r"></div>
+                        </div>
+                        <form [formGroup]="form" class="register-form" (submit)="onSubmit()">
+                            <input type="email" class="form-control no-border" placeholder="Email"  formControlName="email"/>
+                            <div class="yld-errors-container">
+                                <div *ngFor="let validation of validation_messages.email" class="yld-register-invalid">
+                                    <span *ngIf="form.get('email').hasError(validation.type) && (form.get('email').dirty || form.get('email').touched)">{{ validation.message }}</span>
+                                </div>
+                            </div>
+                            <input type="password" class="form-control no-border" placeholder="Password" formControlName="password"/>
+                            <div class="yld-errors-container">
+                                <div *ngFor="let validation of validation_messages.password" class="yld-register-invalid">
+                                    <span
+                                        *ngIf="form.get('password').hasError(validation.type) && (form.get('password').dirty || form.get('password').touched)"
+                                    >
+                                        {{ validation.message }}
+                                    </span>
+                                </div>
+                            </div>
+                            <button class="btn btn-block btn-round" type="submit" [disabled]="form.invalid">Login</button>
                         </form>
                         <div class="forgot">
-                            <a href="javascript:void(0)" class="btn btn-link btn-danger">Forgot password?</a>
+                            <a [routerLink]="['/forgot']" class="btn btn-link btn-danger">Forgot password?</a>
                         </div>
                     </div>
                 </div>

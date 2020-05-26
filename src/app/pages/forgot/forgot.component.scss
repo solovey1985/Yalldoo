@@ -1,0 +1,39 @@
+@import "../../../assets/scss/paper-kit/variables";
+.card-title{
+    margin: 0 0 24px 0;
+}
+.line-brake {
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    width: 100%;
+  }
+.register-form {
+    margin-top: 24px;
+    
+    .form-control {
+        border: 1px solid #ccc5b9 !important;
+        &.form-control-danger {
+            border-color: #dc3545 !important;
+            color: #dc3545;
+        }
+    }
+}
+.yld-register-check-agreement-label {
+    color: #403d39;
+    font-weight: 600;
+}
+
+.yld-register-invalid {
+    width: 100%;
+    margin-top: 0.25rem;
+    color: #dc3545;
+    margin-bottom: 8px;
+}
+
+.yld-info{
+    
+    margin: 12px auto 0;
+    p{
+        color: $yld-color-secondary;
+        font-weight:  400;
+    }
+}

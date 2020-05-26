@@ -13,11 +13,8 @@ import { PreferencesComponent } from "../preferences/preferences.component";
 })
 export class RegisterComponent implements OnInit {
     public form: FormGroup;
-    data: Date = new Date();
+    
     public validation_messages: any;
-    @ViewChild("registerForm")
-    formElement: ElementRef;
-
     constructor(private builder: FormBuilder, private notifyService: NotifyService, private router: Router) {}
 
     ngOnInit() {

@@ -30,6 +30,7 @@ import { EventCreateComponent } from "./event-create/event-create.component";
 import { AboutComponent } from "./about/about.component";
 import { ComponentsModule } from "app/components/components.module";
 import { RouterModule } from "@angular/router";
+import { ForgotComponent } from './forgot/forgot.component';
 
 @NgModule({
     imports: [
@@ -66,7 +67,8 @@ import { RouterModule } from "@angular/router";
         PreferencesComponent,
         FeedComponent,
         EventComponent,
-        EventCreateComponent
+        EventCreateComponent,
+        ForgotComponent
     ]
 })
 export class PagesModule {}

@@ -23,6 +23,7 @@ import { EventCreateComponent } from "./pages/event-create/event-create.componen
 import { AppLayoutComponent } from "./layouts/app-layout/app-layout.component";
 import { BareLayoutComponent } from "./layouts/bare-layout/bare-layout.component";
 import { SiteLayoutComponent } from "./layouts/site-layout/site-layout.component";
+import { ForgotComponent } from "./pages/forgot/forgot.component";
 
 @NgModule({
     imports: [
@@ -37,7 +38,7 @@ import { SiteLayoutComponent } from "./layouts/site-layout/site-layout.component
                     { path: "team", component: AboutusComponent },
                     { path: "about", component: AboutComponent },
                     { path: "contactus", component: ContactusComponent },
-                    { path: "home", component: LandingComponent }
+                    { path: "", component: LandingComponent }
                 ]
             },
             {
@@ -60,6 +61,7 @@ import { SiteLayoutComponent } from "./layouts/site-layout/site-layout.component
                 children: [
                     { path: "register", component: RegisterComponent },
                     { path: "login", component: LoginComponent },
+                    { path: "forgot", component: ForgotComponent },
                     { path: "page404", component: Page404Component },
                     { path: "page422", component: Page422Component },
                     { path: "page500", component: Page500Component }

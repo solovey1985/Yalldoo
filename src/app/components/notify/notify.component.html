@@ -1,12 +1,16 @@
-<div class="alert-container">
-    <div *ngFor="let alert of alerts" class="{{ cssClass(alert) }}">
-        <div class="alert-wrapper">
-            <button type="button" class="close" data-dismiss="alert" (click)="close(alert)" aria-label="Close">
-                <i class="nc-icon nc-simple-remove"></i>
-            </button>
-            <div class="message">
-                <i class="nc-icon nc-bell-55"></i>
-                <span> {{ alert.message }}</span>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div *ngFor="let alert of alerts" class="{{ cssClass(alert) }}">
+                <div class="alert-wrapper">
+                    <button type="button" class="close" data-dismiss="alert" (click)="close(alert)" aria-label="Close">
+                        <i class="nc-icon nc-simple-remove"></i>
+                    </button>
+                    <div class="message">
+                        <i class="nc-icon nc-bell-55"></i>
+                        <span> {{ alert.message }}</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

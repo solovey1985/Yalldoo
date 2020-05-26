@@ -1,81 +1,81 @@
-
-.link-danger{
+.link-danger {
     color: $danger-color !important;
     &:focus,
     &:active,
-    &:hover{
+    &:hover {
         color: $danger-states-color !important;
     }
 }
-.link-info{
+.link-info {
     color: $info-color !important;
     &:focus,
     &:active,
-    &:hover{
+    &:hover {
         color: $info-states-color !important;
     }
 }
 
-.landing-alert{
+.landing-alert {
     margin-bottom: 0;
 }
-.landing-header{
+.landing-header {
     background-size: cover;
     min-height: 570px;
 }
 
-.landing-header .motto{
+.landing-header .motto {
     padding-top: 8%;
     text-align: left;
     z-index: 3;
 }
-.landing-section{
+.landing-section {
     padding: 100px 0;
 }
-.landing-section .btn-simple{
+.landing-section .btn-simple {
     padding: 0;
 }
-.landing-section .column{
+.landing-section .column {
     padding: 0 75px 0 25px;
 }
-.team-player .img-circle, .team-player .img-thumbnail{
+.team-player .img-circle,
+.team-player .img-thumbnail {
     display: block;
     margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
     width: 120px;
 }
-.contact-form{
+.contact-form {
     margin-top: 30px;
 }
-.contact-form label{
+.contact-form label {
     margin-top: 15px;
 }
-.contact-form .btn{
+.contact-form .btn {
     margin-top: 30px;
 }
 
-.navbar-relative{
+.navbar-relative {
     position: relative;
     z-index: 2;
 }
 
-#register-navbar a{
-    color: #FFF;
+#register-navbar a {
+    color: #fff;
 }
 
-.register-footer{
+.register-footer {
     bottom: 20px;
     color: #fff;
     position: absolute;
     z-index: 3;
     width: 100%;
 }
-.register-footer .fa-heart{
-    color: #EB5E28;
+.register-footer .fa-heart {
+    color: #eb5e28;
 }
-.register-card{
-    background-color: #FF8F5E;
+.register-card {
+    background-color: #ff8f5e;
     border-radius: 8px;
     color: #fff;
     max-width: 350px;
@@ -83,39 +83,39 @@
     min-height: 400px;
     padding: 30px;
 }
-.register-card label{
+.register-card label {
     margin-top: 15px;
 }
-.register-card .title{
-    color: #B33C12;
+.register-card .title {
+    color: #b33c12;
     text-align: center;
 }
-.register-card .btn{
+.register-card .btn {
     margin-top: 30px;
 }
-.register-card .forgot{
+.register-card .forgot {
     text-align: center;
 }
 .register-page {
-    .card-register{
-      background-color: $white-color;
+    .card-register {
+        background-color: $white-color;
 
-      .card-title{
-          color: #66615b;
-      }
+        .card-title {
+            color: #66615b;
+        }
     }
 }
 
-.full-screen{
-    #register-navbar a{
-        color: #FFF;
+.full-screen {
+    #register-navbar a {
+        color: #fff;
     }
-    .page-header .container{
+    .page-header .container {
         margin-top: 11%;
         position: relative;
         z-index: 3;
     }
-    .demo-card{
+    .demo-card {
         border-radius: 8px;
         max-width: 350px;
         margin: 20px 0;
@@ -123,45 +123,44 @@
         padding: 30px;
     }
 
-    &.login{
-        .demo-card{
-            background-color: #FF8F5E;
+    &.login {
+        .demo-card {
+            background-color: #ff8f5e;
             color: #fff;
 
-            label{
-                margin-top: 15px;
+            label {
+                margin-top: 9px;
             }
-            .title{
-                color: #B33C12;
+            .title {
+                color: #b33c12;
                 text-align: center;
             }
-            .btn{
+            .btn {
                 margin-top: 30px;
             }
-            .forgot{
+            .forgot {
                 text-align: center;
             }
         }
     }
-    &.register-page{
-        .page-header{
-            .container{
+    &.register-page {
+        .page-header {
+            .container {
                 margin-bottom: 50px;
 
                 .info-horizontal .icon {
-                  margin-top: 10px;
+                    margin-top: 10px;
                 }
             }
         }
 
-
         .demo-card,
-        .card-register{
+        .card-register {
             background-color: $white-color;
-            input{
+            input {
                 margin-bottom: 8px;
             }
-            .btn{
+            .btn {
                 margin-top: 20px;
             }
             .division {
@@ -178,60 +177,62 @@
                     position: absolute;
                     top: 10px;
                     width: 40%;
-                    &.l{
+                    &.l {
                         left: 0;
                     }
-                    &.r{
+                    &.r {
                         right: 0;
                     }
                 }
             }
-            
-            .login p{
+
+            .login p {
                 color: $font-color;
-                a{
-                    color: $info-color
+                a {
+                    color: $info-color;
                 }
             }
         }
-        .social{
+        .social {
             margin-bottom: 10px;
             margin-top: 15px;
             text-align: center;
         }
-        .login{
-            margin-top: 20px;
+        .login {
+            margin-top: 12px;
             text-align: center;
-            p{
-                font-size: 0.9em;
+            p {
+                font-size: 1em;
             }
         }
     }
 }
-#carousel{
+#carousel {
     max-width: 385px;
-    .card{
-        .carousel-item.active{
+    .card {
+        .carousel-item.active {
             display: block !important;
         }
-        .carousel-control:focus{
+        .carousel-control:focus {
             color: $white-color;
         }
     }
 }
-.contact-page, .discover, .search-page{
+.contact-page,
+.discover,
+.search-page {
     .section:first-of-type {
-    padding-top: 100px;
+        padding-top: 100px;
     }
 }
-.profile-background{
+.profile-background {
     background-position: center center;
     background-size: cover;
     height: 300px;
     position: relative;
     // margin-top: -110px;
 }
-.profile-background .filter-black::after{
+.profile-background .filter-black::after {
     background-color: rgba(0, 0, 0, 0.5);
     content: "";
     display: block;
@@ -242,341 +243,342 @@
     width: 100%;
     z-index: 1;
 }
-.profile-content{
+.profile-content {
     position: relative;
 }
-.owner .avatar{
+.owner .avatar {
     margin-top: -85px;
     padding: 15px;
-    position:relative;
+    position: relative;
     z-index: 3;
 }
-.owner .name h4{
+.owner .name h4 {
     margin-top: 10px;
 }
-.profile-tabs{
+.profile-tabs {
     margin: 50px 0;
     min-height: 300px;
 }
-#following h3{
+#following h3 {
     margin: 40px 0;
 }
-.follows .unfollow{
+.follows .unfollow {
     width: 15px;
 }
-.follows hr{
+.follows hr {
     margin-top: 10px;
 }
-.alert h5{
+.alert h5 {
     margin-bottom: 0;
 }
 
 // theme changes for settings page
 .settings-page,
-.profile-page{
-    .settings-form{
+.profile-page {
+    .settings-form {
         margin-bottom: 50px;
         margin-top: 50px;
     }
-    .fileinput{
+    .fileinput {
         margin-top: -140px;
-        position:relative;
+        position: relative;
         z-index: 3;
     }
-    .form-group{
+    .form-group {
         padding-bottom: 10px;
     }
 }
-.notifications{
+.notifications {
     list-style: none;
     padding-left: 0;
     padding-top: 20px;
-    .notification-item{
+    .notification-item {
         border-top: 1px solid #e8e7e3;
         min-height: 60px;
         padding-top: 20px;
         padding-bottom: 15px;
-        .switch{
+        .switch {
             float: right;
         }
-        .bootstrap-switch{
+        .bootstrap-switch {
             float: right;
         }
     }
 }
 
-.about-us{
-    .container{
+.about-us {
+    .container {
         max-width: 970px;
     }
-    .header-wrapper{
+    .header-wrapper {
         height: 550px;
     }
-    .section{
+    .section {
         padding-top: 50px;
     }
-    h3.title-uppercase{
-       margin-top: 50px;
+    h3.title-uppercase {
+        margin-top: 50px;
     }
-    p{
+    p {
         margin-top: 20px;
     }
-    .creators{
+    .creators {
         margin-top: 100px;
     }
-    .more-info{
+    .more-info {
         margin-top: 50px;
         margin-bottom: 30px;
     }
 }
-.discover{
+.discover {
     background-color: $bg-nude;
-    .discover-title{
+    .discover-title {
         margin-top: 20px;
     }
-    .form-inline{
+    .form-inline {
         margin: 20px 0 40px 165px;
     }
-    .items-row{
+    .items-row {
         margin-bottom: 50px;
     }
-    .preloader{
-        h5{
+    .preloader {
+        h5 {
             color: $preloader-color;
             display: inline-block;
         }
     }
-    .navbar{
+    .navbar {
         border-radius: 0;
     }
 }
-.add-product{
+.add-product {
     background-color: $bg-nude;
-    .container{
+    .container {
         max-width: 970px;
     }
-    h6{
+    h6 {
         color: $dark-gray;
         margin-top: 20px;
     }
-    .price-row{
+    .price-row {
         margin-bottom: 30px;
     }
-    .buttons-row{
+    .buttons-row {
         margin: 60px 0 20px;
-        .btn{
+        .btn {
             margin-bottom: 15px;
         }
     }
-    .display-checkbox{
+    .display-checkbox {
         margin-top: 40px;
     }
 }
-.product-page{
+.product-page {
     background-color: #f4f3ef;
-    .container{
+    .container {
         max-width: 970px;
     }
-    .title-row{
+    .title-row {
         margin-bottom: 30px;
     }
-    .shop{
+    .shop {
         margin-top: 0px;
     }
-    .carousel-inner{
+    .carousel-inner {
         background-color: transparent;
-        .item{
+        .item {
             padding: 40px 30px;
         }
     }
-    .price{
+    .price {
         margin-top: 10px;
     }
-    .shipping{
+    .shipping {
         margin-bottom: 40px;
     }
-    .details-row{
+    .details-row {
         margin-top: 30px;
     }
-    .faq{
+    .faq {
         padding-top: 20px;
         padding-bottom: 20px;
     }
-    .add-row{
+    .add-row {
         margin-top: 50px;
         margin-bottom: 50px;
-         h4{
-             margin-top: 10px;
-         }
+        h4 {
+            margin-top: 10px;
+        }
     }
 }
-.contact-page{
-    .navbar{
+.contact-page {
+    .navbar {
         margin-bottom: 0px;
     }
-    .title{
+    .title {
         margin-top: 40px;
     }
-    .contact{
-        .form-control{
+    .contact {
+        .form-control {
             margin-bottom: 20px;
         }
     }
-    .visit{
+    .visit {
         margin-top: 40px;
         margin-bottom: 10px;
     }
-    .big-map{
+    .big-map {
         height: 300px;
         width: 100%;
     }
-    .footer-demo{
+    .footer-demo {
         background-color: #f4f3ef;
     }
 }
-.blog, .blog-post{
+.blog,
+.blog-post {
     background-color: $white-color;
-    .navbar{
+    .navbar {
         border-bottom: 0 none;
         margin-bottom: 0px;
 
-        input{
+        input {
             background-color: $white-color;
         }
     }
-    .title{
-        h3{
+    .title {
+        h3 {
             margin-top: -10px;
         }
     }
-    .main-tag{
+    .main-tag {
         margin-bottom: 10px;
         margin-top: 10px;
     }
-    .title{
+    .title {
         color: $default-states-color;
         font-weight: 600;
     }
 
-    .card-big-shadow{
+    .card-big-shadow {
         max-width: 100%;
     }
-    .card{
+    .card {
         margin-top: 25px;
         background-size: cover;
         min-height: 430px;
         width: 100%;
     }
-    .image-thumb{
+    .image-thumb {
         font-size: 14px;
         color: $muted-color;
     }
 }
-.card-blog{
+.card-blog {
     a {
-        .title-uppercase{
+        .title-uppercase {
             margin-bottom: 10px;
         }
     }
 }
-.blog-posts{
-    .article{
-        .article-content{
-            p{
+.blog-posts {
+    .article {
+        .article-content {
+            p {
                 margin-top: 10px;
             }
-            .btn{
+            .btn {
                 margin-top: 10px;
             }
         }
-        .card-blog{
-            .btn{
+        .card-blog {
+            .btn {
                 margin-bottom: 20px;
             }
         }
     }
 }
-.blog-post{
-    .article{
-        .article-content{
-            h4{
+.blog-post {
+    .article {
+        .article-content {
+            h4 {
                 color: #403d39;
                 font-weight: bold;
                 margin-top: 40px;
                 text-align: center;
             }
-            p{
+            p {
                 margin-top: 20px;
             }
-            ul > li{
+            ul > li {
                 margin: 10px 0px;
             }
         }
-        .article-footer{
+        .article-footer {
             margin-top: 50px;
-            .sharing{
+            .sharing {
                 margin-bottom: 100px;
                 float: right;
-                h5{
+                h5 {
                     margin-top: 0px !important;
                 }
             }
         }
-        .media{
-            .media-body{
-                .btn{
+        .media {
+            .media-body {
+                .btn {
                     margin-top: 50px;
                 }
-                p{
+                p {
                     padding-right: 150px;
                 }
             }
-            .big-avatar{
+            .big-avatar {
                 width: 100px;
                 height: 100px;
             }
         }
     }
-    .related-articles{
+    .related-articles {
         margin-bottom: 50px;
         margin-top: 80px;
         text-align: center;
-        img{
+        img {
             height: 230px;
             width: 100%;
         }
-        .blog-title{
+        .blog-title {
             margin-top: 15px;
         }
     }
-    .blog-header-image{
-        background-image: url('assets/img/farid-askerov.jpg');
+    .blog-header-image {
+        background-image: url("assets/img/farid-askerov.jpg");
     }
-    .navbar{
-        input{
-            background-color: rgba(255, 255, 255, 0.17)
+    .navbar {
+        input {
+            background-color: rgba(255, 255, 255, 0.17);
         }
     }
 }
-.search-page{
+.search-page {
     background-color: $white-color;
-    .navbar-transparent{
+    .navbar-transparent {
         border-bottom: 0 none;
         margin-bottom: 0px;
-        .navbar-brand{
+        .navbar-brand {
             color: $font-color;
         }
-        .navbar-toggle{
-            .icon-bar{
+        .navbar-toggle {
+            .icon-bar {
                 background: $font-color;
             }
         }
     }
 
-    .section-search{
+    .section-search {
         min-height: 100vh;
     }
-    .addon-xtreme{
+    .addon-xtreme {
         background-color: $white-color;
         font-size: 2.5em;
         color: $muted-color;
@@ -584,136 +586,137 @@
         top: 6px;
         left: 10px;
     }
-    .input-xtreme{
+    .input-xtreme {
         background-color: $white-color;
         font-size: 3em;
         height: 70px;
         margin-left: 70px;
         padding-left: 0px;
     }
-    .follows{
-        li{
+    .follows {
+        li {
             padding: 20px;
         }
     }
-    .search-form{
+    .search-form {
         margin: 0 auto 50px;
         max-width: 360px;
 
-        .fa{
+        .fa {
             width: 22px;
         }
-
     }
-    .text-missing{
+    .text-missing {
         margin-top: 100px;
         margin-bottom: 50px;
     }
-    .description{
+    .description {
         text-align: left;
-        h5{
+        h5 {
             margin-top: 0px;
-            small{
+            small {
                 font-weight: $font-weight-bold;
             }
         }
     }
-
 }
 
 // twitter pages
-.twitter-redesign{
+.twitter-redesign {
     .nav-tabs > li.active *::after {
         border-bottom: 11px solid #f9f9f7;
     }
 
-    .twitter-logo{
-
+    .twitter-logo {
         position: absolute;
         left: 50%;
         margin-left: -40px;
-        a, a:hover, a:active, a:focus{
-            i{
+        a,
+        a:hover,
+        a:active,
+        a:focus {
+            i {
                 color: #55acee;
                 font-size: 30px;
             }
         }
     }
-    .navbar-form{
+    .navbar-form {
         margin-right: 0px;
         padding-right: 0px;
     }
-    .following{
+    .following {
         margin-top: -45px;
         margin-left: 75px;
     }
-    .hashtag-suggestions{
-        li{
+    .hashtag-suggestions {
+        li {
             margin-bottom: 5px;
         }
     }
-    .account{
+    .account {
         margin-bottom: 15px;
-        .description-section{
+        .description-section {
             line-height: 1.2em;
             margin-top: 5px;
             padding: 0px;
         }
-        .follow{
+        .follow {
             margin-top: 10px;
         }
     }
-    .tweets{
+    .tweets {
         padding: 20px 50px;
-        .media{
-            border-bottom: 1px solid #F1EAE0;
+        .media {
+            border-bottom: 1px solid #f1eae0;
             overflow: visible;
 
-            img{
+            img {
                 width: 100%;
             }
-            .avatar{
+            .avatar {
                 border: 0 none;
                 margin-top: 10px;
-                .btn-just-icon{
+                .btn-just-icon {
                     line-height: 30px;
                 }
             }
-            .media-heading{
+            .media-heading {
                 margin-bottom: 5px;
             }
-            .media-body{
+            .media-body {
                 overflow: visible;
             }
-            .media-footer{
-                .btn{
+            .media-footer {
+                .btn {
                     font-weight: bold;
                     margin-right: 20px;
                 }
             }
-            .img-tweet{
+            .img-tweet {
                 display: inline-block;
             }
-            .retweet{
+            .retweet {
                 margin-top: -20px;
                 margin-left: 40px;
             }
-            .tweet-link{
+            .tweet-link {
                 margin-bottom: 25px;
                 margin-top: 20px;
             }
-            .img-tweet-link{
+            .img-tweet-link {
                 display: inline-block;
                 // max-width: 180px;
             }
-            &.last-media{
+            &.last-media {
                 border-bottom: 0px;
             }
-            .dropup, .dropdown{
+            .dropup,
+            .dropdown {
                 display: inline;
             }
-            .dropdown-menu{
-                &:before{
+            .dropdown-menu {
+                &:before {
                     border-bottom: 11px solid $medium-pale-bg;
                     border-left: 11px solid rgba(0, 0, 0, 0);
                     border-right: 11px solid rgba(0, 0, 0, 0);
@@ -723,7 +726,7 @@
                     right: 12px;
                     top: -11px;
                 }
-                &:after{
+                &:after {
                     border-bottom: 11px solid $pale-bg;
                     border-left: 11px solid rgba(0, 0, 0, 0);
                     border-right: 11px solid rgba(0, 0, 0, 0);
@@ -734,129 +737,128 @@
                     top: -10px;
                 }
             }
-            .dropdown-menu-right{
+            .dropdown-menu-right {
                 right: 11px !important;
             }
         }
     }
-    .nav-pills-navigation{
+    .nav-pills-navigation {
         text-align: center;
-        .nav-pills-wrapper{
+        .nav-pills-wrapper {
             display: inline-block;
             position: relative;
             width: auto;
         }
     }
-    .people{
-        .number{
+    .people {
+        .number {
             margin-top: 15px;
         }
-        .card-user{
-            .avatar{
+        .card-user {
+            .avatar {
                 margin-bottom: 10px;
             }
-            .image{
+            .image {
                 height: 120px;
             }
-            .content{
+            .content {
                 min-height: 255px;
-                .description{
+                .description {
                     font-size: 15px;
                 }
             }
         }
-        .people-list{
+        .people-list {
             margin-top: 40px;
         }
     }
-    #media{
-        img.vertical-image{
+    #media {
+        img.vertical-image {
             max-height: 240px;
         }
-        .gallery-item .gallery-caption{
+        .gallery-item .gallery-caption {
             display: none;
         }
-        .pswp__caption__center{
+        .pswp__caption__center {
             max-width: 800px;
         }
-        .pswp__caption{
-            h5{
+        .pswp__caption {
+            h5 {
                 display: inline-block;
             }
         }
     }
 }
-.ecommerce-page{
-    .container{
+.ecommerce-page {
+    .container {
         max-width: 970px;
     }
-    .header-wrapper{
+    .header-wrapper {
         height: 550px;
     }
-    .latest-offers{
-        .details{
-            .name{
+    .latest-offers {
+        .details {
+            .name {
                 margin-top: 20px;
             }
-            .meta{
+            .meta {
                 color: #ccc5b9;
                 font-size: 0.8em;
                 font-weight: normal;
             }
-            .price{
+            .price {
                 padding-bottom: 15px;
                 padding-top: 15px;
             }
         }
-        .section-title{
+        .section-title {
             margin-bottom: 30px;
         }
     }
-    .card-refine{
+    .card-refine {
         margin-top: 30px;
-
     }
-    .products{
+    .products {
         margin-top: 73px;
-        .card-product{
+        .card-product {
             margin-bottom: 50px;
         }
     }
-    .article-image{
+    .article-image {
         margin-top: 25px;
 
-        .card-big-shadow{
+        .card-big-shadow {
             max-width: 100%;
         }
-        .card{
+        .card {
             background-size: cover;
             min-height: 230px;
             width: 100%;
         }
-        .image-thumb{
+        .image-thumb {
             font-size: 14px;
             color: $muted-color;
         }
     }
 }
-.documentation{
-    .filter:after{
+.documentation {
+    .filter:after {
         height: 750px !important;
     }
 }
 
 // ERROR PAGES (400, 422, 500)
 
-body{
-    overflow-x:hidden;
+body {
+    overflow-x: hidden;
     width: 100%;
 }
-.background-img{
+.background-img {
     height: 100vh;
     background-position: center center;
     background-size: cover;
 
-    .filter:after{
+    .filter:after {
         background-color: rgba(0, 0, 0, 0.5);
         content: "";
         display: block;
@@ -866,51 +868,51 @@ body{
         width: 100%;
     }
 
-    .social-buttons{
-        .btn:nth-child(2){
+    .social-buttons {
+        .btn:nth-child(2) {
             margin-left: 15px;
             margin-right: 15px;
         }
     }
 
-    .title{
+    .title {
         margin: 0 auto;
         margin-top: 15%;
         margin-bottom: 30px;
         font-size: 10em;
-        color: #FFFFFF;
+        color: #ffffff;
         z-index: 2;
         text-align: center;
     }
-    .card{
-        &.card-just-text{
-            .card-body{
+    .card {
+        &.card-just-text {
+            .card-body {
                 padding: 50px 30px;
             }
         }
-        .icon{
+        .icon {
             padding: 0;
             margin-top: 30px;
             margin-bottom: -30px;
-            i{
+            i {
                 height: 90px;
                 width: 90px;
                 font-size: 35px;
             }
         }
-        .card-text{
+        .card-text {
             padding-bottom: 0;
             margin-bottom: -20px;
         }
     }
 
-    .discover-pages{
+    .discover-pages {
         margin: 0 auto;
         color: #fff;
         z-index: 2;
         padding-bottom: 20px;
     }
-    .error-msg{
-        text-align: center
+    .error-msg {
+        text-align: center;
     }
 }

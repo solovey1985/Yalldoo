@@ -1,40 +1,38 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
-
+import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from "@angular/core";
+import { Router } from "@angular/router";
+import { NotifyService } from "app/services/notify-service/notify.service";
 
 @Component({
-  selector: 'app-preference-card',
-  templateUrl: './preference-card.component.html',
-  styleUrls: ['./preference-card.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: "app-preference-card",
+    templateUrl: "./preference-card.component.html",
+    styleUrls: ["./preference-card.component.scss"],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PreferenceCardComponent implements OnInit {
+    @Input()
+    id: number;
+    @Input()
+    title: string;
+    @Input()
+    description: string;
+    @Input()
+    backgroundUrl: string;
+    @Input()
+    icon: string;
+    @Input()
+    selected: boolean;
+    @Output()
+    onCardSelected: EventEmitter<any> = new EventEmitter<number>();
 
-  @Input()
-  id: number;
-  @Input()
-  title: string;
-  @Input()
-  description: string;
-  @Input()
-  backgroundUrl: string;
-  @Input()
-  icon: string;
-  @Input()
-  selected: boolean;
-  @Output()
-  onCardSelected: EventEmitter<any>  =new EventEmitter<number>();
+    constructor() {}
 
-  constructor() { }
+    ngOnInit(): void {}
 
-  ngOnInit(): void {
-  }
+    onCardClick(): void {}
 
-  onCardClick():void {
-    
-  }
+  
 
-  onSelectClick() {
-     this.onCardSelected.emit(this.id)
-  }
-
+    onSelectClick() {
+        this.onCardSelected.emit(this.id);
+    }
 }

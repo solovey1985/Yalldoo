@@ -6,6 +6,19 @@
         align-self: center;
         margin-bottom: 12px;
     }
+    .yld-page-action-bar{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 12px 0;
+        .yld-preference-page-button{
+            button{
+                margin: 0 4px;
+            }
+
+        }
+    }
     .yld-tabs{
         margin: 12px 0;
     }

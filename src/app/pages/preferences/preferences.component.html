@@ -2,17 +2,27 @@
     <div class="yld-preference-page-header">
         <h3>Select your preferences</h3>
     </div>
-    <div class="yld-tabs">
-        <ngb-tabset type="pills" class="nav nav-pills nav-pills-danger justify-content-center">
-            <ngb-tab title="Categories">
-                <ng-template ngbTabContent> </ng-template>
-            </ngb-tab>
-            <ngb-tab title="Places">
-                <ng-template ngbTabContent> </ng-template>
-            </ngb-tab>
-        </ngb-tabset>
-    </div>
+
     <div class="yld-preference-page-content">
+        <div class="yld-tabs">
+            <ngb-tabset type="pills" class="nav nav-pills nav-pills-danger justify-content-center">
+                <ngb-tab title="Categories">
+                    <ng-template ngbTabContent> </ng-template>
+                </ngb-tab>
+                <ngb-tab title="Places">
+                    <ng-template ngbTabContent> </ng-template>
+                </ngb-tab>
+            </ngb-tabset>
+        </div>
+        <div class="yld-page-action-bar">
+            <div class="yld-page-counter">
+                <h5 class="justify-content-center" *ngIf="counter > 0">Selected {{ counter }}</h5>
+            </div>
+            <div class="yld-preference-page-button">
+                <button type="button" class="btn btn-lg btn-primary" (click)="onPreferencesConfirm()" [disabled]="counter == 0">Confirm</button>
+                <button type="button" class="btn btn-secondary btn-lg" (click)="onPreferencesSkip()">Skip</button>
+            </div>
+        </div>
         <div class="yld-preference-cards-container">
             <app-preference-card
                 *ngFor="let preference of preferences"
@@ -25,9 +35,5 @@
                 (onCardSelected)="onCardSelected(preference.id)"
             ></app-preference-card>
         </div>
-    </div>
-    <div class="yld-preference-page-footer">
-        <button type="button" class="btn btn-lg btn-primary">Confirm</button>
-        <button type="button" class="btn btn-secondary btn-lg">Skip</button>
     </div>
 </div>

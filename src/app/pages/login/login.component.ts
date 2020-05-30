@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     }
     onSubmit() {
         this.notifyService.success("Login successful. Redirecting to your feed. Please, wait...", { autoClose: true, keepAfterRouteChange: true })
-        setTimeout(() => { this.router.navigate(['/feed'], { skipLocationChange: true }); }, 1500);
+        setTimeout(() => { this.router.navigate(['/feed']); }, 1500);
     }
     ngOnDestroy() {}
 

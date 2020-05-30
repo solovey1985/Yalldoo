@@ -60,7 +60,7 @@ export class RegisterComponent implements OnInit {
     formSubmit(event): void {
        event.preventDefault();
         this.notifyService.success("Resgistration successful. Please check mail box to confirm your email", { autoClose: true, keepAfterRouteChange: false })
-        setTimeout(() => { this.router.navigate(['/preferences'], { skipLocationChange: true }); }, 5000);
+        setTimeout(() => { this.router.navigate(['/preferences']); }, 5000);
     }
 
     isInvalid(control: AbstractControl):boolean {

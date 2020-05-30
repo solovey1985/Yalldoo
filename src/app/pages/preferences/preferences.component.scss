@@ -1,0 +1,28 @@
+.yld-preference-page{
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    .yld-preference-page-header{
+        align-self: center;
+        margin-bottom: 12px;
+    }
+    .yld-tabs{
+        margin: 12px 0;
+    }
+    .yld-preference-cards-container{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        >*{
+            min-width: 24%;
+        }
+    }
+
+    .yld-preference-page-footer{
+        align-self: center;
+        button{
+            margin: 0 16px;
+        }
+    }
+}

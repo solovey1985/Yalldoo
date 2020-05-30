@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "paper-kit-2-pro-angular": {
+    "yalldoo-spa": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -55,18 +55,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "paper-kit-2-pro-angular:build"
+            "browserTarget": "yalldoo-spa:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "paper-kit-2-pro-angular:build:production"
+              "browserTarget": "yalldoo-spa:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "paper-kit-2-pro-angular:build"
+            "browserTarget": "yalldoo-spa:build"
           }
         },
         "test": {
@@ -104,7 +104,7 @@
         }
       }
     },
-    "paper-kit-2-pro-angular-e2e": {
+    "yalldoo-spa-e2e": {
       "root": "e2e",
       "sourceRoot": "e2e",
       "projectType": "application",
@@ -113,7 +113,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "paper-kit-2-pro-angular:serve"
+            "devServerTarget": "yalldoo-spa:serve"
           }
         },
         "lint": {
@@ -128,7 +128,7 @@
       }
     }
   },
-  "defaultProject": "paper-kit-2-pro-angular",
+  "defaultProject": "yalldoo-spa",
   "schematics": {
     "@schematics/angular:component": {
       "inlineTemplate": false,

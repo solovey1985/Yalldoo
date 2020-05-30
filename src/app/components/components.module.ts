@@ -28,6 +28,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { NotifyComponent } from './notify/notify.component';
 import { BareNavbarComponent } from './bare-navbar/bare-navbar.component';
+import { PreferenceCardComponent } from './preference-card/preference-card.component';
 
 @NgModule({
     imports: [
@@ -60,14 +61,16 @@ import { BareNavbarComponent } from './bare-navbar/bare-navbar.component';
         FooterComponent,
         NavbarComponent,
         NotifyComponent,
-        BareNavbarComponent
+        BareNavbarComponent,
+        PreferenceCardComponent
     ],
     exports: [
         ComponentsComponent,
         FooterComponent,
         NavbarComponent,
         NotifyComponent,
-        BareNavbarComponent
+        BareNavbarComponent,
+        PreferenceCardComponent
     ]
 })
 export class ComponentsModule { }

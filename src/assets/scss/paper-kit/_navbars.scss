@@ -157,3 +157,25 @@
     }
   }
 }
+
+.yld-landing-nav-brand-logo {
+    max-width: 25%;
+}
+
+@media (max-width: 1199px) {
+    .yld-landing-nav-brand-logo {
+        max-width: 30%;
+    }
+}
+
+@media (max-width: 1023px) {
+    .yld-landing-nav-brand-logo {
+        max-width: 20%;
+    }
+}
+
+@media (max-width: 767px) {
+    .yld-landing-nav-brand-logo {
+        max-width: 30%;
+    }
+}

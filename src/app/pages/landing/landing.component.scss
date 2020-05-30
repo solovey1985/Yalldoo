@@ -111,3 +111,47 @@
     height: 50px;
     margin: 0 auto 1em auto;
 }
+@media (max-width: 1024px) {
+    .yld-landing-logo {
+        padding-top: 0;
+    }
+}
+@media (max-width: 991px) {
+    .yld-landing-header-title {
+        font-size: 350%;
+        margin-top: 1em;
+    }
+    .yld-landing-header-description {
+        font-size: 250%;
+    }
+    .yld-landing-header-btn {
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .yld-landing-header-title {
+        font-size: 350%;
+        margin-top: 0;
+        margin-bottom: 2em;
+    }
+    .yld-landing-logo {
+        width: 100%;
+    }
+    .yld-landing-header-description {
+        font-size: 200%;
+        margin: 2em 0;
+    }
+    .yld-landing-header-btn {
+        margin-top: 1em;
+    }
+    .yld-landing-title {
+        font-size: 3em;
+    }
+    .yld-landing-description {
+        font-size: 1.5em;
+    }
+    .yld-landing-card {
+        margin: 1em auto;
+    }
+}

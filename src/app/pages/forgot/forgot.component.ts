@@ -23,7 +23,6 @@ export class ForgotComponent implements OnInit {
 
   onSubmit() {
     this.notifyService.info("Please, check your mail box. Email with recovery information was sent.")
-    setTimeout(() => this.router.navigate(['/login']), 2000);
   }
   initValidationMessages() {
       this.validation_messages = {

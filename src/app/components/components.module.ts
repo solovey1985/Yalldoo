@@ -29,6 +29,10 @@ import { RouterModule } from '@angular/router';
 import { NotifyComponent } from './notify/notify.component';
 import { BareNavbarComponent } from './bare-navbar/bare-navbar.component';
 import { PreferenceCardComponent } from './preference-card/preference-card.component';
+import { TabComponent } from './tab/tab.component';
+import { TabsComponent } from './tabs/tabs.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
+import { QuicksortBarComponent } from './quicksort-bar/quicksort-bar.component';
 
 @NgModule({
     imports: [
@@ -62,7 +66,11 @@ import { PreferenceCardComponent } from './preference-card/preference-card.compo
         NavbarComponent,
         NotifyComponent,
         BareNavbarComponent,
-        PreferenceCardComponent
+        PreferenceCardComponent,
+        TabComponent,
+        TabsComponent,
+        SearchBarComponent,
+        QuicksortBarComponent
     ],
     exports: [
         ComponentsComponent,
@@ -70,7 +78,11 @@ import { PreferenceCardComponent } from './preference-card/preference-card.compo
         NavbarComponent,
         NotifyComponent,
         BareNavbarComponent,
-        PreferenceCardComponent
+        PreferenceCardComponent,
+        TabComponent,
+        TabsComponent,
+        SearchBarComponent,
+        QuicksortBarComponent
     ]
 })
 export class ComponentsModule { }

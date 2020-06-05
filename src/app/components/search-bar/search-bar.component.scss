@@ -1,0 +1,25 @@
+.yld-search {
+    &-form {
+        width: 100%;
+        padding: 10px;
+    }
+
+    &-bar-conatiner {
+        font-size: 2em;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    &-bar-input {
+        border: none;
+        margin-left: 1em;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+.yld-fa-search {
+    margin-left: 1em;
+}

@@ -9,6 +9,7 @@ import { PagesModule } from "./pages/pages.module";
 
 import { AppComponent } from "./app.component";
 import { LayoutModule } from "./layouts/layout.module";
+import { YalldooCoreModule } from './_core/core.module';
 
 @NgModule({
     declarations: [AppComponent],
@@ -21,7 +22,8 @@ import { LayoutModule } from "./layouts/layout.module";
         AppRoutingModule,
         ComponentsModule,
         PagesModule,
-        LayoutModule
+        LayoutModule,
+        YalldooCoreModule
     ],
     providers: [],
     bootstrap: [AppComponent]

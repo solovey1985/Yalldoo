@@ -33,6 +33,8 @@ import { TabComponent } from './tab/tab.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { QuicksortBarComponent } from './quicksort-bar/quicksort-bar.component';
+import { PlaceAutocompleteComponent } from './place-autocomplete/place-autocomplete.component';
+import { MapComponent } from './map/map.component';
 
 @NgModule({
     imports: [
@@ -70,7 +72,9 @@ import { QuicksortBarComponent } from './quicksort-bar/quicksort-bar.component';
         TabComponent,
         TabsComponent,
         SearchBarComponent,
-        QuicksortBarComponent
+        QuicksortBarComponent,
+        PlaceAutocompleteComponent,
+        MapComponent
     ],
     exports: [
         ComponentsComponent,
@@ -82,7 +86,9 @@ import { QuicksortBarComponent } from './quicksort-bar/quicksort-bar.component';
         TabComponent,
         TabsComponent,
         SearchBarComponent,
-        QuicksortBarComponent
+        QuicksortBarComponent,
+        PlaceAutocompleteComponent,
+        MapComponent
     ]
 })
 export class ComponentsModule { }

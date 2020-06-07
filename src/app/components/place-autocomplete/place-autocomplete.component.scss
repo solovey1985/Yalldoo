@@ -1,0 +1,25 @@
+input {
+  width: 100%;
+}
+
+.fm-place-complete-input-group {
+  display: flex;
+  flex-direction: row;
+  .fm-place-complete-input {
+    width: 100%;
+  }
+}
+
+.search-form .fa {
+  width: 22px;
+}
+.search-form {
+  .addon-extreme {
+    background-color: #fff;
+    font-size: 2.5em;
+    color: #a49e93;
+    position: absolute;
+    top: 6px;
+    left: 10px;
+  }
+}

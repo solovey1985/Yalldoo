@@ -1,0 +1,21 @@
+<label for="typeahead-basic">Search for a state:</label>
+<ng-template #resultTemplate let-r="result" let-t="term">
+    <ngb-highlight [result]="r.title" [term]="t"></ngb-highlight>
+</ng-template>
+<fieldset class="form-inline">
+    <div class="form-group">
+        <span class="addon-extreme"><i class="fa fa-search"></i></span>
+        <input
+            id="typeahead-basic"
+            type="text"
+            class="input-xtreme"
+            placeholder="Start input your place"
+            #addresstext
+            [ngbTypeahead]="search"
+            [inputFormatter]="formatter"
+            [resultFormatter]="formatter"
+            [resultTemplate]="resultTemplate"
+            (selectItem)="onPlaceChanged($event)"
+        />
+    </div>
+</fieldset>

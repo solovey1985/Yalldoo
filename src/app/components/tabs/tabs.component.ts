@@ -1,14 +1,15 @@
-import { Component, OnInit, ChangeDetectionStrategy, ContentChildren, QueryList, AfterContentInit } from "@angular/core";
+import { Component, OnInit, ContentChildren, QueryList, AfterContentInit } from "@angular/core";
 import { TabComponent } from "../tab/tab.component";
 
 @Component({
     selector: "app-tabs",
     templateUrl: "./tabs.component.html",
-    styleUrls: ["./tabs.component.scss"],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    styleUrls: ["./tabs.component.scss"]
 })
 export class TabsComponent implements AfterContentInit {
-    @ContentChildren(TabComponent) tabs: QueryList<TabComponent>;
+    
+    @ContentChildren(TabComponent)
+    tabs: QueryList<TabComponent>;
 
     // contentChildren are set
     ngAfterContentInit() {
@@ -17,7 +18,7 @@ export class TabsComponent implements AfterContentInit {
 
         // if there is no active tab set, activate the first
         if (activeTabs.length === 0) {
-            this.selectTab(this.tabs.first);
+            this.selectTab(this.tabs.last);
         }
     }
 
@@ -30,5 +31,6 @@ export class TabsComponent implements AfterContentInit {
     }
     onTabClick($event: Event) {
         $event.preventDefault();
+        
     }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import PreferenceModel from "app/components/preference-card/preference-card.model";
 import { NotifyService } from "app/services/notify-service/notify.service";
 import { Router } from "@angular/router";
+import LocationDto from "app/_models/location.dto";
 
 @Component({
     templateUrl: "./preferences.component.html",
@@ -9,6 +10,8 @@ import { Router } from "@angular/router";
 })
 export class PreferencesComponent implements OnInit {
     preferences: PreferenceModel[] = new Array<PreferenceModel>();
+    locations: LocationDto[] = new Array<LocationDto>();
+
     constructor(private router: Router, private notify: NotifyService) {}
 
     ngOnInit(): void {
@@ -108,5 +111,11 @@ export class PreferencesComponent implements OnInit {
             isSelected: false,
             title: "Music"
         });
+    }
+
+    addSelectedPlace(location: LocationDto) {
+        if (location) {
+            this.locations.push(location);
+        }
     }
 }

@@ -5,11 +5,16 @@
 
     <div class="yld-preference-page-content">
         <div class="yld-page-action-bar">
-            <div class="yld-page-counter">
-            
-            </div>
+            <div class="yld-page-counter"></div>
             <div class="yld-preference-page-button">
-                <button type="button" class="btn btn-lg btn-primary" (click)="onPreferencesConfirm()" [disabled]="counter === 0">Confirm</button>
+                <button
+                    type="button"
+                    class="btn btn-lg btn-primary"
+                    (click)="onPreferencesConfirm()"
+                    [disabled]="counter === 0"
+                >
+                    Confirm
+                </button>
                 <button type="button" class="btn btn-secondary btn-lg" (click)="onPreferencesSkip()">Skip</button>
             </div>
         </div>
@@ -30,12 +35,30 @@
                     </div>
                 </app-tab>
                 <app-tab [tabTitle]="'Places'">
-                    <app-place-autocomplete (setAddress)="addSelectedPlace($event)"></app-place-autocomplete>
-                    <div class="yld-locations-container">
-                        <div *ngIf="locations.length > 0 ">
-                           <span *ngFor="let location of locations">
-                               <p>{{location.title}}</p>
-                           </span> 
+                    <div class="row">
+                        <div class="col-md-9 col-md-offset-3 col-12 ml-auto mr-auto text-center">
+                            <app-place-autocomplete (setAddress)="addSelectedPlace($event)"></app-place-autocomplete>
+                            <div class="yld-locations-container list-unstyled">
+                                <div *ngIf="locations.length > 0">
+                                    <div class="row" *ngFor="let location of locations">
+                                        <div class="col-md-2 col-3">
+                                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="col-md-6 col-4 description">
+                                            <h3>
+                                                {{ location.title }}
+                                            </h3>
+                                            <br/>
+                                            <h6>{{location.city}}, {{location.country}}</h6>
+                                        </div>
+                                        <div class="col-md-2 col-2">
+                                            <button class="btn btn-just-icon btn-round btn-outline-danger btn-tooltip" (click)="onRemoveClick(location)">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </app-tab>

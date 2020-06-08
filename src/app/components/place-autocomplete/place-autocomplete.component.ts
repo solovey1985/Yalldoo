@@ -28,35 +28,34 @@ export class PlaceAutocompleteComponent implements OnInit {
 
     ngOnInit() {}
 
-    search = (text$: Observable<string>) => 
+    search = (text$: Observable<string>) =>
         text$.pipe(
             debounceTime(200),
             distinctUntilChanged(),
-            switchMap((term) => term.length < 2 ? [] :
-               from(this.geo.autosuggest(term)).pipe(
-                    tap(() => console.log("success")),
-                    catchError(() => of([])),
-            ))
+            switchMap((term) =>
+                term.length < 2
+                    ? []
+                    : from(this.geo.autosuggest(term)).pipe(
+                          catchError(() => of([]))
+                      )
+            )
         );
-    
 
-    
     formatter = (input: LocationDto) => input.title;
 
     getPlaceAutocomplete = (query: string): Observable<LocationDto[]> => this.geo.autosuggest(query);
-    
 
     onClear() {
-        this.addresstext.nativeElement.value = "";
-        this.suggestedAddress = [];
+        this.autocompleteInput = "";
     }
 
     invokeEvent(place: LocationDto) {
         this.setAddress.emit(place);
     }
 
-    onPlaceChanged(event: any) {
-        
-        this.setAddress.emit(event.item);
+    onPlaceChanged($event: any, input: any) {
+        $event.preventDefault();
+        this.setAddress.emit($event.item);
+        input.value = "";
     }
 }

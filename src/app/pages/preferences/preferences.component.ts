@@ -118,4 +118,7 @@ export class PreferencesComponent implements OnInit {
             this.locations.push(location);
         }
     }
+    onRemoveClick(location: LocationDto) {
+        this.locations = this.locations.filter(x => x.hereId !== location.hereId);
+    }
 }

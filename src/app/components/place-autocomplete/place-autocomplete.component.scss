@@ -1,25 +1,26 @@
-input {
-  width: 100%;
-}
+.yld-search {
+  &-form {
+      width: 100%;
+      padding: 10px;
+  }
 
-.fm-place-complete-input-group {
-  display: flex;
-  flex-direction: row;
-  .fm-place-complete-input {
-    width: 100%;
+  &-bar-conatiner {
+      font-size: 2em;
+      // margin: 0 auto;
+      margin: 20px 40px;
+  }
+
+  &-bar-input {
+      border: none;
+      margin-left: 1em;
+      width: 90%;
+
+      &:focus {
+          outline: none;
+      }
   }
 }
 
-.search-form .fa {
-  width: 22px;
-}
-.search-form {
-  .addon-extreme {
-    background-color: #fff;
-    font-size: 2.5em;
-    color: #a49e93;
-    position: absolute;
-    top: 6px;
-    left: 10px;
-  }
+.yld-fa-search {
+  margin-left: 1em;
 }

@@ -17,7 +17,7 @@ export class PreferencesComponent implements OnInit {
     ngOnInit(): void {
         this.populatePreferences();
     }
-    get counter() {
+    get preferencesConter() {
         return this.preferences.filter((x) => x.isSelected).length;
     }
 
@@ -120,5 +120,9 @@ export class PreferencesComponent implements OnInit {
     }
     onRemoveClick(location: LocationDto) {
         this.locations = this.locations.filter(x => x.hereId !== location.hereId);
+    }
+
+    canConfirm(): boolean {
+        return this.preferences.filter((x) => x.isSelected).length > 0 && this.locations.length > 0;
     }
 }

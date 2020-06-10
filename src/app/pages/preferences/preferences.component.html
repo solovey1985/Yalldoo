@@ -11,7 +11,7 @@
                     type="button"
                     class="btn btn-lg btn-primary"
                     (click)="onPreferencesConfirm()"
-                    [disabled]="counter === 0"
+                    [disabled]="!canConfirm()"
                 >
                     Confirm
                 </button>
@@ -36,22 +36,22 @@
                 </app-tab>
                 <app-tab [tabTitle]="'Places'">
                     <div class="row">
-                        <div class="col-md-9 col-md-offset-3 col-12 ml-auto mr-auto text-center">
+                        <div class="col-md-6 col-md-offset-3 col-12 ml-auto mr-auto text-center">
                             <app-place-autocomplete (setAddress)="addSelectedPlace($event)"></app-place-autocomplete>
                             <div class="yld-locations-container list-unstyled">
                                 <div *ngIf="locations.length > 0">
-                                    <div class="row" *ngFor="let location of locations">
-                                        <div class="col-md-2 col-3">
+                                    <div class="yld-preference-place-container" *ngFor="let location of locations">
+                                        <div class="yld-preference-place-icon">
                                             <i class="fa fa-map-marker" aria-hidden="true"></i>
                                         </div>
-                                        <div class="col-md-6 col-4 description">
+                                        <div class="yld-preference-place-title">
                                             <h3>
                                                 {{ location.title }}
                                             </h3>
                                             <br/>
                                             <h6>{{location.city}}, {{location.country}}</h6>
                                         </div>
-                                        <div class="col-md-2 col-2">
+                                        <div class="yld-preference-place-location">
                                             <button class="btn btn-just-icon btn-round btn-outline-danger btn-tooltip" (click)="onRemoveClick(location)">
                                                 <i class="fa fa-minus"></i>
                                             </button>

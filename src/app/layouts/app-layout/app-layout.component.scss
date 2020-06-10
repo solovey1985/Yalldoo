@@ -4,14 +4,8 @@ html {
     margin: 0;
 }
 
-.yld-content{
-    
-}
-
-.yld-wrapper {
-    margin-bottom: 24px;
-}
-
-.yld-footer {
-    height: 88px;
+.yld-layout-wrapper {
+    height: 100%;
+    margin-bottom: -88px;
+    border-color: #ccc;
 }

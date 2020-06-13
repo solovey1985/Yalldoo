@@ -9,20 +9,10 @@ import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { ImageUploadModule } from '../shared/image-upload/image-upload.module';
 
-import { BasicelementsComponent } from './basicelements/basicelements.component';
-import { NavigationComponent } from './navigation/navigation.component';
-import { TypographyComponent } from './typography/typography.component';
-import { NucleoiconsComponent } from './nucleoicons/nucleoicons.component';
 import { ComponentsComponent } from './components.component';
 import { NotificationComponent } from './notification/notification.component';
 import { NgbdModalBasic } from './modal/modal.component';
-import { PrefooterAreasComponent } from './prefooter-areas/prefooter-areas.component';
-import { FootersAreasComponent } from './footers-areas/footers-areas.component';
-import { DescriptionAreasComponent } from './description-areas/description-areas.component';
-import { InfoAreasComponent } from './info-areas/info-areas.component';
 import { TablesAreasComponent } from './tables-areas/tables-areas.component';
-import { CommentsAreasComponent } from './comments-areas/comments-areas.component';
-import { CardsAreasComponent } from './cards-areas/cards-areas.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RouterModule } from '@angular/router';
@@ -51,19 +41,9 @@ import { MapComponent } from './map/map.component';
     ],
     declarations: [
         ComponentsComponent,
-        BasicelementsComponent,
-        NavigationComponent,
-        TypographyComponent,
-        NucleoiconsComponent,
         NotificationComponent,
         NgbdModalBasic,
-        PrefooterAreasComponent,
-        FootersAreasComponent,
-        DescriptionAreasComponent,
-        InfoAreasComponent,
         TablesAreasComponent,
-        CommentsAreasComponent,
-        CardsAreasComponent,
         FooterComponent,
         NavbarComponent,
         NotifyComponent,

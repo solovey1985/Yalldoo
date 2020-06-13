@@ -2,27 +2,68 @@
     <div class="page-header" style="background-image: url('./assets/img/sections/bruno-abatti.jpg');">
         <div class="filter"></div>
         <div class="container">
-            <div class="row">
+            <div class="row" *ngIf="!isConfirmed">
                 <div class="col-lg-5 col-md-7 col-sm-9 ml-auto mr-auto">
                     <div class="card card-register">
                         <h3 class="card-title">Password Recovery</h3>
                         <div class="line-brake"></div>
                         <div class="yld-info"><p>Please, enter your email to get a link for password recovery</p></div>
                         <form [formGroup]="form" class="register-form" (submit)="onSubmit()">
-                            <input type="email" class="form-control no-border" placeholder="Email" formControlName="email" />
+                            <input
+                                type="email"
+                                class="form-control no-border"
+                                placeholder="Email"
+                                formControlName="email"
+                            />
                             <div class="yld-errors-container">
                                 <div *ngFor="let validation of validation_messages.email" class="yld-register-invalid">
-                                    <span *ngIf="form.get('email').hasError(validation.type) && (form.get('email').dirty || form.get('email').touched)">{{ validation.message }}</span>
+                                    <span
+                                        *ngIf="
+                                            form.get('email').hasError(validation.type) &&
+                                            (form.get('email').dirty || form.get('email').touched)
+                                        "
+                                        >{{ validation.message }}</span
+                                    >
                                 </div>
                             </div>
-                        <button class="btn btn-block btn-round" type="submit" [disabled]="form.invalid">Send Email</button>
+                            <button class="btn btn-block btn-round" type="submit" [disabled]="form.invalid">
+                                Send Email
+                            </button>
                         </form>
 
                         <div class="login">
-                            <p>Already have an account? <a [routerLink]="['/login']" routerLinkActive="login">Log in</a>.</p>
+                            <p>
+                                Already have an account?
+                                <a [routerLink]="['/login']" routerLinkActive="login">Log in</a>.
+                            </p>
                         </div>
                         <div class="login">
-                            <p>Do you want to create a new account? <a [routerLink]="['/register']" routerLinkActive="login">Register</a>.</p>
+                            <p>
+                                Do you want to create a new account?
+                                <a [routerLink]="['/register']" routerLinkActive="login">Register</a>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="isConfirmed">
+                <div class="col-lg-5 col-md-7 col-sm-9 ml-auto mr-auto">
+                    <div class="card card-register">
+                        <h3 class="card-title">Password Recovery</h3>
+                        <div class="line-brake"></div>
+                        <div class="yld-info-confirmed">
+                            <p>Please, check your mail box.</p>
+                            <p>Email with recovery information was sent.</p>
+                            <div class="login">
+                                <p>
+                                   <a [routerLink]="['/login']" routerLinkActive="login">Log in</a>
+                                </p>
+                            </div>
+                            <div class="login">
+                                <p>
+                                    <a [routerLink]="['/register']" routerLinkActive="login">Register</a>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>

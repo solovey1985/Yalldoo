@@ -1,6 +1,6 @@
 <ul class="nav nav-pills nav-pills-danger justify-content-center">
     <li *ngFor="let tab of tabs" (click)="selectTab(tab)" class="nav-item">
-      <a class="nav-link" (click)="onTabClick($event)" [class.active]="tab.active">{{tab.title}}</a>
+      <label class="nav-link" (click)="onTabClick($event)" [class.active]="tab.active">{{tab.title}}</label>
     </li>
   </ul>
   <ng-content></ng-content>

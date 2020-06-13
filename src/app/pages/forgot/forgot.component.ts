@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class ForgotComponent implements OnInit {
 
   public form: FormGroup;
+  public isConfirmed: boolean;
   validation_messages: any;
   constructor(private builder: FormBuilder, private notifyService: NotifyService, private router: Router) {}
 
@@ -22,8 +23,9 @@ export class ForgotComponent implements OnInit {
   ngOnDestroy() {}
 
   onSubmit() {
-    this.notifyService.info("Please, check your mail box. Email with recovery information was sent.")
+    this.isConfirmed = true;
   }
+
   initValidationMessages() {
       this.validation_messages = {
           email: [

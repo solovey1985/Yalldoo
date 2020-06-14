@@ -1,19 +1,19 @@
 .yld-search {
     &-form {
         width: 100%;
-        padding: 10px;
     }
 
     &-bar-conatiner {
         font-size: 2em;
-        max-width: 400px;
-        // margin: 0 auto;
-        margin: 20px 40px;
+        width: 100%;
+        padding: 20px 40px;
+        text-align: left;
     }
 
     &-bar-input {
         border: none;
         margin-left: 1em;
+        width: 90%;
 
         &:focus {
             outline: none;
@@ -21,6 +21,8 @@
     }
 }
 
-.yld-fa-search {
-    margin-left: 1em;
+@media (max-width: 600px) {
+    .yld-search-bar-input {
+        max-width: 200px;
+    }
 }

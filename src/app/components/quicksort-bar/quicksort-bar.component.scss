@@ -1,6 +1,19 @@
+
+@import '../../../assets/scss/paper-kit/variables';
+
 .yld-feed-tabs-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
     padding: 20px 40px;
+}
+
+.yld-tab-item {
+    color: $yld-color-secondary;
+    border-color: $yld-color-primary;
+
+    &.active {
+        background-color: $yld-color-primary;
+        color: white !important;
+    }
 }

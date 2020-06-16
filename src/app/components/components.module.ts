@@ -24,6 +24,7 @@ import { TabsComponent } from './tabs/tabs.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { QuicksortBarComponent } from './quicksort-bar/quicksort-bar.component';
 import { EventListItem } from './event-list-item/event-list-item.component';
+import { EventList } from './event-list/event-list.component';
 import { PlaceAutocompleteComponent } from './place-autocomplete/place-autocomplete.component';
 import { MapComponent } from './map/map.component';
 
@@ -55,6 +56,7 @@ import { MapComponent } from './map/map.component';
         SearchBarComponent,
         QuicksortBarComponent,
         EventListItem,
+        EventList,
         PlaceAutocompleteComponent,
         MapComponent
     ],
@@ -70,6 +72,7 @@ import { MapComponent } from './map/map.component';
         SearchBarComponent,
         QuicksortBarComponent,
         EventListItem,
+        EventList,
         PlaceAutocompleteComponent,
         MapComponent
     ]

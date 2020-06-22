@@ -8,10 +8,8 @@ import { TagInputModule } from 'ngx-chips';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { ImageUploadModule } from '../shared/image-upload/image-upload.module';
-
 import { ComponentsComponent } from './components.component';
 import { NotificationComponent } from './notification/notification.component';
-import { NgbdModalBasic } from './modal/modal.component';
 import { TablesAreasComponent } from './tables-areas/tables-areas.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -27,7 +25,7 @@ import { EventListItem } from './event-list-item/event-list-item.component';
 import { EventList } from './event-list/event-list.component';
 import { PlaceAutocompleteComponent } from './place-autocomplete/place-autocomplete.component';
 import { MapComponent } from './map/map.component';
-import { DateTimePickerComponent } from './date-time-picker/date-time-picker.component';
+import { DateTimePickerModalComponent } from './modal/date-time-picker-modal/date-time-picker-modal/date-time-picker-modal.component';
 
 @NgModule({
     imports: [
@@ -45,7 +43,6 @@ import { DateTimePickerComponent } from './date-time-picker/date-time-picker.com
     declarations: [
         ComponentsComponent,
         NotificationComponent,
-        NgbdModalBasic,
         TablesAreasComponent,
         FooterComponent,
         NavbarComponent,
@@ -60,7 +57,7 @@ import { DateTimePickerComponent } from './date-time-picker/date-time-picker.com
         EventList,
         PlaceAutocompleteComponent,
         MapComponent,
-        DateTimePickerComponent,
+        DateTimePickerModalComponent,
 
     ],
     exports: [
@@ -78,7 +75,6 @@ import { DateTimePickerComponent } from './date-time-picker/date-time-picker.com
         EventList,
         PlaceAutocompleteComponent,
         MapComponent,
-        DateTimePickerComponent
     ]
 })
 export class ComponentsModule { }

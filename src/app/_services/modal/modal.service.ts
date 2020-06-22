@@ -1,17 +1,20 @@
-import { Injectable, ComponentRef, Component, ComponentFactoryResolver, ComponentFactory, Injector, ɵComponentType } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { DateTimePickerComponent } from 'app/components/date-time-picker/date-time-picker.component';
+import { Injectable } from '@angular/core';
+import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+import { DateTimePickerModalComponent } from 'app/components/modal/date-time-picker-modal/date-time-picker-modal/date-time-picker-modal.component';
 
 @Injectable({ providedIn: 'root' },
 
 )
     
 export class ModalService {
-
     constructor(private ngbModalService: NgbModal) {
 
      }
+    
     openDateTimePicker(): void{
-        this.ngbModalService.open(DateTimePickerComponent);
+        const options = new NgbModalConfig();
+        options.centered = false;
+        options.size = "md";
+        this.ngbModalService.open(DateTimePickerModalComponent, options);
     }
 }

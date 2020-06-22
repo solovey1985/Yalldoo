@@ -1,12 +1,16 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { CategoryService } from "app/_services/category/category.service";
+import { Category } from "app/_models/category/category.model";
+import { ModalService } from "app/_services/modal/modal.service";
+import { DateTimePickerComponent } from "app/components/date-time-picker/date-time-picker.component";
 
 @Component({
     templateUrl: "./event-create.component.html",
     styleUrls: ["./event-create.component.scss"]
 })
 export class EventCreateComponent implements OnInit {
-    dropdownList = [];
+    categories = [];
     selectedItems = [];
     dropdownSettings = {};
 
@@ -14,38 +18,25 @@ export class EventCreateComponent implements OnInit {
     selectedItems1 = [];
     dropdownSettings1 = {};
     public form: FormGroup;
-    constructor(private builder: FormBuilder) {}
+    constructor(private builder: FormBuilder, private categoryService: CategoryService, private modal: ModalService) {}
 
     ngOnInit(): void {
         this.form = this.builder.group({
-            title: [""],
+            title: ["", Validators.required],
             description: [""],
-            category: [""]
+            category: [[]]
         });
-        this.dropdownList = [
-            { id: 1, itemName: "Roman", category: "All" },
-            { id: 2, itemName: "Paris", category: "All" },
-            { id: 3, itemName: "Bucharest", category: "All" },
-            { id: 4, itemName: "Rome", category: "All" },
-            { id: 5, itemName: "New York", category: "All" },
-            { id: 6, itemName: "Miami", category: "All" },
-            { id: 7, itemName: "Piatra Neamt", category: "All" },
-            { id: 8, itemName: "Paris", category: "All" },
-            { id: 9, itemName: "Bucharest", category: "All" },
-            { id: 10, itemName: "Rome", category: "All" },
-            { id: 11, itemName: "New York", category: "All" },
-            { id: 12, itemName: "Miami", category: "My" },
-            { id: 13, itemName: "Piatra Neamt", category: "My" }
-        ];
+        this.categories = this.mapCategories(this.categoryService.getCategories());
+
         this.selectedItems = [];
         this.dropdownSettings = {
             singleSelection: false,
             text: "Category",
             selectAllText: "Select All",
             unSelectAllText: "UnSelect All",
-            enableSearchFilter: true,
             classes: "",
-            groupBy: "category"
+            groupBy: "category",
+            enableSearchFilter: true,
         };
     }
 
@@ -63,4 +54,32 @@ export class EventCreateComponent implements OnInit {
     onDeSelectAll(items: any) {
         console.log(items);
     }
+
+    mapCategories(categories: Category[]): MultiselectItem[] {
+        let items = new Array<MultiselectItem>();
+        const parrents = categories.filter((p) => p.parrentId == null);
+        parrents.map((p) => {
+            const catsByParrent = categories.filter((x) => x.parrentId == p.id);
+            catsByParrent.map((cat) => items.push(this.mapToMultiselectDropdownItem(cat, p)));
+        });
+        return items;
+    }
+
+    private mapToMultiselectDropdownItem(item: Category, parrent?: Category): MultiselectItem {
+        return {
+            id: item.id,
+            itemName: item.title,
+            category: parrent ? parrent.title : ""
+        };
+    }
+
+    showDatetimepickerModal():void {
+        this.modal.openDateTimePicker()
+    }
+}
+
+interface MultiselectItem {
+    id: number;
+    itemName: string;
+    category: string;
 }

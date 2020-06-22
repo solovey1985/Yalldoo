@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbDatepickerMonth } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { NouisliderModule } from 'ng2-nouislider';
 import { JwBootstrapSwitchNg2Module } from 'jw-bootstrap-switch-ng2';
@@ -27,6 +27,7 @@ import { EventListItem } from './event-list-item/event-list-item.component';
 import { EventList } from './event-list/event-list.component';
 import { PlaceAutocompleteComponent } from './place-autocomplete/place-autocomplete.component';
 import { MapComponent } from './map/map.component';
+import { DateTimePickerComponent } from './date-time-picker/date-time-picker.component';
 
 @NgModule({
     imports: [
@@ -58,7 +59,9 @@ import { MapComponent } from './map/map.component';
         EventListItem,
         EventList,
         PlaceAutocompleteComponent,
-        MapComponent
+        MapComponent,
+        DateTimePickerComponent,
+
     ],
     exports: [
         ComponentsComponent,
@@ -74,7 +77,8 @@ import { MapComponent } from './map/map.component';
         EventListItem,
         EventList,
         PlaceAutocompleteComponent,
-        MapComponent
+        MapComponent,
+        DateTimePickerComponent
     ]
 })
 export class ComponentsModule { }

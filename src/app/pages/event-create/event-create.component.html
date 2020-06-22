@@ -4,12 +4,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 col-md-7 col-sm-9 ml-auto mr-auto">
-                    <div class="card card-register">
+                    <div class="yld-card-event-create">
                         <h3 class="card-title">Create New Event</h3>
-                        <form [formGroup]="form" class="register-form">
+                        <form [formGroup]="form" class="form">
                             <label>Title</label>
                             <div class="input-group">
-                                <input type="text" placeholder="Title" formControl="title" class="form-control" />
+                                <input type="text" placeholder="Title" formControlName="title" class="form-control" />
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="fa fa-group"></i></span>
                                 </div>
@@ -19,19 +19,19 @@
                                 <input
                                     type="text"
                                     placeholder="Description"
-                                    formControl="description"
+                                    formControlName="description"
                                     class="form-control"
                                 />
                                 <div class="input-group-append">
                                     <span class="input-group-text"><i class="fa fa-user"></i></span>
                                 </div>
                             </div>
-                            <label>Category</label>
                             <div class="form-group">
+                                <label>Category</label>
+
                                 <angular2-multiselect
                                     formControlName="category"
-                                    [data]="dropdownList"
-                                    [(ngModel)]="selectedItems"
+                                    [data]="categories"
                                     [settings]="dropdownSettings"
                                     (onSelect)="onItemSelect($event)"
                                     (onDeSelect)="OnItemDeSelect($event)"
@@ -40,18 +40,12 @@
                                 >
                                 </angular2-multiselect>
                             </div>
-                            <label>Start</label>
+                            
                             <div class="form-group">
-                                <div class='input-group date'>
-                                    <input class="form-control" placeholder="Start date & time"
-                                         name="dp" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()">
-                                         <div class="input-group-append">
-                           <span class="input-group-text">
-                             <span class="glyphicon glyphicon-calendar"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                           </span>
-                         </div>
-                                </div>
-                            </div>
+                               <button type="button" class="btn btn-success" (click)="showDatetimepickerModal()">
+                                   <i class="fa fa-calendar" aria-hidden="true"></i>
+                               </button>
+                              </div>
                             <button class="btn btn-block btn-round" type="submit" [disabled]="form.invalid">
                                 Create
                             </button>
@@ -62,3 +56,9 @@
         </div>
     </div>
 </div>
+
+<ng-template #footerTemplate>
+    <hr class="my-0">
+    <button class="btn btn-primary btn-sm m-2 float-left" (click)="model = today; d.close()">Today</button>
+    <button class="btn btn-secondary btn-sm m-2 float-right" (click)="d.close()">Close</button>
+  </ng-template>

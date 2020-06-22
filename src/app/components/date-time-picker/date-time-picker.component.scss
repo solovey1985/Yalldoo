@@ -1,0 +1,19 @@
+
+.yld-modal-container{
+  height: 75vh;
+}
+.yld-datepicker-container {
+  display: flex;
+  flex-direction: row;
+  align-content: flex-start;
+  justify-content: flex-start;
+  .yld-datetimepicker-input {
+    height: 36px;
+  }
+  .yld-datetimepicker-append {
+    height: 36px;
+  }
+}
+button{
+  color: #000;
+}

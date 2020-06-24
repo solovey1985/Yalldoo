@@ -4,6 +4,7 @@ import { CategoryService } from "app/_services/category/category.service";
 import { Category } from "app/_models/category/category.model";
 import { ModalService } from "app/_services/modal/modal.service";
 import { DateTimePickerComponent } from "app/components/date-time-picker/date-time-picker.component";
+import { NgbDateTimeStruct } from "app/components/date-time-picker/date-time.model";
 
 @Component({
     templateUrl: "./event-create.component.html",
@@ -13,9 +14,9 @@ export class EventCreateComponent implements OnInit {
     categories = [];
     selectedItems = [];
     dropdownSettings = {};
+    dateTime: Date = new Date();
+    
 
-    dropdownList1 = [];
-    selectedItems1 = [];
     dropdownSettings1 = {};
     public form: FormGroup;
     constructor(private builder: FormBuilder, private categoryService: CategoryService, private modal: ModalService) {}
@@ -36,7 +37,7 @@ export class EventCreateComponent implements OnInit {
             unSelectAllText: "UnSelect All",
             classes: "",
             groupBy: "category",
-            enableSearchFilter: true,
+            enableSearchFilter: true
         };
     }
 
@@ -73,8 +74,11 @@ export class EventCreateComponent implements OnInit {
         };
     }
 
-    showDatetimepickerModal():void {
-        this.modal.openDateTimePicker()
+    showDatetimepickerModal(): void {
+        this.modal.openDateTimePicker(this.dateTime).subscribe((result: NgbDateTimeStruct) => {
+            this.dateTime = new Date(result.toString());
+            console.log(this.dateTime.toString());
+        });
     }
 }
 

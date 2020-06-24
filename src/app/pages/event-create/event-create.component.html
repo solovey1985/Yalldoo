@@ -44,6 +44,7 @@
                             <div class="form-group">
                                <button type="button" class="btn btn-success" (click)="showDatetimepickerModal()">
                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                   <h5>{{dateTime | date: 'HH:mm dd MMMM yyyy':'+0300'}}</h5>
                                </button>
                               </div>
                             <button class="btn btn-block btn-round" type="submit" [disabled]="form.invalid">
@@ -56,9 +57,3 @@
         </div>
     </div>
 </div>
-
-<ng-template #footerTemplate>
-    <hr class="my-0">
-    <button class="btn btn-primary btn-sm m-2 float-left" (click)="model = today; d.close()">Today</button>
-    <button class="btn btn-secondary btn-sm m-2 float-right" (click)="d.close()">Close</button>
-  </ng-template>

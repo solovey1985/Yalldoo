@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
-import { DateTimePickerModalComponent } from 'app/components/modal/date-time-picker-modal/date-time-picker-modal/date-time-picker-modal.component';
+import { DateTimePickerModalComponent } from 'app/components/modal/date-time-picker-modal/date-time-picker-modal.component';
+import { NgbDateTimeStruct, DateTimeModel } from 'app/components/date-time-picker/date-time.model';
+import { of, Observable, from, Subject } from 'rxjs';
 
-@Injectable({ providedIn: 'root' },
-
+@Injectable(
+    { providedIn: 'root' }
 )
     
 export class ModalService {
@@ -11,10 +13,24 @@ export class ModalService {
 
      }
     
-    openDateTimePicker(): void{
+    openDateTimePicker(dateTime: Date): Observable<NgbDateTimeStruct> {
         const options = new NgbModalConfig();
         options.centered = false;
-        options.size = "md";
-        this.ngbModalService.open(DateTimePickerModalComponent, options);
+        options.size = "sm";
+        var modalRef = this.ngbModalService.open(DateTimePickerModalComponent, options);
+
+        var subject = new Subject<NgbDateTimeStruct>();
+        const modal = <DateTimePickerModalComponent>modalRef.componentInstance;
+        modal.dateString = dateTime.toLocaleString();
+        const submitSubscription = modal.onSubmit.subscribe((result: NgbDateTimeStruct) => {
+            subject.next(result);
+            modalRef.close();
+            submitSubscription.unsubscribe()
+        });
+        const dismissSubscription = modal.onDismiss.subscribe(()=> {
+            modalRef.close();
+            submitSubscription.unsubscribe()
+        });
+        return subject.asObservable()  
     }
 }

@@ -23,7 +23,7 @@ export class DateTimePickerComponent implements ControlValueAccessor, OnInit, Af
     dateString: string;
 
     @Input()
-    inputDatetimeFormat = "d MMMM yyyy H:mm:ss";
+    inputDatetimeFormat = "HH:mm dd MMMM yyyy";
     @Input()
     hourStep = 1;
     @Input()
@@ -42,14 +42,12 @@ export class DateTimePickerComponent implements ControlValueAccessor, OnInit, Af
     firstTimeAssign = true;
 
     @ViewChild(NgbDatepicker)
-    public dp: NgbDatepicker;
+    public datePicker: NgbDatepicker;
 
     @ViewChild(NgbTimepicker)
-    public kk: NgbTimepicker;
+    public timePicker: NgbTimepicker;
 
-    @ViewChild(NgbPopover)
-    popover: NgbPopover;
-
+    
     onTouched: () => void = noop;
     onChange: (_: any) => void = noop;
 
@@ -63,10 +61,8 @@ export class DateTimePickerComponent implements ControlValueAccessor, OnInit, Af
     }
 
     ngAfterViewInit(): void {
+        
 
-        this.popover.hidden.subscribe($event => {
-            this.showTimePickerToggle = false;
-        });
     }
 
     writeValue(newModel: string) {

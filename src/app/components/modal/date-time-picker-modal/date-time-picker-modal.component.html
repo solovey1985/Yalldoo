@@ -8,8 +8,8 @@
     <div class="modal-body">
         <div class="yld-picker-container">
         <div *ngIf="!showTimePickerToggle">
-            <ngb-datepicker #dp [ngModel]="datetime" (ngModelChange)="onDateChange($event)"></ngb-datepicker>
-            <button class="btn btn-block btn-outline-secondary" [disabled]="!datetime?.day" type="button" (click)="toggleDateTimeState($event)">
+            <ngb-datepicker #dp [ngModel]="date" name="datePicker" (ngModelChange)="onDateChange($event)"></ngb-datepicker>
+            <button class="btn btn-block btn-outline-secondary" [disabled]="!date?.day" type="button" (click)="toggleDateTimeState($event)">
                 <i class="fa fa-clock-o" aria-hidden="true"></i>
             </button>
         </div>
@@ -17,7 +17,7 @@
             <button class="btn btn-block btn-outline-secondary" type="button" (click)="toggleDateTimeState($event)">
                 <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
             </button>
-            <ngb-timepicker #tp name="timepicker" [ngModel]="datetime" (ngModelChange)="onTimeChange($event)"></ngb-timepicker>
+            <ngb-timepicker #timePicker name="timePicker" [(ngModel)]="time" (ngModelChange)="onTimeChange($event)"></ngb-timepicker>
         </div>
         </div>
         <div class="modal-footer">

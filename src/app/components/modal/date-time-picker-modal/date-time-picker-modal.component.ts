@@ -1,151 +1,139 @@
-import { Component, OnInit, ChangeDetectionStrategy, ViewChild, Input, Output, EventEmitter } from '@angular/core';
-import { DateTimeModel } from 'app/components/date-time-picker/date-time.model';
-import { NgbDatepicker, NgbTimepicker, NgbPopover, NgbTimeStruct, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
-import { noop } from 'rxjs';
-import { NgbDateStructAdapter } from '@ng-bootstrap/ng-bootstrap/datepicker/adapters/ngb-date-adapter';
+import { Component, OnInit, ChangeDetectionStrategy, ViewChild, Input, Output, EventEmitter } from "@angular/core";
+import { DateTimeModel, NgbDateTimeStruct } from "app/components/date-time-picker/date-time.model";
+import { NgbDatepicker, NgbTimepicker, NgbPopover, NgbTimeStruct, NgbDateStruct } from "@ng-bootstrap/ng-bootstrap";
+import { noop } from "rxjs";
+import { NgbDateStructAdapter } from "@ng-bootstrap/ng-bootstrap/datepicker/adapters/ngb-date-adapter";
+import { IfStmt } from "@angular/compiler";
 
 @Component({
-  selector: 'app-date-time-picker-modal',
-  templateUrl: './date-time-picker-modal.component.html',
-  styleUrls: ['./date-time-picker-modal.component.scss'],
-  
+    selector: "app-date-time-picker-modal",
+    templateUrl: "./date-time-picker-modal.component.html",
+    styleUrls: ["./date-time-picker-modal.component.scss"]
 })
 export class DateTimePickerModalComponent implements OnInit {
-  dateSelected = false;
-  @Input()
-  dateString: string;
-  @Input()
-  disabled = false;
-  
-  @Output()
-  onSubmit: EventEmitter<NgbDateStruct> = new EventEmitter<NgbDateStruct>();
-  @Output()
-  onDismiss: EventEmitter<any> = new EventEmitter<any>();
+    dateSelected = false;
+    @Input()
+    dateString: string;
+    @Input()
+    disabled = false;
 
-  @ViewChild(NgbDatepicker)
-  public dp: NgbDatepicker;
-  datetime: DateTimeModel = new DateTimeModel();
-  firstTimeAssign = true;
-  time = {hour: 13, minute: 30};
+    @Output()
+    onSubmit: EventEmitter<string> = new EventEmitter<string>();
+    @Output()
+    onDismiss: EventEmitter<any> = new EventEmitter<any>();
 
-  @ViewChild(NgbTimepicker)
-  public timePicker: NgbTimepicker;
-
-  showTimePickerToggle = false;
-  onTouched: () => void = noop;
-     onChange: (_: any) => void = noop;
-
-
-  constructor() { }
-  
-  ngOnInit(): void {
-  }
-  
-  onDateSelected() {
-    this.dateSelected = true;
-  }
-
-  writeValue(newModel: string) {
-    if (newModel) {
-        this.datetime = Object.assign(this.datetime, DateTimeModel.fromLocalString(newModel));
-        this.dateString = newModel;
-        this.setDateStringModel();
-    } else {
-        this.datetime = new DateTimeModel();
-    }
-}
-
-registerOnChange(fn: any): void {
-    this.onChange = fn;
-}
-
-registerOnTouched(fn: any): void {
-this.onTouched = fn;
-}
-
-toggleDateTimeState($event:any) {
-    this.showTimePickerToggle = !this.showTimePickerToggle;
-    $event.stopPropagation();
-}
-
-setDisabledState?(isDisabled: boolean): void {
-    this.disabled = isDisabled;
-}
-
-onInputChange($event: any) {
-    const value = $event.target.value;
-    const dt = DateTimeModel.fromLocalString(value);
-
-    if (dt) {
-        this.datetime = dt;
-        this.setDateStringModel();
-    } else if (value.trim() === "") {
-        this.datetime = new DateTimeModel();
-        this.dateString = "";
-        this.onChange(this.dateString);
-    } else {
-        this.onChange(value);
-    }
-}
-
-onDateChange($event: any) {
-    let dd;
-    if ($event.year) {
-        dd = `${$event.year}-${$event.month}-${$event.day}`;
-    }
-
-    const date = DateTimeModel.fromLocalString(dd);
-
-    if (!date) {
-        this.dateString = this.dateString;
-        return;
-    }
-
-    if (!this.datetime) {
-        this.datetime = date;
-    }
-
-    this.datetime.year = date.year;
-    this.datetime.month = date.month;
-    this.datetime.day = date.day;
-
-   // this.dp.navigateTo({ year: this.datetime.year, month: this.datetime.month });
-
-    this.setDateStringModel();
-    this.toggleDateTimeState(new MouseEvent(""));
-  }
-
-onTimeChange(event: NgbTimeStruct) {
-    this.datetime.hour = event.hour;
-    this.datetime.minute = event.minute;
-    this.datetime.second = event.second;
-
-    this.setDateStringModel();
-}
-
-setDateStringModel() {
-    this.dateString = this.datetime.toString();
-
-    if (!this.firstTimeAssign) {
-        this.onChange(this.dateString);
-    } else {
-        // Skip very first assignment to null done by Angular
-        if (this.dateString !== null) {
-            this.firstTimeAssign = false;
+    @ViewChild("dp")
+    public set dp(content: NgbDatepicker) {
+        if (content) {
+            this.datePicker = content;
+            this.datePicker.navigateTo({ year: this.date.year, month: this.date.month });
         }
     }
-}
 
-inputBlur($event) {
-    this.onTouched();
-}
-  onOkayClick() {
-    this.onSubmit.emit(this.datetime);
-  }
-  
-  onCloseClick() {
-    this.onDismiss.emit();
-   }
+    private datePicker: NgbDatepicker;
 
+    
 
+    @ViewChild("timePicker", { static: false })
+    public timePicker: NgbTimepicker;
+    private timePickerPlaceholder: NgbTimepicker;
+
+    showTimePickerToggle = false;
+    onTouched: () => void = noop;
+    onChange: (_: any) => void = noop;
+    date: DateTimeModel;
+    time: DateTimeModel;
+
+    firstTimeAssign = true;
+    constructor() {}
+
+    ngOnInit(): void {
+        this.date = DateTimeModel.fromLocalString(this.dateString);
+        this.time = DateTimeModel.fromLocalString(this.dateString);
+    }
+
+    onDateSelected() {
+        this.dateSelected = true;
+    }
+
+    registerOnChange(fn: any): void {
+        this.onChange = fn;
+    }
+
+    registerOnTouched(fn: any): void {
+        this.onTouched = fn;
+    }
+
+    toggleDateTimeState($event: any) {
+        this.showTimePickerToggle = !this.showTimePickerToggle;
+        $event.stopPropagation();
+    }
+
+    setDisabledState?(isDisabled: boolean): void {
+        this.disabled = isDisabled;
+    }
+
+    onDateChange($event: any) {
+        let dd;
+        if ($event.year) {
+            dd = `${$event.year}-${$event.month}-${$event.day}`;
+        }
+
+        const date = DateTimeModel.fromLocalString(dd);
+
+        if (!date) {
+            this.dateString = this.dateString;
+            return;
+        }
+
+        if (!this.date) {
+            this.date = date;
+        }
+
+        this.date.year = date.year;
+        this.date.month = date.month;
+        this.date.day = date.day;
+        this.datePicker.navigateTo({ year: this.date.year, month: this.date.month });
+        this.setDateStringModel();
+        this.toggleDateTimeState(new MouseEvent(""));
+    }
+
+    onTimeChange($event: NgbDateTimeStruct) {
+        if ($event) {
+            this.date.hour = $event.hour;
+            this.date.minute = $event.minute;
+            this.date.second = $event.second;
+            this.setDateStringModel();
+        }
+    }
+
+    setDateStringModel() {
+        let localDate = new DateTimeModel();
+        let localString;
+        if (this.date) {
+            localString = `${this.date.year}-${this.date.month}-${this.date.day}`;
+        }
+        if (this.time) {
+            localString += ` ${this.time.hour}:${this.time.minute}:${this.time.second}`;
+        }
+        localDate = DateTimeModel.fromLocalString(localString);
+
+        this.dateString = localDate.toString();
+
+        if (!this.firstTimeAssign) {
+            this.onChange(this.dateString);
+        } else {
+            if (this.dateString !== null) {
+                this.firstTimeAssign = false;
+            }
+        }
+    }
+
+    onOkayClick() {
+        this.onSubmit.emit(this.dateString);
+    }
+
+    onCloseClick() {
+        this.onDismiss.emit();
+    }
 }

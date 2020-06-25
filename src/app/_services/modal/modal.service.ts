@@ -13,16 +13,16 @@ export class ModalService {
 
      }
     
-    openDateTimePicker(dateTime: Date): Observable<NgbDateTimeStruct> {
+    openDateTimePicker(dateTime: Date): Observable<string> {
         const options = new NgbModalConfig();
         options.centered = false;
         options.size = "sm";
         var modalRef = this.ngbModalService.open(DateTimePickerModalComponent, options);
 
-        var subject = new Subject<NgbDateTimeStruct>();
+        var subject = new Subject<string>();
         const modal = <DateTimePickerModalComponent>modalRef.componentInstance;
         modal.dateString = dateTime.toLocaleString();
-        const submitSubscription = modal.onSubmit.subscribe((result: NgbDateTimeStruct) => {
+        const submitSubscription = modal.onSubmit.subscribe((result: string) => {
             subject.next(result);
             modalRef.close();
             submitSubscription.unsubscribe()

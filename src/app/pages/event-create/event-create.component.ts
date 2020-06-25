@@ -15,7 +15,7 @@ export class EventCreateComponent implements OnInit {
     selectedItems = [];
     dropdownSettings = {};
     dateTime: Date = new Date();
-    
+    isDateSelected = false;
 
     dropdownSettings1 = {};
     public form: FormGroup;
@@ -75,9 +75,9 @@ export class EventCreateComponent implements OnInit {
     }
 
     showDatetimepickerModal(): void {
-        this.modal.openDateTimePicker(this.dateTime).subscribe((result: NgbDateTimeStruct) => {
-            this.dateTime = new Date(result.toString());
-            console.log(this.dateTime.toString());
+        this.modal.openDateTimePicker(this.dateTime).subscribe((result: string) => {
+            this.dateTime = new Date(result);
+            this.isDateSelected = true;
         });
     }
 }

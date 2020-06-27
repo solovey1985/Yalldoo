@@ -38,7 +38,7 @@ export class DateTimePickerComponent implements ControlValueAccessor, OnInit, Af
 
     showTimePickerToggle = false;
 
-    datetime: DateTimeModel = new DateTimeModel();
+    public datetime: DateTimeModel = new DateTimeModel();
     firstTimeAssign = true;
 
     @ViewChild(NgbDatepicker)

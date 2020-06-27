@@ -26,6 +26,8 @@ import { EventList } from './event-list/event-list.component';
 import { PlaceAutocompleteComponent } from './place-autocomplete/place-autocomplete.component';
 import { MapComponent } from './map/map.component';
 import { DateTimePickerModalComponent } from './modal/date-time-picker-modal/date-time-picker-modal.component';
+import { LocationPickerModalComponent } from './modal/location-picker-modal/location-picker-modal.component';
+import { DateTimePickerComponent } from './date-time-picker/date-time-picker.component';
 
 @NgModule({
     imports: [
@@ -57,7 +59,9 @@ import { DateTimePickerModalComponent } from './modal/date-time-picker-modal/dat
         EventList,
         PlaceAutocompleteComponent,
         MapComponent,
+        DateTimePickerComponent,
         DateTimePickerModalComponent,
+        LocationPickerModalComponent,
 
     ],
     exports: [

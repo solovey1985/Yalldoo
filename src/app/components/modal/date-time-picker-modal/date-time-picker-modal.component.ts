@@ -32,12 +32,9 @@ export class DateTimePickerModalComponent implements OnInit {
 
     private datePicker: NgbDatepicker;
 
-    
-
     @ViewChild("timePicker", { static: false })
     public timePicker: NgbTimepicker;
-    private timePickerPlaceholder: NgbTimepicker;
-
+    
     showTimePickerToggle = false;
     onTouched: () => void = noop;
     onChange: (_: any) => void = noop;

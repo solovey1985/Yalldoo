@@ -38,7 +38,7 @@ const categories: Category[] = [
     },
     {
         id: 203,
-        title: "Conert",
+        title: "Concert",
         parrentId: 2
     }
 ];

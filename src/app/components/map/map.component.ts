@@ -14,13 +14,14 @@ import {
     EventEmitter,
     TestabilityRegistry
 } from "@angular/core";
-import { IHereSearchResponse, IHerePosition } from "app/_models/geo/address.model";
+import { IHereSearchResponse, IHerePosition, EHereLocalityType, EHereResultType } from "app/_models/geo/address.model";
 import { Config } from "app/_configs/config";
+import LocationDto from "app/_models/location.dto";
 
 
 declare var H: any;
 @Component({
-    selector: "fm-map",
+    selector: "app-map",
     templateUrl: "./map.component.html",
     styleUrls: ["./map.component.scss"],
     changeDetection: ChangeDetectionStrategy.OnPush
@@ -44,10 +45,11 @@ export class MapComponent implements AfterViewInit, OnChanges {
     public width: any;
 
     @Input()
-    public place: IHereSearchResponse;
+    public place: LocationDto;
 
     @Input()
     public height: any;
+    
     @Output()
     locationSet: EventEmitter<IHerePosition> = new EventEmitter<IHerePosition>();
     map: any;
@@ -56,6 +58,7 @@ export class MapComponent implements AfterViewInit, OnChanges {
         this.platform = new H.service.Platform({
             apikey: Config.geoApiKey
         });
+       
     }
 
     ngOnChanges(changes: { [propKey: string]: SimpleChange }) {
@@ -64,15 +67,18 @@ export class MapComponent implements AfterViewInit, OnChanges {
                 this.place = changes[propName].currentValue;
                 this.map.removeObjects(this.map.getObjects());
                 this.map.setCenter(this.place.position);
-                this.map.setZoom(17);
+                this.map.setZoom(15);
                 var marker = new H.map.Marker({ lat: this.place.position.lat, lng: this.place.position.lng });
                 marker.draggable = true;
                 this.map.addObject(marker);
             }
         }
     }
-    public ngOnInit() {}
+    public ngOnInit() {
+       
+    }
     public ngAfterViewInit() {
+        
         let defaultLayers = this.platform.createDefaultLayers();
         this.map = new H.Map(this.mapElement.nativeElement, defaultLayers.vector.normal.map, {
             zoom: 10,

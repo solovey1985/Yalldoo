@@ -5,6 +5,7 @@ import { Category } from "app/_models/category/category.model";
 import { ModalService } from "app/_services/modal/modal.service";
 import { DateTimePickerComponent } from "app/components/date-time-picker/date-time-picker.component";
 import { NgbDateTimeStruct } from "app/components/date-time-picker/date-time.model";
+import LocationDto from "app/_models/location.dto";
 
 @Component({
     templateUrl: "./event-create.component.html",
@@ -15,9 +16,11 @@ export class EventCreateComponent implements OnInit {
     selectedItems = [];
     dropdownSettings = {};
     dateTime: Date = new Date();
+    location: LocationDto;
     isDateSelected = false;
+    isLocationSelected = false;
 
-    dropdownSettings1 = {};
+    
     public form: FormGroup;
     constructor(private builder: FormBuilder, private categoryService: CategoryService, private modal: ModalService) {}
 
@@ -31,13 +34,12 @@ export class EventCreateComponent implements OnInit {
 
         this.selectedItems = [];
         this.dropdownSettings = {
-            singleSelection: false,
             text: "Category",
             selectAllText: "Select All",
             unSelectAllText: "UnSelect All",
             classes: "",
             groupBy: "category",
-            enableSearchFilter: true
+            enableSearchFilter: true,
         };
     }
 
@@ -78,6 +80,13 @@ export class EventCreateComponent implements OnInit {
         this.modal.openDateTimePicker(this.dateTime).subscribe((result: string) => {
             this.dateTime = new Date(result);
             this.isDateSelected = true;
+        });
+    }
+
+    showLocationpickerModal():void {
+        this.modal.openLocationPicker().subscribe((result: LocationDto) => {
+            this.location = result;
+            this.isLocationSelected = true;
         });
     }
 }

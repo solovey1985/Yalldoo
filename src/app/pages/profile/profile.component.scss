@@ -1,38 +1,10 @@
 @import "../../../assets/scss/paper-kit/variables";
 
 .yld-page-header-small {
-    background-image: url('../../../assets/img/sections/rodrigo-ardilha.jpg');
+    background-image: url('../../../assets/img/sections/bg-profile-mountains.jpg');
 }
 .yld-profile {
-    &_name {
-        margin-bottom: 20px;
-    }
-
-    &_picture {
-        text-align: center;
-        margin-top: -75px;
-    }
-
-    &_btn-settings {
-
-    }
-
     &_description {
-        &-item {
-            display: flex;
-            width: 100%;
-            text-align: left;
-            border: 1px solid $yld-color-primary;
-            border-radius: 10px;
-            padding: 15px;
-            margin: 5px 0;
-
-            &-icon {
-                font-size: 1.2em;
-                margin-right: 20px;
-                color: $yld-color-secondary;
-            }
-        }
         &-pref {
             display: flex;
             flex-wrap: wrap;
@@ -50,15 +22,12 @@
                     color: $yld-color-secondary;
                     font-size: 1.1em;
                 }
-                
-
                 .fa {
                     width: auto;
                     font-size: 2em;
                     margin-bottom: 15px;
                 }
             }
-
         }
     }
 }

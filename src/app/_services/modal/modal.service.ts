@@ -5,6 +5,8 @@ import { NgbDateTimeStruct, DateTimeModel } from 'app/components/date-time-picke
 import { of, Observable, from, Subject } from 'rxjs';
 import LocationDto from 'app/_models/location.dto';
 import { LocationPickerModalComponent } from 'app/components/modal/location-picker-modal/location-picker-modal.component';
+import { FriendsPickerModalComponent } from 'app/components/modal/friends-picker-modal/friends-picker-modal.component';
+import { FirendListItem } from 'app/_models/friends/friend-list-item.model';
 
 @Injectable(
     { providedIn: 'root' }
@@ -44,6 +46,25 @@ export class ModalService {
         var modalRef = this.ngbModalService.open(LocationPickerModalComponent, options);
         const modal = <LocationPickerModalComponent>modalRef.componentInstance;
         const submitSubscription = modal.onSubmit.subscribe((result: LocationDto) => {
+            subject.next(result);
+            modalRef.close();
+            submitSubscription.unsubscribe()
+        });
+        const dismissSubscription = modal.onDismiss.subscribe(()=> {
+            modalRef.close();
+            submitSubscription.unsubscribe()
+        });
+        return subject.asObservable()  
+    }
+
+    openFriendsPicker():Observable<Array<FirendListItem>> {
+        var subject = new Subject<Array<FirendListItem>>()
+        const options = new NgbModalConfig();
+        options.centered = false;
+        options.size = "lg";
+        var modalRef = this.ngbModalService.open(FriendsPickerModalComponent, options);
+        const modal = <FriendsPickerModalComponent>modalRef.componentInstance;
+        const submitSubscription = modal.onSubmit.subscribe((result: Array<FirendListItem>) => {
             subject.next(result);
             modalRef.close();
             submitSubscription.unsubscribe()

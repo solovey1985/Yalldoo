@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { CategoryService } from "app/_services/category/category.service";
 import { Category } from "app/_models/category/category.model";
@@ -6,25 +6,31 @@ import { ModalService } from "app/_services/modal/modal.service";
 import { DateTimePickerComponent } from "app/components/date-time-picker/date-time-picker.component";
 import { NgbDateTimeStruct } from "app/components/date-time-picker/date-time.model";
 import LocationDto from "app/_models/location.dto";
+import { FirendListItem } from "app/_models/friends/friend-list-item.model";
+import { MultiselectItem } from "app/_models/multiselect/multiselect.model";
 
 @Component({
     templateUrl: "./event-create.component.html",
-    styleUrls: ["./event-create.component.scss"]
+    styleUrls: ["./event-create.component.scss"],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EventCreateComponent implements OnInit {
     categories = [];
     selectedItems = [];
     dropdownSettings = {};
-    dateTime: Date = new Date();
     location: LocationDto;
+    dateTime: Date;
+    invitedFriends: Array<FirendListItem>;
     isDateSelected = false;
     isLocationSelected = false;
+    isFriendsSelected = false;
 
     
     public form: FormGroup;
     constructor(private builder: FormBuilder, private categoryService: CategoryService, private modal: ModalService) {}
 
     ngOnInit(): void {
+        this.dateTime = new Date();
         this.form = this.builder.group({
             title: ["", Validators.required],
             description: [""],
@@ -76,6 +82,7 @@ export class EventCreateComponent implements OnInit {
         };
     }
 
+    //------- Modals ---------------------
     showDatetimepickerModal(): void {
         this.modal.openDateTimePicker(this.dateTime).subscribe((result: string) => {
             this.dateTime = new Date(result);
@@ -89,10 +96,13 @@ export class EventCreateComponent implements OnInit {
             this.isLocationSelected = true;
         });
     }
+
+    showFriendspickerModal():void {
+        this.modal.openFriendsPicker().subscribe((result: Array<FirendListItem>) => {
+            this.invitedFriends = result;
+            this.isFriendsSelected = true;
+        });
+    }
 }
 
-interface MultiselectItem {
-    id: number;
-    itemName: string;
-    category: string;
-}
+

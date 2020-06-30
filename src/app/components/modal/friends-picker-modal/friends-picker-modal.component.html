@@ -1,0 +1,26 @@
+<div class="yld-modal-container">
+    <div class="modal-header">
+        <h5 class="modal-title">Invite Friends</h5>
+        <button type="button" class="close" (click)="onCloseClick()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+        <div class="form-group">
+            <angular2-multiselect
+                [data]="friends"
+                [(ngModel)]="selectedFriends" 
+                [settings]="dropdownSettings"
+                (onSelect)="onItemSelect($event)"
+                (onDeSelect)="onItemDeSelect($event)"
+                (onSelectAll)="onSelectAll($event)"
+                (onDeSelectAll)="onDeSelectAll($event)"
+            >
+            </angular2-multiselect>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary btn-link" (click)="onOkayClick()">Okay</button>
+        </div>
+    </div>
+</div>

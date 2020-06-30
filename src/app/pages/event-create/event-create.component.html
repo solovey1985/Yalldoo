@@ -47,33 +47,53 @@
 
                         <div class="form-group">
                             <h6>Start date and time <span class="icon-danger">*</span></h6>
-                            <div class="input-group yld-selector">
+                            <div class="input-group yld-event-selector">
                                 <button
                                     type="button"
-                                    class="btn"
+                                    class="btn btn-default btn-just-icon"
                                     [ngClass]="{ 'btn-success': isDateSelected, 'btn-danger': !isDateSelected }"
                                     (click)="showDatetimepickerModal()"
                                 >
                                     <i class="fa fa-calendar" aria-hidden="true"></i>
                                 </button>
-                                <h5 class="yld-event-date" *ngIf="isDateSelected">
-                                    {{ dateTime | date: "HH:mm dd MMM yyyy":"+0300" }}
+                                <h5 class="yld-event-selector-values">
+                                    <span *ngIf="isDateSelected">{{ dateTime | date: "HH:mm dd MMM yyyy":"+0300" }}</span>  
+                                      <span *ngIf="!isDateSelected">Click to select date and time</span>  
+                                    
                                 </h5>
                             </div>
 
                             <div class="form-group">
                                 <h6>Location<span class="icon-danger">*</span></h6>
-                                <div class="input-group yld-selector">
+                                <div class="input-group yld-event-selector">
                                     <button
                                         type="button"
-                                        class="btn"
+                                        class="btn btn-default btn-just-icon"
                                         [ngClass]="{ 'btn-success': isLocationSelected, 'btn-danger': !isLocationSelected }"
                                         (click)="showLocationpickerModal()"
                                     >
                                         <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
                                     </button>
-                                    <h5 class="yld-event-date" *ngIf="isLocationSelected">
-                                        {{ location.title }}
+                                    <h5 class="yld-event-selector-values" >
+                                      <span *ngIf="isLocationSelected">{{ location.title }}</span>  
+                                      <span *ngIf="!isLocationSelected">Click to select location</span>  
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <h6>Invitation</h6>
+                                <div class="input-group yld-event-selector">
+                                    <button
+                                        type="button"
+                                        class="btn btn-default btn-just-icon"
+                                        [ngClass]="{ 'btn-success': isLocationSelected, 'btn-danger': !isLocationSelected }"
+                                        (click)="showFriendspickerModal()"
+                                    >
+                                        <i class="fa fa-group fa-2x" aria-hidden="true"></i>
+                                    </button>
+                                    <h5 class="yld-event-selector-values" >
+                                      <span *ngIf="isFriendsSelected">{{ location.title }}</span>  
+                                      <span *ngIf="!isFriendsSelected">Click to invite</span>  
                                     </h5>
                                 </div>
                             </div>

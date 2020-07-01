@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 import LocationDto from "app/_models/location.dto";
 import { IHerePosition, IHereSearchResponse } from "app/_models/geo/address.model";
 import { GeoService } from "app/_services/geo/geo.service";
@@ -14,8 +14,9 @@ export class LocationPickerModalComponent implements OnInit {
     onSubmit: EventEmitter<LocationDto> = new EventEmitter<LocationDto>();
     @Output()
     onDismiss = new EventEmitter();
-
+    @Input()
     location: LocationDto;
+    
     isEdit: boolean;
     currentPlace: IHereSearchResponse;
 

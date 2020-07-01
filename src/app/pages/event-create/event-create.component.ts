@@ -25,7 +25,6 @@ export class EventCreateComponent implements OnInit {
     isLocationSelected = false;
     isFriendsSelected = false;
 
-    
     public form: FormGroup;
     constructor(private builder: FormBuilder, private categoryService: CategoryService, private modal: ModalService) {}
 
@@ -45,7 +44,7 @@ export class EventCreateComponent implements OnInit {
             unSelectAllText: "UnSelect All",
             classes: "",
             groupBy: "category",
-            enableSearchFilter: true,
+            enableSearchFilter: true
         };
     }
 
@@ -90,19 +89,19 @@ export class EventCreateComponent implements OnInit {
         });
     }
 
-    showLocationpickerModal():void {
-        this.modal.openLocationPicker().subscribe((result: LocationDto) => {
+    showLocationpickerModal(): void {
+        this.modal.openLocationPicker(this.location).subscribe((result: LocationDto) => {
             this.location = result;
             this.isLocationSelected = true;
         });
     }
 
-    showFriendspickerModal():void {
+    showFriendspickerModal(): void {
         this.modal.openFriendsPicker().subscribe((result: Array<FirendListItem>) => {
-            this.invitedFriends = result;
-            this.isFriendsSelected = true;
+            if (result) {
+                this.invitedFriends = result;
+                this.isFriendsSelected = true;
+            }
         });
     }
 }
-
-

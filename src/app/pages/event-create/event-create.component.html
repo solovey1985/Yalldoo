@@ -57,9 +57,10 @@
                                     <i class="fa fa-calendar" aria-hidden="true"></i>
                                 </button>
                                 <h5 class="yld-event-selector-values">
-                                    <span *ngIf="isDateSelected">{{ dateTime | date: "HH:mm dd MMM yyyy":"+0300" }}</span>  
-                                      <span *ngIf="!isDateSelected">Click to select date and time</span>  
-                                    
+                                    <span *ngIf="isDateSelected">{{
+                                        dateTime | date: "HH:mm dd MMM yyyy":"+0300"
+                                    }}</span>
+                                    <span *ngIf="!isDateSelected">Click to select date and time</span>
                                 </h5>
                             </div>
 
@@ -69,14 +70,17 @@
                                     <button
                                         type="button"
                                         class="btn btn-default btn-just-icon"
-                                        [ngClass]="{ 'btn-success': isLocationSelected, 'btn-danger': !isLocationSelected }"
+                                        [ngClass]="{
+                                            'btn-success': isLocationSelected,
+                                            'btn-danger': !isLocationSelected
+                                        }"
                                         (click)="showLocationpickerModal()"
                                     >
                                         <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
                                     </button>
-                                    <h5 class="yld-event-selector-values" >
-                                      <span *ngIf="isLocationSelected">{{ location.title }}</span>  
-                                      <span *ngIf="!isLocationSelected">Click to select location</span>  
+                                    <h5 class="yld-event-selector-values">
+                                        <span *ngIf="isLocationSelected">{{ location.title }}</span>
+                                        <span *ngIf="!isLocationSelected">Click to select location</span>
                                     </h5>
                                 </div>
                             </div>
@@ -86,14 +90,23 @@
                                     <button
                                         type="button"
                                         class="btn btn-default btn-just-icon"
-                                        [ngClass]="{ 'btn-success': isLocationSelected, 'btn-danger': !isLocationSelected }"
+                                        [ngClass]="{
+                                            'btn-success': isFriendsSelected,
+                                            'btn-danger': !isFriendsSelected
+                                        }"
                                         (click)="showFriendspickerModal()"
                                     >
                                         <i class="fa fa-group fa-2x" aria-hidden="true"></i>
                                     </button>
-                                    <h5 class="yld-event-selector-values" >
-                                      <span *ngIf="isFriendsSelected">{{ location.title }}</span>  
-                                      <span *ngIf="!isFriendsSelected">Click to invite</span>  
+                                    <h5 class="yld-event-selector-values">
+                                        <div *ngIf="isFriendsSelected">
+                                            <ul class="yld-list-item-avatar-user-list list-unstyled">
+                                                <li *ngFor="let item of invitedFriends" class="yld-list-item-avatar-user">
+                                                    <a><img src="assets/img/friends/{{item.id}}.png" alt="..." placement="bottom" ngbPopover="{{item.fullName}}" /></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <span *ngIf="!isFriendsSelected">Click to invite</span>
                                     </h5>
                                 </div>
                             </div>

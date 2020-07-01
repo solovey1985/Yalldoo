@@ -1,0 +1,29 @@
+.yld-list-item-avatar {
+    max-width: 90px;
+    &-container {
+        display: flex;
+        justify-content: center;
+        margin: auto auto;
+        height: 100%;
+    }
+
+    &-user-list {
+        display: inline-block;
+        padding-left: 20px;
+    }
+
+    &-user {
+        display: inline-block;
+        img {
+            width: 30px;
+            border-radius: 50%;
+            margin-left: -12px;
+        }
+    }
+
+    &-creator {
+        max-width: 50px;
+        border-radius: 50%;
+        margin: 10px;
+    }
+}

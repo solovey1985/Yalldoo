@@ -23,10 +23,18 @@ export class GeoService {
 
     public autosuggest(query: string): any {
         return this.searchService
-            .autosuggest({ q: query, at: this.center }, (result: AddressModel) => result.items, alert)
+            .autosuggest({ q: query, at: this.center, limit: 7, resultTypes: 'categoryQuery,place,street,houseNumber' }, (result: AddressModel) => result.items, alert)
             .then((data) => {
                 return data.items.map((h) => this.toLocationDto(h));
             });
+    }
+
+    public lookup(hereId: string): any {
+        return this.searchService
+        .lookup({ id: hereId, }, (result: IHereSearchResponse) => result, alert)
+        .then((data) => {
+            return this.toLocationDto(data);
+        });
     }
 
     reverseGeocode(coord: IHerePosition) {

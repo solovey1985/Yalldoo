@@ -34,5 +34,9 @@ export default class LocationDto {
             value += hereAddress.county;
         }
         this.title = value;
+        if (value.length === 0) {
+            this.title = hereAddress.label;
+        }
+        
     }
 }

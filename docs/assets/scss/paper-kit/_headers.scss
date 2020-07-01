@@ -26,6 +26,10 @@
         height: 100%;
         z-index: -1;
     }
+    &.yld-page-header-small{
+        max-height: 250px;
+        background-position: bottom;
+    }
 
 
     .content-center{

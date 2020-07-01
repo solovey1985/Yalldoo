@@ -2,6 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { FriendsService } from "app/_services/friends/friends.service";
 import { FirendListItem } from "app/_models/friends/friend-list-item.model";
 import { MultiselectItem } from "app/_models/multiselect/multiselect.model";
+import { Subject } from "rxjs";
+import { debounceTime, distinctUntilChanged } from "rxjs/operators";
 
 @Component({
     selector: "app-friends-picker-modal",
@@ -16,25 +18,42 @@ export class FriendsPickerModalComponent implements OnInit {
     @Output()
     onDismiss = new EventEmitter();
 
-    friends: Array<MultiselectItem>;
-    selectedFriends: [];
-    dropdownSettings: {};
-
+    friends: Array<FirendListItem>;
+    selectedFriends = new Array<FirendListItem>();
+    searchTerm: string;
+    searchTermUpdates = new Subject<string>();
     constructor(private friendsService: FriendsService) {
         
-        this.dropdownSettings = {
-            text: "Friends",
-            selectAllText: "Select All",
-            unSelectAllText: "UnSelect All",
-            classes: "",
-            groupBy: "",
-            enableSearchFilter: true,
-        };
-      this.friends = this.mapToMultiselectItems(this.friendsService.getFriends());
+        this.friends = this.friendsService.getFriends();
+        this.searchTermUpdates.pipe(
+            debounceTime(500),
+            distinctUntilChanged()
+        ).subscribe(value => {
+            if (value.length > 0) {
+                this.friends = this.friendsService.getFriends().filter(x => x.fullName.indexOf(value) > -1);
+            }
+            else {
+                this.friends = this.friendsService.getFriends();
+            }
+        });
     }
 
     ngOnInit(): void {
         
+    }
+
+    onInviteClick(item: FirendListItem) {
+        let index = this.selectedFriends.indexOf(item);
+        if (index > -1) {
+            this.selectedFriends.splice(index, 1);
+        }
+        else {
+            this.selectedFriends.push(item);
+        }
+    }
+
+    isSelected(id: number) {
+        return this.selectedFriends.find(x => x.id === id) !== undefined;
     }
 
     onOkayClick() {
@@ -61,13 +80,4 @@ export class FriendsPickerModalComponent implements OnInit {
         console.log(items);
     }
   
-    mapToMultiselectItems(items: FirendListItem[]): MultiselectItem[] {
-        return items.map(x => {
-            return {
-                id: x.id,
-                itemName: x.fullName,
-                category: ''
-            }
-        });
-    }
 }

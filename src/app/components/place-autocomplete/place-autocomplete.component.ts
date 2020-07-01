@@ -55,7 +55,10 @@ export class PlaceAutocompleteComponent implements OnInit {
 
     onPlaceChanged($event: any, input: any) {
         $event.preventDefault();
-        this.setAddress.emit($event.item);
-        input.value = "";
+        let p = this.geo.lookup($event.item.hereId).then(data => {
+            this.setAddress.emit(data);
+            input.value = "";
+        });
+        
     }
 }

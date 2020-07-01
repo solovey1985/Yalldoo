@@ -38,13 +38,14 @@ export class ModalService {
         return subject.asObservable()  
     }
     
-    openLocationPicker():Observable<LocationDto> {
+    openLocationPicker(location: LocationDto):Observable<LocationDto> {
         var subject = new Subject<LocationDto>()
         const options = new NgbModalConfig();
         options.centered = false;
         options.size = "lg";
         var modalRef = this.ngbModalService.open(LocationPickerModalComponent, options);
         const modal = <LocationPickerModalComponent>modalRef.componentInstance;
+        modal.location  = location;
         const submitSubscription = modal.onSubmit.subscribe((result: LocationDto) => {
             subject.next(result);
             modalRef.close();

@@ -1,71 +1,103 @@
 
 @import '../../../assets/scss/paper-kit/variables';
 
-.yld-event-list-item-container {
-    background-color: $placeholder-gray;
-    border-radius: 10px;
-    padding: 20px;
-    margin: 20px auto;
-}
 
-.yld-event-list-item-avatar {
-     &-creator {
-        max-width: 50px;
-        border-radius: 50%;
-        margin: 10px;
-    }
-}
-
-.yld-event-list-item-title {
-    font-weight: 900;
-    color: $yld-color-primary;
-}
-
-.yld-event-list-item-description {
-    color: $yld-color-secondary;
-    font-weight: 400;
-    padding: 10px;
-}
-
-.yld-event-list-item-location {
-    color: $black-hr;
-    padding: 10px;
-
-    &-icon {
-        font-size: 2.5em;
-        margin: 0 10px;
+.yld-event-list-item {
+    &-container {
+        padding: 10px;
+        margin: 0 auto;
     }
 
-    &-address {
-        font-weight: 400;
-        margin: 0 10px;
-        text-decoration: underline;
+    &-avatar {
+        max-width: 70px;
+        &-container {
+            display: flex;
+            justify-content: center;
+            margin: auto auto;
+            height: 100%;
+        }
+
+        &-user-list {
+            display: inline-block;
+            padding-left: 20px;
+        }
+
+        &-user {
+            display: inline-block;
+            width: 30px;
+            border-radius: 50%;
+            margin-left: -10px;
+        }
+
+        &-creator {
+            max-width: 50px;
+            border-radius: 50%;
+            margin: 10px;
+        }
+    }
+
+    &-title {
+        text-align: center;
+        font-family: $font-family-sans-serif;
         color: $black-hr;
-
+        font-weight: 500;
+        text-transform: uppercase;
     }
-    &-time, &-date {
+
+    &-description {
+        font-family: $font-family-sans-serif;
+        color: $dark-gray;
         font-weight: 400;
-        margin: 0 10px;
-        text-decoration: underline;
-        color: $black-hr;
+        padding: 10px;
+    }
+
+    &-location {
+        color: $yld-color-secondary;
+        font-size: .9em;
+        margin-bottom: 5px;
+        text-align: center;
+
+        &-icon {
+            font-size: 2.5em;
+            margin: 0 5px;
+        }
+
+        &-address {
+            font-family: $font-family-serif;
+            display: inline-block;
+            font-weight: 400;
+            margin: 0 5px;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        &-time, &-date {
+            font-weight: 400;
+            margin: 0 5px;
+            text-decoration: none;
+        }
+    }
+
+    &-buttons-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+
+    &-button {
+        margin: 0 5px;
     }
 }
 
-.yld-event-list-item-buttons-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-}
-
-.yld-event-list-item-button {
-    color: $black-hr;
-    padding: 1em;
-    font-size: 2em;
-
-    &:hover {
-        background-color: $yld-color-primary;
-        color: $white-color;
+@media (max-width: 768px) {
+    .yld-event-list-item {
+        &-title {
+            margin-top: 10px;
+        }
+        &-buttons-container {
+            margin-top: 10px;
+        }
     }
 }

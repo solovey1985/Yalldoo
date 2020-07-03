@@ -52,14 +52,14 @@
                         <div class="form-group section-buttons">
                             <button
                                 type="button"
-                                class="btn btn-default btn-just-icon btn-border"
+                                class="btn btn-default btn-just-icon btn-border btn-location"
                                 (click)="showLocationpickerModal()"
                             >
                                 <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
                             </button>
                             <button
                                 type="button"
-                                class="btn btn-default btn-just-icon btn-border"
+                                class="btn btn-default btn-just-icon btn-border btn-invite"
                                 (click)="showFriendspickerModal()"
                             >
                                 <i class="fa fa-group fa-2x" aria-hidden="true"></i>
@@ -129,6 +129,10 @@
                                     class="form-control"
                                 ></textarea>
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <h4 class="title"><small>Event Image</small></h4>
+                            <app-image-upload></app-image-upload>
                         </div>
                         <button class="btn btn-block btn-round" type="submit" [disabled]="form.invalid">
                             Create

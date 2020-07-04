@@ -5,11 +5,12 @@
 .yld-event-list-item {
     &-container {
         padding: 10px;
-        margin: 0 auto;
+        margin: 30px auto 50px;
     }
 
     &-avatar {
-        max-width: 70px;
+        max-width: 200px;
+        border-radius: 50%;
         &-container {
             display: flex;
             justify-content: center;
@@ -37,7 +38,7 @@
     }
 
     &-title {
-        text-align: center;
+        text-align: left;
         font-family: $font-family-sans-serif;
         color: $black-hr;
         font-weight: 500;
@@ -51,29 +52,21 @@
         padding: 10px;
     }
 
-    &-location {
+    &-data {
         color: $yld-color-secondary;
-        font-size: .9em;
+        font-size: 1em;
         margin-bottom: 5px;
-        text-align: center;
+        text-align: left;
 
         &-icon {
-            font-size: 2.5em;
-            margin: 0 5px;
+            font-size: 1.1em;
+            margin-right: 15px;
         }
 
-        &-address {
-            font-family: $font-family-serif;
-            display: inline-block;
+        &-item {
+            font-size: 1.4em;
             font-weight: 400;
-            margin: 0 5px;
-            text-decoration: none;
-            text-transform: uppercase;
-        }
-
-        &-time, &-date {
-            font-weight: 400;
-            margin: 0 5px;
+            margin-bottom: 10px;
             text-decoration: none;
         }
     }
@@ -87,16 +80,18 @@
     }
 
     &-button {
-        margin: 0 5px;
+        margin: 0 15px;
     }
 }
 
 @media (max-width: 768px) {
     .yld-event-list-item {
         &-title {
+            text-align: center;
             margin-top: 10px;
         }
         &-buttons-container {
+            justify-content: space-between;
             margin-top: 10px;
         }
     }

@@ -1,0 +1,6 @@
+<div ngbDropdown class="dropdown">
+    <div class="dropdown-toggle btn btn-round" [ngClass]="{'btn-warning': !isSelected, 'btn-success': isSelected}" ngbDropdownToggle>{{title}}<b class="caret"></b></div>
+    <div ngbDropdownMenu class="dropdown-info dropdown-menu-right">
+        <a *ngFor="let item of items" class="dropdown-item" (click)="onItemClick(item)">{{item}}</a>
+    </div>
+</div>

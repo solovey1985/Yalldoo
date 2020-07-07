@@ -8,7 +8,8 @@ import { IfStmt } from "@angular/compiler";
 @Component({
     selector: "app-date-time-picker-modal",
     templateUrl: "./date-time-picker-modal.component.html",
-    styleUrls: ["./date-time-picker-modal.component.scss"]
+    styleUrls: ["./date-time-picker-modal.component.scss"],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DateTimePickerModalComponent implements OnInit {
     dateSelected = false;

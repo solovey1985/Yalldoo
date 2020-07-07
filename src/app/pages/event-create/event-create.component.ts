@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
+import { Component, OnInit, ChangeDetectionStrategy, ElementRef } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { CategoryService } from "app/_services/category/category.service";
 import { Category } from "app/_models/category/category.model";
@@ -24,6 +24,8 @@ export class EventCreateComponent implements OnInit {
     isDateSelected = false;
     isLocationSelected = false;
     isFriendsSelected = false;
+    privacyList: string[];
+    selectedPrivacy: string;
 
     public form: FormGroup;
     constructor(private builder: FormBuilder, private categoryService: CategoryService, private modal: ModalService) {}
@@ -39,19 +41,26 @@ export class EventCreateComponent implements OnInit {
 
         this.selectedItems = [];
         this.dropdownSettings = {
+            singleSelection: true,
             text: "Category",
             selectAllText: "Select All",
             unSelectAllText: "UnSelect All",
             classes: "",
-            groupBy: "category",
-            enableSearchFilter: true
+            enableSearchFilter: true,
         };
+
+        this.privacyList = ["Public", "Friends", "Private"];
+    }
+
+    setPrivacy($event: string) {
+        this.selectedPrivacy = $event!!;
     }
 
     onItemSelect(item: any) {
         console.log(item);
         console.log(this.selectedItems);
     }
+
     OnItemDeSelect(item: any) {
         console.log(item);
         console.log(this.selectedItems);

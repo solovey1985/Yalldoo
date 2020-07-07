@@ -7,7 +7,6 @@ import { NouisliderModule } from "ng2-nouislider";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { JwBootstrapSwitchNg2Module } from "jw-bootstrap-switch-ng2";
 import { AgmCoreModule } from "@agm/core";
-
 import { ImageUploadModule } from "../shared/image-upload/image-upload.module";
 
 import { PagesComponent } from "./pages.component";

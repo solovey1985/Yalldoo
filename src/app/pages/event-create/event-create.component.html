@@ -6,6 +6,10 @@
                     <h3 class="card-title">Create New Event</h3>
                     <form [formGroup]="form" class="form">
                         <div class="form-group">
+                            <h6>Privacy<span class="icon-danger">*</span></h6>
+                            <app-select-dropdown [title]='"Select Event Privacy"' [items]="privacyList" (onItemSelected)="setPrivacy($event)"></app-select-dropdown>
+                        </div>
+                        <div class="form-group">
                             <h6>
                                 Title
                                 <span class="icon-danger">*</span>
@@ -20,12 +24,9 @@
                         <div class="form-group">
                             <h6>Start date and time <span class="icon-danger">*</span></h6>
                             <div class="input-group yld-event-selector">
-                                <button
-                                    type="button"
-                                    class="btn btn-default btn-just-icon"
+                                <button type="button" class="btn btn-default btn-just-icon"
                                     [ngClass]="{ 'btn-success': isDateSelected, 'btn-danger': !isDateSelected }"
-                                    (click)="showDatetimepickerModal()"
-                                >
+                                    (click)="showDatetimepickerModal()">
                                     <i class="fa fa-calendar" aria-hidden="true"></i>
                                 </button>
                                 <h5 class="yld-event-selector-values">
@@ -36,32 +37,31 @@
                                 </h5>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                              <select class="selectpicker" #privacySelect data-style="select-with-transition btn-primary btn-round" title="Single Select" data-size="7">
+                                <option disabled>Choose city</option>
+                                <option value="2">Foobar</option>
+                                <option value="3">Is great</option>
+                              </select>
+                            </div>
+                          </div>
+                        
                         <div class="form-group">
                             <h6>Category <span class="icon-danger">*</span></h6>
-                            <angular2-multiselect
-                                formControlName="category"
-                                [data]="categories"
-                                [settings]="dropdownSettings"
-                                (onSelect)="onItemSelect($event)"
-                                (onDeSelect)="OnItemDeSelect($event)"
-                                (onSelectAll)="onSelectAll($event)"
-                                (onDeSelectAll)="onDeSelectAll($event)"
-                            >
+                            <angular2-multiselect formControlName="category" [data]="categories"
+                                [settings]="dropdownSettings" (onSelect)="onItemSelect($event)"
+                                (onDeSelect)="OnItemDeSelect($event)" (onSelectAll)="onSelectAll($event)"
+                                (onDeSelectAll)="onDeSelectAll($event)">
                             </angular2-multiselect>
                         </div>
                         <div class="form-group section-buttons">
-                            <button
-                                type="button"
-                                class="btn btn-default btn-just-icon btn-border btn-location"
-                                (click)="showLocationpickerModal()"
-                            >
+                            <button *ngIf="!isLocationSelected" type="button" class="btn btn-default btn-just-icon btn-border btn-location"
+                                (click)="showLocationpickerModal()">
                                 <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
                             </button>
-                            <button
-                                type="button"
-                                class="btn btn-default btn-just-icon btn-border btn-invite"
-                                (click)="showFriendspickerModal()"
-                            >
+                            <button  *ngIf="!isFriendsSelected" type="button" class="btn btn-default btn-just-icon btn-border btn-invite"
+                                (click)="showFriendspickerModal()">
                                 <i class="fa fa-group fa-2x" aria-hidden="true"></i>
                             </button>
                         </div>
@@ -69,15 +69,10 @@
                         <div class="form-group" *ngIf="isLocationSelected">
                             <h6>Location<span class="icon-danger">*</span></h6>
                             <div class="input-group yld-event-selector">
-                                <button
-                                    type="button"
-                                    class="btn btn-default btn-just-icon"
-                                    [ngClass]="{
+                                <button type="button" class="btn btn-default btn-just-icon" [ngClass]="{
                                         'btn-success': isLocationSelected,
                                         'btn-danger': !isLocationSelected
-                                    }"
-                                    (click)="showLocationpickerModal()"
-                                >
+                                    }" (click)="showLocationpickerModal()">
                                     <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
                                 </button>
                                 <h5 class="yld-event-selector-values">
@@ -89,28 +84,18 @@
                         <div class="form-group" *ngIf="isFriendsSelected">
                             <h6>Invitation</h6>
                             <div class="input-group yld-event-selector">
-                                <button
-                                    type="button"
-                                    class="btn btn-default btn-just-icon"
-                                    [ngClass]="{
+                                <button type="button" class="btn btn-default btn-just-icon" [ngClass]="{
                                         'btn-success': isFriendsSelected,
                                         'btn-danger': !isFriendsSelected
-                                    }"
-                                    (click)="showFriendspickerModal()"
-                                >
+                                    }" (click)="showFriendspickerModal()">
                                     <i class="fa fa-group fa-2x" aria-hidden="true"></i>
                                 </button>
                                 <h5 class="yld-event-selector-values">
                                     <div *ngIf="isFriendsSelected">
                                         <ul class="yld-list-item-avatar-user-list list-unstyled">
                                             <li *ngFor="let item of invitedFriends" class="yld-list-item-avatar-user">
-                                                <a
-                                                    ><img
-                                                        src="assets/img/friends/{{ item.id }}.png"
-                                                        alt="..."
-                                                        placement="bottom"
-                                                        ngbPopover="{{ item.fullName }}"
-                                                /></a>
+                                                <a><img src="assets/img/friends/{{ item.id }}.png" alt="..."
+                                                        placement="bottom" ngbPopover="{{ item.fullName }}" /></a>
                                             </li>
                                         </ul>
                                     </div>
@@ -122,12 +107,8 @@
                         <div class="form-group">
                             <h6>Description</h6>
                             <div>
-                                <textarea
-                                    rows="2"
-                                    placeholder="Add some description"
-                                    formControlName="description"
-                                    class="form-control"
-                                ></textarea>
+                                <textarea rows="2" placeholder="Add some description" formControlName="description"
+                                    class="form-control"></textarea>
                             </div>
                         </div>
                         <div class="form-group">

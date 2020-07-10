@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, ElementRef } from "@angular/core";
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl } from "@angular/forms";
 import { CategoryService } from "app/_services/category/category.service";
 import { Category } from "app/_models/category/category.model";
 import { ModalService } from "app/_services/modal/modal.service";
@@ -16,7 +16,7 @@ import { MultiselectItem } from "app/_models/multiselect/multiselect.model";
 })
 export class EventCreateComponent implements OnInit {
     categories = [];
-    selectedItems = [];
+    selectedCategory: Category;
     dropdownSettings = {};
     location: LocationDto;
     dateTime: Date;
@@ -27,19 +27,25 @@ export class EventCreateComponent implements OnInit {
     privacyList: string[];
     selectedPrivacy: string;
 
+    public validation_messages: any;
+
     public form: FormGroup;
     constructor(private builder: FormBuilder, private categoryService: CategoryService, private modal: ModalService) {}
 
     ngOnInit(): void {
+        this.initValidationMessages();
         this.dateTime = new Date();
         this.form = this.builder.group({
-            title: ["", Validators.required],
-            description: [""],
-            category: [[]]
+            privacy: [this.selectedPrivacy, [isControlSelected(this.selectedPrivacy === '')]],
+            title: ["", Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(50)])],
+            category: [this.selectedCategory, [Validators.required]],
+            dateTime: [this.dateTime, [isControlSelected(this.isDateSelected)]],
+            invintations: [this.invitedFriends],
+            description: ["", Validators.maxLength(255)],
+            location: [this.location]
         });
         this.categories = this.mapCategories(this.categoryService.getCategories());
 
-        this.selectedItems = [];
         this.dropdownSettings = {
             singleSelection: true,
             text: "Category",
@@ -47,6 +53,7 @@ export class EventCreateComponent implements OnInit {
             unSelectAllText: "UnSelect All",
             classes: "",
             enableSearchFilter: true,
+            lazyLoading: true
         };
 
         this.privacyList = ["Public", "Friends", "Private"];
@@ -54,22 +61,22 @@ export class EventCreateComponent implements OnInit {
 
     setPrivacy($event: string) {
         this.selectedPrivacy = $event!!;
+        this.form.get("privacy").setErrors({"isSelected": true});
     }
 
     onItemSelect(item: any) {
-        console.log(item);
-        console.log(this.selectedItems);
+        if (item) {
+            const category = this.categoryService.getCategories().find((x) => x.title === item);
+            if (category) {
+                this.selectedCategory = category;
+            } else {
+                this.selectedCategory = null;
+            }
+        }
     }
 
     OnItemDeSelect(item: any) {
-        console.log(item);
-        console.log(this.selectedItems);
-    }
-    onSelectAll(items: any) {
-        console.log(items);
-    }
-    onDeSelectAll(items: any) {
-        console.log(items);
+        this.selectedCategory = null;
     }
 
     mapCategories(categories: Category[]): MultiselectItem[] {
@@ -93,8 +100,14 @@ export class EventCreateComponent implements OnInit {
     //------- Modals ---------------------
     showDatetimepickerModal(): void {
         this.modal.openDateTimePicker(this.dateTime).subscribe((result: string) => {
-            this.dateTime = new Date(result);
-            this.isDateSelected = true;
+            if (result) {
+                this.dateTime = new Date(result);
+                this.isDateSelected = true;
+                this.form.get("dateTime").setErrors({"isSelected": true});
+            } else {
+                this.form.get("dateTime").markAsDirty();
+                this.form.get("dateTime").setErrors({"isSelected": false});
+            }
         });
     }
 
@@ -112,5 +125,41 @@ export class EventCreateComponent implements OnInit {
                 this.isFriendsSelected = true;
             }
         });
+    }
+    //------ END Modals ------------------------
+
+    onCreateButtonClick() {
+        this.form.markAllAsTouched();
+        console.log(this.form.controls);
+    }
+
+    public isValid(): boolean {
+        if (this.form.valid) {
+            return true;
+        }
+        return false;
+    }
+
+    initValidationMessages() {
+        this.validation_messages = {
+            privacy: [{ type: "notSelected", message: "Select event privacy" }],
+            title: [
+                { type: "required", message: "Title is required" },
+                { type: "minlength", message: "Title must be at least 3 characters long" },
+                { type: "maxlength", message: "Title cannot be more than 50 characters long" }
+            ],
+            dateTime: [
+                { type: "required", message: "Date and time is required" },
+                { type: "notSelected", message: "Date and time is required" },
+            ],
+            category: [{ type: "required", message: "Category is required" }],
+            description: [{ type: "maxlength", message: "Description cannot be more than 255 characters long" }],
+        };
+    }
+}
+
+function isControlSelected(isSelected: boolean): ValidatorFn{
+    return (control: AbstractControl): { [key: string]:any } | null => {
+        return !isSelected ? {'notSelected': {value: control.value}}:null;
     }
 }

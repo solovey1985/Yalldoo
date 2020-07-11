@@ -41,3 +41,11 @@
 .yld-card-event-create-header{
     margin-bottom: 24px;
 }
+
+.yld-errors-container{
+    .yld-error{
+        .yld-error-message{
+            color: red;
+        }
+    }
+}

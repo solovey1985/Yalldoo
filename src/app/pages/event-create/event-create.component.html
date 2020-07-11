@@ -26,8 +26,8 @@
                                 (onItemSelected)="setPrivacy($event)"
                             ></app-select-dropdown>
                             <div class="yld-errors-container">
-                                <div *ngFor="let validation of validation_messages.privacy" class="yld-register-invalid">
-                                   <span *ngIf="form.get('privacy').hasError(validation.type) && form.get('privacy').touched">{{ validation.message }}</span>
+                                <div *ngFor="let validation of validation_messages.privacy" class="yld-error">
+                                   <span *ngIf="form.get('privacy').hasError(validation.type) && form.get('privacy').touched" class="yld-error-message">{{ validation.message }}</span>
                                </div> 
                            </div>
                         </div>
@@ -43,8 +43,8 @@
                                 </div>
                             </div>
                             <div class="yld-errors-container">
-                                <div *ngFor="let validation of validation_messages.title" class="yld-register-invalid">
-                                    <span
+                                <div *ngFor="let validation of validation_messages.title" class="yld-error">
+                                    <span class="yld-error-message"
                                         *ngIf="
                                             form.get('title').hasError(validation.type) &&
                                             (form.get('title').dirty || form.get('title').touched)
@@ -75,9 +75,9 @@
                             <div class="yld-errors-container">
                                 <div
                                     *ngFor="let validation of validation_messages.dateTime"
-                                    class="yld-register-invalid"
+                                    class="yld-error"
                                 >
-                                    <span
+                                    <span class="yld-error-message"
                                         *ngIf="
                                             form.get('dateTime').hasError(validation.type) &&
                                             form.get('dateTime').touched
@@ -100,8 +100,8 @@
                             >
                             </angular2-multiselect>
                             <div class="yld-errors-container">
-                                 <div *ngFor="let validation of validation_messages.category" class="yld-register-invalid">
-                                    <span *ngIf="form.get('category').hasError(validation.type) && form.get('category').touched">{{ validation.message }}</span>
+                                 <div *ngFor="let validation of validation_messages.category" class="yld-error">
+                                    <span class="yld-error-message" *ngIf="form.get('category').hasError(validation.type) && form.get('category').touched">{{ validation.message }}</span>
                                 </div> 
                             </div>
                         </div>
@@ -188,8 +188,8 @@
                                 ></textarea>
                             </div>
                             <div class="yld-errors-container">
-                                <div *ngFor="let validation of validation_messages.description" class="yld-register-invalid">
-                                   <span *ngIf="form.get('description').hasError(validation.type) && form.get('description').touched">{{ validation.message }}</span>
+                                <div *ngFor="let validation of validation_messages.description" class="yld-error">
+                                   <span class="yld-error-message" *ngIf="form.get('description').hasError(validation.type) && form.get('description').touched">{{ validation.message }}</span>
                                </div> 
                            </div>
                         </div>

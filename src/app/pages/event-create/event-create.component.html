@@ -1,23 +1,24 @@
 <div class="yld-page">
     <div class="container">
         <div class="row">
-            <div class="col-lg-5 col-md-7 col-sm-9 ml-auto mr-auto">
-                <div class="yld-card-event-create">
-                    <div class="row justify-content-between yld-card-event-create-header">
-                        <div class="align-self-center"><h3 class="card-title">Create New Event</h3></div>
-                        <div class="align-self-center">
-                            <button
-                                class="btn btn-block btn-round"
-                                [ngClass]="{ disabled: !isValid(), 'btn-success': isValid() }"
-                                type="submit"
-                                (click)="onCreateButtonClick()"
-                            >
-                                Create
-                            </button>
+            <form [formGroup]="form" class="form">
+                <div class="col-12 ml-auto mr-auto">
+                    <div class="yld-card-event-create">
+                        <div class="d-flex justify-content-between yld-card-event-create-header">
+                            <div class="align-self-center"><h3 class="card-title">Create New Event</h3></div>
+                            <div class="align-self-center">
+                                <button
+                                    class="btn btn-block btn-round"
+                                    [ngClass]="{ disabled: !isValid(), 'btn-success': isValid() }"
+                                    type="submit"
+                                    (click)="onCreateButtonClick()"
+                                >
+                                    Create
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                    <hr />
-                    <form [formGroup]="form" class="form">
+                        <hr />
+
                         <div class="form-group">
                             <h6>Privacy<span class="icon-danger">*</span></h6>
                             <app-select-dropdown
@@ -27,9 +28,15 @@
                             ></app-select-dropdown>
                             <div class="yld-errors-container">
                                 <div *ngFor="let validation of validation_messages.privacy" class="yld-error">
-                                   <span *ngIf="form.get('privacy').hasError(validation.type) && form.get('privacy').touched" class="yld-error-message">{{ validation.message }}</span>
-                               </div> 
-                           </div>
+                                    <span
+                                        *ngIf="
+                                            form.get('privacy').hasError(validation.type) && form.get('privacy').touched
+                                        "
+                                        class="yld-error-message"
+                                        >{{ validation.message }}</span
+                                    >
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <h6>
@@ -44,7 +51,8 @@
                             </div>
                             <div class="yld-errors-container">
                                 <div *ngFor="let validation of validation_messages.title" class="yld-error">
-                                    <span class="yld-error-message"
+                                    <span
+                                        class="yld-error-message"
                                         *ngIf="
                                             form.get('title').hasError(validation.type) &&
                                             (form.get('title').dirty || form.get('title').touched)
@@ -56,7 +64,7 @@
                         </div>
                         <div class="form-group">
                             <h6>Start date and time <span class="icon-danger">*</span></h6>
-                            <div class="input-group yld-event-selector">
+                            <div class="d-flex align-content-center input-group yld-event-selector">
                                 <button
                                     type="button"
                                     class="btn btn-default btn-just-icon"
@@ -73,11 +81,9 @@
                                 </h5>
                             </div>
                             <div class="yld-errors-container">
-                                <div
-                                    *ngFor="let validation of validation_messages.dateTime"
-                                    class="yld-error"
-                                >
-                                    <span class="yld-error-message"
+                                <div *ngFor="let validation of validation_messages.dateTime" class="yld-error">
+                                    <span
+                                        class="yld-error-message"
                                         *ngIf="
                                             form.get('dateTime').hasError(validation.type) &&
                                             form.get('dateTime').touched
@@ -87,44 +93,7 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="form-group">
-                            <h6>Category <span class="icon-danger">*</span></h6>
-                            <angular2-multiselect
-                                formControlName="category"
-                                [data]="categories"
-                                [settings]="dropdownSettings"
-                                (onSelect)="onItemSelect($event)"
-                                (onDeSelect)="OnItemDeSelect($event)"
-                               
-                            >
-                            </angular2-multiselect>
-                            <div class="yld-errors-container">
-                                 <div *ngFor="let validation of validation_messages.category" class="yld-error">
-                                    <span class="yld-error-message" *ngIf="form.get('category').hasError(validation.type) && form.get('category').touched">{{ validation.message }}</span>
-                                </div> 
-                            </div>
-                        </div>
-                        <div class="form-group section-buttons">
-                            <button
-                                *ngIf="!isLocationSelected"
-                                type="button"
-                                class="btn btn-default btn-just-icon btn-border btn-location"
-                                (click)="showLocationpickerModal()"
-                            >
-                                <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
-                            </button>
-                            <button
-                                *ngIf="!isFriendsSelected"
-                                type="button"
-                                class="btn btn-default btn-just-icon btn-border btn-invite"
-                                (click)="showFriendspickerModal()"
-                            >
-                                <i class="fa fa-group fa-2x" aria-hidden="true"></i>
-                            </button>
-                        </div>
-
-                        <div class="form-group" *ngIf="isLocationSelected">
                             <h6>Location<span class="icon-danger">*</span></h6>
                             <div class="input-group yld-event-selector">
                                 <button
@@ -143,7 +112,56 @@
                                     <span *ngIf="!isLocationSelected">Click to select location</span>
                                 </h5>
                             </div>
+                            <div class="yld-errors-container">
+                                <div *ngFor="let validation of validation_messages.location" class="yld-error">
+                                    <span
+                                        *ngIf="
+                                            form.get('location').hasError(validation.type) && form.get('location').touched
+                                        "
+                                        class="yld-error-message"
+                                        >{{ validation.message }}</span
+                                    >
+                                </div>
+                            </div>
                         </div>
+
+                        <div class="form-group">
+                            <h6>Category <span class="icon-danger">*</span></h6>
+                            <angular2-multiselect
+                                formControlName="category"
+                                [data]="categories"
+                                [settings]="dropdownSettings"
+                                (onSelect)="onItemSelect($event)"
+                                (onDeSelect)="OnItemDeSelect($event)"
+                            >
+                            </angular2-multiselect>
+                            <div class="yld-errors-container">
+                                <div *ngFor="let validation of validation_messages.category" class="yld-error">
+                                    <span
+                                        class="yld-error-message"
+                                        *ngIf="
+                                            form.get('category').hasError(validation.type) &&
+                                            form.get('category').touched
+                                        "
+                                        >{{ validation.message }}</span
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group section-buttons">
+                            <div class="d-flex flex-column">
+                                <button
+                                    *ngIf="!isFriendsSelected"
+                                    type="button"
+                                    class="btn btn-default btn-just-icon btn-border btn-invite"
+                                    (click)="showFriendspickerModal()"
+                                >
+                                    <i class="fa fa-group fa-2x" aria-hidden="true"></i>
+                                </button>
+                                <h5 class="">Invite</h5>
+                            </div>
+                        </div>
+
                         <div class="form-group" *ngIf="isFriendsSelected">
                             <h6>Invitation</h6>
                             <div class="input-group yld-event-selector">
@@ -189,17 +207,24 @@
                             </div>
                             <div class="yld-errors-container">
                                 <div *ngFor="let validation of validation_messages.description" class="yld-error">
-                                   <span class="yld-error-message" *ngIf="form.get('description').hasError(validation.type) && form.get('description').touched">{{ validation.message }}</span>
-                               </div> 
-                           </div>
+                                    <span
+                                        class="yld-error-message"
+                                        *ngIf="
+                                            form.get('description').hasError(validation.type) &&
+                                            form.get('description').touched
+                                        "
+                                        >{{ validation.message }}</span
+                                    >
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <h4 class="title"><small>Event Image</small></h4>
                             <app-image-upload></app-image-upload>
                         </div>
-                    </form>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>

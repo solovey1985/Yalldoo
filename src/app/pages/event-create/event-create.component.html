@@ -1,8 +1,8 @@
 <div class="yld-page">
     <div class="container">
         <div class="row">
-            <form [formGroup]="form" class="form">
-                <div class="col-12 ml-auto mr-auto">
+            <div class="col-lg-6 col-md-9 col-sm-12 mr-auto ml-auto">
+                <form [formGroup]="form" class="form">
                     <div class="yld-card-event-create">
                         <div class="d-flex justify-content-between yld-card-event-create-header">
                             <div class="align-self-center"><h3 class="card-title">Create New Event</h3></div>
@@ -116,7 +116,8 @@
                                 <div *ngFor="let validation of validation_messages.location" class="yld-error">
                                     <span
                                         *ngIf="
-                                            form.get('location').hasError(validation.type) && form.get('location').touched
+                                            form.get('location').hasError(validation.type) &&
+                                            form.get('location').touched
                                         "
                                         class="yld-error-message"
                                         >{{ validation.message }}</span
@@ -223,8 +224,8 @@
                             <app-image-upload></app-image-upload>
                         </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 </div>

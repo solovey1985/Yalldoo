@@ -1,5 +1,8 @@
 <div class="wrapper">
-    <div class="page-header page-header-xs settings-background" style="background-image: url('./assets/img/sections/joshua-earles.jpg');">
+    <div
+        class="page-header page-header-xs settings-background"
+        style="background-image: url('./assets/img/sections/joshua-earles.jpg');"
+    >
         <div class="filter"></div>
     </div>
     <div class="profile-content section">
@@ -33,25 +36,116 @@
                         </div>
                         <div class="form-group">
                             <label>Description</label>
-                            <textarea class="form-control textarea-limited" placeholder="This is a textarea limited to 150 characters." rows="3" maxlength="150"></textarea>
+                            <textarea
+                                class="form-control textarea-limited"
+                                placeholder="This is a textarea limited to 150 characters."
+                                rows="3"
+                                maxlength="150"
+                            ></textarea>
                             <h5>
-                                <small><span id="textarea-limited-message" class="pull-right">150 characters left</span></small>
+                                <small
+                                    ><span id="textarea-limited-message" class="pull-right"
+                                        >150 characters left</span
+                                    ></small
+                                >
                             </h5>
                         </div>
-
+                        <div class="yld-profile-edit-preference-container">
+                            <div class="d-flex align-items-baseline justify-content-between">
+                                <h4>Categories</h4>
+                                <button class="btn  btn-neutral">
+                                    <i class="fa fa-edit"></i>Edit
+                                </button>
+                            </div>
+                            <hr />
+                            <div class="yld-profile_description-pref">
+                                <div class="yld-profile_description-pref-item">
+                                    <i class="fa fa-futbol-o" aria-hidden="true"></i>
+                                    <p>Football</p>
+                                </div>
+                                <div class="yld-profile_description-pref-item">
+                                    <i class="fa fa-bicycle" aria-hidden="true"></i>
+                                    <p>Bicycle</p>
+                                </div>
+                                <div class="yld-profile_description-pref-item">
+                                    <i class="fa fa-gamepad" aria-hidden="true"></i>
+                                    <p>Gaming</p>
+                                </div>
+                                <div class="yld-profile_description-pref-item">
+                                    <i class="fa fa-globe" aria-hidden="true"></i>
+                                    <p>Travelling</p>
+                                </div>
+                                <div class="yld-profile_description-pref-item">
+                                    <i class="fa fa-beer" aria-hidden="true"></i>
+                                    <p>Beer</p>
+                                </div>
+                                <div class="yld-profile_description-pref-item">
+                                    <i class="fa fa-paw" aria-hidden="true"></i>
+                                    <p>Animals</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="yld-profile-edit-preferences-container">
+                            <div class="d-flex align-items-baseline justify-content-between">
+                                <h4>Places</h4>
+                                <button class="btn btn-neutral">
+                                    <i class="fa fa-plus-circle"></i>Add
+                                </button>
+                            </div>
+                            <hr>
+                            <ul class="list-group list-unstyled">
+                                <li>
+                                    <div class="d-flex justify-content-between align-items-baseline">
+                                        <i class="fa fa-map-marker"></i>
+                                        <label>Location Selected</label>
+                                        <button class="btn btn-just-icon btn-link">
+                                            <i class="fa fa-edit"></i>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="d-flex justify-content-between align-items-baseline">
+                                        <i class="fa fa-map-marker"></i>
+                                        <label>Another Location</label>
+                                        <button class="btn btn-just-icon btn-link">
+                                            <i class="fa fa-edit"></i>
+                                        </button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <hr>
                         <label>Notifications</label>
                         <ul class="notifications">
                             <li class="notification-item">
                                 Updates regarding platform changes
-                                <bSwitch [switch-on-color]="'info'" [switch-off-color]="'info'" [(ngModel)]="state_info" name="first_switch"> </bSwitch>
+                                <bSwitch
+                                    [switch-on-color]="'info'"
+                                    [switch-off-color]="'info'"
+                                    [(ngModel)]="state_info"
+                                    name="first_switch"
+                                >
+                                </bSwitch>
                             </li>
                             <li class="notification-item">
                                 Updates regarding product changes
-                                <bSwitch [switch-on-color]="'info'" [switch-off-color]="'info'" [(ngModel)]="state_info1" name="second_switch"> </bSwitch>
+                                <bSwitch
+                                    [switch-on-color]="'info'"
+                                    [switch-off-color]="'info'"
+                                    [(ngModel)]="state_info1"
+                                    name="second_switch"
+                                >
+                                </bSwitch>
                             </li>
                             <li class="notification-item">
                                 Weekly newsletter
-                                <bSwitch [switch-on-color]="'info'" [switch-off-color]="'info'" [(ngModel)]="state_info2" name="third_switch"> </bSwitch>
+                                <bSwitch
+                                    [switch-on-color]="'info'"
+                                    [switch-off-color]="'info'"
+                                    [(ngModel)]="state_info2"
+                                    name="third_switch"
+                                >
+                                </bSwitch>
                             </li>
                         </ul>
                         <div class="text-center">

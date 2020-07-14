@@ -1,0 +1,30 @@
+@import "../../../assets/scss/paper-kit/variables";
+
+.yld-profile {
+    &_description {
+        &-pref {
+            display: flex;
+            flex-wrap: wrap;
+            text-align: center;
+            width: 100%;
+
+            &-item {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 25%;
+                height: 90px;
+                &:hover {
+                    color: $yld-color-secondary;
+                    font-size: 1.1em;
+                }
+                .fa {
+                    width: auto;
+                    font-size: 2em;
+                    margin-bottom: 15px;
+                }
+            }
+        }
+    }
+}

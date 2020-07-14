@@ -67,7 +67,8 @@ export class EventCreateComponent implements OnInit {
             unSelectAllText: "UnSelect All",
             classes: "",
             enableSearchFilter: true,
-            lazyLoading: false
+            groupBy: "category",
+            lazyLoading: true
         };
 
         this.privacyList = ["Public", "Friends", "Private"];

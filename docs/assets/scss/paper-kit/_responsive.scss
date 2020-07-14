@@ -509,19 +509,9 @@
 
     .dropdown.show .dropdown-menu,
     .dropdown .dropdown-menu{
-        border: 0;
-        transition: none;
-        -webkit-box-shadow: none;
-        box-shadow: none;
+         transition: none;
         width: auto;
         height: auto;
-
-        .dropdown-item:hover,
-        .dropdown-item:focus{
-            background-color: transparent;
-            border-radius:0;
-        }
-
         .dropdown-item a{
 
             &:hover,
@@ -545,7 +535,6 @@
           display: block;
           position: static;
           float: none;
-          background: transparent !important;
        }
     }
 
@@ -740,20 +729,9 @@
 
         .dropdown.show .dropdown-menu,
         .dropdown .dropdown-menu{
-            border: 0;
             transition: none;
-            -webkit-box-shadow: none;
-            box-shadow: none;
             width: auto;
-
-            .dropdown-item:hover,
-            .dropdown-item:focus{
-                background-color: transparent;
-                border-radius:0;
-            }
-
             .dropdown-item a{
-
                 &:hover,
                 &:focus{
                     color: $default-states-color;

@@ -43,18 +43,16 @@
                                 maxlength="150"
                             ></textarea>
                             <h5>
-                                <small
-                                    ><span id="textarea-limited-message" class="pull-right"
-                                        >150 characters left</span
-                                    ></small
-                                >
+                                <small>
+                                    <span id="textarea-limited-message" class="pull-right">150 characters left</span>
+                                </small>
                             </h5>
                         </div>
                         <div class="yld-profile-edit-preference-container">
                             <div class="d-flex align-items-baseline justify-content-between">
                                 <h4>Categories</h4>
-                                <button class="btn  btn-neutral">
-                                    <i class="fa fa-edit"></i>Edit
+                                <button ngbTooltip="Edit" (click)="onCategoriesEditClick()" class="btn btn-outline-default btn-just-icon">
+                                    <i class="fa fa-edit"></i>
                                 </button>
                             </div>
                             <hr />
@@ -88,17 +86,17 @@
                         <div class="yld-profile-edit-preferences-container">
                             <div class="d-flex align-items-baseline justify-content-between">
                                 <h4>Places</h4>
-                                <button class="btn btn-neutral">
-                                    <i class="fa fa-plus-circle"></i>Add
+                                <button ngbTooltip="Add" (click)="onPlacesAddClick()" class="btn btn-outline-default btn-just-icon">
+                                    <i class="fa fa-plus-circle"></i>
                                 </button>
                             </div>
-                            <hr>
+                            <hr />
                             <ul class="list-group list-unstyled">
                                 <li>
                                     <div class="d-flex justify-content-between align-items-baseline">
                                         <i class="fa fa-map-marker"></i>
                                         <label>Location Selected</label>
-                                        <button class="btn btn-just-icon btn-link">
+                                        <button class="btn btn-just-icon btn-link" (click)="onPlaceEditClick()" ngbTooltip="Edit">
                                             <i class="fa fa-edit"></i>
                                         </button>
                                     </div>
@@ -107,14 +105,14 @@
                                     <div class="d-flex justify-content-between align-items-baseline">
                                         <i class="fa fa-map-marker"></i>
                                         <label>Another Location</label>
-                                        <button class="btn btn-just-icon btn-link">
+                                        <button class="btn btn-just-icon btn-link" ngbTooltip="Edit">
                                             <i class="fa fa-edit"></i>
                                         </button>
                                     </div>
                                 </li>
                             </ul>
                         </div>
-                        <hr>
+                        <hr />
                         <label>Notifications</label>
                         <ul class="notifications">
                             <li class="notification-item">

@@ -7,6 +7,8 @@ import LocationDto from 'app/_models/location.dto';
 import { LocationPickerModalComponent } from 'app/components/modal/location-picker-modal/location-picker-modal.component';
 import { FriendsPickerModalComponent } from 'app/components/modal/friends-picker-modal/friends-picker-modal.component';
 import { FirendListItem } from 'app/_models/friends/friend-list-item.model';
+import { Category } from 'app/_models/category/category.model';
+import { CategoriesPreferenceEditorComponent } from 'app/components/modal/categories-preference-editor-modal/categories-preference-editor-modal.component';
 
 @Injectable(
     { providedIn: 'root' }
@@ -38,7 +40,7 @@ export class ModalService {
         return subject.asObservable()  
     }
     
-    openLocationPicker(location: LocationDto):Observable<LocationDto> {
+    openLocationPicker(location?: LocationDto):Observable<LocationDto> {
         var subject = new Subject<LocationDto>()
         const options = new NgbModalConfig();
         options.centered = false;
@@ -66,6 +68,27 @@ export class ModalService {
         var modalRef = this.ngbModalService.open(FriendsPickerModalComponent, options);
         const modal = <FriendsPickerModalComponent>modalRef.componentInstance;
         const submitSubscription = modal.onSubmit.subscribe((result: Array<FirendListItem>) => {
+            subject.next(result);
+            modalRef.close();
+            submitSubscription.unsubscribe()
+        });
+        const dismissSubscription = modal.onDismiss.subscribe(()=> {
+            modalRef.close();
+            submitSubscription.unsubscribe()
+        });
+        return subject.asObservable()  
+    }
+
+
+    openCategoriesPrefernceEditor(categories?: Category[]) {
+        var subject = new Subject<Array<Category>>()
+        const options = new NgbModalConfig();
+        options.centered = false;
+        options.size = "lg";
+        var modalRef = this.ngbModalService.open(CategoriesPreferenceEditorComponent, options);
+        const modal = <CategoriesPreferenceEditorComponent>modalRef.componentInstance;
+        modal.selectedCategories = categories;
+        const submitSubscription = modal.onSubmit.subscribe((result: Array<Category>) => {
             subject.next(result);
             modalRef.close();
             submitSubscription.unsubscribe()

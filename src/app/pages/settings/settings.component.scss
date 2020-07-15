@@ -1,5 +1,8 @@
 @import "../../../assets/scss/paper-kit/variables";
-
+.page-header{
+    max-height: 20vh;
+    height: 20vh;
+}
 .yld-profile {
     &_description {
         &-pref {

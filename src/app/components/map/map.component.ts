@@ -42,7 +42,7 @@ export class MapComponent implements AfterViewInit, OnChanges {
     public lng: any;
 
     @Input()
-    public width: any;
+    public width: "300px";
 
     @Input()
     public place: LocationDto;
@@ -67,7 +67,7 @@ export class MapComponent implements AfterViewInit, OnChanges {
                 this.place = changes[propName].currentValue;
                 this.map.removeObjects(this.map.getObjects());
                 this.map.setCenter(this.place.position);
-                this.map.setZoom(15);
+                this.map.setZoom(16);
                 var marker = new H.map.Marker({ lat: this.place.position.lat, lng: this.place.position.lng });
                 marker.draggable = true;
                 this.map.addObject(marker);

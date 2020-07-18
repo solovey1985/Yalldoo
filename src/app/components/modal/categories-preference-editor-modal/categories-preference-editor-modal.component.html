@@ -6,13 +6,18 @@
         </button>
     </div>
     <div class="modal-body">
+        <app-search-bar [placeholder]="'Search category...'" (onChange)="onSearch($event)"></app-search-bar>
         <div class="yld-preference-editor">
-            <ul class="list-unstyled d-flex flex-row flex-space-between">
-                <li *ngFor="let category of categories" class="d-flex flex-column justify-content-center flex-grow-1" [ngClass]="{'selected': isCategorySelected(category)}" (click)="onCategoryClick(category)">
-                    <i class="fa fa-3x {{getIcon(category.title)}}"></i>
-                    <span>{{category.title}}</span>
-                </li>
-            </ul>
+            <app-preference-card
+                *ngFor="let category of categories"
+                [id]="category.id"
+                [title]="category.title"
+                [icon]="getIcon(category.title)"
+                [backgroundUrl]="'assets/img/sections/anders-jilden.jpg'"
+                [selected]="isCategorySelected(category)"
+                [size]="'sm'"
+                (onCardSelected)="onCategoryClick(category.id)"
+            ></app-preference-card>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-primary btn-link" (click)="onSubmitClick()">Okay</button>

@@ -18,42 +18,51 @@ export class CategoriesPreferenceEditorComponent implements OnInit {
     onDismiss: EventEmitter<any> = new EventEmitter();
 
     categories: Array<Category>;
-    constructor(private categoryService: CategoryService) {
-        
-        
-    }
+    outputCategories: Array<Category>;
+    constructor(private categoryService: CategoryService) {}
 
     ngOnInit(): void {
         this.categories = this.categoryService.getChildCategories();
         if (this.selectedCategories === undefined) {
             this.selectedCategories = new Array<Category>();
+        } else {
+            this.outputCategories = JSON.parse(JSON.stringify(this.selectedCategories));
         }
     }
 
     isCategorySelected(category: Category) {
-        if (this.selectedCategories) {
-            return this.selectedCategories.includes(category);
+        if (this.outputCategories) {
+            return this.outputCategories.find((x) => x.id === category.id) !== undefined;
         }
         return false;
     }
 
-    onCategoryClick(category: Category) {
-        if (this.selectedCategories.includes(category)) {
-            this.selectedCategories = this.selectedCategories.filter((x) => x.id != category.id);
+    onCategoryClick(categoryId: number) {
+        const cat = this.outputCategories.find((x) => x.id === categoryId);
+        if (cat) {
+            this.outputCategories = this.outputCategories.filter((x) => x.id != categoryId);
         } else {
-            this.selectedCategories.push(category);
+            const addCategory = this.categories.find((x) => x.id === categoryId);
+            if (addCategory) {
+                this.outputCategories.push(addCategory);
+            }
         }
     }
 
     onSubmitClick() {
-        this.onSubmit.emit(this.selectedCategories);
+        this.onSubmit.emit(this.outputCategories);
     }
 
     onDismissClick() {
         this.onDismiss.emit();
     }
 
-    public getIcon(title: string):string {
+    public getIcon(title: string): string {
         return this.categoryService.getCategoryIcon(title);
+    }
+
+    onSearch(searchInput: string) {
+        let newCategories = this.categoryService.getChildCategories();
+        this.categories = newCategories.filter(x => x.title.toLowerCase().indexOf(searchInput)>-1);
     }
 }

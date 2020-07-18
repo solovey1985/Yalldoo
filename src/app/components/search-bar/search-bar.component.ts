@@ -1,4 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Output, ViewChild, ElementRef, Input } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-search-bar',
@@ -7,9 +8,23 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class SearchBarComponent implements OnInit {
 
+  @Input()
+  placeholder: string;
+  
+  @Output()
+  onChange: EventEmitter<string> = new EventEmitter<string>();
+  
+  
+  searchInput: string;
+
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  onTextChange(): void
+  {
+    this.onChange.emit(this.searchInput);
+  }
 }

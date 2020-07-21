@@ -14,29 +14,50 @@
             </div>
             <div class="row">
                 <div class="col-md-6 ml-auto mr-auto">
-                    <form class="settings-form">
+                    <form class="settings-form" [formGroup]="form">
                         <div class="row">
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
                                     <label>First Name</label>
-                                    <input type="text" class="form-control border-input" placeholder="First Name" />
+                                    <input type="text" class="form-control border-input" formControlName="firstName" placeholder="First Name" />
                                 </div>
                             </div>
 
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label>Last Email</label>
-                                    <input type="text" class="form-control border-input" placeholder="Last Name" />
+                                    <label>Last Name</label>
+                                    <input type="text" class="form-control border-input" formControlName="lastName" placeholder="Last Name" />
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Job Title</label>
-                            <input type="text" class="form-control border-input" placeholder="Job Title" />
+                            <h6>Birth Date <span class="icon-danger">*</span></h6>
+                            <div class="d-flex flex-row align-items-baseline input-group yld-event-selector">
+                                <button
+                                    type="button"
+                                    class="btn btn-default btn-just-icon"
+                                    (click)="d.toggle()"
+                                >
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                </button>
+                                <input class="form-control" type="text" ngbDatepicker #d="ngbDatepicker" formControlName="birthDate"/>
+                            </div>
+                            <div class="yld-errors-container">
+                                <div *ngFor="let validation of validation_messages.birthDate" class="yld-error">
+                                    <span
+                                        class="yld-error-message"
+                                        *ngIf="
+                                            form.get('birthDate').hasError(validation.type) &&
+                                            form.get('birthDate').touched
+                                        "
+                                        >{{ validation.message }}</span
+                                    >
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label>Description</label>
-                            <textarea
+                            <textarea formControlName="description"
                                 class="form-control textarea-limited"
                                 placeholder="This is a textarea limited to 150 characters."
                                 rows="3"
@@ -89,39 +110,7 @@
                             </ul>
                         </div>
                         <hr />
-                        <label>Notifications</label>
-                        <ul class="notifications">
-                            <li class="notification-item">
-                                Updates regarding platform changes
-                                <bSwitch
-                                    [switch-on-color]="'info'"
-                                    [switch-off-color]="'info'"
-                                    [(ngModel)]="state_info"
-                                    name="first_switch"
-                                >
-                                </bSwitch>
-                            </li>
-                            <li class="notification-item">
-                                Updates regarding product changes
-                                <bSwitch
-                                    [switch-on-color]="'info'"
-                                    [switch-off-color]="'info'"
-                                    [(ngModel)]="state_info1"
-                                    name="second_switch"
-                                >
-                                </bSwitch>
-                            </li>
-                            <li class="notification-item">
-                                Weekly newsletter
-                                <bSwitch
-                                    [switch-on-color]="'info'"
-                                    [switch-off-color]="'info'"
-                                    [(ngModel)]="state_info2"
-                                    name="third_switch"
-                                >
-                                </bSwitch>
-                            </li>
-                        </ul>
+
                         <div class="text-center">
                             <button type="submit" class="btn btn-wd btn-info btn-round">Save</button>
                         </div>

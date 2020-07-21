@@ -17,6 +17,8 @@ export class DateTimePickerModalComponent implements OnInit {
     dateString: string;
     @Input()
     disabled = false;
+    @Input()
+    onlyDate = false;
 
     @Output()
     onSubmit: EventEmitter<string> = new EventEmitter<string>();
@@ -35,7 +37,7 @@ export class DateTimePickerModalComponent implements OnInit {
 
     @ViewChild("timePicker", { static: false })
     public timePicker: NgbTimepicker;
-    
+
     showTimePickerToggle = false;
     onTouched: () => void = noop;
     onChange: (_: any) => void = noop;
@@ -93,7 +95,9 @@ export class DateTimePickerModalComponent implements OnInit {
         this.date.day = date.day;
         this.datePicker.navigateTo({ year: this.date.year, month: this.date.month });
         this.setDateStringModel();
-        this.toggleDateTimeState(new MouseEvent(""));
+        if (!this.onlyDate) {
+            this.toggleDateTimeState(new MouseEvent(""));
+        }
     }
 
     onTimeChange($event: NgbDateTimeStruct) {

@@ -19,28 +19,36 @@
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
                                     <label>First Name</label>
-                                    <input type="text" class="form-control border-input" formControlName="firstName" placeholder="First Name" />
+                                    <input
+                                        type="text"
+                                        class="form-control border-input"
+                                        formControlName="firstName"
+                                        placeholder="First Name"
+                                    />
                                 </div>
                             </div>
 
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
                                     <label>Last Name</label>
-                                    <input type="text" class="form-control border-input" formControlName="lastName" placeholder="Last Name" />
+                                    <input
+                                        type="text"
+                                        class="form-control border-input"
+                                        formControlName="lastName"
+                                        placeholder="Last Name"
+                                    />
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <h6>Birth Date <span class="icon-danger">*</span></h6>
-                            <div class="d-flex flex-row align-items-baseline input-group yld-event-selector">
-                                <button
-                                    type="button"
-                                    class="btn btn-default btn-just-icon"
-                                    (click)="d.toggle()"
-                                >
+                            <div class="d-flex flex-row align-items-baseline input-group yld-settings-date-selector">
+                                <button type="button" class="btn btn-default btn-just-icon" (click)="showDatetimepickerModal()">
                                     <i class="fa fa-calendar" aria-hidden="true"></i>
                                 </button>
-                                <input class="form-control" type="text" ngbDatepicker #d="ngbDatepicker" formControlName="birthDate"/>
+                                <span>
+                                    {{ form.get("birthDate").value | date: "dd MMMM yyyy" }}
+                                </span>
                             </div>
                             <div class="yld-errors-container">
                                 <div *ngFor="let validation of validation_messages.birthDate" class="yld-error">
@@ -57,7 +65,8 @@
                         </div>
                         <div class="form-group">
                             <label>Description</label>
-                            <textarea formControlName="description"
+                            <textarea
+                                formControlName="description"
                                 class="form-control textarea-limited"
                                 placeholder="This is a textarea limited to 150 characters."
                                 rows="3"
@@ -72,22 +81,30 @@
                         <div class="yld-profile-edit-preference-container">
                             <div class="d-flex align-items-baseline justify-content-between">
                                 <h4>Categories</h4>
-                                <button ngbTooltip="Edit" (click)="onCategoriesEditClick()" class="btn btn-outline-default btn-just-icon">
+                                <button
+                                    ngbTooltip="Edit"
+                                    (click)="onCategoriesEditClick()"
+                                    class="btn btn-outline-default btn-just-icon"
+                                >
                                     <i class="fa fa-edit"></i>
                                 </button>
                             </div>
                             <hr />
-                            <div  class="yld-profile_description-pref">
+                            <div class="yld-profile_description-pref">
                                 <div *ngFor="let category of categories" class="yld-profile_description-pref-item">
-                                    <i class="fa {{getIcon(category.title)}}" aria-hidden="true"></i>
-                                    <p>{{category.title}}</p>
+                                    <i class="fa {{ getIcon(category.title) }}" aria-hidden="true"></i>
+                                    <p>{{ category.title }}</p>
                                 </div>
                             </div>
                         </div>
                         <div class="yld-profile-edit-preferences-container">
                             <div class="d-flex align-items-baseline justify-content-between">
                                 <h4>Places</h4>
-                                <button ngbTooltip="Add" (click)="onPlacesAddClick()" class="btn btn-outline-default btn-just-icon">
+                                <button
+                                    ngbTooltip="Add"
+                                    (click)="onPlacesAddClick()"
+                                    class="btn btn-outline-default btn-just-icon"
+                                >
                                     <i class="fa fa-plus-circle"></i>
                                 </button>
                             </div>
@@ -96,15 +113,23 @@
                                 <li *ngFor="let location of locations">
                                     <div class="d-flex justify-content-between align-items-baseline">
                                         <i class="fa fa-map-marker"></i>
-                                        <label>{{location.title}}</label>
+                                        <label>{{ location.title }}</label>
                                         <span>
-                                        <button class="btn btn-just-icon btn-link" (click)="onPlaceEditClick(location)" ngbTooltip="Edit">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-                                        <button class="btn btn-just-icon btn-link" (click)="onPlaceRemoveClick(location)" ngbTooltip="Remove">
-                                            <i class="fa fa-remove"></i>
-                                        </button>
-                                    </span>
+                                            <button
+                                                class="btn btn-just-icon btn-link"
+                                                (click)="onPlaceEditClick(location)"
+                                                ngbTooltip="Edit"
+                                            >
+                                                <i class="fa fa-edit"></i>
+                                            </button>
+                                            <button
+                                                class="btn btn-just-icon btn-link"
+                                                (click)="onPlaceRemoveClick(location)"
+                                                ngbTooltip="Remove"
+                                            >
+                                                <i class="fa fa-remove"></i>
+                                            </button>
+                                        </span>
                                     </div>
                                 </li>
                             </ul>

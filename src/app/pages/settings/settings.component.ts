@@ -15,9 +15,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
     styleUrls: ["./settings.component.scss"]
 })
 export class SettingsComponent implements OnInit {
-    state_info = true;
-    state_info1 = true;
-    state_info2 = true;
+    isDateSelected: boolean;
     locations: LocationDto[];
     data: Date = new Date();
     categories: Category[];
@@ -89,6 +87,22 @@ export class SettingsComponent implements OnInit {
             category: [{ type: "required", message: "Category is required" }],
             description: [{ type: "maxlength", message: "Description cannot be more than 1024 characters long" }]
         };
+    }
+
+    //------- Modals ---------------------
+    showDatetimepickerModal(): void {
+        this.modal.openDateTimePicker(this.userInfo.birthDate, true).subscribe((result: string) => {
+            if (result) {
+                this.userInfo.birthDate = new Date(result);
+                this.isDateSelected = true;
+                this.form.get("birthDate").markAsTouched();
+                this.form.get("birthDate").clearValidators();
+                this.form.patchValue({ birthDate: this.userInfo.birthDate });
+            } else {
+                this.form.get("birthDate").markAsTouched();
+                this.form.get("birthDate").setErrors({ required: true });
+            }
+        });
     }
 
     private buildForm(): void{

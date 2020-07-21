@@ -1,8 +1,8 @@
-<div class="card yld-card" (click)="onSelectClick()" data-background="image" style="background-image: url({{backgroundUrl}})">
+<div class="card no-transition yld-card {{sizeClass}}" (click)="onSelectClick()" data-background="image" style="background-image: url({{backgroundUrl}})">
     <div *ngIf="selected" class="filter"></div>
     <div class="card-body">
         <div class="card-icon" >
-            <span class="icon-simple yld-category-icon"><i class="nc-icon nc-{{icon}}" [ngClass]="{'yld-icon-selected': selected }"></i></span>
+            <span class="icon-simple yld-category-icon"><i class="fa {{icon}}" [ngClass]="{'yld-icon-selected': selected }"></i></span>
         </div>
         <h3 class="card-title">{{title}}</h3>
         <p class="card-description">

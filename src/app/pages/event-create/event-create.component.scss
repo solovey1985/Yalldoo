@@ -1,39 +1,52 @@
-.yld-event-selector{
+.yld-event-selector {
     margin-bottom: 12px;
     display: flex;
     flex-wrap: nowrap;
     align-items: flex-start;
-    .yld-event-selector-values{
-     margin-left: 12px;
+    .yld-event-selector-values {
+        margin-left: 12px;
     }
 }
 
 .section-buttons {
-    .btn-location{
-    border-color: #00630d;
-    color: #00630d;
-    margin-right: 4px;
-    &:hover{
-        color: #fff;
-        background-color:  #00630d;
+    .btn-location {
+        border-color: #00630d;
+        color: #00630d;
+        margin-right: 4px;
+        &:hover {
+            color: #fff;
+            background-color: #00630d;
+        }
+    }
+    .btn-invite {
+        border-color: #3b5998;
+        color: #3b5998;
+        margin-right: 4px;
+        &:hover {
+            color: #fff;
+            background-color: #3b5998;
+        }
+    }
+    .btn-add-image {
+        border-color: #c26700;
+        color: #c26700;
+        margin-right: 4px;
+        &:hover {
+            color: #fff;
+            background-color: #c26700;
+        }
     }
 }
-.btn-invite{
-    border-color: #3b5998;
-    color: #3b5998;
-    margin-right: 4px;
-    &:hover{
-        color: #fff;
-        background-color:  #3b5998;
+
+.yld-card-event-create-header{
+    margin-bottom: 24px;
+}
+
+.yld-errors-container{
+    .yld-error{
+        .yld-error-message{
+            color: red;
+        }
     }
 }
-.btn-add-image{
-    border-color: #c26700;
-    color: #c26700;
-    margin-right: 4px;
-    &:hover{
-        color: #fff;
-        background-color:  #c26700;
-    }
-}
-}
+

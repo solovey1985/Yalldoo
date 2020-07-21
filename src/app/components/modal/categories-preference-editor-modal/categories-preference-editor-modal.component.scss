@@ -1,0 +1,12 @@
+@import "../../../../assets/scss/paper-kit/variables";
+
+.selected {
+    color: $yld-color-secondary;
+}
+.yld-preference-editor {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}

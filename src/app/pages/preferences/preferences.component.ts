@@ -17,7 +17,7 @@ export class PreferencesComponent implements OnInit {
     ngOnInit(): void {
         this.populatePreferences();
     }
-    get preferencesConter() {
+    get preferencesCounter() {
         return this.preferences.filter((x) => x.isSelected).length;
     }
 

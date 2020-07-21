@@ -66,6 +66,7 @@ export class RegisterComponent implements OnInit {
     isInvalid(control: AbstractControl):boolean {
         return control.invalid && control.touched
     }
+    
     public get messages() {
         return this.validation_messages;
     }

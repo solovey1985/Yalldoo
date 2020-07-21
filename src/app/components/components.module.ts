@@ -30,6 +30,7 @@ import { LocationPickerModalComponent } from './modal/location-picker-modal/loca
 import { DateTimePickerComponent } from './date-time-picker/date-time-picker.component';
 import { FriendsPickerModalComponent } from './modal/friends-picker-modal/friends-picker-modal.component';
 import { SelectDropdownComponent } from './select-dropdown/select-dropdown.component';
+import { CategoriesPreferenceEditorComponent } from './modal/categories-preference-editor-modal/categories-preference-editor-modal.component';
 
 @NgModule({
     imports: [
@@ -66,6 +67,7 @@ import { SelectDropdownComponent } from './select-dropdown/select-dropdown.compo
         LocationPickerModalComponent,
         FriendsPickerModalComponent,
         SelectDropdownComponent,
+        CategoriesPreferenceEditorComponent,
 
     ],
     exports: [
@@ -83,7 +85,8 @@ import { SelectDropdownComponent } from './select-dropdown/select-dropdown.compo
         EventList,
         PlaceAutocompleteComponent,
         MapComponent,
-        SelectDropdownComponent
+        SelectDropdownComponent,
+        CategoriesPreferenceEditorComponent
     ]
 })
 export class ComponentsModule { }

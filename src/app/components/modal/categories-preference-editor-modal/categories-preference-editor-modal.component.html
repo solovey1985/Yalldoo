@@ -1,0 +1,26 @@
+<div class="yld-modal">
+    <div class="modal-header">
+        <h5 class="modal-title">Select Preferred Categories</h5>
+        <button type="button" class="close" (click)="onDismissClick()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <app-search-bar [placeholder]="'Search category...'" (onChange)="onSearch($event)"></app-search-bar>
+        <div class="yld-preference-editor">
+            <app-preference-card
+                *ngFor="let category of categories"
+                [id]="category.id"
+                [title]="category.title"
+                [icon]="getIcon(category.title)"
+                [backgroundUrl]="'assets/img/sections/anders-jilden.jpg'"
+                [selected]="isCategorySelected(category)"
+                [size]="'sm'"
+                (onCardSelected)="onCategoryClick(category.id)"
+            ></app-preference-card>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary btn-link" (click)="onSubmitClick()">Okay</button>
+        </div>
+    </div>
+</div>

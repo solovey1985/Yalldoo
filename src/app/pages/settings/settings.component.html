@@ -1,5 +1,8 @@
 <div class="wrapper">
-    <div class="page-header page-header-xs settings-background" style="background-image: url('./assets/img/sections/joshua-earles.jpg');">
+    <div
+        class="page-header page-header-xs settings-background"
+        style="background-image: url('./assets/img/sections/joshua-earles.jpg');"
+    >
         <div class="filter"></div>
     </div>
     <div class="profile-content section">
@@ -11,49 +14,103 @@
             </div>
             <div class="row">
                 <div class="col-md-6 ml-auto mr-auto">
-                    <form class="settings-form">
+                    <form class="settings-form" [formGroup]="form">
                         <div class="row">
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
                                     <label>First Name</label>
-                                    <input type="text" class="form-control border-input" placeholder="First Name" />
+                                    <input type="text" class="form-control border-input" formControlName="firstName" placeholder="First Name" />
                                 </div>
                             </div>
 
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
-                                    <label>Last Email</label>
-                                    <input type="text" class="form-control border-input" placeholder="Last Name" />
+                                    <label>Last Name</label>
+                                    <input type="text" class="form-control border-input" formControlName="lastName" placeholder="Last Name" />
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Job Title</label>
-                            <input type="text" class="form-control border-input" placeholder="Job Title" />
+                            <h6>Birth Date <span class="icon-danger">*</span></h6>
+                            <div class="d-flex flex-row align-items-baseline input-group yld-event-selector">
+                                <button
+                                    type="button"
+                                    class="btn btn-default btn-just-icon"
+                                    (click)="d.toggle()"
+                                >
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                </button>
+                                <input class="form-control" type="text" ngbDatepicker #d="ngbDatepicker" formControlName="birthDate"/>
+                            </div>
+                            <div class="yld-errors-container">
+                                <div *ngFor="let validation of validation_messages.birthDate" class="yld-error">
+                                    <span
+                                        class="yld-error-message"
+                                        *ngIf="
+                                            form.get('birthDate').hasError(validation.type) &&
+                                            form.get('birthDate').touched
+                                        "
+                                        >{{ validation.message }}</span
+                                    >
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label>Description</label>
-                            <textarea class="form-control textarea-limited" placeholder="This is a textarea limited to 150 characters." rows="3" maxlength="150"></textarea>
+                            <textarea formControlName="description"
+                                class="form-control textarea-limited"
+                                placeholder="This is a textarea limited to 150 characters."
+                                rows="3"
+                                maxlength="150"
+                            ></textarea>
                             <h5>
-                                <small><span id="textarea-limited-message" class="pull-right">150 characters left</span></small>
+                                <small>
+                                    <span id="textarea-limited-message" class="pull-right">150 characters left</span>
+                                </small>
                             </h5>
                         </div>
+                        <div class="yld-profile-edit-preference-container">
+                            <div class="d-flex align-items-baseline justify-content-between">
+                                <h4>Categories</h4>
+                                <button ngbTooltip="Edit" (click)="onCategoriesEditClick()" class="btn btn-outline-default btn-just-icon">
+                                    <i class="fa fa-edit"></i>
+                                </button>
+                            </div>
+                            <hr />
+                            <div  class="yld-profile_description-pref">
+                                <div *ngFor="let category of categories" class="yld-profile_description-pref-item">
+                                    <i class="fa {{getIcon(category.title)}}" aria-hidden="true"></i>
+                                    <p>{{category.title}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="yld-profile-edit-preferences-container">
+                            <div class="d-flex align-items-baseline justify-content-between">
+                                <h4>Places</h4>
+                                <button ngbTooltip="Add" (click)="onPlacesAddClick()" class="btn btn-outline-default btn-just-icon">
+                                    <i class="fa fa-plus-circle"></i>
+                                </button>
+                            </div>
+                            <hr />
+                            <ul class="list-group list-unstyled">
+                                <li *ngFor="let location of locations">
+                                    <div class="d-flex justify-content-between align-items-baseline">
+                                        <i class="fa fa-map-marker"></i>
+                                        <label>{{location.title}}</label>
+                                        <span>
+                                        <button class="btn btn-just-icon btn-link" (click)="onPlaceEditClick(location)" ngbTooltip="Edit">
+                                            <i class="fa fa-edit"></i>
+                                        </button>
+                                        <button class="btn btn-just-icon btn-link" (click)="onPlaceRemoveClick(location)" ngbTooltip="Remove">
+                                            <i class="fa fa-remove"></i>
+                                        </button>
+                                    </span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <hr />
 
-                        <label>Notifications</label>
-                        <ul class="notifications">
-                            <li class="notification-item">
-                                Updates regarding platform changes
-                                <bSwitch [switch-on-color]="'info'" [switch-off-color]="'info'" [(ngModel)]="state_info" name="first_switch"> </bSwitch>
-                            </li>
-                            <li class="notification-item">
-                                Updates regarding product changes
-                                <bSwitch [switch-on-color]="'info'" [switch-off-color]="'info'" [(ngModel)]="state_info1" name="second_switch"> </bSwitch>
-                            </li>
-                            <li class="notification-item">
-                                Weekly newsletter
-                                <bSwitch [switch-on-color]="'info'" [switch-off-color]="'info'" [(ngModel)]="state_info2" name="third_switch"> </bSwitch>
-                            </li>
-                        </ul>
                         <div class="text-center">
                             <button type="submit" class="btn btn-wd btn-info btn-round">Save</button>
                         </div>

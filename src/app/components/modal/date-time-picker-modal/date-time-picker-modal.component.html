@@ -8,7 +8,7 @@
     <div class="modal-body">
         <div class="yld-picker-container">
         <div *ngIf="!showTimePickerToggle">
-            <ngb-datepicker #dp [ngModel]="date" name="datePicker" (ngModelChange)="onDateChange($event)"></ngb-datepicker>
+            <ngb-datepicker [minDate]="date" #dp [ngModel]="date" name="datePicker" (ngModelChange)="onDateChange($event)"></ngb-datepicker>
             <button class="btn btn-block btn-outline-secondary" [disabled]="!date?.day" type="button" (click)="toggleDateTimeState($event)">
                 <h6>{{date | date : 'HH:mm'}}</h6>
                 <i class="fa fa-clock-o" aria-hidden="true"></i>

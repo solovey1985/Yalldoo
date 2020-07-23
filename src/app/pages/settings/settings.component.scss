@@ -1,5 +1,5 @@
 @import "../../../assets/scss/paper-kit/variables";
-.page-header{
+.page-header {
     max-height: 20vh;
     height: 20vh;
 }
@@ -30,16 +30,33 @@
             }
         }
     }
+    &-edit-place-item {
+        .fa-map-marker {
+            margin: 0 8px;
+            font-size: 24px;
+        }
+        &-title {
+            font-size: 1.2em;
+        }
+        &-actions {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            button i {
+                font-size: 24px;
+            }
+        }
+    }
 }
 
-.yld-profile-edit-preferences-container{
-    i{
+.yld-profile-edit-preferences-container {
+    i {
         font-size: large;
     }
 }
 
-.yld-settings-date-selector{
-    span{
+.yld-settings-date-selector {
+    span {
         margin-left: 8px;
     }
 }

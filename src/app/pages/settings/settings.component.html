@@ -64,7 +64,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Description</label>
+                            <label>Tell about yourself</label>
                             <textarea
                                 formControlName="description"
                                 class="form-control textarea-limited"
@@ -111,10 +111,10 @@
                             <hr />
                             <ul class="list-group list-unstyled">
                                 <li *ngFor="let location of locations">
-                                    <div class="d-flex justify-content-between align-items-baseline">
+                                    <div class="yld-profile-edit-place-item d-flex justify-content-between align-items-center">
                                         <i class="fa fa-map-marker"></i>
-                                        <label>{{ location.title }}</label>
-                                        <span>
+                                        <label class="yld-profile-edit-place-item-title text-center">{{ location.title }}</label>
+                                        <div class="yld-profile-edit-place-item-actions">
                                             <button
                                                 class="btn btn-just-icon btn-link"
                                                 (click)="onPlaceEditClick(location)"
@@ -129,7 +129,7 @@
                                             >
                                                 <i class="fa fa-remove"></i>
                                             </button>
-                                        </span>
+                                        </div>
                                     </div>
                                 </li>
                             </ul>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { ModalService } from "app/_services/modal/modal.service";
 import { NotifyService } from "app/services/notify-service/notify.service";
 import { CategoryService } from "app/_services/category/category.service";
@@ -29,7 +29,7 @@ export class SettingsComponent implements OnInit {
         private fb: FormBuilder) {
         this.locations = new Array<LocationDto>();
         this.userInfo = new UserInformation();
-        this.userInfo.birthDate = new Date('05.15.1985');
+        this.userInfo.birthDate = new Date();
         this.initValidationMessages();
     }
 
@@ -49,7 +49,11 @@ export class SettingsComponent implements OnInit {
     }
 
     onPlaceEditClick(location?: LocationDto) {
-        this.modal.openLocationPicker(location);
+        this.modal.openLocationPicker(location).subscribe(result => {
+            if (result) {
+                this.locations.splice(this.locations.indexOf(location), 1, result);
+            }
+        });
     }
 
     onCategoriesEditClick() {
@@ -89,9 +93,9 @@ export class SettingsComponent implements OnInit {
         };
     }
 
-    //------- Modals ---------------------
+   
     showDatetimepickerModal(): void {
-        this.modal.openDateTimePicker(this.userInfo.birthDate, true).subscribe((result: string) => {
+        this.modal.openDateTimePicker(this.userInfo.birthDate, true, "Select Birthday Date").subscribe((result: string) => {
             if (result) {
                 this.userInfo.birthDate = new Date(result);
                 this.isDateSelected = true;

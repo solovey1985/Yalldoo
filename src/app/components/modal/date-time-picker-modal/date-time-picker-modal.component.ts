@@ -19,6 +19,8 @@ export class DateTimePickerModalComponent implements OnInit {
     disabled = false;
     @Input()
     onlyDate = false;
+    @Input()
+    title: string;
 
     @Output()
     onSubmit: EventEmitter<string> = new EventEmitter<string>();
@@ -32,7 +34,8 @@ export class DateTimePickerModalComponent implements OnInit {
             this.datePicker.navigateTo({ year: this.date.year, month: this.date.month });
         }
     }
-
+    maxDate = new Date();
+    minDate = new Date(1900, 1, 1);
     private datePicker: NgbDatepicker;
 
     @ViewChild("timePicker", { static: false })
@@ -50,6 +53,9 @@ export class DateTimePickerModalComponent implements OnInit {
     ngOnInit(): void {
         this.date = DateTimeModel.fromLocalString(this.dateString);
         this.time = DateTimeModel.fromLocalString(this.dateString);
+        if (!this.title) {
+            this.title = this.onlyDate ? "Select Date" : "Select Date And Time";
+        }
     }
 
     onDateSelected() {

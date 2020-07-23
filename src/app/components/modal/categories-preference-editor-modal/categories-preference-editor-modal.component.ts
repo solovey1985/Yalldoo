@@ -1,7 +1,6 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from "@angular/core";
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { Category } from "app/_models/category/category.model";
 import { CategoryService } from "app/_services/category/category.service";
-import { ThrowStmt } from "@angular/compiler";
 
 @Component({
     selector: "app-categories-preference-editor",
@@ -27,6 +26,7 @@ export class CategoriesPreferenceEditorComponent implements OnInit {
             this.selectedCategories = new Array<Category>();
         } else {
             this.outputCategories = JSON.parse(JSON.stringify(this.selectedCategories));
+            this.categories.sort(this.sortCategoryPreferences());
         }
     }
 
@@ -63,6 +63,17 @@ export class CategoriesPreferenceEditorComponent implements OnInit {
 
     onSearch(searchInput: string) {
         let newCategories = this.categoryService.getChildCategories();
-        this.categories = newCategories.filter(x => x.title.toLowerCase().indexOf(searchInput)>-1);
+        this.categories = newCategories.filter((x) => x.title.toLowerCase().indexOf(searchInput) > -1);
+    }
+    
+    private sortCategoryPreferences(): (a: Category, b: Category) => number {
+        return (a, b) => {
+            if (this.isCategorySelected(a) && this.isCategorySelected(b)) {
+                return 0;
+            } else if (this.isCategorySelected(a)) {
+                return -1;
+            }
+            return 1;
+        };
     }
 }

@@ -30,6 +30,8 @@ import { AboutComponent } from "./about/about.component";
 import { ComponentsModule } from "app/components/components.module";
 import { RouterModule } from "@angular/router";
 import { ForgotComponent } from './forgot/forgot.component';
+import { FriendsComponent } from './friends/friends/friends.component';
+import { FriendComponent } from './friends/friend/friend.component';
 
 @NgModule({
     imports: [
@@ -42,11 +44,11 @@ import { ForgotComponent } from './forgot/forgot.component';
         NouisliderModule,
         JwBootstrapSwitchNg2Module,
         AngularMultiSelectModule,
-        ComponentsModule,
         AgmCoreModule.forRoot({
             apiKey: "AIzaSyCZzR9wbOwxH0ejRE_OYJJTpOhtwg44lu8"
         }),
-        ImageUploadModule
+        ImageUploadModule,
+        ComponentsModule
     ],
     declarations: [
         PagesComponent,
@@ -67,7 +69,9 @@ import { ForgotComponent } from './forgot/forgot.component';
         FeedComponent,
         EventComponent,
         EventCreateComponent,
-        ForgotComponent
+        ForgotComponent,
+        FriendsComponent,
+        FriendComponent
     ]
 })
 export class PagesModule {}

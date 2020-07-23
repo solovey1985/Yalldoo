@@ -31,6 +31,8 @@ import { DateTimePickerComponent } from './date-time-picker/date-time-picker.com
 import { FriendsPickerModalComponent } from './modal/friends-picker-modal/friends-picker-modal.component';
 import { SelectDropdownComponent } from './select-dropdown/select-dropdown.component';
 import { CategoriesPreferenceEditorComponent } from './modal/categories-preference-editor-modal/categories-preference-editor-modal.component';
+import { FriendListItemComponent } from './friends/friend-list-item/friend-list-item.component';
+import { FriendListComponent } from './friends/friend-list/friend-list.component';
 
 @NgModule({
     imports: [
@@ -68,6 +70,8 @@ import { CategoriesPreferenceEditorComponent } from './modal/categories-preferen
         FriendsPickerModalComponent,
         SelectDropdownComponent,
         CategoriesPreferenceEditorComponent,
+        FriendListItemComponent,
+        FriendListComponent,
 
     ],
     exports: [
@@ -86,7 +90,9 @@ import { CategoriesPreferenceEditorComponent } from './modal/categories-preferen
         PlaceAutocompleteComponent,
         MapComponent,
         SelectDropdownComponent,
-        CategoriesPreferenceEditorComponent
+        CategoriesPreferenceEditorComponent,
+        FriendListComponent,
+
     ]
 })
 export class ComponentsModule { }

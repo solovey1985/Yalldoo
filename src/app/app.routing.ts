@@ -24,7 +24,8 @@ import { AppLayoutComponent } from "./layouts/app-layout/app-layout.component";
 import { BareLayoutComponent } from "./layouts/bare-layout/bare-layout.component";
 import { SiteLayoutComponent } from "./layouts/site-layout/site-layout.component";
 import { ForgotComponent } from "./pages/forgot/forgot.component";
-
+import { FriendsComponent } from "./pages/friends/friends/friends.component";
+import { FriendComponent } from "./pages/friends/friend/friend.component";
 @NgModule({
     imports: [
         CommonModule,
@@ -52,7 +53,9 @@ import { ForgotComponent } from "./pages/forgot/forgot.component";
                     { path: "me", component: SettingsComponent },
                     { path: "twitter", component: TwitterComponent },
                     { path: "preferences", component: PreferencesComponent },
-                    { path: "profile", component: ProfileComponent }
+                    { path: "profile", component: ProfileComponent },
+                    { path: "friends", component: FriendsComponent },
+                    { path: "friend/:id", component: FriendComponent }
                 ]
             },
             {

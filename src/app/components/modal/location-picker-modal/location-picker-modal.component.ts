@@ -23,12 +23,14 @@ export class LocationPickerModalComponent implements OnInit {
     constructor(private geo: GeoService) {}
 
     ngOnInit(): void {
-        this.location = new LocationDto();
-        this.location.title = "";
-        this.location.position = {
-            lat: Config.defaultLat,
-            lng: Config.defaultLng
-        };
+        if (!this.location) {
+            this.location = new LocationDto();
+            this.location.title = "";
+            this.location.position = {
+                lat: Config.defaultLat,
+                lng: Config.defaultLng
+            };
+        }
     }
 
     onOkayClick() {
@@ -39,7 +41,7 @@ export class LocationPickerModalComponent implements OnInit {
         this.onDismiss.emit();
     }
 
-    onSetAddress(place: any) {
+    onSetAddress(place: LocationDto) {
       this.location = place;
     }
 

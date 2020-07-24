@@ -46,6 +46,8 @@ export class LocationPickerModalComponent implements OnInit {
     }
 
     onMapLocationSet(coord: IHerePosition) {
-        this.geo.reverseGeocode(coord).then((x) => (this.currentPlace = x));
+        this.geo.reverseGeocode(coord).then( (x: LocationDto) => {
+            this.location = x
+        });
     }
 }

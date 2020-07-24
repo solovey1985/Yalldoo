@@ -1,1 +1,24 @@
-
+<div class="yld-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-8 ml-auto mr-auto">
+                <div class="row yld-event-container">
+                    <div class="col-4 yld-event-avatar">
+                        <img src="assets/img/avatar-event.jpg" class="img-circle"/>
+                    </div>
+                    <div class="col-8 yld-event-title">
+                        <span><i class="fa fa-2 fa-child"></i><label class="badge badge-warning main-tag">Football</label></span>
+                        <h2>Футбол в коробке</h2>
+                    </div>
+                </div>
+                <div class="row yld-event-date-time-container">
+                    <h5 class="title-uppercase"><i class="fa fa-clock-o"></i> {{date | date: 'HH:mm'}}</h5>
+                    <h5 class="title-uppercase"><i class="fa fa-calendar-o"></i> {{ date | date: 'dd MMM yyyy'}}</h5>
+                </div>
+                <div class="row yld-event-address-container">
+                    <h4 class="title-uppercase"><i class="fa fa-map-marker"></i>Kyiv, Lugova st, bld 3</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

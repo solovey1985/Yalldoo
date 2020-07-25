@@ -1,22 +1,78 @@
 <div class="yld-page">
     <div class="container">
         <div class="row">
-            <div class="col-8 ml-auto mr-auto">
-                <div class="row yld-event-container">
+            <div class="col-8 ml-auto mr-auto yld-event-container container">
+                <div class="yld-event-actions-container">
+                    <button class="b"
+                </div>
+                <div class="row yld-event-header-container">
                     <div class="col-4 yld-event-avatar">
-                        <img src="assets/img/avatar-event.jpg" class="img-circle"/>
+                        <img src="assets/img/avatar-event.jpg" class="img-circle" />
                     </div>
                     <div class="col-8 yld-event-title">
-                        <span><i class="fa fa-2 fa-child"></i><label class="badge badge-warning main-tag">Football</label></span>
+                        <div class="yld-event-title-category badge badge-pill badge-success main-tag">
+                            <i class="fa fa-3x fa-child"></i>Football
+                        </div>
                         <h2>Футбол в коробке</h2>
                     </div>
                 </div>
-                <div class="row yld-event-date-time-container">
-                    <h5 class="title-uppercase"><i class="fa fa-clock-o"></i> {{date | date: 'HH:mm'}}</h5>
-                    <h5 class="title-uppercase"><i class="fa fa-calendar-o"></i> {{ date | date: 'dd MMM yyyy'}}</h5>
+                <hr />
+                <div class="yld-event-date-time-container">
+                    <h4>Date And Time</h4>
+                    <div class="d-flex flex-row">
+                        <h5 class="title-uppercase"><i class="fa fa-clock-o"></i> {{ date | date: "HH:mm" }}</h5>
+                        <h5 class="title-uppercase">
+                            <i class="fa fa-calendar-o"></i> {{ date | date: "dd MMM yyyy" }}
+                        </h5>
+                    </div>
                 </div>
-                <div class="row yld-event-address-container">
-                    <h4 class="title-uppercase"><i class="fa fa-map-marker"></i>Kyiv, Lugova st, bld 3</h4>
+                <hr />
+                <div class="yld-event-address-container">
+                    <h4>Address</h4>
+                    <h5 class="title-uppercase"><i class="fa fa-map-marker"></i>Kyiv, Lugova st, bld 3</h5>
+                </div>
+                <hr />
+                <div class="yld-event-participants-container">
+                    <h4>Participants</h4>
+                    <div class="yld-list-item-avatar-user-list">
+                        <span class="yld-list-item-avatar-user"
+                            ><img
+                                src="assets/img/faces/kaci-baum-2.jpg"
+                                alt="..."
+                                placement="bottom"
+                                ngbPopover="Friend Name 1"
+                        /></span>
+                        <span class="yld-list-item-avatar-user"
+                            ><img
+                                src="assets/img/faces/clem-onojeghuo-3.jpg"
+                                placement="bottom"
+                                ngbPopover="Friend Name 2"
+                                alt="..."
+                        /></span>
+                        <span class="yld-list-item-avatar-user"
+                            ><img
+                                src="assets/img/faces/erik-lucatero-2.jpg"
+                                placement="bottom"
+                                ngbPopover="Friend Name 3"
+                                alt="..."
+                        /></span>
+                        <span class="yld-list-item-avatar-user"
+                            ><img
+                                src="assets/img/faces/joe-gardner-2.jpg"
+                                placement="bottom"
+                                ngbPopover="Friend Name 4"
+                                alt="..."
+                        /></span>
+                    </div>
+                </div>
+                <hr />
+                <div class="row yld-event-description">
+                    <h4>About</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur atque ipsa ullam vero
+                        suscipit? Quae pariatur facere eaque necessitatibus, laudantium reprehenderit unde labore
+                        cumque. Non ipsa odio placeat ad id.
+                    </p>
                 </div>
             </div>
         </div>

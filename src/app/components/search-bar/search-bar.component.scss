@@ -3,7 +3,7 @@
         width: 100%;
     }
 
-    &-bar-conatiner {
+    &-bar-container {
         font-size: 2em;
         width: 100%;
         padding: 20px 40px;
@@ -22,7 +22,12 @@
 }
 
 @media (max-width: 600px) {
-    .yld-search-bar-input {
-        max-width: 200px;
+    .yld-search-bar {
+        &-input {
+            max-width: 200px;
+        }
+        &-container {
+            padding: 20px;
+        }
     }
 }

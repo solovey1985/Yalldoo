@@ -8,7 +8,7 @@ export class EventComponent implements OnInit {
 
   date = new Date(2020, 8, 24, 12, 20, 0);
   constructor() { }
-
+  actionItems=["Folow", "Join", "Invite"];
   ngOnInit(): void {
   }
 

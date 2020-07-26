@@ -1,20 +1,39 @@
 <div class="yld-page">
     <div class="container">
         <div class="row">
-            <div class="col-8 ml-auto mr-auto yld-event-container container">
+            <div class="col-8 ml-auto mr-auto yld-event-container card no-transition">
+                <div
+                    class="yld-event-image-container"
+                    style="background-image: url('./assets/img/sections/roger-keller.jpg');"
+                ></div>
                 <div class="yld-event-actions-container">
-                    <button class="b"
+                    <div class="yld-event-title-category badge-success">
+                        <i class="fa fa-3x fa-child"></i>Football
+                    </div>
+                    <app-select-dropdown
+                        [items]="actionItems"
+                        [title]="'Actions'"
+                        [style]="'default'"
+                        [buttonIcon]="'gear'"
+                        [withBorder]="true"
+                    ></app-select-dropdown>
                 </div>
                 <div class="row yld-event-header-container">
                     <div class="col-4 yld-event-avatar">
                         <img src="assets/img/avatar-event.jpg" class="img-circle" />
                     </div>
                     <div class="col-8 yld-event-title">
-                        <div class="yld-event-title-category badge badge-pill badge-success main-tag">
-                            <i class="fa fa-3x fa-child"></i>Football
-                        </div>
                         <h2>Футбол в коробке</h2>
                     </div>
+                </div>
+                <hr />
+                <div class="yld-event-description">
+                    <h4>About</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur atque ipsa ullam vero
+                        suscipit? Quae pariatur facere eaque necessitatibus, laudantium reprehenderit unde labore
+                        cumque. Non ipsa odio placeat ad id.
+                    </p>
                 </div>
                 <hr />
                 <div class="yld-event-date-time-container">
@@ -65,15 +84,7 @@
                         /></span>
                     </div>
                 </div>
-                <hr />
-                <div class="row yld-event-description">
-                    <h4>About</h4>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur atque ipsa ullam vero
-                        suscipit? Quae pariatur facere eaque necessitatibus, laudantium reprehenderit unde labore
-                        cumque. Non ipsa odio placeat ad id.
-                    </p>
-                </div>
+
             </div>
         </div>
     </div>

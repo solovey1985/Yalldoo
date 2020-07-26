@@ -24,6 +24,7 @@
                             <app-select-dropdown
                                 [title]="'Select Event Privacy'"
                                 [items]="privacyList"
+                                [buttonIcon]="'lock'"
                                 (onItemSelected)="setPrivacy($event)"
                             ></app-select-dropdown>
                             <div class="yld-errors-container">

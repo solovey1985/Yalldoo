@@ -7,28 +7,37 @@
                     style="background-image: url('./assets/img/sections/roger-keller.jpg');"
                 ></div>
                 <div class="yld-event-actions-container">
-                    <div class="yld-event-title-category badge-success">
-                        <i class="fa fa-3x fa-child"></i>Football
-                    </div>
+                    <div class="yld-event-title-category badge-success"><i class="fa fa-3x fa-child"></i>Football</div>
                     <app-select-dropdown
                         [items]="actionItems"
                         [title]="'Actions'"
                         [style]="'default'"
                         [buttonIcon]="'gear'"
                         [withBorder]="true"
+                        (onItemSelected)="onActionSelect($event)"
                     ></app-select-dropdown>
                 </div>
-                <div class="row yld-event-header-container">
-                    <div class="col-4 yld-event-avatar">
-                        <img src="assets/img/avatar-event.jpg" class="img-circle" />
+                <div class="yld-event-header-container">
+                    <div class="row">
+                        <div class="col-4 yld-event-avatar">
+                            <img src="assets/img/avatar-event.jpg" class="img-rounded img-responsive" />
+                        </div>
+                        <div class="col-8 yld-event-title">
+                            <h2>Футбол в коробке</h2>
+                        </div>
                     </div>
-                    <div class="col-8 yld-event-title">
-                        <h2>Футбол в коробке</h2>
+
+                    <div class="yld-event-creator-avatar d-flex flex-row justify-content-start align-items-center">
+                        <img
+                            class="img-circle img-no-padding img-responsive"
+                            src="assets/img/faces/clem-onojeghuo-2.jpg"
+                            alt="..."
+                        />
+                        <h5>Event Creator</h5>
                     </div>
                 </div>
-                <hr />
                 <div class="yld-event-description">
-                    <h4>About</h4>
+                    <h5>About</h5>
                     <p>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur atque ipsa ullam vero
                         suscipit? Quae pariatur facere eaque necessitatibus, laudantium reprehenderit unde labore
@@ -37,7 +46,7 @@
                 </div>
                 <hr />
                 <div class="yld-event-date-time-container">
-                    <h4>Date And Time</h4>
+                    <h5>Date And Time</h5>
                     <div class="d-flex flex-row">
                         <h5 class="title-uppercase"><i class="fa fa-clock-o"></i> {{ date | date: "HH:mm" }}</h5>
                         <h5 class="title-uppercase">
@@ -47,44 +56,44 @@
                 </div>
                 <hr />
                 <div class="yld-event-address-container">
-                    <h4>Address</h4>
+                    <h5>Address</h5>
                     <h5 class="title-uppercase"><i class="fa fa-map-marker"></i>Kyiv, Lugova st, bld 3</h5>
                 </div>
                 <hr />
                 <div class="yld-event-participants-container">
-                    <h4>Participants</h4>
+                    <h5>Participants</h5>
                     <div class="yld-list-item-avatar-user-list">
                         <span class="yld-list-item-avatar-user"
                             ><img
                                 src="assets/img/faces/kaci-baum-2.jpg"
                                 alt="..."
-                                placement="bottom"
                                 ngbPopover="Friend Name 1"
+                                placement="top"
                         /></span>
                         <span class="yld-list-item-avatar-user"
                             ><img
                                 src="assets/img/faces/clem-onojeghuo-3.jpg"
-                                placement="bottom"
                                 ngbPopover="Friend Name 2"
+                                placement="top"
                                 alt="..."
                         /></span>
                         <span class="yld-list-item-avatar-user"
                             ><img
                                 src="assets/img/faces/erik-lucatero-2.jpg"
-                                placement="bottom"
                                 ngbPopover="Friend Name 3"
+                                placement="top"
                                 alt="..."
                         /></span>
                         <span class="yld-list-item-avatar-user"
                             ><img
                                 src="assets/img/faces/joe-gardner-2.jpg"
-                                placement="bottom"
                                 ngbPopover="Friend Name 4"
+                                placement="top"
                                 alt="..."
                         /></span>
+                        <button class="btn btn-default btn-link">+8...</button>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

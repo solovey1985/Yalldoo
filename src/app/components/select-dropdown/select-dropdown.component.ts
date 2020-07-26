@@ -14,8 +14,8 @@ export class SelectDropdownComponent implements OnInit {
     style: string;
     @Input()
     buttonIcon;
-  @Input()
-  withBorder: false;
+    @Input()
+    withBorder: false;
     @Output()
     onItemSelected = new EventEmitter<string>();
 
@@ -26,9 +26,9 @@ export class SelectDropdownComponent implements OnInit {
         }
         return this.isSelected ? "btn-success" : "btn-warning";
     }
-  public get bordered(): boolean{
-    return this.withBorder;
-  }
+    public get bordered(): boolean {
+        return this.withBorder;
+    }
 
     constructor() {}
 
@@ -38,9 +38,9 @@ export class SelectDropdownComponent implements OnInit {
         if (!this.style) {
             if (item) {
                 this.isSelected = true;
-                this.title = item;
             }
-            this.onItemSelected.emit(item);
         }
+        this.title = item;
+        this.onItemSelected.emit(item);
     }
 }

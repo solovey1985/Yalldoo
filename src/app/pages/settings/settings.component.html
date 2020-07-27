@@ -16,30 +16,44 @@
                 <div class="col-md-6 ml-auto mr-auto">
                     <form class="settings-form" [formGroup]="form">
                         <div class="row">
+
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
                                     <label>First Name</label>
-                                    <input
-                                        type="text"
-                                        class="form-control border-input"
-                                        formControlName="firstName"
-                                        placeholder="First Name"
+                                    <input 
+                                        type="text" 
+                                        class="form-control" 
+                                        [ngClass]="{ 'form-control-danger': isInvalid(form.get('firstName')) }" 
+                                        placeholder="First Name" 
+                                        formControlName="firstName" 
                                     />
+                                    <div class="yld-errors-container">
+                                        <div *ngFor="let validation of validation_messages.firstName" class="yld-register-invalid">
+                                            <span *ngIf="form.get('firstName').hasError(validation.type) && (form.get('firstName').dirty || form.get('firstName').touched)">{{ validation.message }}</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
                                     <label>Last Name</label>
-                                    <input
-                                        type="text"
-                                        class="form-control border-input"
-                                        formControlName="lastName"
-                                        placeholder="Last Name"
+                                    <input 
+                                        type="text" 
+                                        class="form-control" 
+                                        [ngClass]="{ 'form-control-danger': isInvalid(form.get('lastName')) }" 
+                                        placeholder="Last Name" 
+                                        formControlName="lastName" 
                                     />
+                                    <div class="yld-errors-container">
+                                        <div *ngFor="let validation of validation_messages.lastName" class="yld-register-invalid">
+                                            <span *ngIf="form.get('lastName').hasError(validation.type) && (form.get('lastName').dirty || form.get('lastName').touched)">{{ validation.message }}</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
                         <div class="form-group">
                             <h6>Birth Date <span class="icon-danger">*</span></h6>
                             <div class="d-flex flex-row align-items-baseline input-group yld-settings-date-selector">
@@ -63,18 +77,19 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="form-group">
                             <label>Tell about yourself</label>
                             <textarea
                                 formControlName="description"
                                 class="form-control textarea-limited"
-                                placeholder="This is a textarea limited to 150 characters."
+                                placeholder="Tell something about yourself"
                                 rows="3"
-                                maxlength="150"
+                                maxlength="256"
                             ></textarea>
                             <h5>
                                 <small>
-                                    <span id="textarea-limited-message" class="pull-right">150 characters left</span>
+                                    <span id="textarea-limited-message" class="pull-right">{{256 - descriptionLength}} characters left</span>
                                 </small>
                             </h5>
                         </div>

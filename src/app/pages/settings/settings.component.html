@@ -16,20 +16,28 @@
                 <div class="col-md-6 ml-auto mr-auto">
                     <form class="settings-form" [formGroup]="form">
                         <div class="row">
-
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
                                     <label>First Name</label>
-                                    <input 
-                                        type="text" 
-                                        class="form-control" 
-                                        [ngClass]="{ 'form-control-danger': isInvalid(form.get('firstName')) }" 
-                                        placeholder="First Name" 
-                                        formControlName="firstName" 
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        [ngClass]="{ 'form-control-danger': isInvalid(form.get('firstName')) }"
+                                        placeholder="First Name"
+                                        formControlName="firstName"
                                     />
                                     <div class="yld-errors-container">
-                                        <div *ngFor="let validation of validation_messages.firstName" class="yld-register-invalid">
-                                            <span *ngIf="form.get('firstName').hasError(validation.type) && (form.get('firstName').dirty || form.get('firstName').touched)">{{ validation.message }}</span>
+                                        <div
+                                            *ngFor="let validation of validation_messages.firstName"
+                                            class="yld-register-invalid"
+                                        >
+                                            <span
+                                                *ngIf="
+                                                    form.get('firstName').hasError(validation.type) &&
+                                                    (form.get('firstName').dirty || form.get('firstName').touched)
+                                                "
+                                                >{{ validation.message }}</span
+                                            >
                                         </div>
                                     </div>
                                 </div>
@@ -38,26 +46,39 @@
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
                                     <label>Last Name</label>
-                                    <input 
-                                        type="text" 
-                                        class="form-control" 
-                                        [ngClass]="{ 'form-control-danger': isInvalid(form.get('lastName')) }" 
-                                        placeholder="Last Name" 
-                                        formControlName="lastName" 
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        [ngClass]="{ 'form-control-danger': isInvalid(form.get('lastName')) }"
+                                        placeholder="Last Name"
+                                        formControlName="lastName"
                                     />
                                     <div class="yld-errors-container">
-                                        <div *ngFor="let validation of validation_messages.lastName" class="yld-register-invalid">
-                                            <span *ngIf="form.get('lastName').hasError(validation.type) && (form.get('lastName').dirty || form.get('lastName').touched)">{{ validation.message }}</span>
+                                        <div
+                                            *ngFor="let validation of validation_messages.lastName"
+                                            class="yld-register-invalid"
+                                        >
+                                            <span
+                                                *ngIf="
+                                                    form.get('lastName').hasError(validation.type) &&
+                                                    (form.get('lastName').dirty || form.get('lastName').touched)
+                                                "
+                                                >{{ validation.message }}</span
+                                            >
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group yld-event-birthdate-container">
                             <h6>Birth Date <span class="icon-danger">*</span></h6>
                             <div class="d-flex flex-row align-items-baseline input-group yld-settings-date-selector">
-                                <button type="button" class="btn btn-default btn-just-icon" (click)="showDatetimepickerModal()">
+                                <button
+                                    type="button"
+                                    class="btn btn-default btn-just-icon"
+                                    (click)="showDatetimepickerModal()"
+                                >
                                     <i class="fa fa-calendar" aria-hidden="true"></i>
                                 </button>
                                 <span>
@@ -76,6 +97,12 @@
                                     >
                                 </div>
                             </div>
+                            <div class="yld-privacy-container">
+                                <app-privacy-selector
+                                    [property]="'places'"
+                                    (onPrivacySelected)="onPrivacySet($event)"
+                                ></app-privacy-selector>
+                            </div>
                         </div>
 
                         <div class="form-group">
@@ -89,10 +116,19 @@
                             ></textarea>
                             <h5>
                                 <small>
-                                    <span id="textarea-limited-message" class="pull-right">{{256 - descriptionLength}} characters left</span>
+                                    <span id="textarea-limited-message" class="pull-right"
+                                        >{{ 256 - descriptionLength }} characters left</span
+                                    >
                                 </small>
                             </h5>
+                            <div>
+                                <app-privacy-selector
+                                    [property]="'description'"
+                                    (onPrivacySelected)="onPrivacySet($event)"
+                                ></app-privacy-selector>
+                            </div>
                         </div>
+                        <hr />
                         <div class="yld-profile-edit-preference-container">
                             <div class="d-flex align-items-baseline justify-content-between">
                                 <h4>Categories</h4>
@@ -111,7 +147,14 @@
                                     <p>{{ category.title }}</p>
                                 </div>
                             </div>
+                            <div>
+                                <app-privacy-selector
+                                    [property]="'categories'"
+                                    (onPrivacySelected)="onPrivacySet($event)"
+                                ></app-privacy-selector>
+                            </div>
                         </div>
+                        <hr />
                         <div class="yld-profile-edit-preferences-container">
                             <div class="d-flex align-items-baseline justify-content-between">
                                 <h4>Places</h4>
@@ -126,9 +169,13 @@
                             <hr />
                             <ul class="list-group list-unstyled">
                                 <li *ngFor="let location of locations">
-                                    <div class="yld-profile-edit-place-item d-flex justify-content-between align-items-center">
+                                    <div
+                                        class="yld-profile-edit-place-item d-flex justify-content-between align-items-center"
+                                    >
                                         <i class="fa fa-map-marker"></i>
-                                        <label class="yld-profile-edit-place-item-title text-center">{{ location.title }}</label>
+                                        <label class="yld-profile-edit-place-item-title text-center">{{
+                                            location.title
+                                        }}</label>
                                         <div class="yld-profile-edit-place-item-actions">
                                             <button
                                                 class="btn btn-just-icon btn-link"
@@ -148,6 +195,12 @@
                                     </div>
                                 </li>
                             </ul>
+                            <div>
+                                <app-privacy-selector
+                                    [property]="'places'"
+                                    (onPrivacySelected)="onPrivacySet($event)"
+                                ></app-privacy-selector>
+                            </div>
                         </div>
                         <hr />
 

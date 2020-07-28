@@ -1,0 +1,8 @@
+<div ngbDropdown class="dropdown">
+    <div class="dropdown-toggle btn btn-round" ngbDropdownToggle>
+        <i *ngIf="buttonIcon" class="fa fa-{{buttonIcon}}"></i>
+        {{title}}<b class="caret"></b></div>
+    <div ngbDropdownMenu class="dropdown-info dropdown-menu-right">
+        <a *ngFor="let item of privacyItems" class="dropdown-item" (click)="onItemClick(item)">{{item}}</a>
+    </div>
+</div>

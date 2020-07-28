@@ -52,9 +52,21 @@
     }
 }
 
-.yld-profile-edit-preferences-container {
+.yld-profile-edit-preference-container {
+    
+    button{
+        margin-left: 16px;
+    }
+    
     i {
         font-size: large;
+    }
+}
+
+.yld-profile-edit-places-container
+{
+    button{
+        margin-left: 16px;
     }
 }
 
@@ -62,4 +74,11 @@
     span {
         margin-left: 8px;
     }
+}
+
+.yld-privacy-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-bottom: 8px;
 }

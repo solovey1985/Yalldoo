@@ -70,13 +70,21 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="form-group yld-event-birthdate-container">
-                            <h6>Birth Date <span class="icon-danger">*</span></h6>
-                            <div class="d-flex flex-row align-items-baseline input-group yld-settings-date-selector">
+                        <hr />
+                        <div class="form-group yld-event-item-container yld-event-birthdate-container">
+                            <div class="d-flex flex-row justify-content-between">
+                                <h6>Birth Date <span class="icon-danger">*</span></h6>
+                                <div class="yld-privacy-container">
+                                    <app-privacy-selector
+                                        [property]="'places'"
+                                        (onPrivacySelected)="onPrivacySet($event)"
+                                    ></app-privacy-selector>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row align-items-center input-group yld-settings-date-selector">
                                 <button
                                     type="button"
-                                    class="btn btn-default btn-just-icon"
+                                    class="btn btn-primary btn-just-icon"
                                     (click)="showDatetimepickerModal()"
                                 >
                                     <i class="fa fa-calendar" aria-hidden="true"></i>
@@ -97,16 +105,18 @@
                                     >
                                 </div>
                             </div>
-                            <div class="yld-privacy-container">
-                                <app-privacy-selector
-                                    [property]="'places'"
-                                    (onPrivacySelected)="onPrivacySet($event)"
-                                ></app-privacy-selector>
-                            </div>
                         </div>
-
+                        <hr />
                         <div class="form-group">
-                            <label>Tell about yourself</label>
+                            <div class="d-flex flex-row align-items-center justify-content-between">
+                                <h6>Tell about yourself</h6>
+                                <div class="yld-privacy-container">
+                                    <app-privacy-selector
+                                        [property]="'description'"
+                                        (onPrivacySelected)="onPrivacySet($event)"
+                                    ></app-privacy-selector>
+                                </div>
+                            </div>
                             <textarea
                                 formControlName="description"
                                 class="form-control textarea-limited"
@@ -121,24 +131,26 @@
                                     >
                                 </small>
                             </h5>
-                            <div>
-                                <app-privacy-selector
-                                    [property]="'description'"
-                                    (onPrivacySelected)="onPrivacySet($event)"
-                                ></app-privacy-selector>
-                            </div>
                         </div>
                         <hr />
                         <div class="yld-profile-edit-preference-container">
-                            <div class="d-flex align-items-baseline justify-content-between">
-                                <h4>Categories</h4>
-                                <button
-                                    ngbTooltip="Edit"
-                                    (click)="onCategoriesEditClick()"
-                                    class="btn btn-outline-default btn-just-icon"
-                                >
-                                    <i class="fa fa-edit"></i>
-                                </button>
+                            <div class="d-flex flex-row align-items-baseline justify-content-between">
+                                <div class="d-flex align-items-baseline justify-content-start">
+                                    <h4>Categories</h4>
+                                    <button
+                                        ngbTooltip="Edit"
+                                        (click)="onCategoriesEditClick()"
+                                        class="btn btn-outline-success btn-just-icon"
+                                    >
+                                        <i class="fa fa-edit"></i>
+                                    </button>
+                                </div>
+                                <div class="yld-privacy-container">
+                                    <app-privacy-selector
+                                        [property]="'categories'"
+                                        (onPrivacySelected)="onPrivacySet($event)"
+                                    ></app-privacy-selector>
+                                </div>
                             </div>
                             <hr />
                             <div class="yld-profile_description-pref">
@@ -147,30 +159,32 @@
                                     <p>{{ category.title }}</p>
                                 </div>
                             </div>
-                            <div>
-                                <app-privacy-selector
-                                    [property]="'categories'"
-                                    (onPrivacySelected)="onPrivacySet($event)"
-                                ></app-privacy-selector>
-                            </div>
                         </div>
                         <hr />
-                        <div class="yld-profile-edit-preferences-container">
-                            <div class="d-flex align-items-baseline justify-content-between">
-                                <h4>Places</h4>
-                                <button
-                                    ngbTooltip="Add"
-                                    (click)="onPlacesAddClick()"
-                                    class="btn btn-outline-default btn-just-icon"
-                                >
-                                    <i class="fa fa-plus-circle"></i>
-                                </button>
+                        <div class="yld-profile-edit-places-container">
+                            <div class="d-flex flex-row align-items-baseline justify-content-between">
+                                <div class="d-flex align-items-baseline justify-content-start">
+                                    <h4>Places</h4>
+                                    <button
+                                        ngbTooltip="Add"
+                                        (click)="onPlacesAddClick()"
+                                        class="btn btn-outline-success btn-just-icon"
+                                    >
+                                        <i class="fa fa-plus-circle"></i>
+                                    </button>
+                                </div>
+                                <div class="yld-privacy-container">
+                                    <app-privacy-selector
+                                        [property]="'places'"
+                                        (onPrivacySelected)="onPrivacySet($event)"
+                                    ></app-privacy-selector>
+                                </div>
                             </div>
                             <hr />
                             <ul class="list-group list-unstyled">
                                 <li *ngFor="let location of locations">
                                     <div
-                                        class="yld-profile-edit-place-item d-flex justify-content-between align-items-center"
+                                        class="yld-profile-edit-place-item d-flex justify-content-between align-items-baseline"
                                     >
                                         <i class="fa fa-map-marker"></i>
                                         <label class="yld-profile-edit-place-item-title text-center">{{
@@ -195,12 +209,6 @@
                                     </div>
                                 </li>
                             </ul>
-                            <div>
-                                <app-privacy-selector
-                                    [property]="'places'"
-                                    (onPrivacySelected)="onPrivacySet($event)"
-                                ></app-privacy-selector>
-                            </div>
                         </div>
                         <hr />
 

@@ -8,7 +8,7 @@ import { Component, OnInit, Input, Output,  EventEmitter } from '@angular/core';
 export class PrivacySelectorComponent implements OnInit {
 
   @Input()
-  buttonIcon = "lock"
+  buttonIcon = "eye"
   @Input()
     title = "Privacy"
   @Input()

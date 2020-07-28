@@ -8,7 +8,6 @@ import { ThrowStmt } from "@angular/compiler";
 import { User } from "app/_models";
 import UserInformation from "app/_models/user/userinfo.model";
 import { FormBuilder, FormGroup, Validators, FormControl, AbstractControl } from "@angular/forms";
-import { link } from "fs";
 
 @Component({
     selector: "app-settings",

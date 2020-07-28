@@ -1,6 +1,14 @@
 .register-form{
     .form-control{
         border: 1px solid #CCC5B9 !important;
+
+        //TODO: red border for invalid inputs
+ 
+        // &input[type="text"] {
+        //     &.ng-invalid.ng-touched {
+        //         border: 1px solid red !important;
+        //     }
+        // }
     
     }
 }

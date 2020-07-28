@@ -33,6 +33,7 @@ import { SelectDropdownComponent } from './select-dropdown/select-dropdown.compo
 import { CategoriesPreferenceEditorComponent } from './modal/categories-preference-editor-modal/categories-preference-editor-modal.component';
 import { FriendListItemComponent } from './friends/friend-list-item/friend-list-item.component';
 import { FriendListComponent } from './friends/friend-list/friend-list.component';
+import { PrivacySelectorComponent } from './privacy-selector/privacy-selector.component';
 
 @NgModule({
     imports: [
@@ -72,6 +73,7 @@ import { FriendListComponent } from './friends/friend-list/friend-list.component
         CategoriesPreferenceEditorComponent,
         FriendListItemComponent,
         FriendListComponent,
+        PrivacySelectorComponent,
 
     ],
     exports: [
@@ -92,6 +94,7 @@ import { FriendListComponent } from './friends/friend-list/friend-list.component
         SelectDropdownComponent,
         CategoriesPreferenceEditorComponent,
         FriendListComponent,
+        PrivacySelectorComponent
 
     ]
 })

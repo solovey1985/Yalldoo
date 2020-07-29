@@ -11,11 +11,10 @@ import { FormBuilder, FormGroup, Validators, FormControl, AbstractControl } from
 import { DomSanitizer } from "@angular/platform-browser";
 
 @Component({
-    selector: "app-settings",
-    templateUrl: "./settings.component.html",
-    styleUrls: ["./settings.component.scss"]
+    templateUrl: "./edit-profile.component.html",
+    styleUrls: ["./edit-profile.component.scss"]
 })
-export class SettingsComponent implements OnInit {
+export class EditProfileComponent implements OnInit {
     isDateSelected: boolean;
     locations: LocationDto[];
     data: Date = new Date();

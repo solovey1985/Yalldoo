@@ -17,7 +17,7 @@ import { LoginComponent } from "./login/login.component";
 import { ProfileComponent } from "./profile/profile.component";
 import { RegisterComponent } from "./register/register.component";
 import { SearchComponent } from "./search/search.component";
-import { SettingsComponent } from "./settings/settings.component";
+import { EditProfileComponent } from "./profile-edit/edit-profile.component";
 import { TwitterComponent } from "./twitter/twitter.component";
 import { Page404Component } from "./page404/page404.component";
 import { Page422Component } from "./page422/page422.component";
@@ -60,7 +60,7 @@ import { FriendComponent } from './friends/friend/friend.component';
         ProfileComponent,
         RegisterComponent,
         SearchComponent,
-        SettingsComponent,
+        EditProfileComponent,
         TwitterComponent,
         Page404Component,
         Page422Component,

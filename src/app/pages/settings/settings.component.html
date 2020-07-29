@@ -136,7 +136,7 @@
                         <div class="yld-profile-edit-preference-container">
                             <div class="d-flex flex-row align-items-baseline justify-content-between">
                                 <div class="d-flex align-items-baseline justify-content-start">
-                                    <h4>Categories</h4>
+                                    <h6>Categories</h6>
                                     <button
                                         ngbTooltip="Edit"
                                         (click)="onCategoriesEditClick()"
@@ -152,7 +152,6 @@
                                     ></app-privacy-selector>
                                 </div>
                             </div>
-                            <hr />
                             <div class="yld-profile_description-pref">
                                 <div *ngFor="let category of categories" class="yld-profile_description-pref-item">
                                     <i class="fa {{ getIcon(category.title) }}" aria-hidden="true"></i>
@@ -164,7 +163,7 @@
                         <div class="yld-profile-edit-places-container">
                             <div class="d-flex flex-row align-items-baseline justify-content-between">
                                 <div class="d-flex align-items-baseline justify-content-start">
-                                    <h4>Places</h4>
+                                    <h6>Places</h6>
                                     <button
                                         ngbTooltip="Add"
                                         (click)="onPlacesAddClick()"
@@ -180,7 +179,6 @@
                                     ></app-privacy-selector>
                                 </div>
                             </div>
-                            <hr />
                             <ul class="list-group list-unstyled">
                                 <li *ngFor="let location of locations">
                                     <div

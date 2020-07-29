@@ -1,10 +1,23 @@
 @import "../../../assets/scss/paper-kit/variables";
-.yld-privacy-container{
-    justify-self: flex-end;
-}
 .page-header {
     max-height: 20vh;
     height: 20vh;
+
+    .yld-change-image-small {
+        position: relative;
+        top: 85%;
+        left: 85%;
+        display: none;
+        visibility: hidden;
+    }
+
+    .yld-change-image-big {
+        position: relative;
+        top: 85%;
+        left: 85%;
+        display: block;
+        visibility: visible;
+    }
 }
 .yld-profile {
     &_description {
@@ -53,19 +66,17 @@
 }
 
 .yld-profile-edit-preference-container {
-    
-    button{
+    button {
         margin-left: 16px;
     }
-    
+
     i {
         font-size: large;
     }
 }
 
-.yld-profile-edit-places-container
-{
-    button{
+.yld-profile-edit-places-container {
+    button {
         margin-left: 16px;
     }
 }
@@ -81,4 +92,17 @@
     flex-direction: row;
     justify-content: flex-end;
     margin-bottom: 8px;
+}
+
+@media (max-width: 786px) {
+    .page-header {
+        .yld-change-image-small {
+            display: block;
+            visibility: visible;
+        }
+        .yld-change-image-big {
+            display: none;
+            visibility: hidden;
+        }
+    }
 }

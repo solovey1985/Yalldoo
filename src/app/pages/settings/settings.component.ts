@@ -8,6 +8,7 @@ import { ThrowStmt } from "@angular/compiler";
 import { User } from "app/_models";
 import UserInformation from "app/_models/user/userinfo.model";
 import { FormBuilder, FormGroup, Validators, FormControl, AbstractControl } from "@angular/forms";
+import { DomSanitizer } from "@angular/platform-browser";
 
 @Component({
     selector: "app-settings",
@@ -21,16 +22,29 @@ export class SettingsComponent implements OnInit {
     categories: Category[];
     user: User;
     userInfo: UserInformation;
+    state: any = {};
     form: FormGroup;
+    isRound: boolean = false;
+    image: string;
     validation_messages: any;
     constructor(private modal: ModalService,
         private notify: NotifyService,
         private categoryService: CategoryService,
-        private fb: FormBuilder) {
+        private fb: FormBuilder,
+        private sanitizer: DomSanitizer) {
         this.locations = new Array<LocationDto>();
         this.userInfo = new UserInformation();
         this.userInfo.birthDate = new Date();
         this.initValidationMessages();
+
+        this.handleImageChange = this.handleImageChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleClick = this.handleClick.bind(this);
+        this.handleRemove = this.handleRemove.bind(this);
+        this.state = {
+            file: null,
+            imagePreviewUrl: this.image !== undefined ? this.image:(this.isRound ? './assets/img/placeholder.jpg':'./assets/img/image_placeholder.jpg')
+        }
     }
 
     ngOnInit() {
@@ -41,6 +55,7 @@ export class SettingsComponent implements OnInit {
 
         this.categories = this.categoryService.getChildCategories().filter(x => x.id.toLocaleString().endsWith('02'));
         this.buildForm();
+        
     }
     ngOnDestroy() {
         //TODO: Remove 
@@ -130,6 +145,10 @@ export class SettingsComponent implements OnInit {
         return this.form.get("description").value ? this.form.get("description").value.length : 0;
     }
 
+    public get backgroundImage():any {
+       return this.sanitizer.bypassSecurityTrustStyle(`url(${this.state.imagePreviewUrl})`)
+    }
+
    private initValidationMessages() {
         this.validation_messages = {
             privacy: [{ type: "required", message: "Select event privacy" }],
@@ -150,5 +169,32 @@ export class SettingsComponent implements OnInit {
             category: [{ type: "required", message: "Category is required" }],
             description: [{ type: "maxlength", message: "Description cannot be more than 1024 characters long" }]
         };
+   }
+    
+        handleImageChange(e){
+        e.preventDefault();
+        let reader = new FileReader();
+        let file = e.target.files[0];
+        reader.onloadend = () => {
+            this.state.file = file;
+            this.state.imagePreviewUrl = reader.result;
+            // this.state.imagePreviewUrl1 = reader.result;
+        }
+        reader.readAsDataURL(file);
+    }
+    handleSubmit(e){
+        e.preventDefault();
+    }
+    handleClick(){
+        var input = document.createElement("input");
+        input.type = "file";
+        input.onchange = this.handleImageChange;
+        input.click();
+    }
+
+
+    handleRemove(){
+        this.state.file = null;
+        this.state.imagePreviewUrl = this.image !== undefined ? this.image:(this.isRound ? './assets/img/placeholder.jpg':'./assets/img/image_placeholder.jpg');
     }
 }

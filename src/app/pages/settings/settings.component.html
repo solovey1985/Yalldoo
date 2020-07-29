@@ -1,9 +1,15 @@
 <div class="wrapper">
     <div
         class="page-header page-header-xs settings-background"
-        style="background-image: url('./assets/img/sections/joshua-earles.jpg');"
+        [style.background-image]="backgroundImage"
     >
-        <div class="filter"></div>
+        
+        <div class="yld-change-image-big">
+            <button class="btn btn-danger btn-file btn-round" (click)="handleClick()"><i class="fa fa-image"></i>&nbsp;Change</button>
+        </div>
+        <div class="yld-change-image-small">
+            <button class="btn btn-danger btn-just-icon" (click)="handleClick()"><i class="fa fa-3x fa-edit"></i></button>
+        </div>
     </div>
     <div class="profile-content section">
         <div class="container">

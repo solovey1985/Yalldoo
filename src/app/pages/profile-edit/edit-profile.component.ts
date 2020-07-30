@@ -128,11 +128,11 @@ export class EditProfileComponent implements OnInit {
             email: [this.userInfo.email, [Validators.pattern(/[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/)]],
             phone: [this.userInfo.phone, [Validators.pattern(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im)]],
             facebook: [this.userInfo.facebook, Validators.compose([
-                Validators.maxLength(25),
+                Validators.maxLength(1024),
                 Validators.minLength(2)
             ])],
             website: [this.userInfo.website, Validators.compose([
-                Validators.maxLength(50),
+                Validators.maxLength(1024),
                 Validators.minLength(2)
             ])],
             birthDate: [this.userInfo.birthDate],
@@ -177,11 +177,11 @@ export class EditProfileComponent implements OnInit {
             phone: [{ type: "pattern", message: "Please enter a valid phone number" }],
             facebook:  [
                 { type: "minlength", message: "This field should be at least 2 characters long" },
-                { type: "maxlength", message: "This field can't be more than 25 characters long" },
+                { type: "maxlength", message: "This field can't be more than 1024 characters long" },
             ],
             website:  [
                 { type: "minlength", message: "This field should be at least 2 characters long" },
-                { type: "maxlength", message: "This field can't be more than 50 characters long" },
+                { type: "maxlength", message: "This field can't be more than 1024 characters long" },
             ],
             birthDate: [{ type: "required", message: "Date is required" }],
             location: [{ type: "required", message: "Location is required" }],

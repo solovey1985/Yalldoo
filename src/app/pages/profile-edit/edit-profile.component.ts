@@ -125,6 +125,16 @@ export class EditProfileComponent implements OnInit {
                 Validators.pattern(/^[a-zA-Zа-яА-Я0-9іІїЇєЄ\'\"]*(?:[\s.]*[a-zA-Zа-яА-Я0-9іІїЇєЄ\'\"]*)*$/),
                 Validators.required
             ])],
+            email: [this.userInfo.email, [Validators.pattern(/[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/)]],
+            phone: [this.userInfo.phone, [Validators.pattern(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im)]],
+            facebook: [this.userInfo.facebook, Validators.compose([
+                Validators.maxLength(25),
+                Validators.minLength(2)
+            ])],
+            website: [this.userInfo.website, Validators.compose([
+                Validators.maxLength(50),
+                Validators.minLength(2)
+            ])],
             birthDate: [this.userInfo.birthDate],
             description: [this.userInfo.description, [Validators.maxLength(256)]],
             categories: [''],
@@ -162,6 +172,16 @@ export class EditProfileComponent implements OnInit {
                 { type: "minlength", message: "Last Name must be at least 2 characters long" },
                 { type: "maxlength", message: "Last Name cannot be more than 25 characters long" },
                 { type: "pattern", message: "This field must contain only numbers and letters" }
+            ],
+            email: [{ type: "pattern", message: "Please enter a valid email" }],
+            phone: [{ type: "pattern", message: "Please enter a valid phone number" }],
+            facebook:  [
+                { type: "minlength", message: "This field should be at least 2 characters long" },
+                { type: "maxlength", message: "This field can't be more than 25 characters long" },
+            ],
+            website:  [
+                { type: "minlength", message: "This field should be at least 2 characters long" },
+                { type: "maxlength", message: "This field can't be more than 50 characters long" },
             ],
             birthDate: [{ type: "required", message: "Date is required" }],
             location: [{ type: "required", message: "Location is required" }],

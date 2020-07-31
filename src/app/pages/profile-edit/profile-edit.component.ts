@@ -11,8 +11,8 @@ import { FormBuilder, FormGroup, Validators, FormControl, AbstractControl } from
 import { DomSanitizer } from "@angular/platform-browser";
 
 @Component({
-    templateUrl: "./edit-profile.component.html",
-    styleUrls: ["./edit-profile.component.scss"]
+    templateUrl: "./profile-edit.component.html",
+    styleUrls: ["./profile-edit.component.scss"]
 })
 export class EditProfileComponent implements OnInit {
     isDateSelected: boolean;

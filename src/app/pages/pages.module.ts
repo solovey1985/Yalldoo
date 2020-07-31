@@ -17,7 +17,7 @@ import { LoginComponent } from "./login/login.component";
 import { ProfileComponent } from "./profile/profile.component";
 import { RegisterComponent } from "./register/register.component";
 import { SearchComponent } from "./search/search.component";
-import { EditProfileComponent } from "./profile-edit/edit-profile.component";
+import { EditProfileComponent } from "./profile-edit/profile-edit.component";
 import { TwitterComponent } from "./twitter/twitter.component";
 import { Page404Component } from "./page404/page404.component";
 import { Page422Component } from "./page422/page422.component";

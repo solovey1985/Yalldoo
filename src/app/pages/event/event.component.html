@@ -7,7 +7,24 @@
                     style="background-image: url('./assets/img/sections/roger-keller.jpg');"
                 ></div>
                 <div class="yld-event-actions-container">
-                    <div class="yld-event-title-category badge-success"><i class="fa fa-3x fa-child"></i>Football</div>
+                    <div class="yld-event-title-category badge-success">
+                        <div class="row">
+                            <span class="col-sm-7 col-8"
+                                ><i class="yld-event-title-category-text fa fa-3x fa-child"></i>Football</span
+                            >
+                            <div class="d-flex justify-content-between align-self-end col-4 col-sm-5">
+                                <button class="btn btn-just-icon btn-google">
+                                    <i class="fa fa-3x fa-heart" aria-hidden="true"></i>
+                                </button>
+                                <button class="btn btn-just-icon btn-info">
+                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                </button>
+                                <button class="btn btn-just-icon btn-danger">
+                                    <i class="fa fa-2x fa-remove" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                     <app-select-dropdown
                         [items]="actionItems"
                         [title]="'Actions'"
@@ -91,10 +108,10 @@
                                 placement="top"
                                 alt="..."
                         /></span>
-                        <button class="btn btn-default btn-link">+8...</button>
+                        <button class="btn btn-default btn-link">&nbsp;18</button>
                     </div>
                 </div>
             </div>
         </div>
-    
+    </div>
 </div>

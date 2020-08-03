@@ -32,6 +32,7 @@ import { RouterModule } from "@angular/router";
 import { ForgotComponent } from './forgot/forgot.component';
 import { FriendsComponent } from './friends/friends/friends.component';
 import { FriendComponent } from './friends/friend/friend.component';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
     imports: [
@@ -71,7 +72,8 @@ import { FriendComponent } from './friends/friend/friend.component';
         EventCreateComponent,
         ForgotComponent,
         FriendsComponent,
-        FriendComponent
+        FriendComponent,
+        SettingsComponent
     ]
 })
 export class PagesModule {}

@@ -26,6 +26,7 @@ import { SiteLayoutComponent } from "./layouts/site-layout/site-layout.component
 import { ForgotComponent } from "./pages/forgot/forgot.component";
 import { FriendsComponent } from "./pages/friends/friends/friends.component";
 import { FriendComponent } from "./pages/friends/friend/friend.component";
+import { SettingsComponent } from "./pages/settings/settings.component";
 @NgModule({
     imports: [
         CommonModule,
@@ -55,7 +56,8 @@ import { FriendComponent } from "./pages/friends/friend/friend.component";
                     { path: "preferences", component: PreferencesComponent },
                     { path: "profile", component: ProfileComponent },
                     { path: "friends", component: FriendsComponent },
-                    { path: "friend/:id", component: FriendComponent }
+                    { path: "friend/:id", component: FriendComponent },
+                    {path: "settings", component: SettingsComponent}
                 ]
             },
             {

@@ -1,0 +1,113 @@
+<div class="yld-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mr-auto">
+                <div class="header">
+                    <h2>Settings</h2>
+                </div>
+                <app-tabs>
+                    <app-tab [tabTitle]="'Password'">
+                        <form (ngSubmit)="onPasswordSubmit()" [formGroup]="passwordForm">
+                            <div class="form-group">
+                                <label for="CurrentPassword">Current Password</label>
+                                <input
+                                    id="CurrentPassword"
+                                    class="form-control"
+                                    type="password"
+                                    name="currentPassword"
+                                    [formControlName]="'currentPassword'"
+                                />
+                                <app-control-messages [control]="passwordForm.get('currentPassword')"></app-control-messages>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="newPassword">New Password</label>
+                                        <input
+                                            type="password"
+                                            class="form-control form-control"
+                                            name="newPassword"
+                                            id="newPassword"
+                                            aria-describedby="newPasswordId"
+                                            placeholder=""
+                                            [formControlName]="'newPassword'"
+                                        />
+                                        <app-control-messages [control]="passwordForm.get('newPassword')"></app-control-messages>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="confirmPassword">Confirm new password</label>
+                                        <input
+                                            type="password"
+                                            class="form-control form-control"
+                                            name="confirmPassword"
+                                            id="confirmPassword"
+                                            aria-describedby="confirmPasswordId"
+                                            placeholder=""
+                                            formControlName="confirmPassword"
+                                        />
+                                        <app-control-messages [control]="passwordForm.get('confirmPassword')"></app-control-messages>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" [disabled]="passwordForm.invalid" class="btn btn-primary">Change Password</button>
+                        </form>
+                    </app-tab>
+                    <app-tab [tabTitle]="'Contacts'">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+                                    <form form="emailForm">
+                                        <div class="form-group">
+                                            <label for="currentEmail">Current Email</label>
+                                            <input
+                                                type="email"
+                                                name="currentEmail"
+                                                id="currentEmail"
+                                                class="form-control"
+                                                placeholder=""
+                                                aria-describedby="currentEmailId"
+                                            />
+                                            <small id="currentEmailId" class="text-muted">Your current email</small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="newEmail">New Email</label>
+                                            <input id="newEmail" class="form-control" type="email" name="newEmail" />
+                                            <small id="newEmail" class="text-muted">Your new email</small>
+                                        </div>
+                                        <button type="submit"  class="btn btn-primary">Change Email</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <form form="phoneForm">
+                                        <div class="form-group">
+                                            <label for="currentPhone">Current phone</label>
+                                            <input
+                                                type="text"
+                                                name="currentPhone"
+                                                id="currentPhone"
+                                                class="form-control"
+                                                placeholder=""
+                                                aria-describedby="currentPhoneId"
+                                            />
+                                            <small id="currentPhoneId" class="text-muted">Your current phone</small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="newPhone">New phone</label>
+                                            <input id="newPhone" class="form-control" type="phone" name="newPhone" />
+                                            <small id="newPhone" class="text-muted">Your new phone</small>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Change phone</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </app-tab>
+                </app-tabs>
+            </div>
+        </div>
+    </div>
+</div>

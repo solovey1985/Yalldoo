@@ -32,20 +32,7 @@
                                         placeholder="First Name"
                                         formControlName="firstName"
                                     />
-                                    <div class="yld-errors-container">
-                                        <div
-                                            *ngFor="let validation of validation_messages.firstName"
-                                            class="yld-register-invalid"
-                                        >
-                                            <span
-                                                *ngIf="
-                                                    form.get('firstName').hasError(validation.type) &&
-                                                    (form.get('firstName').dirty || form.get('firstName').touched)
-                                                "
-                                                >{{ validation.message }}</span
-                                            >
-                                        </div>
-                                    </div>
+                                    <app-control-messages title="First Name" [control]="form.get('firstName')"></app-control-messages>
                                 </div>
                             </div>
 
@@ -59,20 +46,7 @@
                                         placeholder="Last Name"
                                         formControlName="lastName"
                                     />
-                                    <div class="yld-errors-container">
-                                        <div
-                                            *ngFor="let validation of validation_messages.lastName"
-                                            class="yld-register-invalid"
-                                        >
-                                            <span
-                                                *ngIf="
-                                                    form.get('lastName').hasError(validation.type) &&
-                                                    (form.get('lastName').dirty || form.get('lastName').touched)
-                                                "
-                                                >{{ validation.message }}</span
-                                            >
-                                        </div>
-                                    </div>
+                                    <app-control-messages title="Last Name" [control]="form.get('lastName')"></app-control-messages>
                                 </div>
                             </div>
                         </div>
@@ -95,20 +69,7 @@
                                     formControlName="email"
                                     [ngClass]="{ 'form-control-danger': isInvalid(form.get('email')) }"
                                 />
-                                <div class="yld-errors-container">
-                                    <div
-                                        *ngFor="let validation of validation_messages.email"
-                                        class="yld-register-invalid"
-                                    >
-                                        <span
-                                            *ngIf="
-                                                form.get('email').hasError(validation.type) &&
-                                                (form.get('email').dirty || form.get('email').touched)
-                                            "
-                                            >{{ validation.message }}</span
-                                        >
-                                    </div>
-                                </div>
+                                <app-control-messages title="Email" [control]="form.get('email')"></app-control-messages>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
@@ -121,20 +82,7 @@
                                             placeholder="+380 xx xxx xxxx"
                                             formControlName="phone"
                                         />
-                                        <div class="yld-errors-container">
-                                            <div
-                                                *ngFor="let validation of validation_messages.phone"
-                                                class="yld-register-invalid"
-                                            >
-                                                <span
-                                                    *ngIf="
-                                                        form.get('phone').hasError(validation.type) &&
-                                                        (form.get('phone').dirty || form.get('phone').touched)
-                                                    "
-                                                    >{{ validation.message }}</span
-                                                >
-                                            </div>
-                                        </div>
+                                        <app-control-messages title="Phone" [control]="form.get('phone')"></app-control-messages>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6">
@@ -147,20 +95,7 @@
                                             placeholder="https://www.facebook.com/"
                                             formControlName="facebook"
                                         />
-                                        <div class="yld-errors-container">
-                                            <div
-                                                *ngFor="let validation of validation_messages.facebook"
-                                                class="yld-register-invalid"
-                                            >
-                                                <span
-                                                    *ngIf="
-                                                        form.get('facebook').hasError(validation.type) &&
-                                                        (form.get('facebook').dirty || form.get('facebook').touched)
-                                                    "
-                                                    >{{ validation.message }}</span
-                                                >
-                                            </div>
-                                        </div>
+                                        <app-control-messages title="Facebook profile" [control]="form.get('facebook')"></app-control-messages>
                                     </div>
                                 </div>
                             </div>
@@ -173,20 +108,7 @@
                                     placeholder="https://www.yoursite.com"
                                     formControlName="website"
                                 />
-                                <div class="yld-errors-container">
-                                    <div
-                                        *ngFor="let validation of validation_messages.website"
-                                        class="yld-register-invalid"
-                                    >
-                                        <span
-                                            *ngIf="
-                                                form.get('website').hasError(validation.type) &&
-                                                (form.get('website').dirty || form.get('website').touched)
-                                            "
-                                            >{{ validation.message }}</span
-                                        >
-                                    </div>
-                                </div>
+                                <app-control-messages title="Website" [control]="form.get('website')"></app-control-messages>
                             </div>
                         </div>
                         <div class="form-group yld-profile-edit-item-container yld-event-birthdate-container">
@@ -211,18 +133,7 @@
                                     {{ form.get("birthDate").value | date: "dd MMMM yyyy" }}
                                 </span>
                             </div>
-                            <div class="yld-errors-container">
-                                <div *ngFor="let validation of validation_messages.birthDate" class="yld-error">
-                                    <span
-                                        class="yld-error-message"
-                                        *ngIf="
-                                            form.get('birthDate').hasError(validation.type) &&
-                                            form.get('birthDate').touched
-                                        "
-                                        >{{ validation.message }}</span
-                                    >
-                                </div>
-                            </div>
+                            <app-control-messages title="Birth Date" [control]="form.get('birthDate')"></app-control-messages>
                         </div>
 
                         <div class="yld-profile-edit-item-container yld-profile-edit-description-container form-group">

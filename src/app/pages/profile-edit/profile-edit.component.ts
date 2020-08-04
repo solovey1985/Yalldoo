@@ -9,6 +9,7 @@ import { User } from "app/_models";
 import UserInformation from "app/_models/user/userinfo.model";
 import { FormBuilder, FormGroup, Validators, FormControl, AbstractControl } from "@angular/forms";
 import { DomSanitizer } from "@angular/platform-browser";
+import { ValidationService } from "app/_services/validation/validation.service";
 
 @Component({
     templateUrl: "./profile-edit.component.html",
@@ -34,8 +35,6 @@ export class EditProfileComponent implements OnInit {
         this.locations = new Array<LocationDto>();
         this.userInfo = new UserInformation();
         this.userInfo.birthDate = new Date();
-        this.initValidationMessages();
-
         this.handleImageChange = this.handleImageChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleClick = this.handleClick.bind(this);
@@ -47,7 +46,12 @@ export class EditProfileComponent implements OnInit {
     }
 
     ngOnInit() {
-
+        this.userInfo.firstName = "";
+        this.userInfo.lastName = "";
+        this.userInfo.description = "";
+        this.userInfo.email = "";
+        this.userInfo.phone = "";
+        
         //TODO: Remove 
         var body = document.getElementsByTagName("body")[0];
         body.classList.add("settings-page");
@@ -116,24 +120,22 @@ export class EditProfileComponent implements OnInit {
             firstName: [this.userInfo.firstName, Validators.compose([
                 Validators.maxLength(25),
                 Validators.minLength(2),
-                Validators.pattern(/^[a-zA-Zа-яА-Я0-9іІїЇєЄ\'\"]*(?:[\s.]*[a-zA-Zа-яА-Я0-9іІїЇєЄ\'\"]*)*$/),
+               ValidationService.namePatternValidator,
                 Validators.required
             ])],
             lastName: [this.userInfo.lastName, Validators.compose([
                 Validators.maxLength(25),
                 Validators.minLength(2),
-                Validators.pattern(/^[a-zA-Zа-яА-Я0-9іІїЇєЄ\'\"]*(?:[\s.]*[a-zA-Zа-яА-Я0-9іІїЇєЄ\'\"]*)*$/),
+                ValidationService.namePatternValidator,
                 Validators.required
             ])],
-            email: [this.userInfo.email, [Validators.pattern(/[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/)]],
-            phone: [this.userInfo.phone, [Validators.pattern(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im)]],
+            email: [this.userInfo.email, ValidationService.emailPatternValidator],
+            phone: [this.userInfo.phone, ValidationService.phonePatternValidator],
             facebook: [this.userInfo.facebook, Validators.compose([
-                Validators.maxLength(1024),
-                Validators.minLength(2)
+                Validators.maxLength(1024)
             ])],
             website: [this.userInfo.website, Validators.compose([
-                Validators.maxLength(1024),
-                Validators.minLength(2)
+                Validators.maxLength(1024)
             ])],
             birthDate: [this.userInfo.birthDate],
             description: [this.userInfo.description, [Validators.maxLength(256)]],
@@ -146,9 +148,7 @@ export class EditProfileComponent implements OnInit {
         return control.invalid && control.touched
     }
     
-    public get messages() {
-        return this.validation_messages;
-    }
+
 
     public get descriptionLength() : number {
         return this.form.get("description").value ? this.form.get("description").value.length : 0;
@@ -158,37 +158,7 @@ export class EditProfileComponent implements OnInit {
        return this.sanitizer.bypassSecurityTrustStyle(`url(${this.state.imagePreviewUrl})`)
     }
 
-   private initValidationMessages() {
-        this.validation_messages = {
-            privacy: [{ type: "required", message: "Select event privacy" }],
-            firstName: [
-                { type: "required", message: "First Name is required" },
-                { type: "minlength", message: "First Name must be at least 2 characters long" },
-                { type: "maxlength", message: "First Name cannot be more than 25 characters long" },
-                { type: "pattern", message: "This field must contain only numbers and letters" }
-            ],
-            lastName: [
-                { type: "required", message: "Last Name is required" },
-                { type: "minlength", message: "Last Name must be at least 2 characters long" },
-                { type: "maxlength", message: "Last Name cannot be more than 25 characters long" },
-                { type: "pattern", message: "This field must contain only numbers and letters" }
-            ],
-            email: [{ type: "pattern", message: "Please enter a valid email" }],
-            phone: [{ type: "pattern", message: "Please enter a valid phone number" }],
-            facebook:  [
-                { type: "minlength", message: "This field should be at least 2 characters long" },
-                { type: "maxlength", message: "This field can't be more than 1024 characters long" },
-            ],
-            website:  [
-                { type: "minlength", message: "This field should be at least 2 characters long" },
-                { type: "maxlength", message: "This field can't be more than 1024 characters long" },
-            ],
-            birthDate: [{ type: "required", message: "Date is required" }],
-            location: [{ type: "required", message: "Location is required" }],
-            category: [{ type: "required", message: "Category is required" }],
-            description: [{ type: "maxlength", message: "Description cannot be more than 1024 characters long" }]
-        };
-   }
+   
     
         handleImageChange(e){
         e.preventDefault();

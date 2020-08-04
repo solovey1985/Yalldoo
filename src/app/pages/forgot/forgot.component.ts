@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NotifyService } from 'app/services/notify-service/notify.service';
 import { Router } from '@angular/router';
+import { ValidationService } from 'app/_services/validation/validation.service';
 
 @Component({
   templateUrl: './forgot.component.html',
@@ -16,23 +17,13 @@ export class ForgotComponent implements OnInit {
 
   ngOnInit() {
       this.form = this.builder.group({
-          email: ["", Validators.compose([Validators.required, Validators.pattern(/[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/)])],
+          email: ["", Validators.compose([Validators.required, ValidationService.emailPatternValidator])],
       });
-      this.initValidationMessages();
+    
   }
   ngOnDestroy() {}
 
   onSubmit() {
     this.isConfirmed = true;
   }
-
-  initValidationMessages() {
-      this.validation_messages = {
-          email: [
-              { type: "required", message: "Email is required" },
-              { type: "pattern", message: "Enter a valid email" }
-          ]
-      };
-  }
-
 }

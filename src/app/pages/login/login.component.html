@@ -16,21 +16,9 @@
                         </div>
                         <form [formGroup]="form" class="register-form" (submit)="onSubmit()">
                             <input type="email" class="form-control no-border" placeholder="Email"  formControlName="email"/>
-                            <div class="yld-errors-container">
-                                <div *ngFor="let validation of validation_messages.email" class="yld-register-invalid">
-                                    <span *ngIf="form.get('email').hasError(validation.type) && (form.get('email').dirty || form.get('email').touched)">{{ validation.message }}</span>
-                                </div>
-                            </div>
+                            <app-control-messages title="Email" [control]="form.get('email')"></app-control-messages>
                             <input type="password" class="form-control no-border" placeholder="Password" formControlName="password"/>
-                            <div class="yld-errors-container">
-                                <div *ngFor="let validation of validation_messages.password" class="yld-register-invalid">
-                                    <span
-                                        *ngIf="form.get('password').hasError(validation.type) && (form.get('password').dirty || form.get('password').touched)"
-                                    >
-                                        {{ validation.message }}
-                                    </span>
-                                </div>
-                            </div>
+                            <app-control-messages title="Password" [control]="form.get('password')"></app-control-messages>
                             <button class="btn btn-block btn-round" type="submit" [disabled]="form.invalid">Login</button>
                         </form>
                         <div class="forgot">

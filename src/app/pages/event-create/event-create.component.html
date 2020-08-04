@@ -27,17 +27,7 @@
                                 [buttonIcon]="'lock'"
                                 (onItemSelected)="setPrivacy($event)"
                             ></app-select-dropdown>
-                            <div class="yld-errors-container">
-                                <div *ngFor="let validation of validation_messages.privacy" class="yld-error">
-                                    <span
-                                        *ngIf="
-                                            form.get('privacy').hasError(validation.type) && form.get('privacy').touched
-                                        "
-                                        class="yld-error-message"
-                                        >{{ validation.message }}</span
-                                    >
-                                </div>
-                            </div>
+                            <app-control-messages title="Privacy" [control]="form.get('privacy')"></app-control-messages>
                         </div>
                         <div class="form-group">
                             <h6>
@@ -50,18 +40,7 @@
                                     <span class="input-group-text"><i class="fa fa-edit"></i></span>
                                 </div>
                             </div>
-                            <div class="yld-errors-container">
-                                <div *ngFor="let validation of validation_messages.title" class="yld-error">
-                                    <span
-                                        class="yld-error-message"
-                                        *ngIf="
-                                            form.get('title').hasError(validation.type) &&
-                                            (form.get('title').dirty || form.get('title').touched)
-                                        "
-                                        >{{ validation.message }}</span
-                                    >
-                                </div>
-                            </div>
+                            <app-control-messages title="Title" [control]="form.get('title')"></app-control-messages>
                         </div>
                         <div class="form-group">
                             <h6>Start date and time <span class="icon-danger">*</span></h6>
@@ -81,18 +60,7 @@
                                     <span *ngIf="!isDateSelected">Click to select date and time</span>
                                 </h5>
                             </div>
-                            <div class="yld-errors-container">
-                                <div *ngFor="let validation of validation_messages.dateTime" class="yld-error">
-                                    <span
-                                        class="yld-error-message"
-                                        *ngIf="
-                                            form.get('dateTime').hasError(validation.type) &&
-                                            form.get('dateTime').touched
-                                        "
-                                        >{{ validation.message }}</span
-                                    >
-                                </div>
-                            </div>
+                            <app-control-messages title="Date and Time" [control]="form.get('dateTime')"></app-control-messages>
                         </div>
                         <div class="form-group">
                             <h6>Location<span class="icon-danger">*</span></h6>
@@ -113,18 +81,7 @@
                                     <span *ngIf="!isLocationSelected">Click to select location</span>
                                 </h5>
                             </div>
-                            <div class="yld-errors-container">
-                                <div *ngFor="let validation of validation_messages.location" class="yld-error">
-                                    <span
-                                        *ngIf="
-                                            form.get('location').hasError(validation.type) &&
-                                            form.get('location').touched
-                                        "
-                                        class="yld-error-message"
-                                        >{{ validation.message }}</span
-                                    >
-                                </div>
-                            </div>
+                            <app-control-messages title="Location" [control]="form.get('location')"></app-control-messages>
                         </div>
 
                         <div class="form-group">
@@ -137,18 +94,7 @@
                                 (onDeSelect)="OnItemDeSelect($event)"
                             >
                             </angular2-multiselect>
-                            <div class="yld-errors-container">
-                                <div *ngFor="let validation of validation_messages.category" class="yld-error">
-                                    <span
-                                        class="yld-error-message"
-                                        *ngIf="
-                                            form.get('category').hasError(validation.type) &&
-                                            form.get('category').touched
-                                        "
-                                        >{{ validation.message }}</span
-                                    >
-                                </div>
-                            </div>
+                            <app-control-messages title="Category" [control]="form.get('category')"></app-control-messages>
                         </div>
                         <div class="form-group section-buttons">
                             <div class="d-flex flex-column">
@@ -207,18 +153,7 @@
                                     class="form-control"
                                 ></textarea>
                             </div>
-                            <div class="yld-errors-container">
-                                <div *ngFor="let validation of validation_messages.description" class="yld-error">
-                                    <span
-                                        class="yld-error-message"
-                                        *ngIf="
-                                            form.get('description').hasError(validation.type) &&
-                                            form.get('description').touched
-                                        "
-                                        >{{ validation.message }}</span
-                                    >
-                                </div>
-                            </div>
+                            <app-control-messages title="Description" [control]="form.get('description')"></app-control-messages>
                         </div>
                         <div class="form-group">
                             <h4 class="title"><small>Event Image</small></h4>

@@ -1,13 +1,14 @@
 <div class="yld-page">
     <div class="container">
         <div class="row">
-            <div class="col-md-8 mr-auto">
+            <div class="col-10 m-auto">
                 <div class="header">
                     <h2>Settings</h2>
                 </div>
                 <app-tabs>
                     <app-tab [tabTitle]="'Password'">
-                        <form (ngSubmit)="onPasswordSubmit()" [formGroup]="passwordForm">
+                        <form class="shadow p-3 rounded-lg" (ngSubmit)="onPasswordSubmit()" [formGroup]="passwordForm">
+                            <h4 class="mb-2">Change Password</h4>
                             <div class="form-group">
                                 <label for="CurrentPassword">Current Password</label>
                                 <input
@@ -57,6 +58,10 @@
                                             title="Confirm password"
                                             [control]="passwordForm.get('passwordsGroup').get('confirmPassword')"
                                         ></app-control-messages>
+                                        <app-control-messages
+                                            title="Confirm password"
+                                            [control]="passwordForm.get('passwordsGroup')"
+                                        ></app-control-messages>
                                     </div>
                                 </div>
                             </div>
@@ -68,10 +73,11 @@
                     <app-tab [tabTitle]="'Contacts'">
                         <div class="container">
                             <div class="row">
-                                <div class="col-12">
+                                <div class="col-12 p-3 shadow rounded-lg">
+                                    <h4 class="mb-2">Change Email</h4>
                                     <form form="emailForm" [formGroup]="emailForm">
                                         <div class="form-group">
-                                            <label for="currentEmail">Current Email</label>
+                                            <h5 for="currentEmail"><i class="fa fa-at mr-1"></i>&nbsp;Current Email</h5>
                                             <input
                                                 type="email"
                                                 name="currentEmail"
@@ -87,7 +93,7 @@
                                             ></app-control-messages>
                                         </div>
                                         <div class="form-group">
-                                            <label for="newEmail">New Email</label>
+                                            <h5 for="newEmail"><i class="fa fa-at mr-1"></i>&nbsp;New Email</h5>
                                             <input
                                                 id="newEmail"
                                                 class="form-control"
@@ -101,15 +107,18 @@
                                                 [control]="emailForm.get('newEmail')"
                                             ></app-control-messages>
                                         </div>
-                                        <button type="submit" [disabled]="emailForm.invalid" class="btn btn-primary">Change Email</button>
+                                        <button type="submit" [disabled]="emailForm.invalid" class="btn btn-primary">
+                                            Change Email
+                                        </button>
                                     </form>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-12">
+                                <div class="col-12 shadow p-3 rounded-lg">
+                                    <h4 class="mb-2">Change Phone</h4>
                                     <form form="phoneForm" [formGroup]="phoneForm">
                                         <div class="form-group">
-                                            <label for="currentPhone">Current phone</label>
+                                            <h5 for="currentPhone"><i class="fa fa-mobile"></i>&nbsp;Current phone</h5>
                                             <input
                                                 type="text"
                                                 name="currentPhone"
@@ -129,7 +138,7 @@
                                             ></app-control-messages>
                                         </div>
                                         <div class="form-group">
-                                            <label for="newPhone">New phone</label>
+                                            <h5 for="newPhone"><i class="fa fa-mobile"></i>&nbsp;New phone</h5>
                                             <input
                                                 id="newPhone"
                                                 formControlName="newPhone"
@@ -147,7 +156,14 @@
                                                 [control]="phoneForm.get('newPhone')"
                                             ></app-control-messages>
                                         </div>
-                                        <button type="submit" [disabled]="phoneForm.invalid" (click)="onPhoneSubmit()" class="btn btn-primary">Change phone</button>
+                                        <button
+                                            type="submit"
+                                            [disabled]="phoneForm.invalid"
+                                            (click)="onPhoneSubmit()"
+                                            class="btn btn-primary"
+                                        >
+                                            Change phone
+                                        </button>
                                     </form>
                                 </div>
                             </div>

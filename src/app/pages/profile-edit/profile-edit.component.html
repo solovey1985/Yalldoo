@@ -32,7 +32,10 @@
                                         placeholder="First Name"
                                         formControlName="firstName"
                                     />
-                                    <app-control-messages title="First Name" [control]="form.get('firstName')"></app-control-messages>
+                                    <app-control-messages
+                                        title="First Name"
+                                        [control]="form.get('firstName')"
+                                    ></app-control-messages>
                                 </div>
                             </div>
 
@@ -46,12 +49,15 @@
                                         placeholder="Last Name"
                                         formControlName="lastName"
                                     />
-                                    <app-control-messages title="Last Name" [control]="form.get('lastName')"></app-control-messages>
+                                    <app-control-messages
+                                        title="Last Name"
+                                        [control]="form.get('lastName')"
+                                    ></app-control-messages>
                                 </div>
                             </div>
                         </div>
                         <div class="yld-profile-edit-contacts-container yld-profile-edit-item-container">
-                        <div class="d-flex flex-row justify-content-between">
+                            <div class="d-flex flex-row justify-content-between">
                                 <h6>Contacts<span class="icon-danger">*</span></h6>
                                 <div class="yld-privacy-container">
                                     <app-privacy-selector
@@ -69,7 +75,10 @@
                                     formControlName="email"
                                     [ngClass]="{ 'form-control-danger': isInvalid(form.get('email')) }"
                                 />
-                                <app-control-messages title="Email" [control]="form.get('email')"></app-control-messages>
+                                <app-control-messages
+                                    title="Email"
+                                    [control]="form.get('email')"
+                                ></app-control-messages>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
@@ -80,9 +89,16 @@
                                             class="form-control"
                                             [ngClass]="{ 'form-control-danger': isInvalid(form.get('phone')) }"
                                             placeholder="+380 xx xxx xxxx"
+                                            [validation]="true"
+                                            prefix="+380"
+                                            mask=" 00 000 0000"
                                             formControlName="phone"
                                         />
-                                        <app-control-messages title="Phone" [control]="form.get('phone')"></app-control-messages>
+                                        <small>Format +380 xx xxx xxxx</small>
+                                        <app-control-messages
+                                            title="Phone"
+                                            [control]="form.get('phone')"
+                                        ></app-control-messages>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6">
@@ -95,7 +111,10 @@
                                             placeholder="https://www.facebook.com/"
                                             formControlName="facebook"
                                         />
-                                        <app-control-messages title="Facebook profile" [control]="form.get('facebook')"></app-control-messages>
+                                        <app-control-messages
+                                            title="Facebook profile"
+                                            [control]="form.get('facebook')"
+                                        ></app-control-messages>
                                     </div>
                                 </div>
                             </div>
@@ -108,7 +127,10 @@
                                     placeholder="https://www.yoursite.com"
                                     formControlName="website"
                                 />
-                                <app-control-messages title="Website" [control]="form.get('website')"></app-control-messages>
+                                <app-control-messages
+                                    title="Website"
+                                    [control]="form.get('website')"
+                                ></app-control-messages>
                             </div>
                         </div>
                         <div class="form-group yld-profile-edit-item-container yld-event-birthdate-container">
@@ -133,7 +155,10 @@
                                     {{ form.get("birthDate").value | date: "dd MMMM yyyy" }}
                                 </span>
                             </div>
-                            <app-control-messages title="Birth Date" [control]="form.get('birthDate')"></app-control-messages>
+                            <app-control-messages
+                                title="Birth Date"
+                                [control]="form.get('birthDate')"
+                            ></app-control-messages>
                         </div>
 
                         <div class="yld-profile-edit-item-container yld-profile-edit-description-container form-group">

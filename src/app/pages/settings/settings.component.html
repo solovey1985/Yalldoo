@@ -17,9 +17,12 @@
                                     name="currentPassword"
                                     [formControlName]="'currentPassword'"
                                 />
-                                <app-control-messages [control]="passwordForm.get('currentPassword')"></app-control-messages>
+                                <app-control-messages
+                                    title="Current password"
+                                    [control]="passwordForm.get('currentPassword')"
+                                ></app-control-messages>
                             </div>
-                            <div class="row">
+                            <div class="row" formGroupName="passwordsGroup">
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="newPassword">New Password</label>
@@ -32,7 +35,10 @@
                                             placeholder=""
                                             [formControlName]="'newPassword'"
                                         />
-                                        <app-control-messages [control]="passwordForm.get('newPassword')"></app-control-messages>
+                                        <app-control-messages
+                                            title="New password"
+                                            [control]="passwordForm.get('passwordsGroup').get('newPassword')"
+                                        ></app-control-messages>
                                     </div>
                                 </div>
                                 <div class="col">
@@ -45,44 +51,63 @@
                                             id="confirmPassword"
                                             aria-describedby="confirmPasswordId"
                                             placeholder=""
-                                            formControlName="confirmPassword"
+                                            [formControlName]="'confirmPassword'"
                                         />
-                                        <app-control-messages [control]="passwordForm.get('confirmPassword')"></app-control-messages>
+                                        <app-control-messages
+                                            title="Confirm password"
+                                            [control]="passwordForm.get('passwordsGroup').get('confirmPassword')"
+                                        ></app-control-messages>
                                     </div>
                                 </div>
                             </div>
-                            <button type="button" [disabled]="passwordForm.invalid" class="btn btn-primary">Change Password</button>
+                            <button type="button" [disabled]="passwordForm.invalid" class="btn btn-primary">
+                                Change Password
+                            </button>
                         </form>
                     </app-tab>
                     <app-tab [tabTitle]="'Contacts'">
                         <div class="container">
                             <div class="row">
                                 <div class="col-12">
-                                    <form form="emailForm">
+                                    <form form="emailForm" [formGroup]="emailForm">
                                         <div class="form-group">
                                             <label for="currentEmail">Current Email</label>
                                             <input
                                                 type="email"
                                                 name="currentEmail"
                                                 id="currentEmail"
+                                                placeholder="your@email.com"
                                                 class="form-control"
-                                                placeholder=""
                                                 aria-describedby="currentEmailId"
+                                                formControlName="currentEmail"
                                             />
-                                            <small id="currentEmailId" class="text-muted">Your current email</small>
+                                            <app-control-messages
+                                                title="Email"
+                                                [control]="emailForm.get('currentEmail')"
+                                            ></app-control-messages>
                                         </div>
                                         <div class="form-group">
                                             <label for="newEmail">New Email</label>
-                                            <input id="newEmail" class="form-control" type="email" name="newEmail" />
-                                            <small id="newEmail" class="text-muted">Your new email</small>
+                                            <input
+                                                id="newEmail"
+                                                class="form-control"
+                                                type="email"
+                                                name="newEmail"
+                                                placeholder="your@email.com"
+                                                formControlName="newEmail"
+                                            />
+                                            <app-control-messages
+                                                title="New email"
+                                                [control]="emailForm.get('newEmail')"
+                                            ></app-control-messages>
                                         </div>
-                                        <button type="submit"  class="btn btn-primary">Change Email</button>
+                                        <button type="submit" [disabled]="emailForm.invalid" class="btn btn-primary">Change Email</button>
                                     </form>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-12">
-                                    <form form="phoneForm">
+                                    <form form="phoneForm" [formGroup]="phoneForm">
                                         <div class="form-group">
                                             <label for="currentPhone">Current phone</label>
                                             <input
@@ -90,17 +115,39 @@
                                                 name="currentPhone"
                                                 id="currentPhone"
                                                 class="form-control"
-                                                placeholder=""
                                                 aria-describedby="currentPhoneId"
+                                                placeholder="+380 xx xxx xxxx"
+                                                formControlName="currentPhone"
+                                                [validation]="true"
+                                                prefix="+380"
+                                                mask=" 00 000 0000"
                                             />
-                                            <small id="currentPhoneId" class="text-muted">Your current phone</small>
+                                            <small>Format +380 xx xxx xxxx</small>
+                                            <app-control-messages
+                                                title="Phone"
+                                                [control]="phoneForm.get('currentPhone')"
+                                            ></app-control-messages>
                                         </div>
                                         <div class="form-group">
                                             <label for="newPhone">New phone</label>
-                                            <input id="newPhone" class="form-control" type="phone" name="newPhone" />
-                                            <small id="newPhone" class="text-muted">Your new phone</small>
+                                            <input
+                                                id="newPhone"
+                                                formControlName="newPhone"
+                                                class="form-control"
+                                                placeholder="+380 xx xxx xxxx"
+                                                [validation]="true"
+                                                prefix="+380"
+                                                mask=" 00 000 0000"
+                                                type="phone"
+                                                name="newPhone"
+                                            />
+                                            <small>Format +380 xx xxx xxxx</small>
+                                            <app-control-messages
+                                                title="New phone"
+                                                [control]="phoneForm.get('newPhone')"
+                                            ></app-control-messages>
                                         </div>
-                                        <button type="submit" class="btn btn-primary">Change phone</button>
+                                        <button type="submit" [disabled]="phoneForm.invalid" (click)="onPhoneSubmit()" class="btn btn-primary">Change phone</button>
                                     </form>
                                 </div>
                             </div>

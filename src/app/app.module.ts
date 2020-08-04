@@ -6,9 +6,13 @@ import { RouterModule } from "@angular/router";
 import { AppRoutingModule } from "./app.routing";
 import { ComponentsModule } from "./components/components.module";
 import { PagesModule } from "./pages/pages.module";
-
+import { NgxMaskModule, IConfig } from 'ngx-mask'
 import { AppComponent } from "./app.component";
 import { LayoutModule } from "./layouts/layout.module";
+
+const maskConfig: Partial<IConfig> = {
+    validation: false,
+  };
 
 @NgModule({
     declarations: [AppComponent],
@@ -19,6 +23,8 @@ import { LayoutModule } from "./layouts/layout.module";
         ReactiveFormsModule,
         RouterModule,
         AppRoutingModule,
+        NgbModule,
+        NgxMaskModule.forRoot(maskConfig),
         ComponentsModule,
         PagesModule,
         LayoutModule

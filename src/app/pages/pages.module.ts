@@ -33,6 +33,7 @@ import { ForgotComponent } from './forgot/forgot.component';
 import { FriendsComponent } from './friends/friends/friends.component';
 import { FriendComponent } from './friends/friend/friend.component';
 import { SettingsComponent } from './settings/settings.component';
+import { NgxMaskModule } from "ngx-mask";
 
 @NgModule({
     imports: [
@@ -49,7 +50,8 @@ import { SettingsComponent } from './settings/settings.component';
             apiKey: "AIzaSyCZzR9wbOwxH0ejRE_OYJJTpOhtwg44lu8"
         }),
         ImageUploadModule,
-        ComponentsModule
+        ComponentsModule,
+        NgxMaskModule
     ],
     declarations: [
         PagesComponent,

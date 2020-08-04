@@ -13,7 +13,9 @@ export class ValidationService {
             pattern: "is not valid",
             invalidNamePattern: " must contain only numbers and letters",
             invalidCreditCard: " is invalid credit card number",
-            invalidEmailAddress: " is invalid",
+            invalidEmailAddress: " is not valid",
+            invalidPhoneFormat: " is not valid",
+            mask: "is not valid",
             invalidPassword: " must contain at least one uppercase, one lowercase, and one number, only latin letters",
             minlength: ` must be at least ${validatorValue.requiredLength} characters long`,
             maxlength: `cannot be more than  ${validatorValue.requiredLength} characters long`,
@@ -48,10 +50,10 @@ export class ValidationService {
         }
     }
     static phonePatternValidator(control: FormControl) {
-        if (control.value.match(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im)) {
+        if (control.value.match(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)) {
             return null;
         } else {
-            return { invalidEmailAddress: true };
+            return { invalidPhoneFormat: true };
         }
     }
 

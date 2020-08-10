@@ -1,5 +1,6 @@
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations"; // this is needed!
 import { NgModule } from "@angular/core";
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { RouterModule } from "@angular/router";
@@ -22,6 +23,7 @@ const maskConfig: Partial<IConfig> = {
         FormsModule,
         ReactiveFormsModule,
         RouterModule,
+        HttpClientModule,
         AppRoutingModule,
         NgbModule,
         NgxMaskModule.forRoot(maskConfig),

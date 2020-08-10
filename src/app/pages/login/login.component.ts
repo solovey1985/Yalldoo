@@ -5,6 +5,7 @@ import { Router } from "@angular/router";
 import { ThrowStmt } from "@angular/compiler";
 import { timeout } from "rxjs/operators";
 import { ValidationService } from "app/_services/validation/validation.service";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
     selector: "app-login",
@@ -14,7 +15,8 @@ import { ValidationService } from "app/_services/validation/validation.service";
 export class LoginComponent implements OnInit {
     public form: FormGroup;
     validation_messages: any;
-    constructor(private builder: FormBuilder, private notifyService: NotifyService, private router: Router) {}
+    
+    constructor(private builder: FormBuilder, private notifyService: NotifyService, private router: Router, private httpClient: HttpClient) {}
 
     ngOnInit() {
         this.form = this.builder.group({
@@ -23,7 +25,12 @@ export class LoginComponent implements OnInit {
         });
     }
     onSubmit() {
-        this.notifyService.success("Login successful. Redirecting to your feed. Please, wait...", { autoClose: true, keepAfterRouteChange: true })
+        
+        return this.httpClient.post('http://localhost:8070/api/v1/account/login', { email: this.form.get("email").value, password: this.form.get("password").value }).subscribe(result => {
+            console.log(result);
+            this.notifyService.success("Login successful. Redirecting to your feed. Please, wait...", { autoClose: true, keepAfterRouteChange: true })
+        });
+       
         setTimeout(() => { this.router.navigate(['/feed']); }, 1500);
     }
     ngOnDestroy() {}

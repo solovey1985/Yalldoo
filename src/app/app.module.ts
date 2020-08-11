@@ -10,6 +10,11 @@ import { PagesModule } from "./pages/pages.module";
 import { NgxMaskModule, IConfig } from 'ngx-mask'
 import { AppComponent } from "./app.component";
 import { LayoutModule } from "./layouts/layout.module";
+import { AuthService } from "./_services/auth/auth.service";
+import { EffectsModule } from "@ngrx/effects";
+import { AuthEffects } from "./_store/effects/auth.effects";
+import { reducers } from "./_store/app.states";
+import { StoreModule } from "@ngrx/store";
 
 const maskConfig: Partial<IConfig> = {
     validation: false,
@@ -24,6 +29,10 @@ const maskConfig: Partial<IConfig> = {
         ReactiveFormsModule,
         RouterModule,
         HttpClientModule,
+        //*******NGRX**********
+        StoreModule.forRoot(reducers, {}),
+        EffectsModule.forRoot([AuthEffects]),
+        //
         AppRoutingModule,
         NgbModule,
         NgxMaskModule.forRoot(maskConfig),
@@ -31,7 +40,7 @@ const maskConfig: Partial<IConfig> = {
         PagesModule,
         LayoutModule
     ],
-    providers: [],
+    providers: [AuthService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

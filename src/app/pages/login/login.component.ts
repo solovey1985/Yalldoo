@@ -6,6 +6,9 @@ import { ThrowStmt } from "@angular/compiler";
 import { timeout } from "rxjs/operators";
 import { ValidationService } from "app/_services/validation/validation.service";
 import { HttpClient } from "@angular/common/http";
+import { Store } from "@ngrx/store";
+import { AppState } from "app/_store/app.states";
+import { LoginAction } from "app/_store/actions/user.actions";
 
 @Component({
     selector: "app-login",
@@ -15,8 +18,14 @@ import { HttpClient } from "@angular/common/http";
 export class LoginComponent implements OnInit {
     public form: FormGroup;
     validation_messages: any;
-    
-    constructor(private builder: FormBuilder, private notifyService: NotifyService, private router: Router, private httpClient: HttpClient) {}
+
+    constructor(
+        private builder: FormBuilder,
+        private notifyService: NotifyService,
+        private store: Store<AppState>,
+        private router: Router,
+        private httpClient: HttpClient
+    ) {}
 
     ngOnInit() {
         this.form = this.builder.group({
@@ -25,13 +34,8 @@ export class LoginComponent implements OnInit {
         });
     }
     onSubmit() {
-        
-        return this.httpClient.post('http://localhost:8070/api/v1/account/login', { email: this.form.get("email").value, password: this.form.get("password").value }).subscribe(result => {
-            console.log(result);
-            this.notifyService.success("Login successful. Redirecting to your feed. Please, wait...", { autoClose: true, keepAfterRouteChange: true })
-        });
-       
-        setTimeout(() => { this.router.navigate(['/feed']); }, 1500);
+        const payload = { email: this.form.get("email").value, password: this.form.get("password").value };
+        this.store.dispatch(new LoginAction(payload));
     }
     ngOnDestroy() {}
 }

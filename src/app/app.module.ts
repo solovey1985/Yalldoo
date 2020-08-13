@@ -15,6 +15,7 @@ import { EffectsModule } from "@ngrx/effects";
 import { AuthEffects } from "./_store/effects/auth.effects";
 import { reducers } from "./_store/app.states";
 import { StoreModule } from "@ngrx/store";
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 const maskConfig: Partial<IConfig> = {
     validation: false,
@@ -30,9 +31,13 @@ const maskConfig: Partial<IConfig> = {
         RouterModule,
         HttpClientModule,
         //*******NGRX**********
-        StoreModule.forRoot(reducers, {}),
+        StoreModule.forRoot(reducers),
         EffectsModule.forRoot([AuthEffects]),
+        StoreDevtoolsModule.instrument({
+            maxAge: 24
+        }),
         //
+
         AppRoutingModule,
         NgbModule,
         NgxMaskModule.forRoot(maskConfig),

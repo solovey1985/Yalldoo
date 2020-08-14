@@ -27,6 +27,7 @@ import { ForgotComponent } from "./pages/forgot/forgot.component";
 import { FriendsComponent } from "./pages/friends/friends/friends.component";
 import { FriendComponent } from "./pages/friends/friend/friend.component";
 import { SettingsComponent } from "./pages/settings/settings.component";
+import { AuthGuard } from "./core/guards/auth-guard.guard";
 @NgModule({
     imports: [
         CommonModule,
@@ -51,7 +52,7 @@ import { SettingsComponent } from "./pages/settings/settings.component";
                     { path: "event", component: EventComponent },
                     { path: "create", component: EventCreateComponent },
                     { path: "search", component: SearchComponent },
-                    { path: "me", component: EditProfileComponent },
+                    { path: "me", component: EditProfileComponent, canActivate: [AuthGuard] },
                     { path: "twitter", component: TwitterComponent },
                     { path: "preferences", component: PreferencesComponent },
                     { path: "profile", component: ProfileComponent },

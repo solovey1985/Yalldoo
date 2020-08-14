@@ -12,39 +12,40 @@ import {
     LogoutFailedAction
 } from "../actions/user.actions";
 import { User } from "app/_models/user/user.model";
+import { LoadingStartedAction, LoadingFinishedAction } from "../actions/ui.actions";
 
 @Injectable()
 export class AuthEffects {
     constructor(private actions: Actions, private authService: AuthService, private router: Router) {}
 
-    @Effect()
     Login$ = createEffect(() =>
         this.actions.pipe(
             ofType(AuthActionTypes.LOGIN),
-            switchMap((action: any) =>
-                this.authService.logIn(action.payload.email, action.payload.password).pipe(
+            switchMap((action: any) => {
+                return this.authService.logIn(action.payload.email, action.payload.password).pipe(
                     map((user) => new LoginSuccessAction(user)),
                     catchError((error) => of(new LoginFailedAction(error)))
-                )
-            )
+                );
+            })
         )
     );
 
-    @Effect({ dispatch: false })
-    LoginSuccess: Observable<any> = this.actions.pipe(
-        ofType(AuthActionTypes.LOGINSUCCESS),
-        tap((user) => {
-            localStorage.setItem("user", JSON.stringify(user.payload));
-            this.router.navigateByUrl("/preferences");
-        })
+    LoginSuccess$: Observable<any> = createEffect(() =>
+        this.actions.pipe(
+            ofType(AuthActionTypes.LOGINSUCCESS),
+            map((action: any) => action.payload),
+            switchMap((user: any) => {
+                localStorage.setItem("user", JSON.stringify(user));
+                this.router.navigateByUrl("/preferences");
+                return of(new LoadingFinishedAction())
+            })
+        )
     );
 
-    @Effect()
     Logout$ = createEffect(() =>
         this.actions.pipe(
             ofType(AuthActionTypes.LOGOUT),
             switchMap((action: any) => {
-                debugger;
                 try {
                     this.authService.logout();
                     return of(new LogoutSuccessAction());

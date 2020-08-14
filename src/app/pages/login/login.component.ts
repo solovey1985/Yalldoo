@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { NotifyService } from "app/services/notify-service/notify.service";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import { ThrowStmt } from "@angular/compiler";
 import { timeout } from "rxjs/operators";
 import { ValidationService } from "app/_services/validation/validation.service";
@@ -9,6 +9,7 @@ import { HttpClient } from "@angular/common/http";
 import { Store } from "@ngrx/store";
 import { AppState } from "app/_store/app.states";
 import { LoginAction } from "app/_store/actions/user.actions";
+import { LoadingStartedAction } from "app/_store/actions/ui.actions";
 
 @Component({
     selector: "app-login",
@@ -18,13 +19,13 @@ import { LoginAction } from "app/_store/actions/user.actions";
 export class LoginComponent implements OnInit {
     public form: FormGroup;
     validation_messages: any;
-
+    returnUrl: string;
     constructor(
         private builder: FormBuilder,
         private notifyService: NotifyService,
         private store: Store<AppState>,
         private router: Router,
-        private httpClient: HttpClient
+        private route: ActivatedRoute
     ) {}
 
     ngOnInit() {
@@ -32,10 +33,12 @@ export class LoginComponent implements OnInit {
             email: ["", Validators.compose([Validators.required, ValidationService.emailPatternValidator])],
             password: ["", Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(25)])]
         });
+        this.returnUrl = this.route.snapshot.queryParams["returnUrl"] || '/feed';
     }
     onSubmit() {
-        const payload = { email: this.form.get("email").value, password: this.form.get("password").value };
+        const payload = { email: this.form.get("email").value, password: this.form.get("password").value, returnUrl: this.returnUrl };
         this.store.dispatch(new LoginAction(payload));
+        this.store.dispatch(new LoadingStartedAction());
     }
     ngOnDestroy() {}
 }

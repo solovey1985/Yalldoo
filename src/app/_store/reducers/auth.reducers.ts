@@ -30,6 +30,13 @@ export function reducer(state = initialState, action: All): AuthState {
                 errorMessage: null
             };
         }
+        case AuthActionTypes.LOGINFAILED: {
+            return {
+                ...state,
+                isAuthenticated: false,
+                errorMessage: action.payload
+            };
+        }
         case AuthActionTypes.LOGOUTSUCCESS: {
             return {
                 ...state, user: null, isAuthenticated: false

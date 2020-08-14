@@ -62,8 +62,7 @@ export class AppNavbarComponent implements OnInit {
     }
 
     onLogout() {
-        debugger
-        this.store.dispatch(new LogoutAction())
+       this.store.dispatch(new LogoutAction())
     }
 
     isDocumentation() {

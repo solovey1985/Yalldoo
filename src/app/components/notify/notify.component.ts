@@ -1,8 +1,10 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input, OnDestroy } from "@angular/core";
 import { Alert, AlertType } from "app/services/notify-service/alert.model";
-import { Subscription } from "rxjs";
+import { Subscription, Observable } from "rxjs";
 import { NotifyService } from "app/services/notify-service/notify.service";
 import { Router, NavigationStart } from "@angular/router";
+import { Store } from "@ngrx/store";
+import { AppState, selectIsLoading } from "app/_store/app.states";
 
 @Component({
     selector: "app-notify",
@@ -18,9 +20,11 @@ export class NotifyComponent implements OnInit, OnDestroy {
     private _alerts: Alert[];
     alertSubscription: Subscription;
     routeSubscription: Subscription;
-
-    constructor(private router: Router, private notifyservcie: NotifyService) {
+    isLoading: boolean;
+    uiState$: Observable<boolean>
+    constructor(private router: Router, private notifyservcie: NotifyService, private strore: Store<AppState>) {
         this._alerts = new Array<Alert>();
+        this.uiState$ = this.strore.select(selectIsLoading);
     }
 
     public get alerts(): Alert[] {
@@ -45,6 +49,10 @@ export class NotifyComponent implements OnInit, OnDestroy {
                 this.notifyservcie.clear(this.id);
             }
         });
+
+        this.uiState$.subscribe((status: boolean) => {
+            this.isLoading = status;
+        })
     }
 
     ngOnDestroy() {

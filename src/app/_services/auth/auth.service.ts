@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { Config } from "../../_configs/config";
 import { Observable } from "rxjs";
 import { User } from "app/_models/user/user.model";
+import { UserRegisterModel } from "app/_models/user/user-register.model";
 @Injectable({ providedIn: "root" })
 export class AuthService {
     private BASE_URL = Config.apiUrl;
@@ -23,9 +24,10 @@ export class AuthService {
         return this.http.post<User>(url, { email, password });
     }
 
-    signUp(email: string, password: string): Observable<User> {
-        const url = `${this.BASE_URL}/register`;
-        return this.http.post<User>(url, { email, password });
+    register(regiser: UserRegisterModel): Observable<User> {
+        const payload = JSON.stringify(regiser)
+        const url = `${this.BASE_URL}/account/register`;
+        return this.http.post<User>(url, payload);
     }
 
     logout() {

@@ -1,5 +1,6 @@
 import { Action } from "@ngrx/store";
 import { User } from "app/_models/user/user.model";
+import { UserRegisterModel } from "app/_models/user/user-register.model";
 
 export enum AuthActionTypes {
     LOGIN = "[Auth] Login",
@@ -7,7 +8,10 @@ export enum AuthActionTypes {
     LOGINFAILED = "[Auth] Login Failure",
     LOGOUT = "[Auth] Logout",
     LOGOUTSUCCESS = "[Auth] Logout Success",
-    LOGOUTFAILED = "[Auth] Logout Failure"
+    LOGOUTFAILED = "[Auth] Logout Failure",
+    REGISTER = "[Auth] Register",
+    REGISTERSUCCESS = "[Auth] Register Success",
+    REGISTERFAILED = "[Auth] Register Failed",
 }
 
 export class LoginAction implements Action {
@@ -40,6 +44,21 @@ export class LogoutFailedAction implements Action {
     constructor(public payload: any) {}
 }
 
+export class RegisterAction implements Action {
+    readonly type = AuthActionTypes.REGISTER;
+    constructor(public payload: UserRegisterModel) {}
+}
+
+export class RegisterSuccessAction implements Action {
+    readonly type = AuthActionTypes.REGISTERSUCCESS;
+    constructor(payload: User) {}
+}
+
+export class RegisterFailedAction implements Action {
+    readonly type = AuthActionTypes.REGISTERFAILED;
+    constructor(public payload: any) {}
+}
+
 export type All =
     | LoginAction
     | LoginSuccessAction
@@ -47,4 +66,7 @@ export type All =
     | LogoutAction
     | LogoutSuccessAction
     | LogoutFailedAction
-    | LoginFailedAction;
+    | LoginFailedAction
+    | RegisterAction
+    | RegisterSuccessAction
+    | RegisterFailedAction;

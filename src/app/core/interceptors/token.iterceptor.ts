@@ -34,20 +34,16 @@ export class TokenInterceptor implements HttpInterceptor {
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
     user: User;
-    constructor(private authenticationService: AuthService, private store: Store<AppState>) { 
+    constructor(private store: Store<AppState>) { 
         this.store.select(selectAuthUser).subscribe(u => this.user = u);
     }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(request).pipe(catchError(err => {
             if ([401, 403].includes(err.status) && this.user) {
-                // auto logout if 401 or 403 response returned from api
                 this.store.dispatch(new LogoutAction());
             }
-
-            const error = (err && err.error && err.error.message) || err.statusText;
-            console.error(err);
-            return throwError(error);
+          return throwError(err.error);
         }))
     }
 }

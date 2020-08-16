@@ -9,10 +9,14 @@ import {
     LogoutSuccessAction,
     LoginSuccessAction,
     LoginFailedAction,
-    LogoutFailedAction
+    LogoutFailedAction,
+    RegisterAction,
+    RegisterSuccessAction,
+    RegisterFailedAction
 } from "../actions/user.actions";
 import { User } from "app/_models/user/user.model";
-import { LoadingStartedAction, LoadingFinishedAction } from "../actions/ui.actions";
+import { LoadingStartedAction, LoadingFinishedAction, UiActionTypes, ErrorShowAction } from "../actions/ui.actions";
+import { UserRegisterModel } from "app/_models/user/user-register.model";
 
 @Injectable()
 export class AuthEffects {
@@ -24,7 +28,7 @@ export class AuthEffects {
             switchMap((action: any) => {
                 return this.authService.logIn(action.payload.email, action.payload.password).pipe(
                     map((user) => new LoginSuccessAction(user)),
-                    catchError((error) => of(new LoginFailedAction(error)))
+                    catchError((error) => of(new ErrorShowAction(error)))
                 );
             })
         )
@@ -37,7 +41,7 @@ export class AuthEffects {
             switchMap((user: any) => {
                 localStorage.setItem("user", JSON.stringify(user));
                 this.router.navigateByUrl("/preferences");
-                return of(new LoadingFinishedAction())
+                return of(new LoadingFinishedAction());
             })
         )
     );
@@ -52,6 +56,23 @@ export class AuthEffects {
                 } catch {
                     return of(new LogoutFailedAction("Error on user logout"));
                 }
+            })
+        )
+    );
+
+    Register$ = createEffect(() =>
+        this.actions.pipe(
+            ofType(AuthActionTypes.REGISTER),
+            map((action: RegisterAction) => action.payload),
+            switchMap((user: UserRegisterModel) => {
+                return this.authService.register(user).pipe(
+                    map((user: User) => {
+                        return new LoginSuccessAction(user);
+                    }),
+                    catchError((err) => {
+                        return of(new RegisterFailedAction("Error on user registration"));
+                    })
+                );
             })
         )
     );

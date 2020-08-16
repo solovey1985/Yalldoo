@@ -4,7 +4,9 @@ import { Subscription, Observable } from "rxjs";
 import { NotifyService } from "app/services/notify-service/notify.service";
 import { Router, NavigationStart } from "@angular/router";
 import { Store } from "@ngrx/store";
-import { AppState, selectIsLoading } from "app/_store/app.states";
+import { AppState, selectIsLoading, selectError } from "app/_store/app.states";
+import { withLatestFrom } from "rxjs/operators";
+import { ErrorHideAction } from "app/_store/actions/ui.actions";
 
 @Component({
     selector: "app-notify",
@@ -21,10 +23,13 @@ export class NotifyComponent implements OnInit, OnDestroy {
     alertSubscription: Subscription;
     routeSubscription: Subscription;
     isLoading: boolean;
-    uiState$: Observable<boolean>
+    uiState$: Observable<boolean>;
+    uiStateError$: Observable<string>;
+
     constructor(private router: Router, private notifyservcie: NotifyService, private strore: Store<AppState>) {
         this._alerts = new Array<Alert>();
         this.uiState$ = this.strore.select(selectIsLoading);
+        this.uiStateError$ = this.strore.select(selectError);
     }
 
     public get alerts(): Alert[] {
@@ -52,7 +57,14 @@ export class NotifyComponent implements OnInit, OnDestroy {
 
         this.uiState$.subscribe((status: boolean) => {
             this.isLoading = status;
-        })
+            this._alerts
+        });
+
+        this.uiStateError$.subscribe((err: string) => {
+            console.log("From state error", err);
+            this.notifyservcie.error(err);
+        }
+        );
     }
 
     ngOnDestroy() {
@@ -93,6 +105,7 @@ export class NotifyComponent implements OnInit, OnDestroy {
 
     close(alert: Alert) {
         this.removeAlert(alert);
+        this.strore.dispatch(new ErrorHideAction());
     }
 
     reset() {}

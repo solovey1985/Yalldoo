@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit {
     onSubmit() {
         const payload = { email: this.form.get("email").value, password: this.form.get("password").value, returnUrl: this.returnUrl };
         this.store.dispatch(new LoginAction(payload));
-        this.store.dispatch(new LoadingStartedAction());
     }
     ngOnDestroy() {}
 }

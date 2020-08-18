@@ -5,7 +5,7 @@ import { User } from "../user/user.model";
 import UserInformation from "../user/user-information.model";
 
 export class EventModel {
-    //Ordering
+    //Service fields
     id: number;
     eventId: string;
     seqNo: number;

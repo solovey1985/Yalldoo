@@ -5,11 +5,11 @@ import { CategoryService } from "app/_services/category/category.service";
 import LocationDto from "app/_models/location.dto";
 import { Category } from "app/_models/category/category.model";
 import { ThrowStmt } from "@angular/compiler";
-import { User } from "app/_models";
-import UserInformation from "app/_models/user/userinfo.model";
+import UserInformation from "app/_models/user/user-information.model";
 import { FormBuilder, FormGroup, Validators, FormControl, AbstractControl } from "@angular/forms";
 import { DomSanitizer } from "@angular/platform-browser";
 import { ValidationService } from "app/_services/validation/validation.service";
+import { User } from "app/_models/user/user.model";
 
 @Component({
     templateUrl: "./profile-edit.component.html",

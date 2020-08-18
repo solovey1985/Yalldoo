@@ -1,6 +1,11 @@
 <div class="yld-layout-wrapper">
     <app-notify></app-notify>
-    <app-navbar></app-navbar>
+    <div  *ngIf="user else siteBar">
+        <app-app-navbar></app-app-navbar>
+    </div>
+    <ng-template #siteBar>
+        <app-navbar></app-navbar>
+    </ng-template>
     <router-outlet></router-outlet>
 </div>
 <!-- <app-footer></app-footer> -->

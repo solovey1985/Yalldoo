@@ -8,55 +8,55 @@ var categories: Category[] = [
         title: "Sport"
     },
     {
-        id: 101,
+        id: 2,
         title: "Football",
         parrentId: 1
     },
     {
-        id: 102,
+        id: 11,
         title: "Basketball",
         parrentId: 1
     },
     {
-        id: 103,
+        id: 2,
         title: "Volleyball",
         parrentId: 1
     },
     {
-        id: 2,
+        id: 3,
         title: "Entertainment"
     },
     {
-        id: 201,
+        id: 4,
         title: "Cinema",
         parrentId: 2
     },
     {
-        id: 202,
+        id: 5,
         title: "Theater",
         parrentId: 2
     },
     {
-        id: 203,
+        id: 6,
         title: "Concert",
         parrentId: 2
     },
     {
-        id: 3,
+        id: 7,
         title: "Friends"
     },
     {
-        id: 301,
+        id: 8,
         title: "Beer",
         parrentId: 3
     },
     {
-        id: 302,
+        id: 9,
         title: "Gaming",
         parrentId: 3
     },
     {
-        id: 303,
+        id: 10,
         title: "Travelling",
         parrentId: 3
     },

@@ -6,6 +6,10 @@ import { NotifyService } from "app/services/notify-service/notify.service";
 import { Router } from "@angular/router";
 import { PreferencesComponent } from "../preferences/preferences.component";
 import { ValidationService } from "app/_services/validation/validation.service";
+import { UserRegisterModel } from "app/_models/user/user-register.model";
+import { RegisterAction } from "app/_store/actions/user.actions";
+import { Store } from "@ngrx/store";
+import { AppState } from "app/_store/app.states";
 
 @Component({
     selector: "app-register",
@@ -16,7 +20,9 @@ export class RegisterComponent implements OnInit {
     public form: FormGroup;
     
     public validation_messages: any;
-    constructor(private builder: FormBuilder, private notifyService: NotifyService, private router: Router) {}
+    constructor(private builder: FormBuilder, private notifyService: NotifyService,
+        private store: Store<AppState>,
+        private router: Router) { }
 
     ngOnInit() {
        const matchingPasswordsGroup = new FormGroup(
@@ -56,9 +62,13 @@ export class RegisterComponent implements OnInit {
     }
 
     formSubmit(event): void {
-       event.preventDefault();
-        this.notifyService.success("Resgistration successful. Please check mail box to confirm your email", { autoClose: true, keepAfterRouteChange: false })
-        setTimeout(() => { this.router.navigate(['/preferences']); }, 5000);
+        const userRegister = new UserRegisterModel();
+        userRegister.firstName = this.form.get("name").value;
+        userRegister.email = this.form.get("email").value;
+        userRegister.password = this.form.get('matchingPasswordsGroup').get("password").value;
+        userRegister.confirmPassword = this.form.get('matchingPasswordsGroup').get("confirmPassword").value;
+
+        this.store.dispatch(new RegisterAction(userRegister));
     }
 
     isInvalid(control: AbstractControl):boolean {

@@ -1,5 +1,3 @@
-import { PreferencesComponent } from "app/pages/preferences/preferences.component";
-
 export default class UserInformation {
     
     firstName: string;
@@ -10,6 +8,7 @@ export default class UserInformation {
     website: string;
     birthDate: Date ;
     description: string;
+    avatarImage: string;
     
     constructor() {
         

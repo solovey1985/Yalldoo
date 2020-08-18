@@ -9,11 +9,14 @@ import LocationDto from "app/_models/location.dto";
 import { FirendListItem } from "app/_models/friends/friend-list-item.model";
 import { MultiselectItem } from "app/_models/multiselect/multiselect.model";
 import { NotifyService } from "app/services/notify-service/notify.service";
+import { CreateEventModel } from "app/_models/events/create-event.model";
+import { CreateEventAction } from "app/_store/actions/events.actions";
+import { Store } from "@ngrx/store";
+import { AppState } from "app/_store/app.states";
 
 @Component({
     templateUrl: "./event-create.component.html",
-    styleUrls: ["./event-create.component.scss"],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    styleUrls: ["./event-create.component.scss"]
 })
 export class EventCreateComponent implements OnInit {
     categories = [];
@@ -29,6 +32,7 @@ export class EventCreateComponent implements OnInit {
     privacyList: string[];
     selectedPrivacy: string;
     categoryDtos: Category[];
+    image: string;
     public validation_messages: any;
 
     public form: FormGroup;
@@ -36,7 +40,8 @@ export class EventCreateComponent implements OnInit {
         private builder: FormBuilder,
         private categoryService: CategoryService,
         private modal: ModalService,
-        private notify: NotifyService
+        private notify: NotifyService, 
+        private store: Store<AppState>
     ) {}
 
     ngOnInit(): void {
@@ -67,11 +72,11 @@ export class EventCreateComponent implements OnInit {
             unSelectAllText: "UnSelect All",
             classes: "",
             enableSearchFilter: true,
+            lazyLoading: true
         };
 
         this.privacyList = ["Public", "Friends", "Private"];
     }
-
     setPrivacy($event: string) {
         this.selectedPrivacy = $event!!;
         this.form.get("privacy").clearValidators();
@@ -150,12 +155,20 @@ export class EventCreateComponent implements OnInit {
             }
         });
     }
+
+    onImageSelected($event) {
+        if ($event) {
+            this.image = $event;
+        }
+    }
     //------ END Modals ------------------------
 
-    onCreateButtonClick() {
+    onCreateButtonClick():void {
         this.form.markAllAsTouched();
         this.form.updateValueAndValidity();
         if (this.form.valid) {
+            const event = this.mapFormToEvent();
+            this.store.dispatch(new CreateEventAction(event));
             this.notify.info("Event was created", { autoClose: true, keepAfterRouteChange: false })
         }
     }
@@ -180,6 +193,24 @@ export class EventCreateComponent implements OnInit {
             category: [{ type: "required", message: "Category is required" }],
             description: [{ type: "maxlength", message: "Description cannot be more than 1024 characters long" }]
         };
+    }
+
+    private mapFormToEvent(): CreateEventModel {
+        const event = new CreateEventModel();
+        event.title = this.getFormValue("title");
+        event.description = this.getFormValue("description");
+        event.startDate = this.getFormValue("dateTime");
+        event.location = this.getFormValue("location");
+        event.categoryId = this.selectedCategory.id;
+        event.image = this.image;
+
+        return event;
+    }
+
+    private getFormValue(key: string): any{
+
+        return this.form.get(key).value;
+
     }
 }
 

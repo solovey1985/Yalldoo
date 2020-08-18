@@ -14,12 +14,12 @@
                             <span>or</span>
                             <div class="line r"></div>
                         </div>
-                        <form [formGroup]="form" class="register-form" (submit)="onSubmit()">
+                        <form [formGroup]="form" class="register-form">
                             <input type="email" class="form-control no-border" placeholder="Email"  formControlName="email"/>
                             <app-control-messages title="Email" [control]="form.get('email')"></app-control-messages>
                             <input type="password" class="form-control no-border" placeholder="Password" formControlName="password"/>
                             <app-control-messages title="Password" [control]="form.get('password')"></app-control-messages>
-                            <button class="btn btn-block btn-round" type="submit" [disabled]="form.invalid">Login</button>
+                            <button class="btn btn-block btn-round" (click)="onSubmit()" [disabled]="form.invalid">Login</button>
                         </form>
                         <div class="forgot">
                             <a [routerLink]="['/forgot']" class="btn btn-link btn-danger">Forgot password?</a>

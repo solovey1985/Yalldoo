@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { AuthService } from "app/_services/auth/auth.service";
 import { Router } from "@angular/router";
-import { Actions, Effect, ofType, createEffect } from "@ngrx/effects";
+import { Actions, ofType, createEffect } from "@ngrx/effects";
 import { Observable, of } from "rxjs";
 import { map, switchMap, mergeMap, catchError, tap, exhaustMap } from "rxjs/operators";
 import {
@@ -40,7 +40,7 @@ export class AuthEffects {
             map((action: any) => action.payload),
             switchMap((user: any) => {
                 localStorage.setItem("user", JSON.stringify(user));
-                this.router.navigateByUrl("/preferences");
+                this.router.navigateByUrl("/feed");
                 return of(new LoadingFinishedAction());
             })
         )
@@ -67,12 +67,24 @@ export class AuthEffects {
             switchMap((user: UserRegisterModel) => {
                 return this.authService.register(user).pipe(
                     map((user: User) => {
-                        return new LoginSuccessAction(user);
+                        return new RegisterSuccessAction(user);
                     }),
                     catchError((err) => {
                         return of(new RegisterFailedAction("Error on user registration"));
                     })
                 );
+            })
+        )
+    );
+
+    RegisterSuccess$ = createEffect(() =>
+        this.actions.pipe(
+            ofType(AuthActionTypes.REGISTERSUCCESS),
+            map((action: RegisterSuccessAction) => action.payload),
+            switchMap((user: User) => {
+                localStorage.setItem("user", JSON.stringify(user));
+                this.router.navigateByUrl("/preferences");
+                return of(new LoadingFinishedAction());
             })
         )
     );

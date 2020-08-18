@@ -18,6 +18,7 @@ import { appReducers } from "./_store/app.states";
 import { StoreModule } from "@ngrx/store";
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { TokenInterceptor, ErrorInterceptor } from "./core/interceptors/token.iterceptor";
+import { EventsEffects } from "./_store/effects/events.effects";
 
 const maskConfig: Partial<IConfig> = {
     validation: false,
@@ -34,7 +35,7 @@ const maskConfig: Partial<IConfig> = {
         HttpClientModule,
         //*******NGRX**********
         StoreModule.forRoot(appReducers),
-        EffectsModule.forRoot([AuthEffects]),
+        EffectsModule.forRoot([AuthEffects, EventsEffects]),
         StoreDevtoolsModule.instrument({
             maxAge: 24
         }),

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-image-upload',
@@ -8,6 +8,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ImageUploadComponent implements OnInit {
     @Input() isRound: boolean = false;
     @Input() image: string;
+    @Output() onImageSelected = new EventEmitter<string>();
+
     state: any = {}
     constructor() {
         this.handleImageChange = this.handleImageChange.bind(this);
@@ -29,6 +31,7 @@ export class ImageUploadComponent implements OnInit {
         reader.onloadend = () => {
             this.state.file = file;
             this.state.imagePreviewUrl = reader.result;
+            this.onImageSelected.emit(this.state.imagePreviewUrl);
             // this.state.imagePreviewUrl1 = reader.result;
         }
         reader.readAsDataURL(file);

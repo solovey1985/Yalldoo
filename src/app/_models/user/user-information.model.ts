@@ -8,6 +8,7 @@ export default class UserInformation {
     website: string;
     birthDate: Date ;
     description: string;
+    avatarImage: string;
     
     constructor() {
         

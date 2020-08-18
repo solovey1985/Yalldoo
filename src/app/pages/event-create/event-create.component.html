@@ -155,7 +155,7 @@
                         </div>
                         <div class="form-group">
                             <h4 class="title"><small>Event Image</small></h4>
-                            <app-image-upload></app-image-upload>
+                            <app-image-upload (onImageSelected)="onImageSelected($event)"></app-image-upload>
                         </div>
                     </div>
                 </form>

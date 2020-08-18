@@ -61,8 +61,9 @@ export class NotifyComponent implements OnInit, OnDestroy {
         });
 
         this.uiStateError$.subscribe((err: string) => {
-            console.log("From state error", err);
-            this.notifyservcie.error(err);
+            if (err) {
+                this.notifyservcie.error(err);
+            }
         }
         );
     }

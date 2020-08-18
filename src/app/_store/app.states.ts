@@ -1,17 +1,21 @@
 import { RouterReducerState, routerReducer } from "@ngrx/router-store";
 import * as fromAuth from "./reducers/auth.reducers";
 import * as fromUi from "./reducers/ui.reducers";
+import * as fromEvents from "./reducers/events.reducer";
 import { ActionReducerMap, createFeatureSelector, createSelector } from "@ngrx/store";
 
 export interface AppState {
+
     router?: RouterReducerState;
     authState: fromAuth.AuthState;
     uiState: fromUi.UiState;
+    eventsState: fromEvents.EventsState;
 }
 
 export function initialState(): AppState {
     return {
         router: null,
+        eventsState: fromEvents.initialEventState,
         authState: fromAuth.initialState,
         uiState: fromUi.initialState
     };
@@ -20,7 +24,8 @@ export function initialState(): AppState {
 export const appReducers: ActionReducerMap<AppState, any> = {
     router: routerReducer,
     authState: fromAuth.reducer,
-    uiState: fromUi.reducer
+    uiState: fromUi.reducer,
+    eventsState: fromEvents.reducer
 };
 
 export const selectAuthState = (state: AppState) => state.authState;

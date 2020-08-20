@@ -22,8 +22,8 @@ export const initialState: AuthState = {
 
 export function reducer(state = initialState, action: All): AuthState {
     switch (action.type) {
-        case AuthActionTypes.REGISTERSUCCESS:
-        case AuthActionTypes.LOGINSUCCESS: {
+        case AuthActionTypes.REGISTER_SUCCESS:
+        case AuthActionTypes.LOGIN_SUCCESS: {
             return {
                 ...state,
                 isAuthenticated: true,
@@ -31,19 +31,19 @@ export function reducer(state = initialState, action: All): AuthState {
                 errorMessage: null
             };
         }
-        case AuthActionTypes.LOGINFAILED: {
+        case AuthActionTypes.LOGIN_FAILED: {
             return {
                 ...state,
                 isAuthenticated: false,
                 errorMessage: action.payload
             };
         }
-        case AuthActionTypes.LOGOUTSUCCESS: {
+        case AuthActionTypes.LOGOUT_SUCCESS: {
             return {
                 ...state, user: null, isAuthenticated: false
             };
         }
-        case AuthActionTypes.LOGOUTFAILED: {
+        case AuthActionTypes.LOGOUT_FAILED: {
             return {
                 ...state, errorMessage: action.payload
             };

@@ -1,6 +1,6 @@
 
 <div class="yld-event-list-container">
-    <app-event-list-item></app-event-list-item>
-    <app-event-list-item></app-event-list-item>
-    <app-event-list-item></app-event-list-item>
+   
+    <app-event-list-item [event]="event" *ngFor="let event of events"></app-event-list-item>
+   
 </div>

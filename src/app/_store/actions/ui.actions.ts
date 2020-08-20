@@ -1,29 +1,29 @@
 import { Action } from "@ngrx/store";
 
-export enum UiActionTypes {
-    LOADINGSTARTED = "[Ui] Loading Started",
-    LOADINGFINISHED = "[Ui] Loading Finished",
-    ERRORSHOW ="[Ui] Showing Error",
-    ERRORHIDE ="[Ui] Showing Hide",
+export enum UIActionEnum {
+    LOADING_STARTED = "[UI] Loading Started",
+    LOADING_FINISHED = "[UI] Loading Finished",
+    ERROR_SHOW ="[UI] Showing Error",
+    ERROR_HIDE ="[UI] Showing Hide",
 }
 
 export class LoadingStartedAction implements Action {
-    readonly type = UiActionTypes.LOADINGSTARTED;
+    readonly type = UIActionEnum.LOADING_STARTED;
     constructor() {}
 }
 
 export class LoadingFinishedAction implements Action {
-    readonly type = UiActionTypes.LOADINGFINISHED;
+    readonly type = UIActionEnum.LOADING_FINISHED;
     constructor() {}
 }
 
 export class ErrorShowAction implements Action {
-    readonly type = UiActionTypes.ERRORSHOW;
+    readonly type = UIActionEnum.ERROR_SHOW;
     constructor(public payload: string) {}
 }
 
 export class ErrorHideAction implements Action {
-    readonly type = UiActionTypes.ERRORHIDE;
+    readonly type = UIActionEnum.ERROR_HIDE;
     constructor() {}
 }
 

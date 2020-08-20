@@ -12,7 +12,9 @@ import { NotifyService } from "app/services/notify-service/notify.service";
 import { CreateEventModel } from "app/_models/events/create-event.model";
 import { CreateEventAction } from "app/_store/actions/events.actions";
 import { Store } from "@ngrx/store";
-import { AppState } from "app/_store/app.states";
+import { AppState, selectAllCategories } from "app/_store/app.states";
+import { Observable } from "rxjs";
+import { CategoriesLoadAction } from "app/_store/actions/category.actions";
 
 @Component({
     templateUrl: "./event-create.component.html",
@@ -33,6 +35,7 @@ export class EventCreateComponent implements OnInit {
     selectedPrivacy: string;
     categoryDtos: Category[];
     image: string;
+    categories$: Observable<Category[]>;
     public validation_messages: any;
 
     public form: FormGroup;
@@ -42,10 +45,11 @@ export class EventCreateComponent implements OnInit {
         private modal: ModalService,
         private notify: NotifyService, 
         private store: Store<AppState>
-    ) {}
+    ) {
+        this.categories$ = store.select(selectAllCategories);
+    }
 
     ngOnInit(): void {
-        this.categoryDtos = this.categoryService.getCategories();
         this.initValidationMessages();
         this.dateTime = new Date();
         this.form = this.builder.group(
@@ -63,7 +67,13 @@ export class EventCreateComponent implements OnInit {
             },
             { updateOn: "change" }
         );
-        this.categories = this.mapCategories(this.categoryDtos);
+        this.categories$.subscribe((cats) => {
+            this.categoryDtos = cats;
+            this.categories = this.mapCategories(cats)
+
+        })
+
+        this.store.dispatch(new CategoriesLoadAction());
 
         this.dropdownSettings = {
             singleSelection: true,
@@ -72,7 +82,7 @@ export class EventCreateComponent implements OnInit {
             unSelectAllText: "UnSelect All",
             classes: "",
             enableSearchFilter: true,
-            lazyLoading: true
+            lazyLoading: false
         };
 
         this.privacyList = ["Public", "Friends", "Private"];
@@ -101,7 +111,7 @@ export class EventCreateComponent implements OnInit {
 
     mapCategories(categories: Category[]): MultiselectItem[] {
         let items = new Array<MultiselectItem>();
-        const parrents = categories.filter((p) => p.parrentId == null);
+        const parrents = categories.filter((p) => p.parrentId == 0);
         parrents.map((p) => {
             const catsByParrent = categories.filter((x) => x.parrentId == p.id);
             catsByParrent.map((cat) => items.push(this.mapToMultiselectDropdownItem(cat, p)));
@@ -199,11 +209,13 @@ export class EventCreateComponent implements OnInit {
         const event = new CreateEventModel();
         event.title = this.getFormValue("title");
         event.description = this.getFormValue("description");
+        event.privacy = this.getFormValue("privacy");
         event.startDate = this.getFormValue("dateTime");
         event.location = this.getFormValue("location");
-        event.categoryId = this.selectedCategory.id;
+        event.subCategoryId = this.selectedCategory.id;
+        event.categoryId = this.selectedCategory.parrentId;
         event.image = this.image;
-
+        event.mapLoaction();
         return event;
     }
 

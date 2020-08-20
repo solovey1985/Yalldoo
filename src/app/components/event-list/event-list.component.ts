@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ConditionalExpr } from '@angular/compiler';
+import { EventModel } from 'app/_models/events/event.model';
 
 @Component({
     selector: 'app-event-list',
@@ -8,6 +9,10 @@ import { ConditionalExpr } from '@angular/compiler';
 })
 
 export class EventList implements OnInit {
+
+    @Input()
+    events: EventModel[];
+    
     constructor() { }
 
     ngOnInit() {

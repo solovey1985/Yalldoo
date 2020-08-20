@@ -1,6 +1,6 @@
 import { Action } from "@ngrx/store";
 import { NavigationExtras } from "@angular/router";
-export enum ERouterActions {
+export enum RouterActionsEnum {
     Go = "[Router] Go",
     Forward = "[Router] Forward",
     Back = "[Router] Back",
@@ -8,7 +8,7 @@ export enum ERouterActions {
 }
 
 export class RouterGo implements Action {
-    readonly type = ERouterActions.Go;
+    readonly type = RouterActionsEnum.Go;
 
     constructor(
         public payload: {
@@ -20,17 +20,17 @@ export class RouterGo implements Action {
 }
 
 export class RouterForward implements Action {
-    public readonly type = ERouterActions.Forward;
+    public readonly type = RouterActionsEnum.Forward;
     constructor() {}
 }
 
 export class RouterBack implements Action {
-    public readonly type = ERouterActions.Back;
+    public readonly type = RouterActionsEnum.Back;
     constructor() {}
 }
 
 export class RouteChange implements Action {
-    readonly type = ERouterActions.Change;
+    readonly type = RouterActionsEnum.Change;
     constructor(public payload: { params: any; path: string }) {}
 }
 

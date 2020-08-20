@@ -27,17 +27,32 @@ export function reducer(state = initialEventState, action: fromEventActions.All)
         case EventActionEnum.CREATE_EVENT_SUCCESS: {
             return adapter.addOne(action.payload, state);
         }
+        case EventActionEnum.LOAD_EVENTS_SUCCESS: {
+            return adapter.addMany(action.payload, state);
+        }
+        case EventActionEnum.LOAD_EVENT: {
+            return {...state, selectedEventId: action.payload as number}
+        }
         default: {
             return state;
         }
     }
 }
 
-
-export const {
+const {
     selectAll,
     selectEntities,
     selectIds,
     selectTotal
   
-  } = adapter.getSelectors();
+} = adapter.getSelectors();
+ 
+export const selectEventIds = selectIds;
+// select the array of events
+export const selectAllEvents = selectAll;
+// select the dictionary of user entities
+export const selectEventEnties = selectEntities;
+// select the total event count
+export const selectEventsTotal = selectTotal;
+// select the total user count
+export const getSelectedEventId = (state: EventsState) => state.selectedEventId;

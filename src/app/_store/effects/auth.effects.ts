@@ -15,7 +15,7 @@ import {
     RegisterFailedAction
 } from "../actions/user.actions";
 import { User } from "app/_models/user/user.model";
-import { LoadingStartedAction, LoadingFinishedAction, UiActionTypes, ErrorShowAction } from "../actions/ui.actions";
+import { LoadingStartedAction, LoadingFinishedAction, UIActionEnum, ErrorShowAction } from "../actions/ui.actions";
 import { UserRegisterModel } from "app/_models/user/user-register.model";
 
 @Injectable()
@@ -36,7 +36,7 @@ export class AuthEffects {
 
     LoginSuccess$: Observable<any> = createEffect(() =>
         this.actions.pipe(
-            ofType(AuthActionTypes.LOGINSUCCESS),
+            ofType(AuthActionTypes.LOGIN_SUCCESS),
             map((action: any) => action.payload),
             switchMap((user: any) => {
                 localStorage.setItem("user", JSON.stringify(user));
@@ -79,7 +79,7 @@ export class AuthEffects {
 
     RegisterSuccess$ = createEffect(() =>
         this.actions.pipe(
-            ofType(AuthActionTypes.REGISTERSUCCESS),
+            ofType(AuthActionTypes.REGISTER_SUCCESS),
             map((action: RegisterSuccessAction) => action.payload),
             switchMap((user: User) => {
                 localStorage.setItem("user", JSON.stringify(user));

@@ -1,5 +1,7 @@
-import { UiActionTypes, All } from "../actions/ui.actions";
+import { UIActionEnum, All } from "../actions/ui.actions";
 import { AuthActionTypes } from "../actions/user.actions";
+import { CategoryActionsEnum } from "../actions/category.actions";
+import { EventActionEnum } from "../actions/events.actions";
 
 export interface UiState {
     isLoading: boolean;
@@ -13,30 +15,36 @@ export const initialState: UiState = {
 
 export function reducer(state = initialState, action: any) {
     switch (action.type) {
+        case EventActionEnum.LOAD_EVENTS:
+        case EventActionEnum.CREATE_EVENT:
         case AuthActionTypes.LOGIN:
         case AuthActionTypes.REGISTER:
-        case UiActionTypes.LOADINGSTARTED: {
+        case UIActionEnum.LOADING_STARTED: {
             return {
                 ...state,
                 isLoading: true
             };
         }
-        case AuthActionTypes.LOGINFAILED:
-        case AuthActionTypes.LOGINSUCCESS:
-        case UiActionTypes.LOADINGFINISHED: {
+        case EventActionEnum.LOAD_EVENTS_SUCCESS:
+       case EventActionEnum.LOAD_EVENTS_FAILED:
+        case EventActionEnum.CREATE_EVENT_SUCCESS:
+        case EventActionEnum.CREATE_EVENT_FAILED:
+        case AuthActionTypes.LOGIN_FAILED:
+        case AuthActionTypes.LOGIN_SUCCESS:
+        case UIActionEnum.LOADING_FINISHED: {
             return {
                 ...state,
                 isLoading: false
             };
         }
-        case UiActionTypes.ERRORSHOW: {
+        case UIActionEnum.ERROR_SHOW: {
             return {
                 ...state,
                 error: action.payload,
                 isLoading: false
             };
         }
-        case UiActionTypes.ERRORHIDE: {
+        case UIActionEnum.ERROR_HIDE: {
             return {
                 ...state,
                 error: null

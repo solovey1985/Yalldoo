@@ -11,10 +11,11 @@ import { Observable } from "rxjs";
 export class EventService {
     constructor(private http: HttpClient) {}
 
-    public fetchEvents(filter: any): Observable<EventModel[]> {
-        const filterString = JSON.stringify(filter);
-        const url = `${Config.apiUrl}/event?query=${filterString}`;
-        return this.http.get<EventModel[]>(url);
+    public fetchEvents(filter?: any): Observable<EventModel[]> {
+       
+            const filterString = JSON.stringify(filter);
+            const url = `${Config.apiUrl}/event`;
+            return this.http.get<EventModel[]>(url);
     }
 
     public fetchEvent(eventId: number): Observable<EventModel> {

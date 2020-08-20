@@ -1,6 +1,6 @@
 <div class="yld-page">
     <div class="container">
-        <div class="row">
+        <div class="row" *ngIf="selectedEvent$ | async as event">
             <div class="col-8 ml-auto mr-auto yld-event-container card no-transition">
                 <div
                     class="yld-event-image-container"
@@ -40,7 +40,7 @@
                             <img src="assets/img/avatar-event.jpg" class="img-rounded img-responsive" />
                         </div>
                         <div class="col-8 yld-event-title">
-                            <h2>Футбол в коробке</h2>
+                            <h2>{{event.title}}</h2>
                         </div>
                     </div>
 
@@ -56,25 +56,23 @@
                 <div class="yld-event-description">
                     <h5>About</h5>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur atque ipsa ullam vero
-                        suscipit? Quae pariatur facere eaque necessitatibus, laudantium reprehenderit unde labore
-                        cumque. Non ipsa odio placeat ad id.
+                        {{event.title}}
                     </p>
                 </div>
                 <hr />
                 <div class="yld-event-date-time-container">
                     <h5>Date And Time</h5>
                     <div class="d-flex flex-row">
-                        <h5 class="title-uppercase"><i class="fa fa-clock-o"></i> {{ date | date: "HH:mm" }}</h5>
+                        <h5 class="title-uppercase"><i class="fa fa-clock-o"></i> {{ event.startAt | date: "HH:mm" }}</h5>
                         <h5 class="title-uppercase">
-                            <i class="fa fa-calendar-o"></i> {{ date | date: "dd MMM yyyy" }}
+                            <i class="fa fa-calendar-o"></i> {{ event.startAt | date: "dd MMM yyyy" }}
                         </h5>
                     </div>
                 </div>
                 <hr />
                 <div class="yld-event-address-container">
                     <h5>Address</h5>
-                    <h5 class="title-uppercase"><i class="fa fa-map-marker"></i>Kyiv, Lugova st, bld 3</h5>
+                    <h5 class="title-uppercase"><i class="fa fa-map-marker"></i>{{event.location.address}}</h5>
                 </div>
                 <hr />
                 <div class="yld-event-participants-container">

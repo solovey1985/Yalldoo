@@ -3,5 +3,5 @@
         <app-search-bar [placeholder]="'Search Events'"></app-search-bar>
     </div>
     <app-quicksort-bar></app-quicksort-bar>
-    <app-event-list></app-event-list>
+    <app-event-list [events]="events$ | async"></app-event-list>
 </div>

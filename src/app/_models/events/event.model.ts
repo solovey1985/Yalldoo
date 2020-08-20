@@ -12,13 +12,22 @@ export class EventModel {
     // Data
     title: string;
     description: string;
-    startDate: Date;
+    startAt: Date;
     categoryId: number;
     category: Category;
     privacy: EPrivacyEnum;
-    location: LocationDto;
+    location: LocationInDTO;
     image: string;
     invitedIds: number[];
     ownerId: string;
     owner: UserInformation;
+}
+
+
+export class LocationInDTO{
+    address: string;
+    latitude: number;
+    longitude: number;
+    mapUrl: string;
+    type: number;
 }

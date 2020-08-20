@@ -4,14 +4,14 @@ import { UserRegisterModel } from "app/_models/user/user-register.model";
 
 export enum AuthActionTypes {
     LOGIN = "[Auth] Login",
-    LOGINSUCCESS = "[Auth] Login Success",
-    LOGINFAILED = "[Auth] Login Failure",
+    LOGIN_SUCCESS = "[Auth] Login Success",
+    LOGIN_FAILED = "[Auth] Login Failure",
     LOGOUT = "[Auth] Logout",
-    LOGOUTSUCCESS = "[Auth] Logout Success",
-    LOGOUTFAILED = "[Auth] Logout Failure",
+    LOGOUT_SUCCESS = "[Auth] Logout Success",
+    LOGOUT_FAILED = "[Auth] Logout Failure",
     REGISTER = "[Auth] Register",
-    REGISTERSUCCESS = "[Auth] Register Success",
-    REGISTERFAILED = "[Auth] Register Failed",
+    REGISTER_SUCCESS = "[Auth] Register Success",
+    REGISTER_FAILED = "[Auth] Register Failed",
 }
 
 export class LoginAction implements Action {
@@ -20,12 +20,12 @@ export class LoginAction implements Action {
 }
 
 export class LoginSuccessAction implements Action {
-    readonly type = AuthActionTypes.LOGINSUCCESS;
+    readonly type = AuthActionTypes.LOGIN_SUCCESS;
     constructor(public payload: User ) {}
 }
 
 export class LoginFailedAction implements Action {
-    readonly type = AuthActionTypes.LOGINFAILED;
+    readonly type = AuthActionTypes.LOGIN_FAILED;
     constructor(public payload: any) {}
 }
 
@@ -35,12 +35,12 @@ export class LogoutAction implements Action {
 }
 
 export class LogoutSuccessAction implements Action {
-    readonly type = AuthActionTypes.LOGOUTSUCCESS;
+    readonly type = AuthActionTypes.LOGOUT_SUCCESS;
     constructor() {}
 }
 
 export class LogoutFailedAction implements Action {
-    readonly type = AuthActionTypes.LOGOUTFAILED;
+    readonly type = AuthActionTypes.LOGOUT_FAILED;
     constructor(public payload: any) {}
 }
 
@@ -50,12 +50,12 @@ export class RegisterAction implements Action {
 }
 
 export class RegisterSuccessAction implements Action {
-    readonly type = AuthActionTypes.REGISTERSUCCESS;
+    readonly type = AuthActionTypes.REGISTER_SUCCESS;
     constructor(public payload: User) {}
 }
 
 export class RegisterFailedAction implements Action {
-    readonly type = AuthActionTypes.REGISTERFAILED;
+    readonly type = AuthActionTypes.REGISTER_FAILED;
     constructor(public payload: any) {}
 }
 

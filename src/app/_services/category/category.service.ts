@@ -1,6 +1,10 @@
 import { Injectable } from "@angular/core";
 import { Category } from "app/_models/category/category.model";
-
+import { Observable, of } from "rxjs";
+import { switchMap } from "rxjs/operators";
+import { HttpClient } from "@angular/common/http";
+import { Config } from "../../_configs/config";
+import { config } from "process";
 
 var categories: Category[] = [
     {
@@ -59,10 +63,10 @@ var categories: Category[] = [
         id: 10,
         title: "Travelling",
         parrentId: 3
-    },
+    }
 ];
 
-var categoryIconMap = new Map<string, string>()
+var categoryIconMap = new Map<string, string>();
 categoryIconMap.set("football", "fa-futbol-o");
 categoryIconMap.set("basketball", "fa-child");
 categoryIconMap.set("volleyball", "fa-child");
@@ -77,23 +81,31 @@ categoryIconMap.set("gaming", "fa-gamepad");
 categoryIconMap.set("animals", "fa-paw");
 categoryIconMap.set("beer", "fa-beer");
 
-
 @Injectable({
     providedIn: "root"
 })
 export class CategoryService {
-    constructor() {}
+    constructor(private http: HttpClient) {}
 
-    public getCategories(ammount?: number): Category[] {
-      return categories;
+    public loadCategories(pagedRequest?: any): Observable<Category[]> {
+        const url = `${Config.apiUrl}/category`;
+        return this.http.get<any>(url).pipe(
+            switchMap((response) => {
+                const cats = Array.from<Category>(response.data.result);
+                return of(cats);
+            })
+        );
     }
 
-    public getChildCategories(parrentId?: number): Array<Category>{
+    public getCategories(ammount?: number): Category[] {
+        return categories;
+    }
+
+    public getChildCategories(parrentId?: number): Array<Category> {
         if (parrentId) {
-            return categories.filter(x => x.parrentId === parrentId);
-        }
-        else {
-            const cats = categories.filter(x => x.parrentId != undefined); 
+            return categories.filter((x) => x.parrentId === parrentId);
+        } else {
+            const cats = categories.filter((x) => x.parrentId != undefined);
             return cats;
         }
     }
@@ -102,8 +114,7 @@ export class CategoryService {
         var icon = categoryIconMap.get(title.toLowerCase());
         if (!icon) {
             return "fa-sun-o";
-        }
-        else {
+        } else {
             return icon;
         }
     }

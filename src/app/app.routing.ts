@@ -49,7 +49,7 @@ import { AuthGuard } from "./core/guards/auth-guard.guard";
                 component: AppLayoutComponent,
                 children: [
                     { path: "feed", component: FeedComponent },
-                    { path: "event", component: EventComponent },
+                    { path: "event/:id", component: EventComponent },
                     { path: "create", component: EventCreateComponent },
                     { path: "search", component: SearchComponent },
                     { path: "me", component: EditProfileComponent, canActivate: [AuthGuard] },

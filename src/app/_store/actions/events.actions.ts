@@ -54,7 +54,7 @@ export class LoadEventsAction implements Action {
 
 export class LoadEventsActionSuccess implements Action {
     readonly type = EventActionEnum.LOAD_EVENTS_SUCCESS;
-    constructor(public payload: EventListItemModel[]) {}
+    constructor(public payload: EventModel[]) {}
 }
 
 export class LoadEventsActionFailed implements Action {

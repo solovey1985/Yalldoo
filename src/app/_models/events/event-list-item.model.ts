@@ -3,8 +3,10 @@ import LocationDto from "../location.dto";
 export class EventListItemModel{
     title: string;
     description: string;
-    startDate: Date;
+    startAt: Date;
+    privacy: number;
     categoryId: number;
+    subCategoryId: number;
     location: LocationDto;
     image: string;
     invitedIds: number[];

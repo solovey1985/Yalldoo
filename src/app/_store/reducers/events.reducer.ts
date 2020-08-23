@@ -1,9 +1,7 @@
 import { EntityState, EntityAdapter, createEntityAdapter } from "@ngrx/entity";
 import { EventModel } from "app/_models/events/event.model";
-import { Action } from "rxjs/internal/scheduler/Action";
 import * as fromEventActions from "../actions/events.actions";
 import { EventActionEnum } from "../actions/events.actions";
-import { act } from "@ngrx/effects";
 
 function sortBySeqNo(e1: EventModel, e2: EventModel) {
     return e1.seqNo - e2.seqNo;
@@ -30,8 +28,8 @@ export function reducer(state = initialEventState, action: fromEventActions.All)
         case EventActionEnum.LOAD_EVENTS_SUCCESS: {
             return adapter.addMany(action.payload, state);
         }
-        case EventActionEnum.LOAD_EVENT: {
-            return {...state, selectedEventId: action.payload as number}
+        case EventActionEnum.LOAD_EVENT_SUCCESS: {
+            return adapter.addMany(action.payload, { ...state, selectedEventId: action.payload[0].id });
         }
         default: {
             return state;

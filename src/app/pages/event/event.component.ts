@@ -8,6 +8,8 @@ import { Observable } from "rxjs";
 import { EventModel } from "app/_models/events/event.model";
 import { LoadEventAction } from "app/_store/actions/events.actions";
 import { map } from "rxjs/operators";
+import { CategoryService } from "app/_services/category/category.service";
+
 
 @Component({
     templateUrl: "./event.component.html",
@@ -16,20 +18,27 @@ import { map } from "rxjs/operators";
 export class EventComponent implements OnInit {
     date = new Date(2020, 8, 24, 12, 20, 0);
     selectedEvent$: Observable<EventModel>;
+    selectedEvent: EventModel;
+    id: number;
     constructor(
         private modal: ModalService,
         private notify: NotifyService,
         private store: Store<AppState>,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private categoryService: CategoryService
     ) {
 
-        let id = 0;
-        route.params.pipe(map(p => p.id)).subscribe((data) => id = data);
-        this.store.dispatch(new LoadEventAction(id));
+        
+        route.params.pipe(map(p => p.id)).subscribe((data) => this.id = data);
         this.selectedEvent$ = this.store.select(selectCurrentEvent);
     }
     actionItems = ["Join", "Follow", "Invite"];
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        this.selectedEvent$.subscribe((e: EventModel) => {
+            this.selectedEvent = e; if (!this.selectedEvent) {
+                this.store.dispatch(new LoadEventAction(this.id));
+        } });
+    }
 
     onActionSelect(item: string) {
         switch (item.toLocaleLowerCase()) {
@@ -50,5 +59,9 @@ export class EventComponent implements OnInit {
             default:
                 break;
         }
+    }
+
+    getIcon() {
+        return this.categoryService.getCategoryIcon(this.selectedEvent.category)
     }
 }

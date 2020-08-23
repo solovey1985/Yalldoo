@@ -12,8 +12,8 @@
                 <i class="fa fa-map-marker yld-event-list-item-data-icon" aria-hidden="true"></i>
                 <a href="">{{event.location.address}}</a>
             </p>
-            <p class="yld-event-list-item-data-item"><i class="fa fa-clock-o yld-event-list-item-data-icon" aria-hidden="true"></i>{{event.startAt | date: "hh:mm" }}</p>
-            <p class="yld-event-list-item-data-item"><i class="fa fa-calendar-check-o yld-event-list-item-data-icon" aria-hidden="true"></i>{{event.startAt | date: "dd MMM yyyy" }}</p>
+            <p class="yld-event-list-item-data-item"><i class="fa fa-clock-o yld-event-list-item-data-icon" aria-hidden="true"></i>{{event.startDate | date: "hh:mm" }}</p>
+            <p class="yld-event-list-item-data-item"><i class="fa fa-calendar-check-o yld-event-list-item-data-icon" aria-hidden="true"></i>{{event.startDate | date: "dd MMM yyyy" }}</p>
         </div>
         <img class="yld-event-list-item-avatar-creator" src="assets/img/faces/clem-onojeghuo-2.jpg" alt="..."/>
         <div class="yld-list-item-avatar-user-list">

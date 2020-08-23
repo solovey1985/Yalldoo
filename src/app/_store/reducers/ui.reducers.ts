@@ -16,6 +16,7 @@ export const initialState: UiState = {
 export function reducer(state = initialState, action: any) {
     switch (action.type) {
         case EventActionEnum.LOAD_EVENTS:
+        case EventActionEnum.LOAD_EVENT:
         case EventActionEnum.CREATE_EVENT:
         case AuthActionTypes.LOGIN:
         case AuthActionTypes.REGISTER:
@@ -26,7 +27,9 @@ export function reducer(state = initialState, action: any) {
             };
         }
         case EventActionEnum.LOAD_EVENTS_SUCCESS:
-       case EventActionEnum.LOAD_EVENTS_FAILED:
+        case EventActionEnum.LOAD_EVENT_SUCCESS:
+        case EventActionEnum.LOAD_EVENTS_FAILED:
+        case EventActionEnum.LOAD_EVENT_FAILED:
         case EventActionEnum.CREATE_EVENT_SUCCESS:
         case EventActionEnum.CREATE_EVENT_FAILED:
         case AuthActionTypes.LOGIN_FAILED:

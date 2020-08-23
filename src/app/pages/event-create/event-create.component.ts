@@ -15,6 +15,7 @@ import { Store } from "@ngrx/store";
 import { AppState, selectAllCategories } from "app/_store/app.states";
 import { Observable } from "rxjs";
 import { CategoriesLoadAction } from "app/_store/actions/category.actions";
+import { EventLocationModel, ELocationType } from "app/_models/location/event-create-location.model";
 
 @Component({
     templateUrl: "./event-create.component.html",
@@ -43,7 +44,7 @@ export class EventCreateComponent implements OnInit {
         private builder: FormBuilder,
         private categoryService: CategoryService,
         private modal: ModalService,
-        private notify: NotifyService, 
+        private notify: NotifyService,
         private store: Store<AppState>
     ) {
         this.categories$ = store.select(selectAllCategories);
@@ -69,9 +70,8 @@ export class EventCreateComponent implements OnInit {
         );
         this.categories$.subscribe((cats) => {
             this.categoryDtos = cats;
-            this.categories = this.mapCategories(cats)
-
-        })
+            this.categories = this.mapCategories(cats);
+        });
 
         this.store.dispatch(new CategoriesLoadAction());
 
@@ -173,13 +173,13 @@ export class EventCreateComponent implements OnInit {
     }
     //------ END Modals ------------------------
 
-    onCreateButtonClick():void {
+    onCreateButtonClick(): void {
         this.form.markAllAsTouched();
         this.form.updateValueAndValidity();
         if (this.form.valid) {
             const event = this.mapFormToEvent();
             this.store.dispatch(new CreateEventAction(event));
-            this.notify.info("Event was created", { autoClose: true, keepAfterRouteChange: false })
+            this.notify.info("Event was created", { autoClose: true, keepAfterRouteChange: false });
         }
     }
 
@@ -215,14 +215,18 @@ export class EventCreateComponent implements OnInit {
         event.subCategoryId = this.selectedCategory.id;
         event.categoryId = this.selectedCategory.parrentId;
         event.image = this.image;
-        event.mapLoaction();
+        event.location = new EventLocationModel(
+            this.location.title,
+            this.location.position.lat,
+            this.location.position.lng,
+            this.location.hereId,
+            ELocationType.coordinates
+        );
         return event;
     }
 
-    private getFormValue(key: string): any{
-
+    private getFormValue(key: string): any {
         return this.form.get(key).value;
-
     }
 }
 

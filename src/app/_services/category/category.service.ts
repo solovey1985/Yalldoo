@@ -67,6 +67,7 @@ var categories: Category[] = [
 ];
 
 var categoryIconMap = new Map<string, string>();
+categoryIconMap.set("music", "fa-music");
 categoryIconMap.set("football", "fa-futbol-o");
 categoryIconMap.set("basketball", "fa-child");
 categoryIconMap.set("volleyball", "fa-child");
@@ -79,6 +80,7 @@ categoryIconMap.set("travelling", "fa-globe");
 categoryIconMap.set("bycicle", "fa-bicycle");
 categoryIconMap.set("gaming", "fa-gamepad");
 categoryIconMap.set("animals", "fa-paw");
+categoryIconMap.set("birthday", "fa-gift");
 categoryIconMap.set("beer", "fa-beer");
 
 @Injectable({

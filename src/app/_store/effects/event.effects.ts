@@ -5,7 +5,8 @@ import {
     CreateEventSuccesstAction,
     LoadEventsAction,
     LoadEventActionSuccess,
-    LoadEventsActionSuccess
+    LoadEventsActionSuccess,
+    LoadEventAction
 } from "../actions/events.actions";
 import { pipe, of } from "rxjs";
 import { createEffect, ofType, Actions } from "@ngrx/effects";
@@ -26,7 +27,7 @@ export class EventEffects {
             switchMap((action: CreateEventAction) => {
                 return this.eventService.createEvent(action.payload).pipe(
                     map(
-                        (event: EventModel) => new CreateEventSuccesstAction(event),
+                        (event: EventModel) => { this.router.navigate(["feed"]); return new CreateEventSuccesstAction(event); },
                         catchError((error) => of(new CreateEventFailedAction(error)))
                     )
                 );
@@ -42,6 +43,20 @@ export class EventEffects {
                     map((response: any) => {
                         const events = response.data.result;
                         return new LoadEventsActionSuccess(events);
+                    })
+                );
+            })
+        )
+    );
+
+    eventLoad$ = createEffect(() =>
+        this.actions.pipe(
+            ofType(EventActionEnum.LOAD_EVENT),
+            switchMap((action: LoadEventAction) => {
+                return this.eventService.fetchEvent(action.payload as number).pipe(
+                    map((response: any) => {
+                        const events = response.data.result;
+                        return new LoadEventActionSuccess(events);
                     })
                 );
             })

@@ -2,9 +2,23 @@
     <div class="container">
         <div class="navbar-translate">
             <div class="navbar-header">
-                <a class="navbar-brand" [routerLink]="['/']"><img src="./assets/img/sections/landing/logo.png" alt="Y'alldoo!" class="yld-landing-nav-brand-logo"/></a>
+                <a class="navbar-brand" [routerLink]="['/']"
+                    ><img
+                        src="./assets/img/sections/landing/logo.png"
+                        alt="Y'alldoo!"
+                        class="yld-landing-nav-brand-logo"
+                /></a>
             </div>
-            <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
+            <button
+                class="navbar-toggler navbar-burger"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarToggler"
+                aria-controls="navbarTogglerDemo02"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+                (click)="sidebarToggle()"
+            >
                 <span class="navbar-toggler-bar bar1"></span>
                 <span class="navbar-toggler-bar bar2"></span>
                 <span class="navbar-toggler-bar bar3"></span>
@@ -21,19 +35,38 @@
                 <div ngbDropdown class="nav-item dropdown">
                     <div class="nav-link dropdown-toggle" ngbDropdownToggle>MVP Pages</div>
                     <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right dropdown-danger">
-                        <a class="dropdown-item" [routerLink]="['/register']"><i class="fa fa-address-book-o"></i>&nbsp; Register Page</a>
-                        <a class="dropdown-item" [routerLink]="['/login']"><i class="nc-icon nc-lock-circle-open"></i>&nbsp; Login Page</a>
-                        <a class="dropdown-item" [routerLink]="['/preferences']"><i class="fa fa-heart-o"></i>&nbsp; Preferences</a>
+                        <a class="dropdown-item" [routerLink]="['/register']"
+                            ><i class="fa fa-address-book-o"></i>&nbsp; Register Page</a
+                        >
+                        <a class="dropdown-item" [routerLink]="['/login']"
+                            ><i class="nc-icon nc-lock-circle-open"></i>&nbsp; Login Page</a
+                        >
+                        <a class="dropdown-item" [routerLink]="['/preferences']"
+                            ><i class="fa fa-heart-o"></i>&nbsp; Preferences</a
+                        >
                         <a class="dropdown-item" [routerLink]="['/feed']"><i class="fa fa-list-ul"></i>&nbsp; Feed</a>
-                        <a class="dropdown-item" [routerLink]="['/event']"><i class="fa fa-birthday-cake"></i>&nbsp; Event</a>
-                        <a class="dropdown-item" [routerLink]="['/create']"><i class="fa fa-plus-square-o"></i>&nbsp; Create Event</a>
-                        <a class="dropdown-item" [routerLink]="['/about']"><i class="nc-icon nc-badge"></i>&nbsp; About</a>
-                        <a class="dropdown-item" [routerLink]="['/contactus']"><i class="nc-icon nc-mobile"></i>&nbsp; Contact Us</a>
+                        <a class="dropdown-item" [routerLink]="['/create']"
+                            ><i class="fa fa-plus-square-o"></i>&nbsp; Create Event</a
+                        >
+                        <a class="dropdown-item" [routerLink]="['/about']"
+                            ><i class="nc-icon nc-badge"></i>&nbsp; About</a
+                        >
+                        <a class="dropdown-item" [routerLink]="['/contactus']"
+                            ><i class="nc-icon nc-mobile"></i>&nbsp; Contact Us</a
+                        >
                         <a class="dropdown-item" [routerLink]="['/team']"><i class="fa fa-users"></i>&nbsp; Team</a>
-                        <a class="dropdown-item" [routerLink]="['/profile']"><i class="nc-icon nc-single-02"></i>&nbsp; Profile Page</a>
-                        <a class="dropdown-item" [routerLink]="['/me']"><i class="fa fa-user-circle-o"></i>&nbsp; My Profile</a>
-                        <a class="dropdown-item" [routerLink]="['/settings']"><i class="nc-icon nc-settings-gear-65"></i>&nbsp;Profile Settings</a>
-                        <a class="dropdown-item" [routerLink]="['/friends']"><i class="fa fa-handshake-o"></i>&nbsp;Friends</a>
+                        <a class="dropdown-item" [routerLink]="['/profile']"
+                            ><i class="nc-icon nc-single-02"></i>&nbsp; Profile Page</a
+                        >
+                        <a class="dropdown-item" [routerLink]="['/me']"
+                            ><i class="fa fa-user-circle-o"></i>&nbsp; My Profile</a
+                        >
+                        <a class="dropdown-item" [routerLink]="['/settings']"
+                            ><i class="nc-icon nc-settings-gear-65"></i>&nbsp;Profile Settings</a
+                        >
+                        <a class="dropdown-item" [routerLink]="['/friends']"
+                            ><i class="fa fa-handshake-o"></i>&nbsp;Friends</a
+                        >
                     </div>
                 </div>
             </ul>

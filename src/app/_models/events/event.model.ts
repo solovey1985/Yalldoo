@@ -12,9 +12,9 @@ export class EventModel {
     // Data
     title: string;
     description: string;
-    startAt: Date;
+    startDate: Date;
     categoryId: number;
-    category: Category;
+    category: string;
     privacy: EPrivacyEnum;
     location: LocationInDTO;
     image: string;

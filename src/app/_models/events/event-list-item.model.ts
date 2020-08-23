@@ -3,7 +3,7 @@ import LocationDto from "../location.dto";
 export class EventListItemModel{
     title: string;
     description: string;
-    startAt: Date;
+    startDate: Date;
     privacy: number;
     categoryId: number;
     subCategoryId: number;

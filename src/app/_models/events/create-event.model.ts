@@ -1,6 +1,7 @@
 import { Category } from "../category/category.model";
 import { EPrivacyEnum } from "../common/privacy.enum";
 import LocationDto from "../location.dto";
+import { EventLocationModel } from "../location/event-create-location.model";
 
 export class CreateEventModel {
     title: string;
@@ -9,7 +10,7 @@ export class CreateEventModel {
     categoryId: number;
     subCategoryId: number;
     privacy: EPrivacyEnum;
-    location: LocationDto;
+    location: EventLocationModel;
     image: string;
     invitedIds: number[];
     address: string;
@@ -17,11 +18,4 @@ export class CreateEventModel {
     longitude: number;
     mapUrl: string;
     type: string;
-
-    public mapLoaction() {
-        this.address = this.location.title;
-        this.latitude = this.location.position.lat;
-        this.longitude = this.location.position.lng;
-        this.type = "Coordinates";
-    }
 }

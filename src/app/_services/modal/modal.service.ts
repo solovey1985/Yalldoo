@@ -6,6 +6,7 @@ import { of, Observable, from, Subject } from 'rxjs';
 import LocationDto from 'app/_models/location.dto';
 import { LocationPickerModalComponent } from 'app/components/modal/location-picker-modal/location-picker-modal.component';
 import { FriendsPickerModalComponent } from 'app/components/modal/friends-picker-modal/friends-picker-modal.component';
+import { FriendsImportFacebookModalComponent } from 'app/components/modal/friends-import-facebook-modal/friends-import-facebook-modal.component';
 import { FirendListItem } from 'app/_models/friends/friend-list-item.model';
 import { Category } from 'app/_models/category/category.model';
 import { CategoriesPreferenceEditorComponent } from 'app/components/modal/categories-preference-editor-modal/categories-preference-editor-modal.component';
@@ -81,7 +82,6 @@ export class ModalService {
         return subject.asObservable()  
     }
 
-
     openCategoriesPrefernceEditor(categories?: Category[]) {
         var subject = new Subject<Array<Category>>()
         const options = new NgbModalConfig();
@@ -101,4 +101,13 @@ export class ModalService {
         });
         return subject.asObservable()  
     }
+
+    openFacebookFriendsImport(): void {
+        const options = new NgbModalConfig();
+        options.centered = false;
+        options.size = "lg";
+        var modalRef = this.ngbModalService.open(FriendsImportFacebookModalComponent, options);
+        const modal = <FriendsImportFacebookModalComponent>modalRef.componentInstance;
+    }
+
 }

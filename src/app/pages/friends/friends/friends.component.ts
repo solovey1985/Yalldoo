@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalService } from "app/_services/modal/modal.service";
 
 @Component({
   selector: 'app-friends',
@@ -7,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FriendsComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(
+      private modal: ModalService
+  ) {  }
+  onImportFriendsFacebookClick() : void {
+    this.modal.openFacebookFriendsImport();
+  }
   ngOnInit(): void {
   }
 

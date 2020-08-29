@@ -3,6 +3,13 @@
         <div class="col-md-8 ml-auto mr-auto text-center yld-page-header">
             <h2 class="title">Friends</h2>
             <app-search-bar [placeholder]="'Search Friends'"></app-search-bar>
+            <button
+                class="btn btn-block btn-round btn-facebook yld-friends-import-facebook-button"
+                type="button"
+                (click)="onImportFriendsFacebookClick()"
+            >
+                import from facebook
+            </button>
             <div class="yld-page-list">
                 <app-friend-list></app-friend-list>
             </div>

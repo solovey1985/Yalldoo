@@ -6,7 +6,9 @@ export class EventListItemModel{
     startDate: Date;
     privacy: number;
     categoryId: number;
+    category: string;
     subCategoryId: number;
+    subCategory: string;
     location: LocationDto;
     image: string;
     invitedIds: number[];

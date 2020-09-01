@@ -1,0 +1,20 @@
+<div class="center-block">
+    <nav aria-label="...">
+        <ul class="pagination justify-content-center pagination-default">
+            <button class="btn btn-move-left btn-round" [disabled]="!canGoBack()" (click)="goInDirection(-1)">
+                <i class="nc-icon nc-minimal-left"></i>
+                Back
+            </button>
+            <button
+                *ngFor="let number of totalPages"
+                class="btn btn-just-icon btn-border"
+                (click)="onPageChange(number)"
+                [ngClass]="{ active: number == currentPage }"
+            >
+                {{ number }}
+            </button>
+
+            <button class="btn btn-move-right btn-round" [disabled]="!canGoFroward()" (click)="goInDirection(1)">Next<i class="nc-icon nc-minimal-right"></i></button>
+        </ul>
+    </nav>
+</div>

@@ -20,6 +20,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { TokenInterceptor, ErrorInterceptor } from "./core/interceptors/token.iterceptor";
 import { EventEffects } from "./_store/effects/event.effects";
 import { CategoryEffects } from "./_store/effects/category.effects";
+import { RouterEffects } from "./_store/effects/router.effects";
+import { NgrxRouterStoreModule } from "./core/router/ngrx-router.module";
 
 const maskConfig: Partial<IConfig> = {
     validation: false,
@@ -35,11 +37,13 @@ const maskConfig: Partial<IConfig> = {
         RouterModule,
         HttpClientModule,
         //*******NGRX**********
+        NgrxRouterStoreModule,
         StoreModule.forRoot(appReducers),
         EffectsModule.forRoot([AuthEffects, EventEffects, CategoryEffects]),
         StoreDevtoolsModule.instrument({
             maxAge: 24
         }),
+        
         //
 
         AppRoutingModule,

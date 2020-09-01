@@ -10,7 +10,7 @@
         <div class="yld-event-list-item-data">
             <p class="yld-event-list-item-data-item">
                 <i class="fa fa-map-marker yld-event-list-item-data-icon" aria-hidden="true"></i>
-                <a href="">{{event.location.address}}</a>
+                <a *ngIf="event.location" href="">{{event.location.address}}</a>
             </p>
             <p class="yld-event-list-item-data-item"><i class="fa fa-clock-o yld-event-list-item-data-icon" aria-hidden="true"></i>{{event.startDate | date: "hh:mm" }}</p>
             <p class="yld-event-list-item-data-item"><i class="fa fa-calendar-check-o yld-event-list-item-data-icon" aria-hidden="true"></i>{{event.startDate | date: "dd MMM yyyy" }}</p>

@@ -1,7 +1,16 @@
 <div class="yld-feed-page container">
     <div class="col-md-8 col-sm-12 ml-auto mr-auto text-center">
         <app-search-bar [placeholder]="'Search Events'"></app-search-bar>
+        <button
+            class="btn btn-primary btn-just-icon btn-lg"
+            id="yld-create-event-btn"
+            (click)="onEventAddClick($event)"
+        >
+            <i class="fa fa-plus-circle" aria-hidden="true"></i>
+        </button>
     </div>
-    <app-quicksort-bar></app-quicksort-bar>
     <app-event-list [events]="events$ | async"></app-event-list>
+    <div *ngIf="pagination">
+        <app-pagination [data]="pagination"></app-pagination>
+    </div>
 </div>

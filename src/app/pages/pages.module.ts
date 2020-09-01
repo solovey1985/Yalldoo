@@ -34,6 +34,8 @@ import { FriendsComponent } from './friends/friends/friends.component';
 import { FriendComponent } from './friends/friend/friend.component';
 import { SettingsComponent } from './settings/settings.component';
 import { NgxMaskModule } from "ngx-mask";
+import { PaginationComponent } from "app/components/pagination/pagination.component";
+
 
 @NgModule({
     imports: [
@@ -75,7 +77,7 @@ import { NgxMaskModule } from "ngx-mask";
         ForgotComponent,
         FriendsComponent,
         FriendComponent,
-        SettingsComponent
+        SettingsComponent,
     ]
 })
 export class PagesModule {}

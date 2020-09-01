@@ -1,6 +1,5 @@
 import { EntityState, createEntityAdapter } from "@ngrx/entity";
 import { Category } from "../../_models/category/category.model";
-import { Action } from "@ngrx/store";
 import { All } from "../actions/category.actions";
 import { CategoryActionsEnum } from "../actions/category.actions";
 

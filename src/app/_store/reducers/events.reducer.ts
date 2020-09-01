@@ -2,6 +2,7 @@ import { EntityState, EntityAdapter, createEntityAdapter } from "@ngrx/entity";
 import { EventModel } from "app/_models/events/event.model";
 import * as fromEventActions from "../actions/events.actions";
 import { EventActionEnum } from "../actions/events.actions";
+import { PaginationModel } from "app/_models/pagination/pagination.model";
 
 function sortBySeqNo(e1: EventModel, e2: EventModel) {
     return e1.seqNo - e2.seqNo;
@@ -9,6 +10,7 @@ function sortBySeqNo(e1: EventModel, e2: EventModel) {
 
 export interface EventsState extends EntityState<EventModel> {
     selectedEventId?: number;
+    pagination: PaginationModel<EventModel>;
 }
 
 export const adapter = createEntityAdapter<EventModel>({
@@ -17,6 +19,7 @@ export const adapter = createEntityAdapter<EventModel>({
 
 export const initialEventState = adapter.getInitialState({
     selectId: null,
+    pagination: null
 });
 
 export function reducer(state = initialEventState, action: fromEventActions.All): EventsState {
@@ -26,10 +29,13 @@ export function reducer(state = initialEventState, action: fromEventActions.All)
             return adapter.addOne(action.payload, state);
         }
         case EventActionEnum.LOAD_EVENTS_SUCCESS: {
-            return adapter.addMany(action.payload, state);
+            return adapter.addMany(action.payload.result, { ...state, pagination: action.payload, selectedEventId: null });
         }
         case EventActionEnum.LOAD_EVENT_SUCCESS: {
             return adapter.addMany(action.payload, { ...state, selectedEventId: action.payload[0].id });
+        }
+        case EventActionEnum.CHANGE_EVENT_ID: {
+            return { ...state, selectedEventId: action.payload };
         }
         default: {
             return state;
@@ -42,7 +48,6 @@ const {
     selectEntities,
     selectIds,
     selectTotal
-  
 } = adapter.getSelectors();
  
 export const selectEventIds = selectIds;
@@ -54,3 +59,4 @@ export const selectEventEnties = selectEntities;
 export const selectEventsTotal = selectTotal;
 // select the total user count
 export const getSelectedEventId = (state: EventsState) => state.selectedEventId;
+export const getPagination = (state: EventsState) => state.pagination;

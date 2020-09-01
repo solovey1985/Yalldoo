@@ -2,6 +2,7 @@ import { Action } from "@ngrx/store";
 import { EventModel } from "app/_models/events/event.model";
 import { CreateEventModel } from "app/_models/events/create-event.model";
 import { EventListItemModel } from "app/_models/events/event-list-item.model";
+import { PaginationModel } from "app/_models/pagination/pagination.model";
 
 export enum EventActionEnum {
     CREATE_EVENT = "[Events] Create Event",
@@ -12,7 +13,8 @@ export enum EventActionEnum {
     LOAD_EVENTS_FAILED = "[Events] Load Events Failed",
     LOAD_EVENT = "[Events] Load Single Event",
     LOAD_EVENT_SUCCESS = "[Events] Load Single Event Success",
-    LOAD_EVENT_FAILED = "[Events] Load Single Event Failed"
+    LOAD_EVENT_FAILED = "[Events] Load Single Event Failed",
+    CHANGE_EVENT_ID = "[Events] Change Event Id"
 }
 
 export class CreateEventAction implements Action {
@@ -54,12 +56,17 @@ export class LoadEventsAction implements Action {
 
 export class LoadEventsActionSuccess implements Action {
     readonly type = EventActionEnum.LOAD_EVENTS_SUCCESS;
-    constructor(public payload: EventModel[]) {}
+    constructor(public payload: PaginationModel<EventModel>) {}
 }
 
 export class LoadEventsActionFailed implements Action {
     readonly type = EventActionEnum.LOAD_EVENTS_FAILED;
     constructor(public payload: any) {}
+}
+
+export class ChangeEventIdAction implements Action {
+    readonly type = EventActionEnum.CHANGE_EVENT_ID;
+    constructor(public payload: number) {}
 }
 
 export type All =
@@ -71,4 +78,5 @@ export type All =
     | LoadEventActionFailed
     | LoadEventsAction
     | LoadEventsActionFailed
-    | LoadEventsActionSuccess;
+    | LoadEventsActionSuccess
+    | ChangeEventIdAction;

@@ -26,7 +26,7 @@ export class EventCreateComponent implements OnInit {
     selectedCategory: Category;
     dropdownSettings = {};
     location: LocationDto;
-    dateTime: Date;
+    dateTime = new Date();
     invitedFriends: Array<FirendListItem>;
     isDateSelected = false;
     isLocationSelected = false;
@@ -82,7 +82,7 @@ export class EventCreateComponent implements OnInit {
             unSelectAllText: "UnSelect All",
             classes: "",
             enableSearchFilter: true,
-            lazyLoading: false
+            lazyLoading: true
         };
 
         this.privacyList = ["Public", "Friends", "Private"];
@@ -179,7 +179,6 @@ export class EventCreateComponent implements OnInit {
         if (this.form.valid) {
             const event = this.mapFormToEvent();
             this.store.dispatch(new CreateEventAction(event));
-            this.notify.info("Event was created", { autoClose: true, keepAfterRouteChange: false });
         }
     }
 

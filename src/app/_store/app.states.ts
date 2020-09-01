@@ -4,6 +4,7 @@ import * as fromUi from "./reducers/ui.reducers";
 import * as fromEvents from "./reducers/events.reducer";
 import * as fromCategories from "./reducers/categories.reducer";
 import { ActionReducerMap, createSelector } from "@ngrx/store";
+import { getMergedRoute } from "./selectors/router-state.selectors";
 
 export interface AppState {
     router?: RouterReducerState;
@@ -42,7 +43,12 @@ export const selectError = createSelector(selectUiState, (state: fromUi.UiState)
 export const selectAllCategories = createSelector(selectCategoriesState, fromCategories.selectAll);
 export const selectAllEvents = createSelector(selectEventsState, fromEvents.selectAllEvents);
 export const selectAllEventEntities = createSelector(selectEventsState, fromEvents.selectEventEnties);
-export const selectCurrentEventId = createSelector(selectEventsState, fromEvents.getSelectedEventId);
+export const selectCurrentEventId = createSelector(
+    selectAllEvents, getMergedRoute, (events, mergedRoute)=> Number.parseInt(mergedRoute.params.id)
+);
+export const selectPagination = createSelector(selectEventsState, fromEvents.getPagination)
+
+
 export const selectCurrentEvent = createSelector(
     selectAllEventEntities,
     selectCurrentEventId,

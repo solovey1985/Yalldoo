@@ -4,6 +4,7 @@ import { CreateEventModel } from "app/_models/events/create-event.model";
 import { EventModel } from "app/_models/events/event.model";
 import { Config } from "../../_configs/config";
 import { Observable } from "rxjs";
+import { PaginationModel } from "app/_models/pagination/pagination.model";
 
 @Injectable({
     providedIn: "root"
@@ -11,11 +12,11 @@ import { Observable } from "rxjs";
 export class EventService {
     constructor(private http: HttpClient) {}
 
-    public fetchEvents(filter?: any): Observable<EventModel[]> {
+    public fetchEvents(filter?: any): Observable<PaginationModel<EventModel>> {
        
             const filterString = JSON.stringify(filter);
             const url = `${Config.apiUrl}/event`;
-            return this.http.get<EventModel[]>(url);
+            return this.http.get<PaginationModel<EventModel>>(url);
     }
 
     public fetchEvent(eventId: number): Observable<EventModel> {
@@ -25,7 +26,7 @@ export class EventService {
 
     public createEvent(event: CreateEventModel): Observable<EventModel> {
         const url = `${Config.apiUrl}/event`;
-        return this.http.post<EventModel>(url, JSON.stringify(event));
+        return this.http.post<any>(url, JSON.stringify(event)).map(response=> response.data);
     }
 
     public updateEvent(event: EventModel): Observable<EventModel> {

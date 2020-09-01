@@ -36,6 +36,7 @@ import { FriendListComponent } from './friends/friend-list/friend-list.component
 import { PrivacySelectorComponent } from './privacy-selector/privacy-selector.component';
 import { ControlMessagesComponent } from './control-messages/control-messages.component';
 import { AppNavbarComponent } from './app-navbar/app-navbar.component';
+import { PaginationComponent } from './pagination/pagination.component';
 
 @NgModule({
     imports: [
@@ -78,6 +79,7 @@ import { AppNavbarComponent } from './app-navbar/app-navbar.component';
         PrivacySelectorComponent,
         ControlMessagesComponent,
         AppNavbarComponent,
+        PaginationComponent,
 
     ],
     exports: [
@@ -100,8 +102,8 @@ import { AppNavbarComponent } from './app-navbar/app-navbar.component';
         FriendListComponent,
         PrivacySelectorComponent,
         ControlMessagesComponent,
-        AppNavbarComponent
-
+        AppNavbarComponent,
+        PaginationComponent,
     ]
 })
 export class ComponentsModule { }

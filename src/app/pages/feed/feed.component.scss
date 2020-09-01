@@ -2,3 +2,17 @@
     height: 100%;
     margin-top: 88px;
 }
+
+#yld-create-event-btn{
+    position: fixed;
+    bottom: 10vh;
+    right: 10vw;
+    z-index: 999;
+    width: 96px;
+    height: 96px;
+    i {
+        font-size: 4em;
+        margin-left: -28px;
+        
+    }
+}

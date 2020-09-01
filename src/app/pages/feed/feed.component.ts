@@ -30,6 +30,4 @@ export class FeedComponent implements OnInit {
     onEventAddClick($event) {
         this.router.navigate(['create']);
     }
-  
-    onPageChanged()
 }

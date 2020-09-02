@@ -11,6 +11,6 @@
     </div>
     <app-event-list [events]="events$ | async"></app-event-list>
     <div *ngIf="pagination">
-        <app-pagination [data]="pagination"></app-pagination>
+        <app-pagination [data]="pagination" (onPageChanged)="onPageChange($event)"></app-pagination>
     </div>
 </div>

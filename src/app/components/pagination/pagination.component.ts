@@ -9,7 +9,7 @@ import { EventModel } from "app/_models/events/event.model";
 })
 export class PaginationComponent implements OnInit {
     @Input()
-    data: PaginationModel<EventModel>;
+    data: PaginationModel<any>;
     @Output()
     onPageChanged = new EventEmitter<number>();
     currentPage = 1;
@@ -23,15 +23,15 @@ export class PaginationComponent implements OnInit {
     }
 
     onPageChange(page: number) {
-        console.log("Clicking on ", page);
         if (page && page <= this.data.totalPages && page > 0) {
             this.currentPage = page;
-            this.onPageChanged.emit(page);
+            this.onPageChanged.emit(this.currentPage);
         }
     }
 
     goInDirection(val: number) {
         this.currentPage = this.currentPage + val;
+        this.onPageChanged.emit(this.currentPage);
     }
 
     canGoFroward(): boolean {

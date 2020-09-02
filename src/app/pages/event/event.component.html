@@ -5,7 +5,13 @@
                 <div
                     class="yld-event-image-container"
                     style="background-image: url('./assets/img/sections/roger-keller.jpg');"
-                ></div>
+                >
+                <div class="block left-align">
+                    <button type="button" class="btn btn-move-left btn-round" (click)="goBack()">
+                        <i class="nc-icon nc-minimal-left"></i>
+                    </button>
+                </div>
+            </div>
                 <div class="yld-event-actions-container">
                     <div class="yld-event-title-category badge-success">
                         <div class="row">
@@ -37,7 +43,8 @@
                 <div class="yld-event-header-container">
                     <div class="row">
                         <div class="col-4 yld-event-avatar">
-                            <img src="assets/img/avatar-event.jpg" class="img-rounded img-responsive" />
+                            <img *ngIf="!event.image" src="assets/img/avatar-event.jpg" class="img-rounded img-responsive" />
+                            <img  *ngIf="event.image" src="{{event.image}}" class="img-rounded img-responsive" />
                         </div>
                         <div class="col-8 yld-event-title">
                             <h2>{{event.title}}</h2>

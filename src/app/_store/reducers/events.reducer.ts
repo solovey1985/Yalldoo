@@ -29,7 +29,7 @@ export function reducer(state = initialEventState, action: fromEventActions.All)
             return adapter.addOne(action.payload, state);
         }
         case EventActionEnum.LOAD_EVENTS_SUCCESS: {
-            return adapter.addMany(action.payload.result, { ...state, pagination: action.payload, selectedEventId: null });
+            return adapter.addAll(action.payload.result, { ...state, pagination: action.payload, selectedEventId: null });
         }
         case EventActionEnum.LOAD_EVENT_SUCCESS: {
             return adapter.addMany(action.payload, { ...state, selectedEventId: action.payload[0].id });

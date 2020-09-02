@@ -13,10 +13,14 @@ export class EventService {
     constructor(private http: HttpClient) {}
 
     public fetchEvents(filter?: any): Observable<PaginationModel<EventModel>> {
-       
-            const filterString = JSON.stringify(filter);
-            const url = `${Config.apiUrl}/event`;
-            return this.http.get<PaginationModel<EventModel>>(url);
+        let url = "";
+        if (filter) {
+            url = `${Config.apiUrl}/event?pageNumber=${filter.pageNumber}&pageSize=${filter.pageSize}`;
+        } else {
+            url = `${Config.apiUrl}/event`;
+        }
+
+        return this.http.get<PaginationModel<EventModel>>(url);
     }
 
     public fetchEvent(eventId: number): Observable<EventModel> {
@@ -26,7 +30,7 @@ export class EventService {
 
     public createEvent(event: CreateEventModel): Observable<EventModel> {
         const url = `${Config.apiUrl}/event`;
-        return this.http.post<any>(url, JSON.stringify(event)).map(response=> response.data);
+        return this.http.post<any>(url, JSON.stringify(event)).map((response) => response.data);
     }
 
     public updateEvent(event: EventModel): Observable<EventModel> {

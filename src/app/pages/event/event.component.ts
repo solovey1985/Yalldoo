@@ -1,36 +1,59 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { ModalService } from "app/_services/modal/modal.service";
 import { NotifyService } from "app/services/notify-service/notify.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Store } from "@ngrx/store";
-import { AppState, selectCurrentEvent } from "app/_store/app.states";
-import { Observable } from "rxjs";
+import { AppState, selectCurrentEvent, selectCurrentEventId } from "app/_store/app.states";
+import { Observable, Subscription } from "rxjs";
 import { EventModel } from "app/_models/events/event.model";
 import { LoadEventAction, ChangeEventIdAction } from "app/_store/actions/events.actions";
-import { map } from "rxjs/operators";
+import { map, filter } from "rxjs/operators";
 import { CategoryService } from "app/_services/category/category.service";
 
 @Component({
     templateUrl: "./event.component.html",
     styleUrls: ["./event.component.scss"]
 })
-export class EventComponent implements OnInit {
+export class EventComponent implements OnInit, OnDestroy {
     date = new Date(2020, 8, 24, 12, 20, 0);
     selectedEvent$: Observable<EventModel>;
     event: EventModel;
-    
+    selectedEventId$: Observable<number>;
+    id: number;
+    selectIdSub$: Subscription;
+    selectEventSub$: Subscription;
     constructor(
         private modal: ModalService,
         private notify: NotifyService,
         private store: Store<AppState>,
-        private categoryService: CategoryService
+        private categoryService: CategoryService,
+        private router: Router
     ) {
-        
         this.selectedEvent$ = this.store.select(selectCurrentEvent);
+        this.selectedEventId$ = this.store.select(selectCurrentEventId);
+    }
+    ngOnDestroy(): void {
+        this.selectEventSub$.unsubscribe();
+        this.selectIdSub$.unsubscribe();
     }
     actionItems = ["Join", "Follow", "Invite"];
     ngOnInit(): void {
-        this.selectedEvent$.subscribe(e => this.event = e);
+       this.selectIdSub$ = this.selectedEventId$
+            .pipe(
+                filter((e) => {
+                    return e != NaN && this.id > 0;
+                })
+            )
+            .subscribe((e) => {
+                this.store.dispatch(new ChangeEventIdAction(this.id));
+            });
+
+       this.selectEventSub$ = this.selectedEvent$.subscribe((e) => {
+            this.event = e;
+            if (!this.event && this.id) {
+                this.store.dispatch(new LoadEventAction(this.id));
+            }
+        });
     }
 
     onActionSelect(item: string) {
@@ -52,6 +75,10 @@ export class EventComponent implements OnInit {
             default:
                 break;
         }
+    }
+
+    goBack() {
+        this.router.navigate(["feed"]);
     }
 
     getIcon() {

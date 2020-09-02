@@ -9,7 +9,7 @@ import {
     LoadEventAction
 } from "../actions/events.actions";
 import { pipe, of } from "rxjs";
-import { createEffect, ofType, Actions } from "@ngrx/effects";
+import { createEffect, ofType, Actions, act } from "@ngrx/effects";
 import { Router } from "@angular/router";
 import { Injectable } from "@angular/core";
 import { EventService } from "app/_services/events/event.service";
@@ -39,7 +39,7 @@ export class EventEffects {
         this.actions.pipe(
             ofType(EventActionEnum.LOAD_EVENTS),
             switchMap((action: LoadEventsAction) => {
-                return this.eventService.fetchEvents().pipe(
+                return this.eventService.fetchEvents(action.payload).pipe(
                     map((response: any) => {
                         const events = response.data;
                         return new LoadEventsActionSuccess(events);

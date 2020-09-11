@@ -7,7 +7,7 @@ import { AppState, selectCurrentEvent, selectCurrentEventId } from "app/_store/a
 import { Observable, Subscription } from "rxjs";
 import { EventModel } from "app/_models/events/event.model";
 import { LoadEventAction, ChangeEventIdAction } from "app/_store/actions/events.actions";
-import { map, filter } from "rxjs/operators";
+import { map, filter, take } from "rxjs/operators";
 import { CategoryService } from "app/_services/category/category.service";
 
 @Component({
@@ -38,17 +38,18 @@ export class EventComponent implements OnInit, OnDestroy {
     }
     actionItems = ["Join", "Follow", "Invite"];
     ngOnInit(): void {
-       this.selectIdSub$ = this.selectedEventId$
+        this.selectIdSub$= this.selectedEventId$
             .pipe(
-                filter((e) => {
-                    return e != NaN && this.id > 0;
+                filter((eventId) => {
+                    return eventId != NaN && eventId > 0;
                 })
             )
-            .subscribe((e) => {
+          .subscribe((eventId) => {
+              this.id = eventId;
                 this.store.dispatch(new ChangeEventIdAction(this.id));
             });
 
-       this.selectEventSub$ = this.selectedEvent$.subscribe((e) => {
+       this.selectEventSub$ = this.selectedEvent$.pipe(take(2)).subscribe((e) => {
             this.event = e;
             if (!this.event && this.id) {
                 this.store.dispatch(new LoadEventAction(this.id));

@@ -6,7 +6,7 @@
                 Back
             </button>
             <button
-                *ngFor="let number of totalPages"
+                *ngFor="let number of totalPagesArray"
                 class="btn btn-just-icon btn-border"
                 (click)="onPageChange(number)"
                 [ngClass]="{ active: number == currentPage }"

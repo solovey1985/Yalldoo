@@ -3,6 +3,7 @@ import * as fromAuth from "./reducers/auth.reducers";
 import * as fromUi from "./reducers/ui.reducers";
 import * as fromEvents from "./reducers/events.reducer";
 import * as fromCategories from "./reducers/categories.reducer";
+import * as fromPagination from "./reducers/pagination.reducers"
 import { ActionReducerMap, createSelector } from "@ngrx/store";
 import { getMergedRoute } from "./selectors/router-state.selectors";
 
@@ -12,6 +13,7 @@ export interface AppState {
     uiState: fromUi.UiState;
     eventsState: fromEvents.EventsState;
     categoriesState: fromCategories.CategoryState;
+    paginationState: fromPagination.PaginationState;
 }
 
 export function initialState(): AppState {
@@ -20,7 +22,9 @@ export function initialState(): AppState {
         eventsState: fromEvents.initialEventState,
         authState: fromAuth.initialState,
         uiState: fromUi.initialState,
-        categoriesState: fromCategories.initialCategoryState
+        categoriesState: fromCategories.initialCategoryState,
+        paginationState: fromPagination.initialState
+
     };
 }
 
@@ -29,13 +33,15 @@ export const appReducers: ActionReducerMap<AppState, any> = {
     authState: fromAuth.reducer,
     uiState: fromUi.reducer,
     eventsState: fromEvents.reducer,
-    categoriesState: fromCategories.reducer
+    categoriesState: fromCategories.reducer,
+    paginationState: fromPagination.reducer
 };
 
 export const selectAuthState = (state: AppState) => state.authState;
 export const selectUiState = (state: AppState) => state.uiState;
 export const selectCategoriesState = (state: AppState) => state.categoriesState;
 export const selectEventsState = (state: AppState) => state.eventsState;
+export const selectPaginationState = (state: AppState) => state.paginationState;
 
 export const selectAuthUser = createSelector(selectAuthState, (state: fromAuth.AuthState) => state.user);
 export const selectIsLoading = createSelector(selectUiState, fromUi.getLoading);
@@ -46,8 +52,9 @@ export const selectAllEventEntities = createSelector(selectEventsState, fromEven
 export const selectCurrentEventId = createSelector(
     selectAllEvents, getMergedRoute, (events, mergedRoute)=> Number.parseInt(mergedRoute.params.id)
 );
-export const selectPagination = createSelector(selectEventsState, fromEvents.getPagination)
-
+export const selectCurrentPage = createSelector(selectPaginationState, fromPagination.selectCurrentPage);
+export const selectTotalPages = createSelector(selectPaginationState, fromPagination.selectTotalPages);
+export const selectPaginationModel = createSelector(selectPaginationState, (state) => state);
 
 export const selectCurrentEvent = createSelector(
     selectAllEventEntities,

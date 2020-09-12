@@ -1,5 +1,5 @@
 export default class UserInformation {
-    
+
     firstName: string;
     lastName: string;
     email: string;
@@ -9,8 +9,8 @@ export default class UserInformation {
     birthDate: Date ;
     description: string;
     avatarImage: string;
-    
+
     constructor() {
-        
+
     }
 }

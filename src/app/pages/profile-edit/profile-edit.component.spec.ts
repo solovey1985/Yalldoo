@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { EditProfileComponent } from './edit-profile.component';
+import { EditProfileComponent } from "./edit-profile.component";
 
-describe('SettingsComponent', () => {
+describe("SettingsComponent", () => {
   let component: EditProfileComponent;
   let fixture: ComponentFixture<EditProfileComponent>;
 
@@ -19,7 +19,7 @@ describe('SettingsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

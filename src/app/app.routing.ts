@@ -28,6 +28,7 @@ import { FriendsComponent } from "./pages/friends/friends/friends.component";
 import { FriendComponent } from "./pages/friends/friend/friend.component";
 import { SettingsComponent } from "./pages/settings/settings.component";
 import { AuthGuard } from "./core/guards/auth-guard.guard";
+import { EventEditComponent } from "./pages/event-edit/event-edit.component";
 @NgModule({
     imports: [
         CommonModule,
@@ -50,6 +51,7 @@ import { AuthGuard } from "./core/guards/auth-guard.guard";
                 children: [
                     { path: "feed", component: FeedComponent },
                     { path: "event/:id", component: EventComponent },
+                    { path: "event-edit/:id", component: EventEditComponent },
                     { path: "create", component: EventCreateComponent },
                     { path: "search", component: SearchComponent },
                     { path: "me", component: EditProfileComponent, canActivate: [AuthGuard] },

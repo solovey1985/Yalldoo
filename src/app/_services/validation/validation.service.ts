@@ -5,10 +5,9 @@ import { FormControl, FormGroup } from "@angular/forms";
     providedIn: "root"
 })
 export class ValidationService {
-    constructor() {}
 
     static getValidatorErrorMessage(validatorName: string, validatorValue?: any, controlName?: string) {
-        let config = {
+        const config = {
             required: " is required",
             pattern: "is not valid",
             invalidNamePattern: " must contain only numbers and letters",
@@ -57,7 +56,7 @@ export class ValidationService {
         }
     }
 
-    static passwordPatternValidator(control:FormControl) {
+    static passwordPatternValidator(control: FormControl) {
         if (control.value.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9!@#$%^&*()]+$/)) {
             return null;
         } else {
@@ -86,9 +85,9 @@ export class ValidationService {
     static passwordsMatchValidator(formGroup: FormGroup) {
         let value;
         let valid = true;
-        for (let key in formGroup.controls) {
+        for (const key in formGroup.controls) {
             if (formGroup.controls.hasOwnProperty(key)) {
-                let control: FormControl = <FormControl>formGroup.controls[key];
+                const control: FormControl = <FormControl>formGroup.controls[key];
                 if (value === undefined) {
                     value = control.value;
                 } else {
@@ -107,4 +106,5 @@ export class ValidationService {
             passwordsInequal: true
         };
     }
+    constructor() {}
 }

@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { NotifyService } from 'app/services/notify-service/notify.service';
-import { Router } from '@angular/router';
-import { ValidationService } from 'app/_services/validation/validation.service';
+import { Component, OnInit } from "@angular/core";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { NotifyService } from "app/services/notify-service/notify.service";
+import { Router } from "@angular/router";
+import { ValidationService } from "app/_services/validation/validation.service";
 
 @Component({
-  templateUrl: './forgot.component.html',
-  styleUrls: ['./forgot.component.scss']
+  templateUrl: "./forgot.component.html",
+  styleUrls: ["./forgot.component.scss"]
 })
 export class ForgotComponent implements OnInit {
 
@@ -19,7 +19,7 @@ export class ForgotComponent implements OnInit {
       this.form = this.builder.group({
           email: ["", Validators.compose([Validators.required, ValidationService.emailPatternValidator])],
       });
-    
+
   }
   ngOnDestroy() {}
 

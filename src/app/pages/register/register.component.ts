@@ -18,7 +18,7 @@ import { AppState } from "app/_store/app.states";
 })
 export class RegisterComponent implements OnInit {
     public form: FormGroup;
-    
+
     public validation_messages: any;
     constructor(private builder: FormBuilder, private notifyService: NotifyService,
         private store: Store<AppState>,
@@ -65,18 +65,18 @@ export class RegisterComponent implements OnInit {
         const userRegister = new UserRegisterModel();
         userRegister.firstName = this.form.get("name").value;
         userRegister.email = this.form.get("email").value;
-        userRegister.password = this.form.get('matchingPasswordsGroup').get("password").value;
-        userRegister.confirmPassword = this.form.get('matchingPasswordsGroup').get("confirmPassword").value;
+        userRegister.password = this.form.get("matchingPasswordsGroup").get("password").value;
+        userRegister.confirmPassword = this.form.get("matchingPasswordsGroup").get("confirmPassword").value;
 
         this.store.dispatch(new RegisterAction(userRegister));
     }
 
-    isInvalid(control: AbstractControl):boolean {
+    isInvalid(control: AbstractControl): boolean {
         return control.invalid && control.touched
     }
-    
+
     public get messages() {
         return this.validation_messages;
     }
-    
+
 }

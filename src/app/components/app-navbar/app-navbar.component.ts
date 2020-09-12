@@ -52,7 +52,7 @@ export class AppNavbarComponent implements OnInit {
         }
     }
     isHome() {
-        var titlee = this.location.prepareExternalUrl(this.location.path());
+        const titlee = this.location.prepareExternalUrl(this.location.path());
 
         if (titlee === "/home") {
             return true;
@@ -66,7 +66,7 @@ export class AppNavbarComponent implements OnInit {
     }
 
     isDocumentation() {
-        var titlee = this.location.prepareExternalUrl(this.location.path());
+        const titlee = this.location.prepareExternalUrl(this.location.path());
         if (titlee === "/documentation") {
             return true;
         } else {

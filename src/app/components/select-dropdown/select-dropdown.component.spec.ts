@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { SelectDropdownComponent } from './select-dropdown.component';
+import { SelectDropdownComponent } from "./select-dropdown.component";
 
-describe('SelectDropdownComponent', () => {
+describe("SelectDropdownComponent", () => {
   let component: SelectDropdownComponent;
   let fixture: ComponentFixture<SelectDropdownComponent>;
 
@@ -19,7 +19,7 @@ describe('SelectDropdownComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

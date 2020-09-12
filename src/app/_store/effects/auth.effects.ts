@@ -20,7 +20,6 @@ import { UserRegisterModel } from "app/_models/user/user-register.model";
 
 @Injectable()
 export class AuthEffects {
-    constructor(private actions: Actions, private authService: AuthService, private router: Router) {}
 
     Login$ = createEffect(() =>
         this.actions.pipe(
@@ -88,4 +87,5 @@ export class AuthEffects {
             })
         )
     );
+    constructor(private actions: Actions, private authService: AuthService, private router: Router) {}
 }

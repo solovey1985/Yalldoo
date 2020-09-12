@@ -1,16 +1,16 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
 
 @Component({
-  selector: 'app-image-upload',
-  templateUrl: './image-upload.component.html',
-  styleUrls: ['./image-upload.component.scss']
+    selector: "app-image-upload",
+    templateUrl: "./image-upload.component.html",
+    styleUrls: ["./image-upload.component.scss"]
 })
 export class ImageUploadComponent implements OnInit {
-    @Input() isRound: boolean = false;
+    @Input() isRound = false;
     @Input() image: string;
     @Output() onImageSelected = new EventEmitter<string>();
 
-    state: any = {}
+    state: any = {};
     constructor() {
         this.handleImageChange = this.handleImageChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,35 +21,45 @@ export class ImageUploadComponent implements OnInit {
     ngOnInit() {
         this.state = {
             file: null,
-            imagePreviewUrl: this.image !== undefined ? this.image:(this.isRound ? './assets/img/placeholder.jpg':'./assets/img/image_placeholder.jpg')
-        }
+            imagePreviewUrl:
+                this.image !== undefined
+                    ? this.image
+                    : this.isRound
+                    ? "./assets/img/placeholder.jpg"
+                    : "./assets/img/image_placeholder.jpg"
+        };
     }
-    handleImageChange(e){
+    handleImageChange(e) {
         e.preventDefault();
-        let reader = new FileReader();
-        let file = e.target.files[0];
+        const reader = new FileReader();
+        const file = e.target.files[0];
         reader.onloadend = () => {
             this.state.file = file;
             this.state.imagePreviewUrl = reader.result;
             this.onImageSelected.emit(this.state.imagePreviewUrl);
             // this.state.imagePreviewUrl1 = reader.result;
-        }
+        };
         reader.readAsDataURL(file);
     }
-    handleSubmit(e){
+    handleSubmit(e) {
         e.preventDefault();
         // this.state.file is the file/image uploaded
         // in this function you can save the image (this.state.file) on form submit
         // you have to call it yourself
     }
-    handleClick(){
-        var input = document.createElement("input");
+    handleClick() {
+        const input = document.createElement("input");
         input.type = "file";
         input.onchange = this.handleImageChange;
         input.click();
     }
-    handleRemove(){
+    handleRemove() {
         this.state.file = null;
-        this.state.imagePreviewUrl = this.image !== undefined ? this.image:(this.isRound ? './assets/img/placeholder.jpg':'./assets/img/image_placeholder.jpg');
+        this.state.imagePreviewUrl =
+            this.image !== undefined
+                ? this.image
+                : this.isRound
+                ? "./assets/img/placeholder.jpg"
+                : "./assets/img/image_placeholder.jpg";
     }
 }

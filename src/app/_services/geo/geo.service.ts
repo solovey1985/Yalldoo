@@ -23,7 +23,7 @@ export class GeoService {
 
     public autosuggest(query: string): any {
         return this.searchService
-            .autosuggest({ q: query, at: this.center, limit: 7, resultTypes: 'categoryQuery,place,street,houseNumber' }, (result: AddressModel) => result.items, alert)
+            .autosuggest({ q: query, at: this.center, limit: 7, resultTypes: "categoryQuery,place,street,houseNumber" }, (result: AddressModel) => result.items, alert)
             .then((data) => {
                 return data.items.map((h) => this.toLocationDto(h));
             });

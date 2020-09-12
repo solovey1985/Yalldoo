@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { PreferenceCardComponent } from './preference-card.component';
+import { PreferenceCardComponent } from "./preference-card.component";
 
-describe('PreferenceCardComponent', () => {
+describe("PreferenceCardComponent", () => {
   let component: PreferenceCardComponent;
   let fixture: ComponentFixture<PreferenceCardComponent>;
 
@@ -19,7 +19,7 @@ describe('PreferenceCardComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

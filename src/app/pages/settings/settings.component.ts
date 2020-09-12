@@ -8,27 +8,27 @@ import { ValidationService } from "app/_services/validation/validation.service";
     styleUrls: ["./settings.component.scss"]
 })
 export class SettingsComponent implements OnInit {
-    constructor(private fb: FormBuilder) {}
     passwordForm: FormGroup;
     phoneForm: FormGroup;
     emailForm: FormGroup;
+    constructor(private fb: FormBuilder) {}
     ngOnInit(): void {
         this.initPasswordForm();
         this.initEmailForm();
         this.initPhoneForm();
     }
-  
+
     onPasswordSubmit() {
         console.log("On Password Submit");
     }
-  
+
     onPhoneSubmit() {
         console.log(this.phoneForm.get("newPhone").value);
     }
-  
+
     onEmailSubmit() {
 
-        
+
     }
 
     private initPasswordForm(): void {

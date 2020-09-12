@@ -17,10 +17,10 @@ export class PaginationComponent implements OnInit {
     onPageChanged = new EventEmitter<number>();
     pagination$: Observable<PaginationState>;
     currentPage = 1;
-    totalPagesArray = new Array<number>();;
+    totalPagesArray = new Array<number>(); ;
     data: PaginationState;
     constructor(private store: Store<AppState>) {
-        this.totalPagesArray 
+        this.totalPagesArray
         this.pagination$ = this.store.select(selectPaginationModel);
     }
 

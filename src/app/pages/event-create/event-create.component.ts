@@ -110,7 +110,7 @@ export class EventCreateComponent implements OnInit {
     }
 
     mapCategories(categories: Category[]): MultiselectItem[] {
-        let items = new Array<MultiselectItem>();
+        const items = new Array<MultiselectItem>();
         const parrents = categories.filter((p) => p.parrentId == 0);
         parrents.map((p) => {
             const catsByParrent = categories.filter((x) => x.parrentId == p.id);
@@ -127,7 +127,7 @@ export class EventCreateComponent implements OnInit {
         };
     }
 
-    //------- Modals ---------------------
+    // ------- Modals ---------------------
     showDatetimepickerModal(): void {
         this.modal.openDateTimePicker(this.dateTime).subscribe((result: string) => {
             if (result) {
@@ -171,7 +171,7 @@ export class EventCreateComponent implements OnInit {
             this.image = $event;
         }
     }
-    //------ END Modals ------------------------
+    // ------ END Modals ------------------------
 
     onCreateButtonClick(): void {
         this.form.markAllAsTouched();

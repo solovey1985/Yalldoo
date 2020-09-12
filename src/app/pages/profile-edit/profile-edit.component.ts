@@ -24,7 +24,7 @@ export class EditProfileComponent implements OnInit {
     userInfo: UserInformation;
     state: any = {};
     form: FormGroup;
-    isRound: boolean = false;
+    isRound = false;
     image: string;
     validation_messages: any;
     constructor(private modal: ModalService,
@@ -41,7 +41,7 @@ export class EditProfileComponent implements OnInit {
         this.handleRemove = this.handleRemove.bind(this);
         this.state = {
             file: null,
-            imagePreviewUrl: this.image !== undefined ? this.image:(this.isRound ? './assets/img/placeholder.jpg':'./assets/img/image_placeholder.jpg')
+            imagePreviewUrl: this.image !== undefined ? this.image : (this.isRound ? "./assets/img/placeholder.jpg" : "./assets/img/image_placeholder.jpg")
         }
     }
 
@@ -51,18 +51,18 @@ export class EditProfileComponent implements OnInit {
         this.userInfo.description = "";
         this.userInfo.email = "";
         this.userInfo.phone = "";
-        
-        //TODO: Remove 
-        var body = document.getElementsByTagName("body")[0];
+
+        // TODO: Remove
+        const body = document.getElementsByTagName("body")[0];
         body.classList.add("settings-page");
 
-        this.categories = this.categoryService.getChildCategories().filter(x => x.id.toLocaleString().endsWith('02'));
+        this.categories = this.categoryService.getChildCategories().filter(x => x.id.toLocaleString().endsWith("02"));
         this.buildForm();
-        
+
     }
     ngOnDestroy() {
-        //TODO: Remove 
-        var body = document.getElementsByTagName("body")[0];
+        // TODO: Remove
+        const body = document.getElementsByTagName("body")[0];
         body.classList.remove("settings-page");
     }
 
@@ -92,10 +92,10 @@ export class EditProfileComponent implements OnInit {
         this.locations = this.locations.filter((x) => x.hereId !== location.hereId);
     }
 
-    getIcon(title: string): string{
+    getIcon(title: string): string {
         return this.categoryService.getCategoryIcon(title);
     }
-   
+
     showDatetimepickerModal(): void {
         this.modal.openDateTimePicker(this.userInfo.birthDate, true, "Select Birthday Date").subscribe((result: string) => {
             if (result) {
@@ -115,7 +115,7 @@ export class EditProfileComponent implements OnInit {
         console.log($event);
     }
 
-    private buildForm(): void{
+    private buildForm(): void {
         this.form = this.fb.group({
             firstName: [this.userInfo.firstName, Validators.compose([
                 Validators.maxLength(25),
@@ -139,31 +139,31 @@ export class EditProfileComponent implements OnInit {
             ])],
             birthDate: [this.userInfo.birthDate],
             description: [this.userInfo.description, [Validators.maxLength(256)]],
-            categories: [''],
-            places: [''],
-        }, {updateOn:"change"});
+            categories: [""],
+            places: [""],
+        }, {updateOn: "change"});
     }
-        
-    isInvalid(control: AbstractControl):boolean {
+
+    isInvalid(control: AbstractControl): boolean {
         return control.invalid && control.touched
     }
-    
 
 
-    public get descriptionLength() : number {
+
+    public get descriptionLength(): number {
         return this.form.get("description").value ? this.form.get("description").value.length : 0;
     }
 
-    public get backgroundImage():any {
+    public get backgroundImage(): any {
        return this.sanitizer.bypassSecurityTrustStyle(`url(${this.state.imagePreviewUrl})`)
     }
 
-   
-    
-        handleImageChange(e){
+
+
+        handleImageChange(e) {
         e.preventDefault();
-        let reader = new FileReader();
-        let file = e.target.files[0];
+        const reader = new FileReader();
+        const file = e.target.files[0];
         reader.onloadend = () => {
             this.state.file = file;
             this.state.imagePreviewUrl = reader.result;
@@ -171,19 +171,19 @@ export class EditProfileComponent implements OnInit {
         }
         reader.readAsDataURL(file);
     }
-    handleSubmit(e){
+    handleSubmit(e) {
         e.preventDefault();
     }
-    handleClick(){
-        var input = document.createElement("input");
+    handleClick() {
+        const input = document.createElement("input");
         input.type = "file";
         input.onchange = this.handleImageChange;
         input.click();
     }
 
 
-    handleRemove(){
+    handleRemove() {
         this.state.file = null;
-        this.state.imagePreviewUrl = this.image !== undefined ? this.image:(this.isRound ? './assets/img/placeholder.jpg':'./assets/img/image_placeholder.jpg');
+        this.state.imagePreviewUrl = this.image !== undefined ? this.image : (this.isRound ? "./assets/img/placeholder.jpg" : "./assets/img/image_placeholder.jpg");
     }
 }

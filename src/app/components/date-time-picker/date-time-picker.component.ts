@@ -47,7 +47,7 @@ export class DateTimePickerComponent implements ControlValueAccessor, OnInit, Af
     @ViewChild(NgbTimepicker)
     public timePicker: NgbTimepicker;
 
-    
+
     onTouched: () => void = noop;
     onChange: (_: any) => void = noop;
 
@@ -61,7 +61,7 @@ export class DateTimePickerComponent implements ControlValueAccessor, OnInit, Af
     }
 
     ngAfterViewInit(): void {
-        
+
 
     }
 
@@ -83,7 +83,7 @@ export class DateTimePickerComponent implements ControlValueAccessor, OnInit, Af
         this.onTouched = fn;
     }
 
-    toggleDateTimeState($event:any) {
+    toggleDateTimeState($event: any) {
         this.showTimePickerToggle = !this.showTimePickerToggle;
         $event.stopPropagation();
     }

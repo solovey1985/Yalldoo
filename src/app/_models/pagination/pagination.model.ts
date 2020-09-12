@@ -1,4 +1,4 @@
-export class PaginationModel<T>{
+export class PaginationModel<T> {
     pageNumber: number;
     pageSize: number;
     result: Array<T>;

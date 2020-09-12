@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { FriendsImportFacebookModalComponent } from './friends-import-facebook-modal.component';
+import { FriendsImportFacebookModalComponent } from "./friends-import-facebook-modal.component";
 
-describe('FriendsPickerModalComponent', () => {
+describe("FriendsPickerModalComponent", () => {
   let component: FriendsImportFacebookModalComponent;
   let fixture: ComponentFixture<FriendsImportFacebookModalComponent>;
 
@@ -19,7 +19,7 @@ describe('FriendsPickerModalComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

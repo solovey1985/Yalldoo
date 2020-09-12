@@ -1,9 +1,9 @@
-import { Input, Component } from '@angular/core';
+import { Input, Component } from "@angular/core";
 
 @Component({
-    selector: 'app-notification',
-    templateUrl: './notification.component.html',
-    styleUrls: ['./notification.component.scss']
+    selector: "app-notification",
+    templateUrl: "./notification.component.html",
+    styleUrls: ["./notification.component.scss"]
 })
 
 export class NotificationComponent {
@@ -14,25 +14,25 @@ export class NotificationComponent {
     constructor() {
         this.alerts.push({
             id: 1,
-            type: 'info',
-            message: 'This is a plain notification!',
+            type: "info",
+            message: "This is a plain notification!",
             dismissible: false
         }, {
             id: 2,
-            type: 'success',
-            message: 'This is a notification with close button.',
+            type: "success",
+            message: "This is a notification with close button.",
             dismissible: true
         }, {
             id: 3,
-            type: 'warning',
-            message: 'This is a notification with close button and icon.',
-            icon: 'nc-bell-55',
+            type: "warning",
+            message: "This is a notification with close button and icon.",
+            icon: "nc-bell-55",
             dismissible: true
         }, {
             id: 4,
-            type: 'danger',
+            type: "danger",
             message: `This is a notification with close button and icon and have many lines. You can see that the icon and the close button are always vertically aligned. This is a beautiful notification. So you don't have to worry about the style.`,
-            icon: 'nc-bell-55',
+            icon: "nc-bell-55",
             dismissible: true
         });
         this.backup = this.alerts.map((alert: IAlert) => Object.assign({}, alert));

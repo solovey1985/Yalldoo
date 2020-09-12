@@ -13,10 +13,6 @@ export class DateTimeModel implements NgbDateTimeStruct {
 
     timeZoneOffset: number;
 
-    public constructor(init?: Partial<DateTimeModel>) {
-        Object.assign(this, init);
-    }
-
     public static fromLocalString(dateString: string): DateTimeModel {
         const date = new Date(dateString);
 
@@ -35,6 +31,10 @@ export class DateTimeModel implements NgbDateTimeStruct {
             second: date.getSeconds(),
             timeZoneOffset: date.getTimezoneOffset()
         });
+    }
+
+    public constructor(init?: Partial<DateTimeModel>) {
+        Object.assign(this, init);
     }
 
     private isInteger(value: any): value is number {

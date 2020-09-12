@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Subject, Observable } from "rxjs";
-import { filter } from 'rxjs/operators';
+import { filter } from "rxjs/operators";
 import { Alert, AlertType } from "./alert.model";
 
 @Injectable({

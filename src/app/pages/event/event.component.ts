@@ -22,6 +22,7 @@ export class EventComponent implements OnInit, OnDestroy {
     id: number;
     selectIdSub$: Subscription;
     selectEventSub$: Subscription;
+    actionItems = ["Join", "Follow", "Invite"];
     constructor(
         private modal: ModalService,
         private notify: NotifyService,
@@ -36,9 +37,8 @@ export class EventComponent implements OnInit, OnDestroy {
         this.selectEventSub$.unsubscribe();
         this.selectIdSub$.unsubscribe();
     }
-    actionItems = ["Join", "Follow", "Invite"];
     ngOnInit(): void {
-        this.selectIdSub$= this.selectedEventId$
+        this.selectIdSub$ = this.selectedEventId$
             .pipe(
                 filter((eventId) => {
                     return eventId != NaN && eventId > 0;

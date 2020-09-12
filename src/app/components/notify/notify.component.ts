@@ -74,7 +74,7 @@ export class NotifyComponent implements OnInit, OnDestroy {
     }
 
     removeAlert(alert: Alert) {
-        if (!this._alerts.includes(alert)) return;
+        if (!this._alerts.includes(alert)) { return; }
 
         if (this.fade) {
             this._alerts.find((x) => x === alert).fade = true;
@@ -87,7 +87,7 @@ export class NotifyComponent implements OnInit, OnDestroy {
     }
 
     cssClass(alert: Alert) {
-        if (!alert) return;
+        if (!alert) { return; }
 
         const classes = ["alert", "alert-dismissable"];
         const alertTypeClass = {

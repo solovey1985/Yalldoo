@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { Page422Component } from './page422.component';
+import { Page422Component } from "./page422.component";
 
-describe('Page422Component', () => {
+describe("Page422Component", () => {
   let component: Page422Component;
   let fixture: ComponentFixture<Page422Component>;
 
@@ -19,7 +19,7 @@ describe('Page422Component', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

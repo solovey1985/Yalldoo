@@ -9,12 +9,11 @@ export class AuthService {
     private BASE_URL = Config.apiUrl;
     constructor(private http: HttpClient) {}
 
-    getToken(): string{
-        let user = JSON.parse(localStorage.getItem('user'));
+    getToken(): string {
+        const user = JSON.parse(localStorage.getItem("user"));
         if (user) {
             return user.token;
-        }
-        else {
+        } else {
             return undefined;
         }
     }

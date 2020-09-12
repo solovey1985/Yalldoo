@@ -12,12 +12,12 @@ export class AboutComponent implements OnInit, OnDestroy {
     constructor() {}
 
     ngOnInit() {
-        var rellaxHeader = new Rellax(".rellax-header");
-        var body = document.getElementsByTagName("body")[0];
+        const rellaxHeader = new Rellax(".rellax-header");
+        const body = document.getElementsByTagName("body")[0];
         body.classList.add("blog-post");
     }
     ngOnDestroy() {
-        var body = document.getElementsByTagName("body")[0];
+        const body = document.getElementsByTagName("body")[0];
         body.classList.remove("blog-post");
     }
 }

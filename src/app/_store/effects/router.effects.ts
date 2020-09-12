@@ -8,14 +8,6 @@ import { Injectable } from "@angular/core";
 import { Location } from "@angular/common";
 @Injectable()
 export class RouterEffects {
-    constructor(
-        private actions$: Actions,
-        private router: Router,
-        private location: Location,
-        private store: Store<AppState>
-    ) {
-        this.listenToRouter();
-    }
 
     @Effect({ dispatch: false })
     navigate$ = this.actions$.pipe(
@@ -35,6 +27,14 @@ export class RouterEffects {
         ofType("[Router] Forward"),
         tap(() => this.location.forward())
     );
+    constructor(
+        private actions$: Actions,
+        private router: Router,
+        private location: Location,
+        private store: Store<AppState>
+    ) {
+        this.listenToRouter();
+    }
 
     private listenToRouter() {
         this.router.events.pipe(filter((event) => event instanceof ActivationEnd)).subscribe((event: ActivationEnd) =>

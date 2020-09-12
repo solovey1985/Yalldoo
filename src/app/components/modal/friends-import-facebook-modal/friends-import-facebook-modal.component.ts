@@ -15,6 +15,6 @@ export class FriendsImportFacebookModalComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        
+
     }
 }

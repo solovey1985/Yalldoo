@@ -23,7 +23,7 @@ export class FriendsPickerModalComponent implements OnInit {
     searchTerm: string;
     searchTermUpdates = new Subject<string>();
     constructor(private friendsService: FriendsService) {
-        
+
         this.friends = this.friendsService.getFriends();
         this.searchTermUpdates.pipe(
             debounceTime(500),
@@ -31,23 +31,21 @@ export class FriendsPickerModalComponent implements OnInit {
         ).subscribe(value => {
             if (value.length > 0) {
                 this.friends = this.friendsService.getFriends().filter(x => x.fullName.indexOf(value) > -1);
-            }
-            else {
+            } else {
                 this.friends = this.friendsService.getFriends();
             }
         });
     }
 
     ngOnInit(): void {
-        
+
     }
 
     onInviteClick(item: FirendListItem) {
-        let index = this.selectedFriends.indexOf(item);
+        const index = this.selectedFriends.indexOf(item);
         if (index > -1) {
             this.selectedFriends.splice(index, 1);
-        }
-        else {
+        } else {
             this.selectedFriends.push(item);
         }
     }
@@ -63,21 +61,21 @@ export class FriendsPickerModalComponent implements OnInit {
     onCloseClick() {
         this.onDismiss.emit();
     }
-    //---------Multiselect Methods
+    // ---------Multiselect Methods
     onItemSelect(item: any) {
         console.log(item);
     }
-    
+
     onItemDeSelect(item: any) {
         console.log(item);
     }
-    
+
     onSelectAll(items: any) {
-        console.log(items); 
+        console.log(items);
     }
 
     onDeSelectAll(items: any) {
         console.log(items);
     }
-  
+
 }

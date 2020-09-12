@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
             email: ["", Validators.compose([Validators.required, ValidationService.emailPatternValidator])],
             password: ["", Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(25)])]
         });
-        this.returnUrl = this.route.snapshot.queryParams["returnUrl"] || '/feed';
+        this.returnUrl = this.route.snapshot.queryParams["returnUrl"] || "/feed";
     }
     onSubmit() {
         const payload = { email: this.form.get("email").value, password: this.form.get("password").value, returnUrl: this.returnUrl };

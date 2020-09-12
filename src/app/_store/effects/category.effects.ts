@@ -14,7 +14,6 @@ import { of } from "rxjs";
 
 @Injectable()
 export class CategoryEffects {
-    constructor(private actions: Actions, private categoryService: CategoryService) {}
 eventCreate$ = createEffect(() =>
         this.actions.pipe(
             ofType(CategoryActionsEnum.CATEGORIES_LOAD),
@@ -28,4 +27,5 @@ eventCreate$ = createEffect(() =>
             })
         )
     );
+    constructor(private actions: Actions, private categoryService: CategoryService) {}
 }

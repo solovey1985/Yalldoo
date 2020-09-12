@@ -29,12 +29,13 @@ import { EventCreateComponent } from "./event-create/event-create.component";
 import { AboutComponent } from "./about/about.component";
 import { ComponentsModule } from "app/components/components.module";
 import { RouterModule } from "@angular/router";
-import { ForgotComponent } from './forgot/forgot.component';
-import { FriendsComponent } from './friends/friends/friends.component';
-import { FriendComponent } from './friends/friend/friend.component';
-import { SettingsComponent } from './settings/settings.component';
+import { ForgotComponent } from "./forgot/forgot.component";
+import { FriendsComponent } from "./friends/friends/friends.component";
+import { FriendComponent } from "./friends/friend/friend.component";
+import { SettingsComponent } from "./settings/settings.component";
 import { NgxMaskModule } from "ngx-mask";
 import { PaginationComponent } from "app/components/pagination/pagination.component";
+import { EventEditComponent } from "./event-edit/event-edit.component";
 
 
 @NgModule({
@@ -78,6 +79,7 @@ import { PaginationComponent } from "app/components/pagination/pagination.compon
         FriendsComponent,
         FriendComponent,
         SettingsComponent,
+        EventEditComponent,
     ]
 })
 export class PagesModule {}

@@ -18,7 +18,7 @@ export const initialCategoryState = adapter.getInitialState({
 export function reducer(state = initialCategoryState, action: All) {
     switch (action.type) {
         case CategoryActionsEnum.CATEGORIES_LOAD_SUCCESS: {
-            return adapter.setAll(action.payload, { ...state, selectedCategoryId:null});
+            return adapter.setAll(action.payload, { ...state, selectedCategoryId: null});
         }
         case CategoryActionsEnum.CATEGORY_LOAD_SUCCESS: {
             return adapter.upsertOne(action.payload.category, {

@@ -23,7 +23,7 @@ export class CategoriesLoadFailedAction implements Action {
     constructor(public payload: any) {}
 }
 
-//*********Single Category**************/
+// *********Single Category**************/
 export class CategoryLoadAction implements Action {
     readonly type = CategoryActionsEnum.CATEGORY_LOAD;
     constructor(public payload: number) {}
@@ -37,7 +37,7 @@ export class CategoryLoadFailedAction implements Action {
     constructor(public payload: any) {}
 }
 
-export type All = 
+export type All =
     CategoriesLoadAction
     | CategoriesLoadSuccessAction
     | CategoriesLoadFailedAction

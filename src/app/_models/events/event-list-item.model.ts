@@ -1,6 +1,6 @@
 import LocationDto from "../location.dto";
 
-export class EventListItemModel{
+export class EventListItemModel {
     title: string;
     description: string;
     startDate: Date;

@@ -15,7 +15,7 @@ export interface AuthState {
 }
 
 export const initialState: AuthState = {
-    isAuthenticated: loadUser()? true: false,
+    isAuthenticated: loadUser() ? true : false,
     user: loadUser(),
     errorMessage: null
 };

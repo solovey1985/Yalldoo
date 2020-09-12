@@ -1,11 +1,11 @@
-import {NgModule, Optional, Self} from '@angular/core';
-import {routerReducer, RouterStateSerializer, StoreRouterConnectingModule} from '@ngrx/router-store';
-import {StoreModule} from '@ngrx/store';
-import {MergedRouterStateSerializer} from '../../_store/reducers/merged-route.reducer';
-import {Router} from '@angular/router';
+import {NgModule, Optional, Self} from "@angular/core";
+import {routerReducer, RouterStateSerializer, StoreRouterConnectingModule} from "@ngrx/router-store";
+import {StoreModule} from "@ngrx/store";
+import {MergedRouterStateSerializer} from "../../_store/reducers/merged-route.reducer";
+import {Router} from "@angular/router";
 
 export const routerStateConfig = {
-  stateKey: 'router', // state-slice name for routing state
+  stateKey: "router", // state-slice name for routing state
 };
 
 @NgModule({
@@ -28,9 +28,9 @@ export class NgrxRouterStoreModule {
 
   constructor(@Self() @Optional() router: Router) {
     if (router) {
-      console.log('All good, NgrxRouterStoreModule');
+      console.log("All good, NgrxRouterStoreModule");
     } else {
-      console.error('NgrxRouterStoreModule must be imported in the same same level as RouterModule');
+      console.error("NgrxRouterStoreModule must be imported in the same same level as RouterModule");
 
     }
   }

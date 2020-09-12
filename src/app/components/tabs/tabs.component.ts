@@ -7,14 +7,14 @@ import { TabComponent } from "../tab/tab.component";
     styleUrls: ["./tabs.component.scss"]
 })
 export class TabsComponent implements AfterContentInit {
-    
+
     @ContentChildren(TabComponent)
     tabs: QueryList<TabComponent>;
 
     // contentChildren are set
     ngAfterContentInit() {
         // get all active tabs
-        let activeTabs = this.tabs.filter((tab) => tab.active);
+        const activeTabs = this.tabs.filter((tab) => tab.active);
 
         // if there is no active tab set, activate the first
         if (activeTabs.length === 0) {
@@ -31,6 +31,6 @@ export class TabsComponent implements AfterContentInit {
     }
     onTabClick($event: Event) {
         $event.preventDefault();
-        
+
     }
 }

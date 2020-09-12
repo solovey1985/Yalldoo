@@ -22,7 +22,7 @@ export class PreferencesComponent implements OnInit {
     }
 
     onCardSelected(id: number) {
-        let preference = this.preferences.find((x) => x.id == id);
+        const preference = this.preferences.find((x) => x.id == id);
         if (preference) {
             preference.isSelected = !preference.isSelected;
         }

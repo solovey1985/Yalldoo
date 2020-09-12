@@ -33,7 +33,7 @@ export class MapComponent implements AfterViewInit, OnChanges {
     public mapElement: ElementRef;
 
     @Input()
-    canChangePin: boolean = true;
+    canChangePin = true;
 
     @Input()
     public lat: any;
@@ -49,7 +49,7 @@ export class MapComponent implements AfterViewInit, OnChanges {
 
     @Input()
     public height: any;
-    
+
     @Output()
     locationSet: EventEmitter<IHerePosition> = new EventEmitter<IHerePosition>();
     map: any;
@@ -58,33 +58,33 @@ export class MapComponent implements AfterViewInit, OnChanges {
         this.platform = new H.service.Platform({
             apikey: Config.geoApiKey
         });
-       
+
     }
 
     ngOnChanges(changes: { [propKey: string]: SimpleChange }) {
-        for (let propName in changes) {
+        for (const propName in changes) {
             if (propName === "place" && !changes[propName].isFirstChange()) {
                 this.place = changes[propName].currentValue;
                 this.map.removeObjects(this.map.getObjects());
                 this.map.setCenter(this.place.position);
                 this.map.setZoom(16);
-                var marker = new H.map.Marker({ lat: this.place.position.lat, lng: this.place.position.lng });
+                const marker = new H.map.Marker({ lat: this.place.position.lat, lng: this.place.position.lng });
                 marker.draggable = true;
                 this.map.addObject(marker);
             }
         }
     }
     public ngOnInit() {
-       
+
     }
     public ngAfterViewInit() {
-        
-        let defaultLayers = this.platform.createDefaultLayers();
+
+        const defaultLayers = this.platform.createDefaultLayers();
         this.map = new H.Map(this.mapElement.nativeElement, defaultLayers.vector.normal.map, {
             zoom: 10,
             center: { lat: this.place.position.lat, lng: this.place.position.lng }
         });
-        var ui = H.ui.UI.createDefault(this.map, defaultLayers, "ru-RU");
+        const ui = H.ui.UI.createDefault(this.map, defaultLayers, "ru-RU");
         if (this.place.position) {
             const marker = new H.map.Marker(
                 new H.geo.Point(this.place.position.lat.toFixed(6), this.place.position.lng.toFixed(6))
@@ -93,11 +93,11 @@ export class MapComponent implements AfterViewInit, OnChanges {
             this.map.setZoom(17);
             this.map.addObject(marker);
         }
-        var m = this.map;
+        const m = this.map;
         if (this.canChangePin) {
             this.map.addEventListener("tap", (ev) => {
                 m.removeObjects(m.getObjects());
-                var coord = m.screenToGeo(ev.currentPointer.viewportX, ev.currentPointer.viewportY);
+                const coord = m.screenToGeo(ev.currentPointer.viewportX, ev.currentPointer.viewportY);
                 const marker = new H.map.Marker(new H.geo.Point(coord.lat, coord.lng));
                 m.setCenter({ lat: coord.lat.toFixed(6), lng: coord.lng.toFixed(6) });
                 m.addObject(marker);
@@ -107,10 +107,10 @@ export class MapComponent implements AfterViewInit, OnChanges {
             this.map.addEventListener(
                 "dragstart",
                 (ev) => {
-                    var target = ev.target,
+                    const target = ev.target,
                         pointer = ev.currentPointer;
                     if (target instanceof H.map.Marker) {
-                        var targetPosition = m.geoToScreen(target.getGeometry());
+                        const targetPosition = m.geoToScreen(target.getGeometry());
                         target["offset"] = new H.math.Point(
                             pointer.viewportX - targetPosition.x,
                             pointer.viewportY - targetPosition.y
@@ -124,7 +124,7 @@ export class MapComponent implements AfterViewInit, OnChanges {
             this.map.addEventListener(
                 "dragend",
                 (ev) => {
-                    var target = ev.target;
+                    const target = ev.target;
                     if (target instanceof H.map.Marker) {
                         behavior.enable();
                         this.locationSet.emit({ lat: target.b.lat.toFixed(6), lng: target.b.lng.toFixed(6) });
@@ -136,7 +136,7 @@ export class MapComponent implements AfterViewInit, OnChanges {
             this.map.addEventListener(
                 "drag",
                 (ev) => {
-                    var target = ev.target,
+                    const target = ev.target,
                         pointer = ev.currentPointer;
                     if (target instanceof H.map.Marker) {
                         target.setGeometry(
@@ -150,6 +150,6 @@ export class MapComponent implements AfterViewInit, OnChanges {
                 false
             );
         }
-        var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(this.map));
+        const behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(this.map));
     }
 }

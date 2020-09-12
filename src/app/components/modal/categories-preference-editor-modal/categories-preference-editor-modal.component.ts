@@ -62,10 +62,10 @@ export class CategoriesPreferenceEditorComponent implements OnInit {
     }
 
     onSearch(searchInput: string) {
-        let newCategories = this.categoryService.getChildCategories();
+        const newCategories = this.categoryService.getChildCategories();
         this.categories = newCategories.filter((x) => x.title.toLowerCase().indexOf(searchInput) > -1);
     }
-    
+
     private sortCategoryPreferences(): (a: Category, b: Category) => number {
         return (a, b) => {
             if (this.isCategorySelected(a) && this.isCategorySelected(b)) {

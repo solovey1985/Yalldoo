@@ -16,7 +16,7 @@ export class LocationPickerModalComponent implements OnInit {
     onDismiss = new EventEmitter();
     @Input()
     location: LocationDto;
-    
+
     isEdit: boolean;
     currentPlace: IHereSearchResponse;
 

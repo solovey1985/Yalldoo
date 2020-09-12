@@ -47,7 +47,7 @@ export class LoadEventActionFailed implements Action {
     constructor(public payload: any) {}
 }
 
-//This action should have filter payload or nothings, means on Server it should be defined
+// This action should have filter payload or nothings, means on Server it should be defined
 // or here by defaults(if server is dumb)
 export class LoadEventsAction implements Action {
     readonly type = EventActionEnum.LOAD_EVENTS;

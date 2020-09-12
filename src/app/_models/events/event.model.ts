@@ -5,7 +5,7 @@ import { User } from "../user/user.model";
 import UserInformation from "../user/user-information.model";
 
 export class EventModel {
-    //Service fields
+    // Service fields
     id: number;
     eventId: string;
     seqNo: number;
@@ -24,7 +24,7 @@ export class EventModel {
 }
 
 
-export class LocationInDTO{
+export class LocationInDTO {
     address: string;
     latitude: number;
     longitude: number;

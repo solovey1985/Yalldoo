@@ -20,7 +20,7 @@ export const initialState: PaginationState = {
 export function reducer(state = initialState, action: any) {
     switch (action.type) {
         case EventActionEnum.LOAD_EVENTS_SUCCESS: {
-            return { ...state, totalRecords:action.payload.totalRecords,  totalPages: action.payload.totalPages } 
+            return { ...state, totalRecords: action.payload.totalRecords,  totalPages: action.payload.totalPages }
         }
         case PaginationActionEnum.PAGE_CHANGED: {
                 return {...state, pageNumber: action.payload }

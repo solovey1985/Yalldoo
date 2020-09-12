@@ -50,7 +50,7 @@ export const selectAllCategories = createSelector(selectCategoriesState, fromCat
 export const selectAllEvents = createSelector(selectEventsState, fromEvents.selectAllEvents);
 export const selectAllEventEntities = createSelector(selectEventsState, fromEvents.selectEventEnties);
 export const selectCurrentEventId = createSelector(
-    selectAllEvents, getMergedRoute, (events, mergedRoute)=> Number.parseInt(mergedRoute.params.id)
+    selectAllEvents, getMergedRoute, (events, mergedRoute) => Number.parseInt(mergedRoute.params.id)
 );
 export const selectCurrentPage = createSelector(selectPaginationState, fromPagination.selectCurrentPage);
 export const selectTotalPages = createSelector(selectPaginationState, fromPagination.selectTotalPages);

@@ -2,7 +2,7 @@ export class FirendListItem {
     public id: number;
     public firstName: string;
     public lastName: string;
-    
+
 
     public get fullName() {
         return `${this.firstName} ${this.lastName}`

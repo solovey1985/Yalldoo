@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { LocationPickerModalComponent } from './location-picker-modal.component';
+import { LocationPickerModalComponent } from "./location-picker-modal.component";
 
-describe('LocationPickerModalComponent', () => {
+describe("LocationPickerModalComponent", () => {
   let component: LocationPickerModalComponent;
   let fixture: ComponentFixture<LocationPickerModalComponent>;
 
@@ -19,7 +19,7 @@ describe('LocationPickerModalComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

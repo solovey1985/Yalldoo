@@ -16,7 +16,7 @@ export default class LocationDto {
         lng: number;
     };
     public toFormattedTitle(hereAddress: IHereAddress) {
-        var value = "";
+        let value = "";
 
         if (hereAddress.houseNumber) {
             value = `${hereAddress.houseNumber}, `;
@@ -37,6 +37,6 @@ export default class LocationDto {
         if (value.length === 0) {
             this.title = hereAddress.label;
         }
-        
+
     }
 }

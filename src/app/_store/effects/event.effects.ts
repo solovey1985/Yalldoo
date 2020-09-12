@@ -19,7 +19,6 @@ import { EventModel } from "app/_models/events/event.model";
 
 @Injectable()
 export class EventEffects {
-    constructor(private actions: Actions, private eventService: EventService, private router: Router) {}
 
     eventCreate$ = createEffect(() =>
         this.actions.pipe(
@@ -62,4 +61,5 @@ export class EventEffects {
             })
         )
     );
+    constructor(private actions: Actions, private eventService: EventService, private router: Router) {}
 }

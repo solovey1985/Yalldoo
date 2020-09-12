@@ -1,4 +1,4 @@
-export default class PreferenceModel{
+export default class PreferenceModel {
     id: number;
     title: string;
     description: string;

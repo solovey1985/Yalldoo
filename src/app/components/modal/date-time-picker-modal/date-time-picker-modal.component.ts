@@ -26,14 +26,6 @@ export class DateTimePickerModalComponent implements OnInit {
     onSubmit: EventEmitter<string> = new EventEmitter<string>();
     @Output()
     onDismiss: EventEmitter<any> = new EventEmitter<any>();
-
-    @ViewChild("dp")
-    public set dp(content: NgbDatepicker) {
-        if (content) {
-            this.datePicker = content;
-            this.datePicker.navigateTo({ year: this.date.year, month: this.date.month });
-        }
-    }
     maxDate = new Date();
     minDate = new Date(1900, 1, 1);
     private datePicker: NgbDatepicker;
@@ -48,6 +40,14 @@ export class DateTimePickerModalComponent implements OnInit {
     time: DateTimeModel;
 
     firstTimeAssign = true;
+
+    @ViewChild("dp")
+    public set dp(content: NgbDatepicker) {
+        if (content) {
+            this.datePicker = content;
+            this.datePicker.navigateTo({ year: this.date.year, month: this.date.month });
+        }
+    }
     constructor() {}
 
     ngOnInit(): void {

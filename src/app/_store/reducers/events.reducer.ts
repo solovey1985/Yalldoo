@@ -24,7 +24,7 @@ export const initialEventState = adapter.getInitialState({
 
 export function reducer(state = initialEventState, action: fromEventActions.All): EventsState {
     switch (action.type) {
-        
+
         case EventActionEnum.CREATE_EVENT_SUCCESS: {
             return adapter.addOne(action.payload, state);
         }
@@ -49,7 +49,7 @@ const {
     selectIds,
     selectTotal
 } = adapter.getSelectors();
- 
+
 export const selectEventIds = selectIds;
 // select the array of events
 export const selectAllEvents = selectAll;

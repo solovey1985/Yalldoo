@@ -1,0 +1,164 @@
+<div class="yld-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-9 col-sm-12 mr-auto ml-auto">
+                <form [formGroup]="form" class="form">
+                    <div class="yld-card-event-create">
+                        <div class="d-flex justify-content-between yld-card-event-create-header">
+                            <div class="align-self-center"><h3 class="card-title">Edit Event</h3></div>
+                            <div class="align-self-center">
+                                <button
+                                    class="btn btn-block btn-round"
+                                    [ngClass]="{ disabled: !isValid(), 'btn-success': isValid() }"
+                                    type="submit"
+                                    (click)="onCreateButtonClick()"
+                                >
+                                    Create
+                                </button>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <h6>Privacy<span class="icon-danger">*</span></h6>
+                            <app-select-dropdown
+                                [title]="'Select Event Privacy'"
+                                [items]="privacyList"
+                                [buttonIcon]="'lock'"
+                                (onItemSelected)="setPrivacy($event)"
+                            ></app-select-dropdown>
+                            <app-control-messages title="Privacy" [control]="form.get('privacy')"></app-control-messages>
+                        </div>
+                        <div class="form-group">
+                            <h6>
+                                Title
+                                <span class="icon-danger">*</span>
+                            </h6>
+                            <div class="input-group">
+                                <input type="text" placeholder="Title" formControlName="title" class="form-control" />
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fa fa-edit"></i></span>
+                                </div>
+                            </div>
+                            <app-control-messages title="Title" [control]="form.get('title')"></app-control-messages>
+                        </div>
+                        <div class="form-group">
+                            <h6>Start date and time <span class="icon-danger">*</span></h6>
+                            <div class="d-flex align-content-center input-group yld-event-selector">
+                                <button
+                                    type="button"
+                                    class="btn btn-default btn-just-icon"
+                                    [ngClass]="{ 'btn-success': isDateSelected, 'btn-danger': !isDateSelected }"
+                                    (click)="showDatetimepickerModal()"
+                                >
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                </button>
+                                <h5 class="yld-event-selector-values">
+                                    <span *ngIf="isDateSelected">{{
+                                        dateTime | date: "HH:mm dd MMM yyyy":"+0300"
+                                    }}</span>
+                                    <span *ngIf="!isDateSelected">Click to select date and time</span>
+                                </h5>
+                            </div>
+                            <app-control-messages title="Date and Time" [control]="form.get('dateTime')"></app-control-messages>
+                        </div>
+                        <div class="form-group">
+                            <h6>Location<span class="icon-danger">*</span></h6>
+                            <div class="input-group yld-event-selector">
+                                <button
+                                    type="button"
+                                    class="btn btn-default btn-just-icon"
+                                    [ngClass]="{
+                                        'btn-success': isLocationSelected,
+                                        'btn-danger': !isLocationSelected
+                                    }"
+                                    (click)="showLocationpickerModal()"
+                                >
+                                    <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
+                                </button>
+                                <h5 class="yld-event-selector-values">
+                                    <span *ngIf="isLocationSelected">{{ location.title }}</span>
+                                    <span *ngIf="!isLocationSelected">Click to select location</span>
+                                </h5>
+                            </div>
+                            <app-control-messages title="Location" [control]="form.get('location')"></app-control-messages>
+                        </div>
+
+                        <div class="form-group">
+                            <h6>Category <span class="icon-danger">*</span></h6>
+                            <angular2-multiselect
+                                formControlName="category"
+                                [data]="categories"
+                                [settings]="dropdownSettings"
+                                (onSelect)="onItemSelect($event)"
+                                (onDeSelect)="OnItemDeSelect($event)"
+                            >
+                            </angular2-multiselect>
+                            <app-control-messages title="Category" [control]="form.get('category')"></app-control-messages>
+                        </div>
+                        <div class="form-group section-buttons">
+                            <div class="d-flex flex-column">
+                                <button
+                                    *ngIf="!isFriendsSelected"
+                                    type="button"
+                                    class="btn btn-default btn-just-icon btn-border btn-invite"
+                                    (click)="showFriendspickerModal()"
+                                >
+                                    <i class="fa fa-group fa-2x" aria-hidden="true"></i>
+                                </button>
+                                <h5 class="">Invite</h5>
+                            </div>
+                        </div>
+                        <div class="form-group" *ngIf="isFriendsSelected">
+                            <h6>Invitation</h6>
+                            <div class="input-group yld-event-selector">
+                                <button
+                                    type="button"
+                                    class="btn btn-default btn-just-icon"
+                                    [ngClass]="{
+                                        'btn-success': isFriendsSelected,
+                                        'btn-danger': !isFriendsSelected
+                                    }"
+                                    (click)="showFriendspickerModal()"
+                                >
+                                    <i class="fa fa-group fa-2x" aria-hidden="true"></i>
+                                </button>
+                                <h5 class="yld-event-selector-values">
+                                    <div *ngIf="isFriendsSelected">
+                                        <ul class="yld-list-item-avatar-user-list list-unstyled">
+                                            <li *ngFor="let item of invitedFriends" class="yld-list-item-avatar-user">
+                                                <a
+                                                    ><img
+                                                        src="assets/img/friends/{{ item.id }}.png"
+                                                        alt="..."
+                                                        placement="bottom"
+                                                        ngbPopover="{{ item.fullName }}"
+                                                /></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <span *ngIf="!isFriendsSelected">Click to invite</span>
+                                </h5>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <h6>Description</h6>
+                            <div>
+                                <textarea
+                                    rows="2"
+                                    placeholder="Add some description"
+                                    formControlName="description"
+                                    class="form-control"
+                                ></textarea>
+                            </div>
+                            <app-control-messages title="Description" [control]="form.get('description')"></app-control-messages>
+                        </div>
+                        <div class="form-group">
+                            <h4 class="title"><small>Event Image</small></h4>
+                            <app-image-upload (onImageSelected)="onImageSelected($event)"></app-image-upload>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

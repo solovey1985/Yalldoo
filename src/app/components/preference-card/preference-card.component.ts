@@ -21,7 +21,7 @@ export class PreferenceCardComponent implements OnInit {
     icon: string;
     @Input()
     selected: boolean;
-    
+
     @Input("size")
     size: string;
 

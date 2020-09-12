@@ -1,9 +1,9 @@
-import { Component, OnInit, Input, Output,  EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output,  EventEmitter } from "@angular/core";
 
 @Component({
-  selector: 'app-privacy-selector',
-  templateUrl: './privacy-selector.component.html',
-  styleUrls: ['./privacy-selector.component.css']
+  selector: "app-privacy-selector",
+  templateUrl: "./privacy-selector.component.html",
+  styleUrls: ["./privacy-selector.component.css"]
 })
 export class PrivacySelectorComponent implements OnInit {
 

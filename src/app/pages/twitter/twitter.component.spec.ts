@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { TwitterComponent } from './twitter.component';
+import { TwitterComponent } from "./twitter.component";
 
-describe('TwitterComponent', () => {
+describe("TwitterComponent", () => {
   let component: TwitterComponent;
   let fixture: ComponentFixture<TwitterComponent>;
 
@@ -19,7 +19,7 @@ describe('TwitterComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

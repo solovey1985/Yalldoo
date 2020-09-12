@@ -6,7 +6,7 @@ import { HttpClient } from "@angular/common/http";
 import { Config } from "../../_configs/config";
 import { config } from "process";
 
-var categories: Category[] = [
+const categories: Category[] = [
     {
         id: 1,
         title: "Sport"
@@ -66,7 +66,7 @@ var categories: Category[] = [
     }
 ];
 
-var categoryIconMap = new Map<string, string>();
+const categoryIconMap = new Map<string, string>();
 categoryIconMap.set("music", "fa-music");
 categoryIconMap.set("football", "fa-futbol-o");
 categoryIconMap.set("basketball", "fa-child");
@@ -113,7 +113,7 @@ export class CategoryService {
     }
 
     public getCategoryIcon(title: string) {
-        var icon = categoryIconMap.get(title.toLowerCase());
+        const icon = categoryIconMap.get(title.toLowerCase());
         if (!icon) {
             return "fa-sun-o";
         } else {

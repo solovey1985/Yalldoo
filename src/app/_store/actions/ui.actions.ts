@@ -3,8 +3,8 @@ import { Action } from "@ngrx/store";
 export enum UIActionEnum {
     LOADING_STARTED = "[UI] Loading Started",
     LOADING_FINISHED = "[UI] Loading Finished",
-    ERROR_SHOW ="[UI] Showing Error",
-    ERROR_HIDE ="[UI] Showing Hide",
+    ERROR_SHOW = "[UI] Showing Error",
+    ERROR_HIDE = "[UI] Showing Hide",
 }
 
 export class LoadingStartedAction implements Action {

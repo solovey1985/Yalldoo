@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { PrivacySelectorComponent } from './privacy-selector.component';
+import { PrivacySelectorComponent } from "./privacy-selector.component";
 
-describe('PrivacySelectorComponent', () => {
+describe("PrivacySelectorComponent", () => {
   let component: PrivacySelectorComponent;
   let fixture: ComponentFixture<PrivacySelectorComponent>;
 
@@ -19,7 +19,7 @@ describe('PrivacySelectorComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

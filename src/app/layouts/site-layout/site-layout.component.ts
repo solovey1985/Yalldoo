@@ -109,11 +109,6 @@ export class SiteLayoutComponent implements OnInit {
           const rv = ua.indexOf("rv:");
           const version = parseInt(ua.substring(rv + 3, ua.indexOf(".", rv)), 10);
       }
-      if (version) {
-          const body = document.getElementsByTagName("body")[0];
-          body.classList.add("ie-background");
-
-      }
       this.hasScrolled();
   }
   removeFooter() {

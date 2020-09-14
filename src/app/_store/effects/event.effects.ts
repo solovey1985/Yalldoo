@@ -54,8 +54,7 @@ export class EventEffects {
             switchMap((action: LoadEventAction) => {
                 return this.eventService.fetchEvent(action.payload as number).pipe(
                     map((response: any) => {
-                        const events = response.data.result;
-                        return new LoadEventActionSuccess(events);
+                        return new LoadEventActionSuccess(response);
                     })
                 );
             })

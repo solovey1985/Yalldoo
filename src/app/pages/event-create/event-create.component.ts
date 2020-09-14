@@ -84,7 +84,6 @@ export class EventCreateComponent implements OnInit {
             enableSearchFilter: true,
             lazyLoading: true
         };
-
         this.privacyList = ["Public", "Friends", "Private"];
     }
     setPrivacy($event: string) {

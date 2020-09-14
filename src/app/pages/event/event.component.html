@@ -3,20 +3,26 @@
         <div class="row" *ngIf="selectedEvent$ | async as event">
             <div class="col-sm-11 col-xs-11 col-md-10 ml-auto mr-auto yld-event-container card no-transition">
                 <div
-                    class="yld-event-image-container"
-                    style="background-image: url('./assets/img/sections/roger-keller.jpg');"
+                    class="yld-event-image-container d-flex justify-content-between" 
+                    style="background-image: url('./assets/img/sections/roger-keller.jpg')"
                 >
-                <div class="block left-align">
-                    <button type="button" class="btn btn-move-left btn-round" (click)="goBack()">
-                        <i class="nc-icon nc-minimal-left"></i>
-                    </button>
+                    <div class="block left-align">
+                        <button type="button" class="btn btn-move-left btn-round" (click)="goBack()">
+                            <i class="nc-icon nc-minimal-left"></i>
+                        </button>
+                    </div>
+                     
+                    <div class="block right-align">
+                        <button type="button" class="btn btn-move-right btn-round" [routerLink]="['/event-edit', event.id]" routerLinkActive="router-link-active">
+                            <i class="fa fa-edit fa-2x"></i>
+                        </button>
+                    </div>
                 </div>
-            </div>
                 <div class="yld-event-actions-container">
                     <div class="yld-event-title-category badge-success">
                         <div class="row">
                             <span class="col-sm-7 col-8"
-                                ><i class="fa fa-2x mr-5 {{getIcon()}}"></i>{{event.category}}</span
+                                ><i class="fa fa-2x mr-5 {{ getIcon() }}"></i>{{ event.category }}</span
                             >
                             <div class="d-flex justify-content-between align-self-end col-4 col-sm-5">
                                 <button class="btn btn-just-icon btn-google">
@@ -43,11 +49,15 @@
                 <div class="yld-event-header-container">
                     <div class="row">
                         <div class="col-4 yld-event-avatar">
-                            <img *ngIf="!event.image" src="assets/img/avatar-event.jpg" class="img-rounded img-responsive" />
-                            <img  *ngIf="event.image" src="{{event.image}}" class="img-rounded img-responsive" />
+                            <img
+                                *ngIf="!event.image"
+                                src="assets/img/avatar-event.jpg"
+                                class="img-rounded img-responsive"
+                            />
+                            <img *ngIf="event.image" src="{{ event.image }}" class="img-rounded img-responsive" />
                         </div>
                         <div class="col-8 yld-event-title">
-                            <h2>{{event.title}}</h2>
+                            <h2>{{ event.title }}</h2>
                         </div>
                     </div>
 
@@ -63,14 +73,16 @@
                 <div class="yld-event-description">
                     <h5>About</h5>
                     <p>
-                        {{event.description}}
+                        {{ event.description }}
                     </p>
                 </div>
                 <hr />
                 <div class="yld-event-date-time-container">
                     <h5>Date And Time</h5>
                     <div class="d-flex flex-row">
-                        <h5 class="title-uppercase mr-2"><i class="fa fa-clock-o"></i> {{ event.startDate | date: "HH:mm" }}</h5>
+                        <h5 class="title-uppercase mr-2">
+                            <i class="fa fa-clock-o"></i> {{ event.startDate | date: "HH:mm" }}
+                        </h5>
                         <h5 class="title-uppercase">
                             <i class="fa fa-calendar-o"></i> {{ event.startDate | date: "dd MMM yyyy" }}
                         </h5>
@@ -79,7 +91,7 @@
                 <hr />
                 <div class="yld-event-address-container">
                     <h5>Address</h5>
-                    <h5 class="title-uppercase"><i class="fa fa-map-marker"></i>{{event.location.address}}</h5>
+                    <h5 class="title-uppercase"><i class="fa fa-map-marker"></i>{{ event.location.address }}</h5>
                 </div>
                 <hr />
                 <div class="yld-event-participants-container">

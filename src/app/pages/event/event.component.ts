@@ -23,6 +23,7 @@ export class EventComponent implements OnInit, OnDestroy {
     selectIdSub$: Subscription;
     selectEventSub$: Subscription;
     actionItems = ["Join", "Follow", "Invite"];
+    
     constructor(
         private modal: ModalService,
         private notify: NotifyService,

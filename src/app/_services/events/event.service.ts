@@ -25,7 +25,7 @@ export class EventService {
 
     public fetchEvent(eventId: number): Observable<EventModel> {
         const url = `${Config.apiUrl}/event/${eventId}`;
-        return this.http.get<EventModel>(url);
+        return this.http.get<any>(url).map(response=> response.data.result[0]);
     }
 
     public createEvent(event: CreateEventModel): Observable<EventModel> {

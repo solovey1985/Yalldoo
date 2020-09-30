@@ -1,3 +1,4 @@
+import { LocationInDTO } from "./events/event.model";
 import { IHereSearchResponse, IHereAddress } from "./geo/address.model";
 
 export default class LocationDto {
@@ -38,5 +39,27 @@ export default class LocationDto {
             this.title = hereAddress.label;
         }
 
+    }
+
+    public toEventLocation(): LocationInDTO{
+        let location = new LocationInDTO();
+        
+        location.address = this.title;
+        location.latitude = this.position.lat;
+        location.longitude = this.position.lng;
+        location.type = 1;
+
+        return location;
+    }
+
+    public static fromEventLocation(eventLocation: LocationInDTO):LocationDto {
+        let location = new LocationDto();
+        location.title = eventLocation.address;
+        location.position = {
+            lat: eventLocation.latitude,
+            lng: eventLocation.longitude
+        } 
+
+        return location;
     }
 }

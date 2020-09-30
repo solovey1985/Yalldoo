@@ -1,13 +1,13 @@
 import { EntityState, createEntityAdapter } from "@ngrx/entity";
-import { Category } from "../../_models/category/category.model";
+import { CategoryModel } from "../../_models/category/category.model";
 import { All } from "../actions/category.actions";
 import { CategoryActionsEnum } from "../actions/category.actions";
 
-export interface CategoryState extends EntityState<Category> {
+export interface CategoryState extends EntityState<CategoryModel> {
     selectedCategoryId: number;
 }
 
-export const adapter = createEntityAdapter<Category>({
+export const adapter = createEntityAdapter<CategoryModel>({
     sortComparer: sortBySeqNo
 });
 
@@ -34,6 +34,6 @@ export function reducer(state = initialCategoryState, action: All) {
 
 export const { selectAll, selectEntities, selectIds, selectTotal } = adapter.getSelectors();
 
-function sortBySeqNo(e1: Category, e2: Category) {
+function sortBySeqNo(e1: CategoryModel, e2: CategoryModel) {
     return e1.seqNo - e2.seqNo;
 }

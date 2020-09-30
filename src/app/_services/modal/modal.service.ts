@@ -8,7 +8,7 @@ import { LocationPickerModalComponent } from "app/components/modal/location-pick
 import { FriendsPickerModalComponent } from "app/components/modal/friends-picker-modal/friends-picker-modal.component";
 import { FriendsImportFacebookModalComponent } from "app/components/modal/friends-import-facebook-modal/friends-import-facebook-modal.component";
 import { FirendListItem } from "app/_models/friends/friend-list-item.model";
-import { Category } from "app/_models/category/category.model";
+import { CategoryModel } from "app/_models/category/category.model";
 import { CategoriesPreferenceEditorComponent } from "app/components/modal/categories-preference-editor-modal/categories-preference-editor-modal.component";
 
 @Injectable(
@@ -82,15 +82,15 @@ export class ModalService {
         return subject.asObservable()
     }
 
-    openCategoriesPrefernceEditor(categories?: Category[]) {
-        const subject = new Subject<Array<Category>>()
+    openCategoriesPrefernceEditor(categories?: CategoryModel[]) {
+        const subject = new Subject<Array<CategoryModel>>()
         const options = new NgbModalConfig();
         options.centered = false;
         options.size = "lg";
         const modalRef = this.ngbModalService.open(CategoriesPreferenceEditorComponent, options);
         const modal = <CategoriesPreferenceEditorComponent>modalRef.componentInstance;
         modal.selectedCategories = categories;
-        const submitSubscription = modal.onSubmit.subscribe((result: Array<Category>) => {
+        const submitSubscription = modal.onSubmit.subscribe((result: Array<CategoryModel>) => {
             subject.next(result);
             modalRef.close();
             submitSubscription.unsubscribe()

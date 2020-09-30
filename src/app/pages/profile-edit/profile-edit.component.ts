@@ -3,7 +3,7 @@ import { ModalService } from "app/_services/modal/modal.service";
 import { NotifyService } from "app/services/notify-service/notify.service";
 import { CategoryService } from "app/_services/category/category.service";
 import LocationDto from "app/_models/location.dto";
-import { Category } from "app/_models/category/category.model";
+import { CategoryModel } from "app/_models/category/category.model";
 import { ThrowStmt } from "@angular/compiler";
 import UserInformation from "app/_models/user/user-information.model";
 import { FormBuilder, FormGroup, Validators, FormControl, AbstractControl } from "@angular/forms";
@@ -19,7 +19,7 @@ export class EditProfileComponent implements OnInit {
     isDateSelected: boolean;
     locations: LocationDto[];
     data: Date = new Date();
-    categories: Category[];
+    categories: CategoryModel[];
     user: User;
     userInfo: UserInformation;
     state: any = {};

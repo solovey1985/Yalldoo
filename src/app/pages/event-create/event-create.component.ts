@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, ElementRef } from "@angular/core";
 import { FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl } from "@angular/forms";
 import { CategoryService } from "app/_services/category/category.service";
-import { Category } from "app/_models/category/category.model";
+import { CategoryModel } from "app/_models/category/category.model";
 import { ModalService } from "app/_services/modal/modal.service";
 import { DateTimePickerComponent } from "app/components/date-time-picker/date-time-picker.component";
 import { NgbDateTimeStruct } from "app/components/date-time-picker/date-time.model";
@@ -23,7 +23,7 @@ import { EventLocationModel, ELocationType } from "app/_models/location/event-cr
 })
 export class EventCreateComponent implements OnInit {
     categories = [];
-    selectedCategory: Category;
+    selectedCategory: CategoryModel;
     dropdownSettings = {};
     location: LocationDto;
     dateTime = new Date();
@@ -34,9 +34,9 @@ export class EventCreateComponent implements OnInit {
     isPrivacySelected = false;
     privacyList: string[];
     selectedPrivacy: string;
-    categoryDtos: Category[];
+    categoryDtos: CategoryModel[];
     image: string;
-    categories$: Observable<Category[]>;
+    categories$: Observable<CategoryModel[]>;
     public validation_messages: any;
 
     public form: FormGroup;
@@ -108,7 +108,7 @@ export class EventCreateComponent implements OnInit {
         this.selectedCategory = null;
     }
 
-    mapCategories(categories: Category[]): MultiselectItem[] {
+    mapCategories(categories: CategoryModel[]): MultiselectItem[] {
         const items = new Array<MultiselectItem>();
         const parrents = categories.filter((p) => p.parrentId == 0);
         parrents.map((p) => {
@@ -118,7 +118,7 @@ export class EventCreateComponent implements OnInit {
         return items;
     }
 
-    private mapToMultiselectDropdownItem(item: Category, parrent?: Category): MultiselectItem {
+    private mapToMultiselectDropdownItem(item: CategoryModel, parrent?: CategoryModel): MultiselectItem {
         return {
             id: item.id,
             itemName: item.title,

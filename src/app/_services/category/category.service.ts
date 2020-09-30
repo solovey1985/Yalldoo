@@ -1,12 +1,12 @@
 import { Injectable } from "@angular/core";
-import { Category } from "app/_models/category/category.model";
+import { CategoryModel } from "app/_models/category/category.model";
 import { Observable, of } from "rxjs";
 import { switchMap } from "rxjs/operators";
 import { HttpClient } from "@angular/common/http";
 import { Config } from "../../_configs/config";
 import { config } from "process";
 
-const categories: Category[] = [
+const categories: CategoryModel[] = [
     {
         id: 1,
         title: "Sport"
@@ -89,21 +89,21 @@ categoryIconMap.set("beer", "fa-beer");
 export class CategoryService {
     constructor(private http: HttpClient) {}
 
-    public loadCategories(pagedRequest?: any): Observable<Category[]> {
+    public loadCategories(pagedRequest?: any): Observable<CategoryModel[]> {
         const url = `${Config.apiUrl}/category`;
         return this.http.get<any>(url).pipe(
             switchMap((response) => {
-                const cats = Array.from<Category>(response.data.result);
+                const cats = Array.from<CategoryModel>(response.data.result);
                 return of(cats);
             })
         );
     }
 
-    public getCategories(ammount?: number): Category[] {
+    public getCategories(ammount?: number): CategoryModel[] {
         return categories;
     }
 
-    public getChildCategories(parrentId?: number): Array<Category> {
+    public getChildCategories(parrentId?: number): Array<CategoryModel> {
         if (parrentId) {
             return categories.filter((x) => x.parrentId === parrentId);
         } else {

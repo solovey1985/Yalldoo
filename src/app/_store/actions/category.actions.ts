@@ -1,5 +1,5 @@
 import { Action } from "@ngrx/store";
-import { Category } from "app/_models/category/category.model";
+import { CategoryModel } from "app/_models/category/category.model";
 
 export enum CategoryActionsEnum {
     CATEGORIES_LOAD = "[Categories] Load",
@@ -16,7 +16,7 @@ export class CategoriesLoadAction implements Action {
 }
 export class CategoriesLoadSuccessAction implements Action {
     readonly type = CategoryActionsEnum.CATEGORIES_LOAD_SUCCESS;
-    constructor(public payload:  Category[]) {}
+    constructor(public payload:  CategoryModel[]) {}
 }
 export class CategoriesLoadFailedAction implements Action {
     readonly type = CategoryActionsEnum.CATEGORIES_LOAD_FAILED;
@@ -30,7 +30,7 @@ export class CategoryLoadAction implements Action {
 }
 export class CategoryLoadSuccessAction implements Action {
     readonly type = CategoryActionsEnum.CATEGORY_LOAD_SUCCESS;
-    constructor(public payload: { category: Category }) {}
+    constructor(public payload: { category: CategoryModel }) {}
 }
 export class CategoryLoadFailedAction implements Action {
     readonly type = CategoryActionsEnum.CATEGORY_LOAD_FAILED;

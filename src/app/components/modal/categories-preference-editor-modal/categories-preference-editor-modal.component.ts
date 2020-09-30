@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import { Category } from "app/_models/category/category.model";
+import { CategoryModel } from "app/_models/category/category.model";
 import { CategoryService } from "app/_services/category/category.service";
 
 @Component({
@@ -10,27 +10,27 @@ import { CategoryService } from "app/_services/category/category.service";
 })
 export class CategoriesPreferenceEditorComponent implements OnInit {
     @Input("categories")
-    selectedCategories: Array<Category>;
+    selectedCategories: Array<CategoryModel>;
     @Output()
-    onSubmit: EventEmitter<Category[]> = new EventEmitter<Category[]>();
+    onSubmit: EventEmitter<CategoryModel[]> = new EventEmitter<CategoryModel[]>();
     @Output()
     onDismiss: EventEmitter<any> = new EventEmitter();
 
-    categories: Array<Category>;
-    outputCategories: Array<Category>;
+    categories: Array<CategoryModel>;
+    outputCategories: Array<CategoryModel>;
     constructor(private categoryService: CategoryService) {}
 
     ngOnInit(): void {
         this.categories = this.categoryService.getChildCategories();
         if (this.selectedCategories === undefined) {
-            this.selectedCategories = new Array<Category>();
+            this.selectedCategories = new Array<CategoryModel>();
         } else {
             this.outputCategories = JSON.parse(JSON.stringify(this.selectedCategories));
             this.categories.sort(this.sortCategoryPreferences());
         }
     }
 
-    isCategorySelected(category: Category) {
+    isCategorySelected(category: CategoryModel) {
         if (this.outputCategories) {
             return this.outputCategories.find((x) => x.id === category.id) !== undefined;
         }
@@ -66,7 +66,7 @@ export class CategoriesPreferenceEditorComponent implements OnInit {
         this.categories = newCategories.filter((x) => x.title.toLowerCase().indexOf(searchInput) > -1);
     }
 
-    private sortCategoryPreferences(): (a: Category, b: Category) => number {
+    private sortCategoryPreferences(): (a: CategoryModel, b: CategoryModel) => number {
         return (a, b) => {
             if (this.isCategorySelected(a) && this.isCategorySelected(b)) {
                 return 0;

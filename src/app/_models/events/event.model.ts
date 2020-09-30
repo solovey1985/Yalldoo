@@ -1,4 +1,4 @@
-import { Category } from "../category/category.model";
+import { CategoryModel } from "../category/category.model";
 import { EPrivacyEnum } from "../common/privacy.enum";
 import LocationDto from "../location.dto";
 import { User } from "../user/user.model";

@@ -1,25 +1,126 @@
 <div class="yld-page">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-6 col-md-9 col-sm-12 mr-auto ml-auto">
-                
-                <form *ngIf="form" [formGroup]="form" class="form">
-                    <div >
-                    <div class="form-group">
-                        <label for="title">Title</label>
-                        <input id="title" class="form-control" formControlName="title" type="text" name="title" />
+        <div *ngIf="event$ | async as event">
+            <form class="form" [formGroup]="form">
+                <div class="col-sm-11 col-xs-11 col-md-10 ml-auto mr-auto yld-event-container card no-transition">
+                    <div
+                        class="yld-event-image-container d-flex justify-content-between"
+                        style="background-image: url('./assets/img/sections/roger-keller.jpg')"
+                    >
+                        <div class="block left-align">
+                            <button type="button" class="btn btn-move-left btn-round">
+                                <i class="nc-icon nc-minimal-left"></i>
+                            </button>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="title">Category</label>
-                        <input id="title" class="form-control" formControlName="category" type="text" name="category" />
+                    <div class="yld-event-actions-container">
+                        <div class="yld-event-title-category badge-success">
+                            <div class="row">
+                                <span class="col-sm-7 col-8">
+                                    <i class="fa fa-2x mr-5 {{ getIcon() }}"></i>{{ event.category }}
+                                </span>
+                                <div class="d-flex justify-content-between align-self-end col-4 col-sm-5">
+                                    <button type="button" class="btn btn-danger btn-lg">Cancel</button>
+                                    <button type="button" class="btn btn-lg btn-primary">Save</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="title">Description</label>
-                        <input id="title" class="form-control" formControlName="description" type="text" name="description" />
+                    <div class="yld-event-header-container">
+                        <div class="row">
+                            <div class="col-2 yld-event-avatar">
+                                <img
+                                    *ngIf="!event.image"
+                                    src="assets/img/avatar-event.jpg"
+                                    class="img-rounded img-responsive"
+                                />
+                                <img *ngIf="event.image" src="{{ event.image }}" class="img-rounded img-responsive" />
+                            </div>
+                            <div class="col-5 m-auto">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input
+                                            type="text"
+                                            placeholder="Title"
+                                            formControlName="title"
+                                            class="form-control form-control-lg"
+                                        />
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><i class="fa fa-edit"></i></span>
+                                        </div>
+                                    </div>
+                                    <app-control-messages
+                                        title="Title"
+                                        [control]="form.get('title')"
+                                    ></app-control-messages>
+                                </div>
+                            </div>
+                            <div class="col-5 m-auto d-flex justify-content-end">
+                            <div class="form-group">
+                                <h6>Privacy</h6>
+                                <app-select-dropdown
+                                    [title]="'Select Event Privacy'"
+                                    [items]="privacyList"
+                                    [buttonIcon]="'lock'"
+                                    (onItemSelected)="setPrivacy($event)"
+                                ></app-select-dropdown>
+                                <app-control-messages title="Privacy" [control]="form.get('privacy')"></app-control-messages>
+                            </div>
+                            </div>
+                        </div>
                     </div>
+                    <div class="yld-event-description">
+                        <h5>About</h5>
+                        <div class="form-group">
+                            <div>
+                                <textarea
+                                    rows="2"
+                                    placeholder="Add some description"
+                                    formControlName="description"
+                                    class="form-control"
+                                ></textarea>
+                            </div>
+                            <app-control-messages title="Description" [control]="form.get('description')"></app-control-messages>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="yld-event-date-time-container">
+                        <h5>Date And Time</h5>
+                        <div class="d-flex flex-row">
+                            <h5 class="title-uppercase mr-2">
+                                <i class="fa fa-clock-o"></i> {{ event.startDate | date: "HH:mm" }}
+                            </h5>
+                            <h5 class="title-uppercase">
+                                <i class="fa fa-calendar-o"></i> {{ event.startDate | date: "dd MMM yyyy" }}
+                            </h5>
+                            <button
+                            type="button"
+                            class="btn btn-default btn-just-icon"
+                            [ngClass]="{ 'btn-success': isDateSelected, 'btn-danger': !isDateSelected }"
+                            (click)="showDatetimepickerModal()"
+                        >
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                        </button>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="yld-event-address-container">
+                        <h5>Address</h5>
+                        <h5 class="title-uppercase"><i class="fa fa-map-marker"></i>{{ event.location.address }}</h5>
+                         <button
+                        type="button"
+                        class="btn btn-default btn-just-icon"
+                        [ngClass]="{
+                            'btn-success': isLocationSelected,
+                            'btn-danger': !isLocationSelected
+                        }"
+                        (click)="showLocationpickerModal()"
+                    ></button> 
+                        <app-control-messages title="Location" [control]="form.get('location')"></app-control-messages>
+                    </div>
+                    <hr />
                 </div>
-                </form>
-            </div>
+            </form>
         </div>
     </div>
 </div>

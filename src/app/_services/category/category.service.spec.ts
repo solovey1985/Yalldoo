@@ -2,7 +2,7 @@ import { TestBed } from "@angular/core/testing";
 
 import { CategoryService } from "./category.service";
 import { exec } from "child_process";
-import { Category } from "app/_models/category/category.model";
+import { CategoryModel } from "app/_models/category/category.model";
 
 describe("CategoryService", () => {
   let service: CategoryService;
@@ -17,7 +17,7 @@ describe("CategoryService", () => {
   });
 
   it("should return categories", () => {
-    const expectedCategories = new Array<Category>();
+    const expectedCategories = new Array<CategoryModel>();
     expect(service.getCategories(5)).toEqual(expectedCategories);
   });
 });

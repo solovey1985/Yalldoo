@@ -9,7 +9,7 @@ import {
 } from "../actions/category.actions";
 import { switchMap, map, catchError } from "rxjs/operators";
 import { CreateEventAction } from "../actions/events.actions";
-import { Category } from "app/_models/category/category.model";
+import { CategoryModel } from "app/_models/category/category.model";
 import { of } from "rxjs";
 
 @Injectable()
@@ -20,7 +20,7 @@ eventCreate$ = createEffect(() =>
             switchMap((action: CategoriesLoadAction) => {
                 return this.categoryService.loadCategories(action.payload).pipe(
                     map(
-                        (categoies: Category[]) => new CategoriesLoadSuccessAction(categoies),
+                        (categoies: CategoryModel[]) => new CategoriesLoadSuccessAction(categoies),
                         catchError((error) => of(new CategoriesLoadFailedAction(error)))
                     )
                 );

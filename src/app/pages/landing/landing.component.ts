@@ -10,7 +10,7 @@ export class LandingComponent implements OnInit, OnDestroy {
     data: Date = new Date();
 
   constructor() { }
-
+  navbar_transparent =true;
   ngOnInit() {
     const rellaxHeader = new Rellax(".rellax-header");
 
@@ -23,16 +23,17 @@ export class LandingComponent implements OnInit, OnDestroy {
     const descriptionElement = document.querySelector(".js-yld-about");
     const teamElement = document.querySelector(".js-yld-team");
 
-    window.addEventListener("scroll", function() {
-      if (window.pageYOffset > 200 ) {
+    body.addEventListener("scroll", function() {
+      if ( body.scrollTop > 200 ) {
         navbar.classList.remove("navbar-transparent");
       } else {
         navbar.classList.add("navbar-transparent");
       }
 
-      if (body.scrollHeight - window.pageYOffset < 1100 ) {
+      if ((body.scrollTop - body.offsetHeight) > 2600 ) {
         navbar.classList.remove("nav-up");
         navbar.classList.add("nav-down");
+        navbar.classList.add("navbar-transparent");
       }
     });
 

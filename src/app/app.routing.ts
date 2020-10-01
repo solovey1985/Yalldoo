@@ -32,6 +32,7 @@ import { EventEditComponent } from "./pages/event-edit/event-edit.component";
 import { PrivacyPolicyComponent } from "./pages/policies/privacy-policy/privacy-policy.component";
 import { CookiesPolicyComponent } from "./pages/policies/cookies-policy/cookies-policy.component";
 import { UseTermsComponent } from "./pages/policies/use-terms/use-terms.component";
+import { HelpComponent } from "./pages/policies/help/help.component";
 @NgModule({
     imports: [
         CommonModule,
@@ -48,6 +49,7 @@ import { UseTermsComponent } from "./pages/policies/use-terms/use-terms.componen
                     { path: "privacy-policy", component: PrivacyPolicyComponent },
                     { path: "cookies-policy", component: CookiesPolicyComponent },
                     { path: "use-terms", component: UseTermsComponent },
+                    { path: "help", component: HelpComponent },
 
                     { path: "", component: LandingComponent }
                 ]

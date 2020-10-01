@@ -39,6 +39,7 @@ import { EventEditComponent } from "./event-edit/event-edit.component";
 import { UseTermsComponent } from './policies/use-terms/use-terms.component';
 import { CookiesPolicyComponent } from './policies/cookies-policy/cookies-policy.component';
 import { PrivacyPolicyComponent } from './policies/privacy-policy/privacy-policy.component';
+import { HelpComponent } from './policies/help/help.component';
 
 
 @NgModule({
@@ -86,6 +87,7 @@ import { PrivacyPolicyComponent } from './policies/privacy-policy/privacy-policy
         UseTermsComponent,
         CookiesPolicyComponent,
         PrivacyPolicyComponent,
+        HelpComponent,
     ]
 })
 export class PagesModule {}

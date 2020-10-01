@@ -29,6 +29,9 @@ import { FriendComponent } from "./pages/friends/friend/friend.component";
 import { SettingsComponent } from "./pages/settings/settings.component";
 import { AuthGuard } from "./core/guards/auth-guard.guard";
 import { EventEditComponent } from "./pages/event-edit/event-edit.component";
+import { PrivacyPolicyComponent } from "./pages/policies/privacy-policy/privacy-policy.component";
+import { CookiesPolicyComponent } from "./pages/policies/cookies-policy/cookies-policy.component";
+import { UseTermsComponent } from "./pages/policies/use-terms/use-terms.component";
 @NgModule({
     imports: [
         CommonModule,
@@ -42,6 +45,10 @@ import { EventEditComponent } from "./pages/event-edit/event-edit.component";
                     { path: "team", component: AboutusComponent },
                     { path: "about", component: AboutComponent },
                     { path: "contactus", component: ContactusComponent },
+                    { path: "privacy-policy", component: PrivacyPolicyComponent },
+                    { path: "cookies-policy", component: CookiesPolicyComponent },
+                    { path: "use-terms", component: UseTermsComponent },
+
                     { path: "", component: LandingComponent }
                 ]
             },

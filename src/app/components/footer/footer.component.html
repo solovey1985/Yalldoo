@@ -1,17 +1,17 @@
 <footer class="footer footer-black p-2">
     <div class="container">
-        <div class="row">
+        <div class="row follow-section">
             <div class="col-3">
                 <label>Your Account</label>
                 <div class="list-group">
-                    <a [routerLink]="['/register']" routerLinkActive="router-link-active">Sign up</a>
-                    <a [routerLink]="['/login']" routerLinkActive="router-link-active">Login</a>
+                    <a [routerLink]="['/register']" class="link-info" routerLinkActive="router-link-active">Sign up</a>
+                    <a [routerLink]="['/login']" class="link-info" routerLinkActive="router-link-active">Login</a>
                 </div>
             </div>
             <div class="col-6">
                 <label>Follow Us</label>
                 <div class="list-group-horizontal-lg">
-                    <a href="https://facebook.com/Yalldoo" class="btn btn-just-icon btn-facebook mr-1" target="blank"
+                    <a href="https://facebook.com/Yalldoo" class="btn btn-just-icon btn-facebook mr-4" target="blank"
                         ><i class="fa fa-facebook"></i>
                     </a>
                     <a
@@ -28,14 +28,14 @@
                 <label><i class="fa fa-copyright" aria-hidden="true"></i> {{ currentYear }} Yalldoo</label>
             </div>
             <div class="col-4 d-flex justify-content-between">
-                <a [routerLink]="['/use-terms']" class="link-info" routerLinkActive="router-link-active"
+                <a [routerLink]="['/use-terms']" routerLinkActive="router-link-active"
                     >Terms of Service</a
                 >
-                <a [routerLink]="['/privacy-policy']" class="link-info" routerLinkActive="router-link-active"
-                    >Cookie Policy</a
-                >
-                <a [routerLink]="['/cookies-policy']" class="link-info" routerLinkActive="router-link-active"
+                <a [routerLink]="['/privacy-policy']" routerLinkActive="router-link-active"
                     >Privacy Policy</a
+                >
+                <a [routerLink]="['/cookies-policy']" routerLinkActive="router-link-active"
+                    >Cookies Policy</a
                 >
             </div>
         </div>

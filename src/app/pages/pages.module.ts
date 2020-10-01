@@ -36,6 +36,9 @@ import { SettingsComponent } from "./settings/settings.component";
 import { NgxMaskModule } from "ngx-mask";
 import { PaginationComponent } from "app/components/pagination/pagination.component";
 import { EventEditComponent } from "./event-edit/event-edit.component";
+import { UseTermsComponent } from './policies/use-terms/use-terms.component';
+import { CookiesPolicyComponent } from './policies/cookies-policy/cookies-policy.component';
+import { PrivacyPolicyComponent } from './policies/privacy-policy/privacy-policy.component';
 
 
 @NgModule({
@@ -80,6 +83,9 @@ import { EventEditComponent } from "./event-edit/event-edit.component";
         FriendComponent,
         SettingsComponent,
         EventEditComponent,
+        UseTermsComponent,
+        CookiesPolicyComponent,
+        PrivacyPolicyComponent,
     ]
 })
 export class PagesModule {}

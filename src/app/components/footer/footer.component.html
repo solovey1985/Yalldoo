@@ -1,13 +1,51 @@
-<footer class="footer footer-gray">
+<footer class="footer footer-black p-2">
     <div class="container">
         <div class="row">
-            <nav class="footer-nav">
-                <ul>
-                    <li><a [routerLink]="['/']">Y'alldoo</a></li>
-                    <li><a href="https://facebook.com/Yalldoo" target="blank">Y'alldoo on Facebook</a></li>
-                    <li><a href="https://www.creative-tim.com/license">Licenses</a></li>
-                </ul>
-            </nav>
+            <div class="col-3">
+                <label>Your Account</label>
+                <div class="list-group">
+                    <a [routerLink]="['/register']" routerLinkActive="router-link-active">Sign up</a>
+                    <a [routerLink]="['/login']" routerLinkActive="router-link-active">Login</a>
+                </div>
+            </div>
+            <div class="col-6">
+                <label>Follow Us</label>
+                <div class="list-group-horizontal-lg">
+                    <a href="https://facebook.com/Yalldoo" class="btn btn-just-icon btn-facebook mr-1" target="blank"
+                        ><i class="fa fa-facebook"></i>
+                    </a>
+                    <a
+                        href="https://www.instagram.com/yalldoo"
+                        class="btn btn-just-icon btn-instagram"
+                        routerLinkActive="router-link-active"
+                        ><i class="fa fa-instagram"></i
+                    ></a>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-3">
+                <label><i class="fa fa-copyright" aria-hidden="true"></i> {{ currentYear }} Yalldoo</label>
+            </div>
+            <div class="col-4 d-flex justify-content-between">
+                <a [routerLink]="['/use-terms']" class="link-info" routerLinkActive="router-link-active"
+                    >Terms of Service</a
+                >
+                <a [routerLink]="['/privacy-policy']" class="link-info" routerLinkActive="router-link-active"
+                    >Cookie Policy</a
+                >
+                <a [routerLink]="['/cookies-policy']" class="link-info" routerLinkActive="router-link-active"
+                    >Privacy Policy</a
+                >
+            </div>
         </div>
     </div>
 </footer>
+
+<!-- <nav class="footer-nav">
+    <ul>
+        <li><a [routerLink]="['/']">Y'alldoo</a></li>
+        <li><a href="https://facebook.com/Yalldoo" target="blank">Y'alldoo on Facebook</a></li>
+        <li><a href="https://www.creative-tim.com/license">Licenses</a></li>
+    </ul>
+</nav> -->

@@ -1,6 +1,6 @@
 <div class="page-header">
-  <div class="page-header-image rellax-header" data-rellax-speed="-7">
-  </div>
+<div class="page-header-image rellax-header" data-rellax-speed="-7">
+</div>
     <div class="filter"></div>
     <div class="content-center">
         <div class="container">
@@ -168,28 +168,50 @@
             <div class="row">
                 <div class="col-md-6 ml-auto mr-auto text-center">
                     <h3 class="title"><small>Or drop us a note</small></h3>
-                    <form class="contact">
+                    <form [formGroup]="form" class="contact" #contactUsForm (submit)="formSubmit($event)">
                         <div class="row">
                             <div class="col-md-6">
-                                <input type="text" class="form-control mb-4" placeholder="First Name">
+                                <input
+                                    type="text"
+                                    class="form-control mt-3"
+                                    [ngClass]="{ 'form-control-danger': isInvalid(form.get('name')) }"
+                                    placeholder="Your Name"
+                                    formControlName="name"
+                                />
+                                <app-control-messages title="Name" [control]="form.get('name')"></app-control-messages>
                             </div>
                             <div class="col-md-6">
-                                <input type="text" class="form-control mb-4" placeholder="Last Name">
+                                <input
+                                    type="text"
+                                    class="form-control mt-3"
+                                    placeholder="Email"
+                                    formControlName="email"
+                                    [ngClass]="{ 'form-control-danger': isInvalid(form.get('email')) }"
+                                />
+                                <app-control-messages title="Email" [control]="form.get('email')"></app-control-messages>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <input type="text" class="form-control mb-4" placeholder="Email">
-                            </div>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control mb-4" placeholder="Subject">
-                            </div>
-                        </div>
-                        <textarea class="form-control mb-4" placeholder="Message" rows="7" ></textarea>
+
+                        <input
+                            type="text"
+                            class="form-control mt-3"
+                            [ngClass]="{'form-control-danger': isInvalid(form.get('subject')) }"
+                            placeholder="Subject"
+                            formControlName="subject"
+                        />
+                        <app-control-messages title="Subject" [control]="form.get('subject')"></app-control-messages>
+                        <textarea 
+                            class="form-control mt-3"
+                            [ngClass]="{'form-control-danger': isInvalid(form.get('message')) }"
+                            placeholder="Message" 
+                            rows="7"
+                            formControlName="message" >
+                        </textarea>
+                        <app-control-messages title="Message" [control]="form.get('message')"></app-control-messages>
 
                         <div class="row">
                             <div class="col-md-6 ml-auto mr-auto">
-                                <button class="btn btn-primary btn-block btn-round mt-2">Send </button>
+                                <button type="submit" class="btn btn-primary btn-block btn-round mt-2">Send </button>
                             </div>
                         </div>
                     </form>

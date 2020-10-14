@@ -22,7 +22,7 @@ import { TwitterComponent } from "./twitter/twitter.component";
 import { Page404Component } from "./page404/page404.component";
 import { Page422Component } from "./page422/page422.component";
 import { Page500Component } from "./page500/page500.component";
-import { PreferencesComponent } from "./preferences/preferences.component";
+import { CategoriesComponent } from "./preferences/categories/categories.component";
 import { FeedComponent } from "./feed/feed.component";
 import { EventComponent } from "./event/event.component";
 import { EventCreateComponent } from "./event-create/event-create.component";
@@ -75,7 +75,7 @@ import { HelpComponent } from './policies/help/help.component';
         Page404Component,
         Page422Component,
         Page500Component,
-        PreferencesComponent,
+        CategoriesComponent,
         FeedComponent,
         EventComponent,
         EventCreateComponent,

@@ -1,0 +1,29 @@
+<div class="yld-preference-page">
+    <div class="yld-preference-page-header">
+        <h3>Select your categories</h3>
+    </div>
+
+    <div class="yld-preference-page-content">
+        <div class="yld-page-action-bar">
+            <div class="yld-preference-page-button">
+                <button
+                    type="button"
+                    class="btn btn-lg btn-primary"
+                    (click)="onPreferencesConfirm()"
+                    [disabled]="!isPreferenceSelected"
+                >
+                    Confirm
+                </button>
+            </div>
+        </div>
+        <div class="yld-event-page yld-page">
+            <div class="yld-preference-cards-container">
+                <app-preference-card
+                    *ngFor="let preference of preferredCategories"
+                    [preference]="preference"
+                    (onCardSelected)="onCardSelected(preference.id)"
+                ></app-preference-card>
+            </div>
+        </div>
+    </div>
+</div>

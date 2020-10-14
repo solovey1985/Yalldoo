@@ -4,7 +4,7 @@ import { PasswordsValidator } from "app/core/form-validators/passwords.validator
 import { UsernameValidator } from "app/core/form-validators/username.validator";
 import { NotifyService } from "app/services/notify-service/notify.service";
 import { Router } from "@angular/router";
-import { PreferencesComponent } from "../preferences/preferences.component";
+import { CategoriesComponent } from "../preferences/categories/categories.component";
 import { ValidationService } from "app/_services/validation/validation.service";
 import { UserRegisterModel } from "app/_models/user/user-register.model";
 import { RegisterAction } from "app/_store/actions/user.actions";

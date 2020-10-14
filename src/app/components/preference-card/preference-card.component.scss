@@ -1,12 +1,30 @@
 .yld-card {
     cursor: pointer;
     width: 360px;
-    height: 360px;
+    height: 300px;
     .nc-icon {
         background-color: rgba(255, 255, 255, 0.6);
     }
     .yld-icon-selected {
         background-color: rgba(85, 210, 212, 0.6);
+    }
+}
+
+@media (max-width: 600px) {
+    .yld-card {
+        cursor: pointer;
+        width: unset;
+        height: 250px;
+        .nc-icon {
+            background-color: rgba(255, 255, 255, 0.6);
+        }
+        .yld-icon-selected {
+            background-color: rgba(85, 210, 212, 0.6);
+        }
+    }
+
+    .card .card-icon {
+        padding: 10px 0;
     }
 }
 

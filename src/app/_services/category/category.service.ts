@@ -1,10 +1,12 @@
 import { Injectable } from "@angular/core";
 import { CategoryModel } from "app/_models/category/category.model";
 import { Observable, of } from "rxjs";
-import { switchMap } from "rxjs/operators";
+import { catchError, switchMap } from "rxjs/operators";
 import { HttpClient } from "@angular/common/http";
 import { Config } from "../../_configs/config";
 import { config } from "process";
+import { CategoryDto } from "../../pages/preferences/models/categoryDto";
+import { getCategoriesMock } from "../../pages/preferences/models/categoriesMock";
 
 const categories: CategoryModel[] = [
     {
@@ -97,6 +99,18 @@ export class CategoryService {
                 return of(cats);
             })
         );
+    }
+
+    public loadAllCategories(): Observable<CategoryDto[]> {
+        const url = `${Config.apiUrl}/category`;
+        return this.http.get<any>(url)
+            .pipe(
+                switchMap((response) => {
+                const cats = Array.from<any>(response.data.result);
+                return of(cats);
+                }),
+                catchError(() => of(getCategoriesMock()))
+            );
     }
 
     public getCategories(ammount?: number): CategoryModel[] {

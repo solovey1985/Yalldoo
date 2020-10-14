@@ -16,7 +16,7 @@ import { TwitterComponent } from "./pages/twitter/twitter.component";
 import { Page404Component } from "./pages/page404/page404.component";
 import { Page422Component } from "./pages/page422/page422.component";
 import { Page500Component } from "./pages/page500/page500.component";
-import { PreferencesComponent } from "./pages/preferences/preferences.component";
+import { CategoriesComponent } from "./pages/preferences/categories/categories.component";
 import { FeedComponent } from "./pages/feed/feed.component";
 import { EventComponent } from "./pages/event/event.component";
 import { EventCreateComponent } from "./pages/event-create/event-create.component";
@@ -65,7 +65,7 @@ import { HelpComponent } from "./pages/policies/help/help.component";
                     { path: "search", component: SearchComponent },
                     { path: "me", component: EditProfileComponent, canActivate: [AuthGuard] },
                     { path: "twitter", component: TwitterComponent },
-                    { path: "preferences", component: PreferencesComponent },
+                    { path: "preferences", component: CategoriesComponent },
                     { path: "profile", component: ProfileComponent },
                     { path: "friends", component: FriendsComponent },
                     { path: "friend/:id", component: FriendComponent },

@@ -1,4 +1,4 @@
-export default class PreferenceModel {
+export interface CategoryDto {
     id: number;
     title: string;
     description: string;

@@ -2,6 +2,8 @@ import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter
 import { Router } from "@angular/router";
 import { NotifyService } from "app/services/notify-service/notify.service";
 import { ThrowStmt } from "@angular/compiler";
+import { CategoryDto } from "../../pages/preferences/models/categoryDto";
+import { DeviceDetectorService } from "ngx-device-detector";
 
 @Component({
     selector: "app-preference-card",
@@ -9,18 +11,7 @@ import { ThrowStmt } from "@angular/compiler";
     styleUrls: ["./preference-card.component.scss"]
 })
 export class PreferenceCardComponent implements OnInit {
-    @Input()
-    id: number;
-    @Input()
-    title: string;
-    @Input()
-    description: string;
-    @Input()
-    backgroundUrl: string;
-    @Input()
-    icon: string;
-    @Input()
-    selected: boolean;
+    @Input() preference: CategoryDto;
 
     @Input("size")
     size: string;
@@ -30,7 +21,11 @@ export class PreferenceCardComponent implements OnInit {
 
     public sizeClass: string;
 
-    constructor() {}
+    constructor(private deviceService: DeviceDetectorService) {}
+
+    get isMobile(): boolean {
+        return this.deviceService.isMobile();
+    }
 
     ngOnInit(): void {
         this.sizeClass = this.size === "sm" ? "yld-card-sm" : "";
@@ -39,6 +34,6 @@ export class PreferenceCardComponent implements OnInit {
     onCardClick(): void {}
 
     onSelectClick() {
-        this.onCardSelected.emit(this.id);
+        this.onCardSelected.emit(this.preference.id);
     }
 }

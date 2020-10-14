@@ -1,6 +1,6 @@
 <div class="yld-preference-page">
     <div class="yld-preference-page-header">
-        <h3>Select your preferences</h3>
+        <h3>Select your categories</h3>
     </div>
 
     <div class="yld-preference-page-content">
@@ -15,7 +15,6 @@
                 >
                     Confirm
                 </button>
-                <button type="button" class="btn btn-secondary btn-lg" (click)="onPreferencesSkip()">Skip</button>
             </div>
         </div>
         <div class="yld-event-page yld-page">
@@ -24,12 +23,7 @@
                     <div class="yld-preference-cards-container">
                         <app-preference-card
                             *ngFor="let preference of preferences"
-                            [id]="preference.id"
-                            [title]="preference.title"
-                            [description]="preference.description"
-                            [icon]="preference.icon"
-                            [backgroundUrl]="preference.backgroundIamge"
-                            [selected]="preference.isSelected"
+                            [preference]="preference"
                             (onCardSelected)="onCardSelected(preference.id)"
                         ></app-preference-card>
                     </div>

@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators, FormControl, AbstractControl } from "@angular/forms";
 import { ValidationService } from "app/_services/validation/validation.service";
+import { NotifyService } from "app/services/notify-service/notify.service";
 import * as Rellax from "rellax";
 
 @Component({
@@ -14,7 +15,8 @@ export class LandingComponent implements OnInit, OnDestroy {
   public validation_messages: any;
 
   constructor(
-    private builder: FormBuilder
+    private builder: FormBuilder,
+    private notify: NotifyService
 ) {}
 
 navbar_transparent = true;
@@ -67,7 +69,7 @@ ngOnInit() {
   this.form = this.builder.group(
     {
         name: ["", Validators.compose([
-            Validators.maxLength(25),
+            Validators.maxLength(50),
             Validators.minLength(2),
             Validators.required
         ])],
@@ -89,21 +91,28 @@ ngOnInit() {
 }
 
 formSubmit(event): void {
-  console.log('HELLO!!!');
+
   let contactUsObj = {
     name: '',
     email: '',
     subject: '',
     message: ''
   };
-  contactUsObj.name = this.form.get("name").value;
-  contactUsObj.email = this.form.get("email").value;
-  contactUsObj.subject = this.form.get("subject").value;
-  contactUsObj.message = this.form.get("message").value;
-  console.log('Name', contactUsObj.name);
-  console.log('Email', contactUsObj.email);
-  console.log('Subject', contactUsObj.subject);
-  console.log('Message', contactUsObj.message);
+
+    contactUsObj.name = this.form.get("name").value;
+    contactUsObj.email = this.form.get("email").value;
+    contactUsObj.subject = this.form.get("subject").value;
+    contactUsObj.message = this.form.get("message").value;
+
+  if (this.form.valid) {
+    console.log('Name', contactUsObj.name);
+    console.log('Email', contactUsObj.email);
+    console.log('Subject', contactUsObj.subject);
+    console.log('Message', contactUsObj.message);
+    this.form.get("subject").setValue('');
+    this.form.get("message").setValue('');
+    this.notify.success("Your email has been sent!");
+  }
 
 }
 

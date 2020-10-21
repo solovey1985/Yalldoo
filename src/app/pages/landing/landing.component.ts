@@ -101,8 +101,6 @@ export class LandingComponent implements OnInit, OnDestroy {
   formSubmit(event): void {
     if (this.form.valid) {
       console.log(this.form.value);
-      // this.form.get('subject').setValue('');
-      // this.form.get('message').setValue('');
       this.form.reset();
       this.notify.success('Your email has been sent!');
     }

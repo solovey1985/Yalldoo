@@ -10,6 +10,7 @@ import { UserRegisterModel } from "app/_models/user/user-register.model";
 import { RegisterAction } from "app/_store/actions/user.actions";
 import { Store } from "@ngrx/store";
 import { AppState } from "app/_store/app.states";
+import LocationDto from "app/_models/location.dto";
 
 @Component({
     selector: "app-register",
@@ -18,11 +19,13 @@ import { AppState } from "app/_store/app.states";
 })
 export class RegisterComponent implements OnInit {
     public form: FormGroup;
-
+    private city: LocationDto;
     public validation_messages: any;
     constructor(private builder: FormBuilder, private notifyService: NotifyService,
         private store: Store<AppState>,
-        private router: Router) { }
+        private router: Router) {
+        this.city = null;
+         }
 
     ngOnInit() {
        const matchingPasswordsGroup = new FormGroup(
@@ -54,6 +57,7 @@ export class RegisterComponent implements OnInit {
                     Validators.required,
                     ValidationService.emailPatternValidator
                 ])],
+                city:[this.city, Validators.required],
                 matchingPasswordsGroup: matchingPasswordsGroup,
                 acceptAgreement: [false, ValidationService.checkRequired]
             },
@@ -61,18 +65,25 @@ export class RegisterComponent implements OnInit {
         );
     }
 
-    formSubmit(event): void {
-        const userRegister = new UserRegisterModel();
-        userRegister.firstName = this.form.get("name").value;
-        userRegister.email = this.form.get("email").value;
-        userRegister.password = this.form.get("matchingPasswordsGroup").get("password").value;
-        userRegister.confirmPassword = this.form.get("matchingPasswordsGroup").get("confirmPassword").value;
 
-        this.store.dispatch(new RegisterAction(userRegister));
+    formSubmit(event): void {
+        const userRegisterModel = new UserRegisterModel();
+        userRegisterModel.firstName = this.form.get("name").value;
+        userRegisterModel.email = this.form.get("email").value;
+        userRegisterModel.password = this.form.get("matchingPasswordsGroup").get("password").value;
+        userRegisterModel.confirmPassword = this.form.get("matchingPasswordsGroup").get("confirmPassword").value;
+
+        this.store.dispatch(new RegisterAction(userRegisterModel));
     }
 
     isInvalid(control: AbstractControl): boolean {
         return control.invalid && control.touched
+    }
+
+    addSelectedPlace(location: LocationDto) {
+        if (location) {
+            this.city = location;
+        }
     }
 
     public get messages() {

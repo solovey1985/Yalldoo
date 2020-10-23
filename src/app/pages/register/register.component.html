@@ -1,5 +1,5 @@
 <div class="wrapper full-screen register-page">
-    <div class="page-header" style="background-image: url('./assets/img/sections/soroush-karimi.jpg');">
+    <div class="page-header" style="background-image: url('./assets/img/sections/soroush-karimi.jpg')">
         <div class="filter"></div>
         <div class="container">
             <div class="row justify-content-center">
@@ -31,6 +31,10 @@
                                 [ngClass]="{ 'form-control-danger': isInvalid(form.get('email')) }"
                             />
                             <app-control-messages title="Email" [control]="form.get('email')"></app-control-messages>
+                            <div class="yld-select-city-component">
+                                <app-city-select [title]="'Select your city'" (setAddress)="addSelectedPlace($event)"></app-city-select>
+                                <app-control-messages title="City" [control]="form.get('city')"></app-control-messages>
+                            </div>
                             <div formGroupName="matchingPasswordsGroup">
                                 <input
                                     type="password"

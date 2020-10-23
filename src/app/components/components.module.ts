@@ -37,6 +37,7 @@ import { PrivacySelectorComponent } from "./privacy-selector/privacy-selector.co
 import { ControlMessagesComponent } from "./control-messages/control-messages.component";
 import { AppNavbarComponent } from "./app-navbar/app-navbar.component";
 import { PaginationComponent } from "./pagination/pagination.component";
+import { CitySelectComponent } from './city-select/city-select.component';
 
 @NgModule({
     imports: [
@@ -80,6 +81,7 @@ import { PaginationComponent } from "./pagination/pagination.component";
         ControlMessagesComponent,
         AppNavbarComponent,
         PaginationComponent,
+        CitySelectComponent,
 
     ],
     exports: [
@@ -104,6 +106,7 @@ import { PaginationComponent } from "./pagination/pagination.component";
         ControlMessagesComponent,
         AppNavbarComponent,
         PaginationComponent,
+        CitySelectComponent,
     ]
 })
 export class ComponentsModule { }

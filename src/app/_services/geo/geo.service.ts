@@ -29,6 +29,14 @@ export class GeoService {
             });
     }
 
+    public citySuggest(query: string): any {
+        return this.searchService
+            .autosuggest({ q: query, at: this.center, limit: 7, resultTypes: "locality" }, (result: AddressModel) => result.items, alert)
+            .then((data) => {
+                return data.items.map((h) => this.toLocationDto(h));
+            });
+    }
+
     public lookup(hereId: string): any {
         return this.searchService
         .lookup({ id: hereId, }, (result: IHereSearchResponse) => result, alert)

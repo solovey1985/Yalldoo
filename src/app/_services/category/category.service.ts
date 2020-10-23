@@ -102,7 +102,7 @@ export class CategoryService {
     }
 
     public loadAllCategories(): Observable<CategoryDto[]> {
-        const url = `${Config.apiUrl}/category`;
+        const url = `${Config.apiUrl}/someRequestURL`;
         return this.http.get<any>(url)
             .pipe(
                 switchMap((response) => {

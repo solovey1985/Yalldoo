@@ -1,7 +1,7 @@
 <footer class="footer footer-black p-2 pt-4">
     <div class="container">
         <div class="row follow-section pb-4">
-            <div class="col-3">
+            <div class="col-6">
                 <label>Your Account</label>
                 <div class="list-group">
                     <a [routerLink]="['/register']" class="link-info" routerLinkActive="router-link-active">Sign up</a>
@@ -24,21 +24,14 @@
             </div>
         </div>
         <div class="row mt-2">
-            <div class="col-3">
+            <div class="col-md-3 order-2 order-md-1">
                 <label><i class="fa fa-copyright" aria-hidden="true"></i> {{ currentYear }} Yalldoo</label>
             </div>
-            <div class="col-6 d-flex justify-content-between">
-                <a [routerLink]="['/use-terms']" routerLinkActive="router-link-active"
-                    >Terms of Service</a
-                >
-                <a [routerLink]="['/privacy-policy']" routerLinkActive="router-link-active"
-                    >Privacy Policy</a
-                >
-                <a [routerLink]="['/cookies-policy']" routerLinkActive="router-link-active"
-                    >Cookies Policy</a
-                >
-                <a [routerLink]="['/help']" class="ml-3" routerLinkActive="router-link-active"
-                >Help</a>
+            <div class="col-md-9 order-1 order-md-2 d-flex justify-content-between">
+                <a [routerLink]="['/use-terms']" routerLinkActive="router-link-active">Terms of Service</a>
+                <a [routerLink]="['/privacy-policy']" routerLinkActive="router-link-active">Privacy Policy</a>
+                <a [routerLink]="['/cookies-policy']" routerLinkActive="router-link-active">Cookies Policy</a>
+                <a [routerLink]="['/help']" class="ml-3" routerLinkActive="router-link-active">Help</a>
             </div>
         </div>
     </div>

@@ -1,5 +1,5 @@
 <div class="wrapper full-screen register-page">
-    <div class="page-header" style="background-image: url('./assets/img/sections/bruno-abatti.jpg');">
+    <div class="page-header" style="background-image: url('./assets/img/sections/bruno-abatti.jpg')">
         <div class="filter"></div>
         <div class="container">
             <div class="row">
@@ -7,7 +7,15 @@
                     <div class="card-register">
                         <h3 class="card-title">Login</h3>
                         <div class="social">
-                            <button class="btn btn-just-icon btn-facebook mr-1"><i class="fa fa-facebook"></i></button>
+                            <div
+                                class="fb-login-button"
+                                data-size="medium"
+                                data-button-type="continue_with"
+                                data-layout="default"
+                                data-auto-logout-link="false"
+                                data-use-continue-as="false"
+                                data-width=""
+                            ></div>
                         </div>
                         <div class="division">
                             <div class="line l"></div>
@@ -15,11 +23,26 @@
                             <div class="line r"></div>
                         </div>
                         <form [formGroup]="form" class="register-form">
-                            <input type="email" class="form-control no-border" placeholder="Email"  formControlName="email"/>
+                            <input
+                                type="email"
+                                class="form-control no-border"
+                                placeholder="Email"
+                                formControlName="email"
+                            />
                             <app-control-messages title="Email" [control]="form.get('email')"></app-control-messages>
-                            <input type="password" class="form-control no-border" placeholder="Password" formControlName="password"/>
-                            <app-control-messages title="Password" [control]="form.get('password')"></app-control-messages>
-                            <button class="btn btn-block btn-round" (click)="onSubmit()" [disabled]="form.invalid">Login</button>
+                            <input
+                                type="password"
+                                class="form-control no-border"
+                                placeholder="Password"
+                                formControlName="password"
+                            />
+                            <app-control-messages
+                                title="Password"
+                                [control]="form.get('password')"
+                            ></app-control-messages>
+                            <button class="btn btn-block btn-round" (click)="onSubmit()" [disabled]="form.invalid">
+                                Login
+                            </button>
                         </form>
                         <div class="forgot">
                             <a [routerLink]="['/forgot']" class="btn btn-link btn-danger">Forgot password?</a>

@@ -1,13 +1,21 @@
-<div class="wrapper full-screen register-page">
-    <div class="page-header" style="background-image: url('./assets/img/sections/soroush-karimi.jpg');">
-        <div class="filter"></div>
+<div class="wrapper full-screen register-page" style="background-image: url('./assets/img/sections/register-bg.jpg')">
+    <div class="filter"></div>
+    <div class="register-page-header">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-5 col-md-7 col-sm-9 ml-auto mr-auto">
                     <div class="card card-register">
                         <h3 class="card-title text-center">Register</h3>
                         <div class="social">
-                            <button class="btn btn-just-icon btn-facebook mr-1"><i class="fa fa-facebook"></i></button>
+                            <div
+                                class="fb-login-button"
+                                data-size="medium"
+                                data-button-type="continue_with"
+                                data-layout="default"
+                                data-auto-logout-link="false"
+                                data-use-continue-as="false"
+                                data-width=""
+                            ></div>
                         </div>
                         <div class="division">
                             <div class="line l"></div>
@@ -31,6 +39,13 @@
                                 [ngClass]="{ 'form-control-danger': isInvalid(form.get('email')) }"
                             />
                             <app-control-messages title="Email" [control]="form.get('email')"></app-control-messages>
+                            <div class="yld-select-city-component">
+                                <app-city-select
+                                    [title]="'Select your city'"
+                                    (setAddress)="addSelectedPlace($event)"
+                                ></app-city-select>
+                                <app-control-messages title="City" [control]="form.get('city')"></app-control-messages>
+                            </div>
                             <div formGroupName="matchingPasswordsGroup">
                                 <input
                                     type="password"
@@ -76,7 +91,23 @@
                                         formControlName="acceptAgreement"
                                     />
                                     <span class="form-check-sign"></span>
-                                    <span class="yld-register-check-agreement-label">Accept agreement*</span>
+                                    <span class="yld-register-check-agreement-label">
+                                        Accept*
+                                        <a
+                                            [routerLink]="['/use-terms']"
+                                            routerLinkActive="router-link-active"
+                                            class="link-info"
+                                        >
+                                            Tersm of Service</a
+                                        >
+                                        and
+                                        <a
+                                            [routerLink]="['/privacy-policy']"
+                                            routerLinkActive="router-link-active"
+                                            class="link-info"
+                                            >Privacy Policy</a
+                                        >
+                                    </span>
                                 </label>
                             </div>
                             <app-control-messages

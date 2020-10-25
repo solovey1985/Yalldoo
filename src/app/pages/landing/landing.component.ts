@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormControl, AbstractControl } from
 import { ValidationService } from "app/_services/validation/validation.service";
 import { NotifyService } from "app/services/notify-service/notify.service";
 import * as Rellax from "rellax";
+import { ContactUsOutModel, ContactusService } from "app/_services/contactus/contactus.service";
 
 @Component({
 selector: "app-landing",
@@ -17,7 +18,8 @@ export class LandingComponent implements OnInit, OnDestroy {
 
   constructor(
     private builder: FormBuilder,
-    private notify: NotifyService
+    private notify: NotifyService,
+    private contactusService: ContactusService
   ) {}
 
   navbar_transparent = true;
@@ -101,8 +103,19 @@ export class LandingComponent implements OnInit, OnDestroy {
   formSubmit(event): void {
     if (this.form.valid) {
       console.log(this.form.value);
-      this.form.reset();
-      this.notify.success('Your email has been sent!');
+      let message = new ContactUsOutModel();
+      message.firstName = this.form.get("name").value;
+      message.email = this.form.get("email").value;
+      message.subject = this.form.get("subject").value;
+      message.message = this.form.get("message").value;
+      this.contactusService.sendMessage(message)
+        .subscribe(result => { 
+        console.log(result);
+        this.form.reset();
+        this.notify.success('Your email has been sent!');
+        },
+        err=> this.notify.error("Something went wrong! Try again later or contact administrator."));
+      
     }
   }
 

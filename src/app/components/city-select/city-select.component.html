@@ -1,0 +1,21 @@
+<ng-template #resultTemplate let-r="result" let-t="term">
+    <ngb-highlight [result]="r.title" [term]="t"></ngb-highlight>
+</ng-template>
+<div class="yld-city-select">
+    <div class="form-group yld-city-select-container">
+     
+        <input
+            id="typeahead-basic"
+            type="text"
+            class="form-control yld-city-select-input"
+            placeholder= {{palceholder}}
+            #addresstext
+            [ngbTypeahead]="search"
+            [inputFormatter]="formatter"
+            [resultFormatter]="formatter"
+            [resultTemplate]="resultTemplate"
+            (selectItem)="onPlaceChanged($event, addresstext)"
+
+        />
+    </div>
+</div>

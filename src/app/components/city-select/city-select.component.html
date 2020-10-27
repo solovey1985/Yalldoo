@@ -2,20 +2,24 @@
     <ngb-highlight [result]="r.title" [term]="t"></ngb-highlight>
 </ng-template>
 <div class="yld-city-select">
-    <div class="form-group yld-city-select-container">
-     
+    <div class="yld-city-select-container">
         <input
             id="typeahead-basic"
             type="text"
+            [formControl]="ngControl.control"
             class="form-control yld-city-select-input"
-            placeholder= {{palceholder}}
+            placeholder="{{ palceholder }}"
             #addresstext
+            [ngbPopover]
+            [ngbTooltip]
             [ngbTypeahead]="search"
             [inputFormatter]="formatter"
             [resultFormatter]="formatter"
             [resultTemplate]="resultTemplate"
             (selectItem)="onPlaceChanged($event, addresstext)"
-
         />
     </div>
+    <button *ngIf="ngControl.control.valid" (click)="onClear(addresstext)" class="btn btn-just-icon btn-sm btn-danger yld-city-select-clear-button">
+            <i class="fa fa-2x fa-times" aria-hidden="true"></i>
+        </button>
 </div>

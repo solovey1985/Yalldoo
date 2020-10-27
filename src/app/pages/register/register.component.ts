@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit {
     constructor(private builder: FormBuilder, private notifyService: NotifyService,
         private store: Store<AppState>,
         private router: Router) {
-        this.city = null;
+
          }
 
     ngOnInit() {
@@ -72,7 +72,7 @@ export class RegisterComponent implements OnInit {
         userRegisterModel.email = this.form.get("email").value;
         userRegisterModel.password = this.form.get("matchingPasswordsGroup").get("password").value;
         userRegisterModel.confirmPassword = this.form.get("matchingPasswordsGroup").get("confirmPassword").value;
-
+        userRegisterModel.city = this.form.get("city").value;
         this.store.dispatch(new RegisterAction(userRegisterModel));
     }
 
@@ -80,8 +80,15 @@ export class RegisterComponent implements OnInit {
         return control.invalid && control.touched
     }
 
+    onSubmitClick() {
+        console.log(this.form.get("city").value);
+    }
+
     addSelectedPlace(location: LocationDto) {
         if (location) {
+            this.form.patchValue({
+                city:location
+            })
             this.city = location;
         }
     }

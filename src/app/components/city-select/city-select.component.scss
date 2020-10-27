@@ -1,5 +1,20 @@
-.yld-city-select {
+.yld-city-select { 
+    display: flex;
+        flex-direction: row;
+        align-items: center;
+    .yld-city-select-container{
+        width: 100%;   
+    }
     .yld-city-select-input {
+    
         border: 1px solid #ccc5b9 !important;
+    }
+}
+
+.yld-city-select-clear-button{
+    margin-left: -36px;
+    margin-top: -10px !important;
+    i{
+        color: #fff;
     }
 }

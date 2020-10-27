@@ -22,7 +22,7 @@
                             <span>or</span>
                             <div class="line r"></div>
                         </div>
-                        <form class="register-form" [formGroup]="form" #registerForm (submit)="formSubmit($event)">
+                        <form class="register-form" [formGroup]="form" #registerForm>
                             <input
                                 type="text"
                                 class="form-control"
@@ -42,7 +42,7 @@
                             <div class="yld-select-city-component">
                                 <app-city-select
                                     [title]="'Select your city'"
-                                    (setAddress)="addSelectedPlace($event)"
+                                    [formControl]="form.get('city')"
                                 ></app-city-select>
                                 <app-control-messages title="City" [control]="form.get('city')"></app-control-messages>
                             </div>
@@ -114,7 +114,7 @@
                                 title="Accept Agreement"
                                 [control]="form.get('acceptAgreement')"
                             ></app-control-messages>
-                            <button class="btn btn-block btn-round" type="submit" [disabled]="form.invalid">
+                            <button class="btn btn-block btn-round" type="submit" (click)="formSubmit($event)" [disabled]="form.invalid">
                                 Register
                             </button>
                         </form>

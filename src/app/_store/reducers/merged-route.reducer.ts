@@ -1,8 +1,6 @@
 import { RouterReducerState } from "@ngrx/router-store";
 import { RouterStateSerializer } from "@ngrx/router-store";
 import { ActivatedRouteSnapshot, Data, Params, RouterStateSnapshot } from "@angular/router";
-import { createFeatureSelector, createSelector } from "@ngrx/store";
-import { routerStateConfig } from "app/core/router/ngrx-router.module";
 
 export interface MergedRoute {
     url: string;

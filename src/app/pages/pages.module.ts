@@ -40,6 +40,8 @@ import { UseTermsComponent } from './policies/use-terms/use-terms.component';
 import { CookiesPolicyComponent } from './policies/cookies-policy/cookies-policy.component';
 import { PrivacyPolicyComponent } from './policies/privacy-policy/privacy-policy.component';
 import { HelpComponent } from './policies/help/help.component';
+import { RegisterSuccessComponent } from './register-success/register-success.component';
+import { EmailConfirmComponent } from './email-confirm/email-confirm.component';
 
 
 @NgModule({
@@ -88,6 +90,8 @@ import { HelpComponent } from './policies/help/help.component';
         CookiesPolicyComponent,
         PrivacyPolicyComponent,
         HelpComponent,
+        RegisterSuccessComponent,
+        EmailConfirmComponent,
     ]
 })
 export class PagesModule {}

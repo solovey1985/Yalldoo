@@ -33,6 +33,7 @@ import { PrivacyPolicyComponent } from "./pages/policies/privacy-policy/privacy-
 import { CookiesPolicyComponent } from "./pages/policies/cookies-policy/cookies-policy.component";
 import { UseTermsComponent } from "./pages/policies/use-terms/use-terms.component";
 import { HelpComponent } from "./pages/policies/help/help.component";
+import { EmailConfirmComponent } from "./pages/email-confirm/email-confirm.component";
 @NgModule({
     imports: [
         CommonModule,
@@ -69,7 +70,7 @@ import { HelpComponent } from "./pages/policies/help/help.component";
                     { path: "profile", component: ProfileComponent },
                     { path: "friends", component: FriendsComponent },
                     { path: "friend/:id", component: FriendComponent },
-                    {path: "settings", component: SettingsComponent}
+                    { path: "settings", component: SettingsComponent }
                 ]
             },
             {
@@ -78,6 +79,7 @@ import { HelpComponent } from "./pages/policies/help/help.component";
                 children: [
                     { path: "register", component: RegisterComponent },
                     { path: "login", component: LoginComponent },
+                    { path: "email/confirm", component: EmailConfirmComponent },
                     { path: "forgot", component: ForgotComponent },
                     { path: "page404", component: Page404Component },
                     { path: "page422", component: Page422Component },

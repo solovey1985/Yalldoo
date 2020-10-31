@@ -2,6 +2,7 @@ import { UIActionEnum, All } from "../actions/ui.actions";
 import { AuthActionTypes } from "../actions/user.actions";
 import { CategoryActionsEnum } from "../actions/category.actions";
 import { EventActionEnum } from "../actions/events.actions";
+import { RouterActionsEnum } from "../actions/router.actions";
 
 export interface UiState {
     isLoading: boolean;

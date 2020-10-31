@@ -19,7 +19,7 @@ export class ValidationService {
             minlength: ` must be at least ${validatorValue.requiredLength} characters long`,
             maxlength: `cannot be more than  ${validatorValue.requiredLength} characters long`,
             passwordsInequal: "Passwords are not equal",
-            requiredTrue: `${controlName} should be accepted`
+            requiredTrue: `should be accepted`
         };
         const message = validatorName ? config[validatorName] : "Error in input";
         return message;

@@ -6,9 +6,11 @@ import {
     LoadEventsAction,
     LoadEventActionSuccess,
     LoadEventsActionSuccess,
-    LoadEventAction
+    LoadEventAction,
+    LoadEventsActionFailed,
+    LoadEventActionFailed
 } from "../actions/events.actions";
-import { pipe, of } from "rxjs";
+import { pipe, of, Observable } from "rxjs";
 import { createEffect, ofType, Actions, act } from "@ngrx/effects";
 import { Router } from "@angular/router";
 import { Injectable } from "@angular/core";
@@ -19,14 +21,16 @@ import { EventModel } from "app/_models/events/event.model";
 
 @Injectable()
 export class EventEffects {
-
     eventCreate$ = createEffect(() =>
         this.actions.pipe(
             ofType(EventActionEnum.CREATE_EVENT),
             switchMap((action: CreateEventAction) => {
                 return this.eventService.createEvent(action.payload).pipe(
                     map(
-                        (event: EventModel) => { this.router.navigate(["feed"]); return new CreateEventSuccesstAction(event); },
+                        (event: EventModel) => {
+                            this.router.navigate(["feed"]);
+                            return new CreateEventSuccesstAction(event);
+                        },
                         catchError((error) => of(new CreateEventFailedAction(error)))
                     )
                 );
@@ -42,7 +46,8 @@ export class EventEffects {
                     map((response: any) => {
                         const events = response.data;
                         return new LoadEventsActionSuccess(events);
-                    })
+                    }),
+                    catchError((err) => of(new LoadEventsActionFailed(err)))
                 );
             })
         )
@@ -55,7 +60,8 @@ export class EventEffects {
                 return this.eventService.fetchEvent(action.payload as number).pipe(
                     map((response: any) => {
                         return new LoadEventActionSuccess(response);
-                    })
+                    }),
+                    catchError((err) => of(new LoadEventActionFailed(err)))
                 );
             })
         )

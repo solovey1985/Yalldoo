@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   templateUrl: './register-success.component.html',
-  styleUrls: ['./register-success.component.css']
+  styleUrls: ['./register-success.component.scss']
 })
 export class RegisterSuccessComponent implements OnInit {
 

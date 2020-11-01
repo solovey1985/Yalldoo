@@ -1,0 +1,11 @@
+@import '../../../assets/scss/paper-kit/variables';
+
+.yld-confirmation {
+    &_background {
+        background-image: url('../../../assets/img/sections/landing/y-logo.png');
+    };
+}
+
+.filter {
+    opacity: .1;
+}

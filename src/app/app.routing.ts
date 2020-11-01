@@ -34,6 +34,7 @@ import { CookiesPolicyComponent } from "./pages/policies/cookies-policy/cookies-
 import { UseTermsComponent } from "./pages/policies/use-terms/use-terms.component";
 import { HelpComponent } from "./pages/policies/help/help.component";
 import { EmailConfirmComponent } from "./pages/email-confirm/email-confirm.component";
+import { RegisterSuccessComponent } from "./pages/register-success/register-success.component";
 @NgModule({
     imports: [
         CommonModule,
@@ -78,6 +79,7 @@ import { EmailConfirmComponent } from "./pages/email-confirm/email-confirm.compo
                 component: BareLayoutComponent,
                 children: [
                     { path: "register", component: RegisterComponent },
+                    { path: "register/success", component: RegisterSuccessComponent },
                     { path: "login", component: LoginComponent },
                     { path: "email/confirm", component: EmailConfirmComponent },
                     { path: "forgot", component: ForgotComponent },

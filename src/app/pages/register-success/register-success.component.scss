@@ -1,11 +1,13 @@
 @import '../../../assets/scss/paper-kit/variables';
+.yld-register_success {
+    text-align: center;
 
-.yld-confirmation {
-    &_background {
-        background-image: url('../../../assets/img/sections/landing/y-logo.png');
-    };
-}
-
-.filter {
-    opacity: .1;
+    &-title {
+        font-size: 3em;
+        padding-top: 20%
+    }
+    &-text {
+        font-size: 2em;
+        padding-bottom: 25px;
+    }
 }

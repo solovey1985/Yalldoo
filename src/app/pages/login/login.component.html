@@ -1,5 +1,5 @@
-
     <div class="container">
+        <img class="yld-login_bg-logo" src="../../../assets/img/sections/landing/y-logo.png" alt="Y'alldoo">
         <div class="row">
             <div class="col-lg-5 col-md-7 col-sm-9 ml-auto mr-auto">
                 <div class="yld-register_card">
@@ -19,14 +19,14 @@
                     <form [formGroup]="form" class="yld-register_form">
                         <input
                             type="email"
-                            class="form-control no-border"
+                            class="form-control"
                             placeholder="Email"
                             formControlName="email"
                         />
                         <app-control-messages title="Email" [control]="form.get('email')"></app-control-messages>
                         <input
                             type="password"
-                            class="form-control no-border"
+                            class="form-control"
                             placeholder="Password"
                             formControlName="password"
                         />
@@ -39,7 +39,7 @@
                         </button>
                     </form>
                     <div class="forgot">
-                        <a [routerLink]="['/forgot']" class="btn btn-link btn-danger">Forgot password?</a>
+                        <a [routerLink]="['/forgot']" class="btn btn-link yld-forgot-link">Forgot password?</a>
                     </div>
                 </div>
             </div>

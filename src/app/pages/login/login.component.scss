@@ -1,1 +1,12 @@
 @import '../../../assets/scss/yld/forms';
+
+.yld-login_bg-logo {
+    position: absolute;
+    top: -5%;
+    left: 10%;
+    max-height: 100vh;
+    opacity: .9;
+}
+.yld-forgot-link {
+    color: $yld-color-secondary;
+}

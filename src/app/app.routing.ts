@@ -48,11 +48,6 @@ import { RegisterSuccessComponent } from "./pages/register-success/register-succ
                     { path: "team", component: AboutusComponent },
                     { path: "about", component: AboutComponent },
                     { path: "contactus", component: ContactusComponent },
-                    { path: "privacy-policy", component: PrivacyPolicyComponent },
-                    { path: "cookies-policy", component: CookiesPolicyComponent },
-                    { path: "use-terms", component: UseTermsComponent },
-                    { path: "help", component: HelpComponent },
-
                     { path: "", component: LandingComponent }
                 ]
             },
@@ -83,6 +78,10 @@ import { RegisterSuccessComponent } from "./pages/register-success/register-succ
                     { path: "login", component: LoginComponent },
                     { path: "email/confirm", component: EmailConfirmComponent },
                     { path: "forgot", component: ForgotComponent },
+                    { path: "privacy-policy", component: PrivacyPolicyComponent },
+                    { path: "cookies-policy", component: CookiesPolicyComponent },
+                    { path: "use-terms", component: UseTermsComponent },
+                    { path: "help", component: HelpComponent },
                     { path: "page404", component: Page404Component },
                     { path: "page422", component: Page422Component },
                     { path: "page500", component: Page500Component }

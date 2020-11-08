@@ -1,38 +1,16 @@
-.register-page {
-    background-color: #b2afab;
-    background-position: center top;
-    background-size: cover;
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-    max-height: 100vh;
-    height: 100vh;
-    width: 100vw;
-    z-index: 1;
-    .filter {
-        &::after {
-            background-color: rgba(0, 0, 0, 0.5);
-            content: "";
-            display: block;
-            height: 100%;
-            left: 0;
-            position: absolute;
-            top: 0;
-            width: 100%;
-            z-index: -2;
-        }
-    }
-    .register-page-header {
-        margin-top: 70px;
+@import '../../../assets/scss/yld/forms';
 
-        .register-form {
-            .form-control {
-                border: 1px solid #ccc5b9 !important;
-            }
-        }
-        .yld-register-check-agreement-label {
-            color: #403d39;
-            font-weight: 600;
-        }
-    }
+.yld-register-check-agreement-label {
+    color: #403d39;
+    font-weight: 600;
+}
+.login {
+    color: #403d39;
+}
+.yld-register_bg-logo {
+    position: absolute;
+    top: -5%;
+    left: 10%;
+    max-height: 100vh;
+    opacity: .9;
 }

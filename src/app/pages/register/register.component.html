@@ -1,130 +1,123 @@
-<div class="wrapper full-screen register-page" style="background-image: url('./assets/img/sections/register-bg.jpg')">
-    <div class="filter"></div>
-    <div class="register-page-header">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-5 col-md-7 col-sm-9 ml-auto mr-auto">
-                    <div class="card card-register">
-                        <h3 class="card-title text-center">Register</h3>
-                        <div class="social">
-                            <div
-                                class="fb-login-button"
-                                data-size="medium"
-                                data-button-type="continue_with"
-                                data-layout="default"
-                                data-auto-logout-link="false"
-                                data-use-continue-as="false"
-                                data-width=""
-                            ></div>
-                        </div>
-                        <div class="division">
-                            <div class="line l"></div>
-                            <span>or</span>
-                            <div class="line r"></div>
-                        </div>
-                        <form class="register-form" [formGroup]="form" #registerForm>
-                            <input
-                                type="text"
-                                class="form-control"
-                                [ngClass]="{ 'form-control-danger': isInvalid(form.get('name')) }"
-                                placeholder="Name"
-                                formControlName="name"
-                            />
-                            <app-control-messages title="Name" [control]="form.get('name')"></app-control-messages>
-                            <input
-                                type="text"
-                                class="form-control"
-                                placeholder="Email"
-                                formControlName="email"
-                                [ngClass]="{ 'form-control-danger': isInvalid(form.get('email')) }"
-                            />
-                            <app-control-messages title="Email" [control]="form.get('email')"></app-control-messages>
-                            <div class="yld-select-city-component">
-                                <app-city-select
-                                    [title]="'Select your city'"
-                                    [formControl]="form.get('city')"
-                                ></app-city-select>
-                                <app-control-messages title="City" [control]="form.get('city')"></app-control-messages>
-                            </div>
-                            <div formGroupName="matchingPasswordsGroup">
-                                <input
-                                    type="password"
-                                    class="form-control"
-                                    placeholder="Password"
-                                    formControlName="password"
-                                    [ngClass]="{
-                                        'form-control-danger': isInvalid(
-                                            form.get('matchingPasswordsGroup').get('password')
-                                        )
-                                    }"
-                                />
-                                <app-control-messages
-                                    title="Password"
-                                    [control]="form.get('matchingPasswordsGroup').get('password')"
-                                ></app-control-messages>
-                                <input
-                                    type="password"
-                                    class="form-control"
-                                    placeholder="Confirm Password"
-                                    formControlName="confirmPassword"
-                                    [ngClass]="{
-                                        'form-control-danger': isInvalid(
-                                            form.get('matchingPasswordsGroup').get('confirmPassword')
-                                        )
-                                    }"
-                                />
-                                <app-control-messages
-                                    [title]="'Confirm password'"
-                                    [control]="form.get('matchingPasswordsGroup').get('confirmPassword')"
-                                ></app-control-messages>
-                                <app-control-messages
-                                    [title]=""
-                                    [control]="form.get('matchingPasswordsGroup')"
-                                ></app-control-messages>
-                            </div>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input
-                                        class="form-check-input"
-                                        type="checkbox"
-                                        value=""
-                                        formControlName="acceptAgreement"
-                                    />
-                                    <span class="form-check-sign"></span>
-                                    <span class="yld-register-check-agreement-label">
-                                        Accept*
-                                        <a
-                                            [routerLink]="['/use-terms']"
-                                            routerLinkActive="router-link-active"
-                                            class="link-info"
-                                        >
-                                            Tersm of Service</a
-                                        >
-                                        and
-                                        <a
-                                            [routerLink]="['/privacy-policy']"
-                                            routerLinkActive="router-link-active"
-                                            class="link-info"
-                                            >Privacy Policy</a
-                                        >
-                                    </span>
-                                </label>
-                            </div>
-                            <app-control-messages
-                                title="Agreement"
-                                [control]="form.get('acceptAgreement')"
-                            ></app-control-messages>
-                            <button class="btn btn-block btn-round" type="submit" (click)="formSubmit($event)" [disabled]="form.invalid">
-                                Register
-                            </button>
-                        </form>
-                        <div class="login">
-                            <p>
-                                Already have an account?
-                                <a [routerLink]="['/login']" routerLinkActive="login">Log in</a>.
-                            </p>
-                        </div>
+
+<div class="container">
+    <img class="yld-register_bg-logo" src="../../../assets/img/sections/landing/y-logo.png" alt="Y'alldoo">
+    <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-7 col-sm-9 ml-auto mr-auto">
+            <div class="yld-register_card">
+                <h3 class="card-title">Register</h3>
+                <div class="social">
+                    <div
+                        class="fb-login-button"
+                        data-size="medium"
+                        data-button-type="continue_with"
+                        data-layout="default"
+                        data-auto-logout-link="false"
+                        data-use-continue-as="false"
+                        data-width=""
+                    ></div>
+                </div>
+                <div class="card-title">or</div>
+                <form class="yld-register_form" [formGroup]="form" #registerForm>
+                    <input
+                        type="text"
+                        class="form-control"
+                        [ngClass]="{ 'form-control-danger': isInvalid(form.get('name')) }"
+                        placeholder="Name"
+                        formControlName="name"
+                    />
+                    <app-control-messages title="Name" [control]="form.get('name')"></app-control-messages>
+                    <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Email"
+                        formControlName="email"
+                        [ngClass]="{ 'form-control-danger': isInvalid(form.get('email')) }"
+                    />
+                    <app-control-messages title="Email" [control]="form.get('email')"></app-control-messages>
+                    <div class="yld-select-city-component">
+                        <app-city-select
+                            [title]="'Select your city'"
+                            [formControl]="form.get('city')"
+                        ></app-city-select>
+                        <app-control-messages title="City" [control]="form.get('city')"></app-control-messages>
                     </div>
+                    <div formGroupName="matchingPasswordsGroup">
+                        <input
+                            type="password"
+                            class="form-control"
+                            placeholder="Password"
+                            formControlName="password"
+                            [ngClass]="{
+                                'form-control-danger': isInvalid(
+                                    form.get('matchingPasswordsGroup').get('password')
+                                )
+                            }"
+                        />
+                        <app-control-messages
+                            title="Password"
+                            [control]="form.get('matchingPasswordsGroup').get('password')"
+                        ></app-control-messages>
+                        <input
+                            type="password"
+                            class="form-control"
+                            placeholder="Confirm Password"
+                            formControlName="confirmPassword"
+                            [ngClass]="{
+                                'form-control-danger': isInvalid(
+                                    form.get('matchingPasswordsGroup').get('confirmPassword')
+                                )
+                            }"
+                        />
+                        <app-control-messages
+                            [title]="'Confirm password'"
+                            [control]="form.get('matchingPasswordsGroup').get('confirmPassword')"
+                        ></app-control-messages>
+                        <app-control-messages
+                            [title]=""
+                            [control]="form.get('matchingPasswordsGroup')"
+                        ></app-control-messages>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input
+                                class="form-check-input"
+                                type="checkbox"
+                                value=""
+                                formControlName="acceptAgreement"
+                            />
+                            <span class="form-check-sign"></span>
+                            <span class="yld-register-check-agreement-label">
+                                Accept*
+                                <a
+                                    [routerLink]="['/use-terms']"
+                                    routerLinkActive="router-link-active"
+                                    class="link-info"
+                                >
+                                    Terms of Service</a
+                                >
+                                and
+                                <a
+                                    [routerLink]="['/privacy-policy']"
+                                    routerLinkActive="router-link-active"
+                                    class="link-info"
+                                    >Privacy Policy</a
+                                >
+                            </span>
+                        </label>
+                    </div>
+                    <app-control-messages
+                        title="Agreement"
+                        [control]="form.get('acceptAgreement')"
+                    ></app-control-messages>
+                    <button class="btn btn-block btn-round" type="submit" (click)="formSubmit($event)" [disabled]="form.invalid">
+                        Register
+                    </button>
+                </form>
+                <div class="login">
+                    <p>
+                        Already have an account?
+                        <a [routerLink]="['/login']" routerLinkActive="login">Log in</a>.
+                    </p>
                 </div>
             </div>
         </div>

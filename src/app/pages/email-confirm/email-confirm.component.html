@@ -1,85 +1,41 @@
-<div class="yld-email-confirm-page">
+<div class="container yld-email-confirm_page">
     <div *ngIf="isloading" class="yld-spinner-container d-flex justify-content-center align-items-center">
         <div class="spinner-border" role="status"></div>
     </div>
 
-    <div *ngIf="isConfirmSuccess">
-        <div class="page-header">
-            <div
-                class="page-header-image rellax-header"
-                data-rellax-speed="-7"
-                style="background-image: url('./assets/img/sections/uriel-soberanes.jpg')"
-            ></div>
-            <div class="filter"></div>
-            <div class="content-center">
-                <div class="motto">
-                    <h1 class="title-uppercase text-center">Email Confirmation Success</h1>
-                    <h3 class="text-center">Your email was confirmed</h3>
-                    <br />
-                    <button class="btn btn-warning btn-round btn-lg" (click)="goToApp()">
-                        <i class="fa fa-2x fa-mobile-phone" aria-hidden="true"></i> Go To The App
-                    </button>
-                </div>
-            </div>
-        </div>
+    <div *ngIf="isConfirmSuccess" class="yld-email-confirm_page-block">
+        <h1 class="yld-email-confirm_page-title">Email Confirmation Success</h1>
+        <h3 class="text-center">Your email was confirmed</h3>
+        <br />
+        <button class="btn btn-warning btn-round btn-lg" (click)="goToApp()">
+            <i class="fa fa-2x fa-mobile-phone" aria-hidden="true"></i> Go To The App
+        </button>
     </div>
 
-    <div *ngIf="isNotFound">
-        <div class="page-header">
-            <div
-                class="page-header-image rellax-header"
-                data-rellax-speed="-7"
-                style="background-image: url('./assets/img/sections/uriel-soberanes.jpg')"
-            ></div>
-            <div class="filter"></div>
-            <div class="content-center">
-                <div class="motto">
-                    <h1 class="title-uppercase text-center">Email Confirmation Failed</h1>
-                    <h4 class="text-center text-warning">{{ error }}</h4>
-                    <h3 class="text-center">You can create a new account</h3>
-                    <br />
-                    <button (click)="resendEmail()" class="btn btn-warning btn-round btn-lg">
-                        <i class="fa fa-2x fa-user mr-3" aria-hidden="true"></i> Sign Up
-                    </button>
-                </div>
-            </div>
-        </div>
+    <div *ngIf="isNotFound" class="yld-email-confirm_page-block">
+        <h1 class="yld-email-confirm_page-title">Email Confirmation Failed</h1>
+        <h4 class="text-center text-warning">{{ error }}</h4>
+        <h3 class="text-center">You can create a new account</h3>
+        <br />
+        <button (click)="resendEmail()" class="btn btn-warning btn-round btn-lg">
+            <i class="fa fa-2x fa-user mr-3" aria-hidden="true"></i> Sign Up
+        </button>
     </div>
 
-    <div *ngIf="isTokenInvalid" class="page-header">
-        <div
-            class="page-header-image rellax-header"
-            data-rellax-speed="-7"
-            style="background-image: url('./assets/img/sections/uriel-soberanes.jpg')"
-        ></div>
-        <div class="filter"></div>
-        <div class="content-center">
-            <div class="motto">
-                <h1 class="title-uppercase text-center">Email Confirmation Failed</h1>
-                <h3 class="text-center">{{ error }}</h3>
-                <br />
-                <button (click)="resendEmail()" class="btn btn-warning btn-round btn-lg">
-                    <i class="fa fa-2x fa-at mr-3" aria-hidden="true"></i> Resend Email
-                </button>
-            </div>
-        </div>
+    <div *ngIf="isTokenInvalid" class="yld-email-confirm_page-block">
+        <h1 class="yld-email-confirm_page-title">Email Confirmation Failed</h1>
+        <h3 class="text-center">{{ error }}</h3>
+        <br />
+        <button (click)="resendEmail()" class="btn btn-warning btn-round btn-lg">
+            <i class="fa fa-2x fa-at mr-3" aria-hidden="true"></i> Resend Email
+        </button>
     </div>
-    <div *ngIf="isResendSuccess" class="page-header">
-        <div
-            class="page-header-image rellax-header"
-            data-rellax-speed="-7"
-            style="background-image: url('./assets/img/sections/uriel-soberanes.jpg')"
-        ></div>
-        <div class="filter"></div>
-        <div class="content-center">
-            <div class="motto">
-                <h1 class="title-uppercase text-center">Email Confirmation was sent</h1>
-                <h3 class="text-center">Check your email for Yalldoo | Email Confirmation subject</h3>
-                <br />
-                <button class="btn btn-warning btn-round btn-lg" (click)="goToApp()">
-                    <i class="fa fa-2x fa-mobile-phone" aria-hidden="true"></i> Go To The App
-                </button>
-            </div>
-        </div>
+    <div *ngIf="isResendSuccess" class="yld-email-confirm_page-block">
+        <h1 class="yld-email-confirm-page_title">Email Confirmation was sent</h1>
+        <h3 class="text-center">Check your email for Yalldoo | Email Confirmation subject</h3>
+        <br />
+        <button class="btn btn-warning btn-round btn-lg" (click)="goToApp()">
+            <i class="fa fa-2x fa-mobile-phone" aria-hidden="true"></i> Go To The App
+        </button>
     </div>
 </div>

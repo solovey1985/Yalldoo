@@ -114,11 +114,14 @@
 }
 
 .yld-landing-bottom-logo {
-    margin-top: 3em;
+    margin: 1.5em 0;
+    height: 300px;
+    width: auto;
 }
+
 .yld-landing-bottom-image {
     background: url('../../../assets/img/sections/landing/yld-landing-background-footer.jpg') no-repeat fixed center; 
-    height: 95vh;
+    height: calc(100vh - 217px);
 }
 .yld-landing-form-group {
     padding: 3em;
@@ -159,8 +162,12 @@
         margin-top: 0;
         margin-bottom: 2em;
     }
-    .yld-landing-logo {
+    .yld-landing-bottom-logo {
+        padding: 3em 0 0 0;
+    }
+    .yld-landing-logo, .yld-landing-bottom-logo{
         width: 100%;
+        height: auto;
     }
     .yld-landing-header-description {
         font-size: 200%;

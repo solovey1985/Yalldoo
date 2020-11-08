@@ -1,0 +1,28 @@
+@import "./variables.scss";
+
+.yld-register {
+    &_card {
+        background-color: #e0e0e0;
+        // background-color: #ff812410;
+        // border: 2px solid #0eaae9;
+        text-align: center;
+        border-radius: 8px;
+        color: #fff;
+        max-width: 350px;
+        margin: 30% 0 70px;
+        min-height: 400px;
+        padding: 30px;
+
+        & .fb-login-button {
+            margin: 5px 0;
+        }
+    }
+
+    &_form {
+        margin: 5px 0;
+
+        & .form-control {
+            margin: 10px 0;
+        }
+    }
+}

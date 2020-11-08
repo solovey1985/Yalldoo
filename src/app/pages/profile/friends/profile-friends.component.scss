@@ -1,0 +1,11 @@
+.friends {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+li {
+  width: 60px;
+  height: 60px;
+  margin: 5px;
+}

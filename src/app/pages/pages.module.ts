@@ -36,12 +36,14 @@ import { SettingsComponent } from "./settings/settings.component";
 import { NgxMaskModule } from "ngx-mask";
 import { PaginationComponent } from "app/components/pagination/pagination.component";
 import { EventEditComponent } from "./event-edit/event-edit.component";
-import { UseTermsComponent } from './policies/use-terms/use-terms.component';
-import { CookiesPolicyComponent } from './policies/cookies-policy/cookies-policy.component';
-import { PrivacyPolicyComponent } from './policies/privacy-policy/privacy-policy.component';
-import { HelpComponent } from './policies/help/help.component';
-import { RegisterSuccessComponent } from './register-success/register-success.component';
-import { EmailConfirmComponent } from './email-confirm/email-confirm.component';
+import { UseTermsComponent } from "./policies/use-terms/use-terms.component";
+import { CookiesPolicyComponent } from "./policies/cookies-policy/cookies-policy.component";
+import { PrivacyPolicyComponent } from "./policies/privacy-policy/privacy-policy.component";
+import { HelpComponent } from "./policies/help/help.component";
+import { RegisterSuccessComponent } from "./register-success/register-success.component";
+import { EmailConfirmComponent } from "./email-confirm/email-confirm.component";
+import { ProfileFriendsComponent } from "./profile/friends/profile-friends.component";
+import { ProfileEventsComponent } from "./profile/events/profile-events.component";
 
 
 @NgModule({
@@ -84,6 +86,8 @@ import { EmailConfirmComponent } from './email-confirm/email-confirm.component';
         ForgotComponent,
         FriendsComponent,
         FriendComponent,
+        ProfileFriendsComponent,
+        ProfileEventsComponent,
         SettingsComponent,
         EventEditComponent,
         UseTermsComponent,

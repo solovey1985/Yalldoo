@@ -1,0 +1,23 @@
+<div class="row following" id="follows">
+    <div class="col-md-6 ml-auto mr-auto">
+        <ul class="list-unstyled friends">
+            <li *ngFor="let friend of friends">
+                    <img
+                        [src]="friend.src"
+                        [title]="friend.name"
+                        alt="Circle Image"
+                        class="img-circle img-no-padding img-responsive"
+                    />
+            </li>
+        </ul>
+        <div>
+            <div class="yld-friends-list-item-buttons-container">
+                <button (click)="onGoToAllFriends()" class="btn btn-outline-default btn-round">
+                    <i class="fa fa-plus-circle"></i>
+                    <span>All friend</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+

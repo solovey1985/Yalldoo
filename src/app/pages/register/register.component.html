@@ -25,7 +25,9 @@
                         placeholder="Name"
                         formControlName="name"
                     />
-                    <app-control-messages title="Name" [control]="form.get('name')"></app-control-messages>
+                    <div class="yld-control-message-block">
+                        <app-control-messages title="Name" [control]="form.get('name')"></app-control-messages>
+                    </div>
                     <input
                         type="text"
                         class="form-control"
@@ -33,13 +35,17 @@
                         formControlName="email"
                         [ngClass]="{ 'form-control-danger': isInvalid(form.get('email')) }"
                     />
-                    <app-control-messages title="Email" [control]="form.get('email')"></app-control-messages>
+                    <div class="yld-control-message-block">
+                        <app-control-messages title="Email" [control]="form.get('email')"></app-control-messages>
+                    </div>
                     <div class="yld-select-city-component">
                         <app-city-select
                             [title]="'Select your city'"
                             [formControl]="form.get('city')"
                         ></app-city-select>
-                        <app-control-messages title="City" [control]="form.get('city')"></app-control-messages>
+                        <div class="yld-control-message-block">
+                            <app-control-messages title="City" [control]="form.get('city')"></app-control-messages>
+                        </div>
                     </div>
                     <div formGroupName="matchingPasswordsGroup">
                         <input
@@ -53,10 +59,12 @@
                                 )
                             }"
                         />
-                        <app-control-messages
-                            title="Password"
-                            [control]="form.get('matchingPasswordsGroup').get('password')"
-                        ></app-control-messages>
+                        <div class="yld-control-message-block">
+                            <app-control-messages
+                                title="Password"
+                                [control]="form.get('matchingPasswordsGroup').get('password')"
+                            ></app-control-messages>
+                        </div>
                         <input
                             type="password"
                             class="form-control"
@@ -68,14 +76,18 @@
                                 )
                             }"
                         />
-                        <app-control-messages
-                            [title]="'Confirm password'"
-                            [control]="form.get('matchingPasswordsGroup').get('confirmPassword')"
-                        ></app-control-messages>
-                        <app-control-messages
-                            [title]=""
-                            [control]="form.get('matchingPasswordsGroup')"
-                        ></app-control-messages>
+                        <div class="yld-control-message-block">
+                            <app-control-messages
+                                [title]="'Confirm password'"
+                                [control]="form.get('matchingPasswordsGroup').get('confirmPassword')"
+                            ></app-control-messages>
+                        </div>
+                        <div class="yld-control-message-block">
+                            <app-control-messages
+                                [title]=""
+                                [control]="form.get('matchingPasswordsGroup')"
+                            ></app-control-messages>
+                        </div>
                     </div>
                     <div class="form-check">
                         <label class="form-check-label">
@@ -105,10 +117,12 @@
                             </span>
                         </label>
                     </div>
-                    <app-control-messages
-                        title="Agreement"
-                        [control]="form.get('acceptAgreement')"
-                    ></app-control-messages>
+                    <div class="yld-control-message-block">
+                        <app-control-messages
+                            title="Agreement"
+                            [control]="form.get('acceptAgreement')"
+                        ></app-control-messages>
+                    </div>
                     <button class="btn btn-block btn-round" type="submit" (click)="formSubmit($event)" [disabled]="form.invalid">
                         Register
                     </button>

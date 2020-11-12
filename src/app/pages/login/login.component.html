@@ -20,21 +20,24 @@
                         <input
                             type="email"
                             class="form-control"
+                            [ngClass]="{ 'form-control-danger': isInvalid(form.get('email')) }"
                             placeholder="Email"
                             formControlName="email"
                         />
-                        <app-control-messages title="Email" [control]="form.get('email')"></app-control-messages>
+                        <div class="yld-control-message-block">
+                            <app-control-messages title="Email" [control]="form.get('email')"></app-control-messages>
+                        </div>
                         <input
                             type="password"
                             class="form-control"
+                            [ngClass]="{ 'form-control-danger': isInvalid(form.get('password')) }"
                             placeholder="Password"
                             formControlName="password"
                         />
-                        <app-control-messages
-                            title="Password"
-                            [control]="form.get('password')"
-                        ></app-control-messages>
-                        <button class="btn btn-block btn-round" (click)="onSubmit()" [disabled]="form.invalid">
+                        <div class="yld-control-message-block">
+                            <app-control-messages title="Password" [control]="form.get('password')"></app-control-messages>
+                        </div>
+                        <button class="btn btn-block btn-round yld-register_btn" (click)="onSubmit()" [disabled]="form.invalid">
                             Login
                         </button>
                     </form>

@@ -28,13 +28,13 @@
                                     <input
                                         type="text"
                                         class="form-control"
-                                        [ngClass]="{ 'form-control-danger': isInvalid(form.get('firstName')) }"
+                                        [ngClass]="{ 'form-control-danger': isInvalid(g('firstName')) }"
                                         placeholder="First Name"
                                         formControlName="firstName"
                                     />
                                     <app-control-messages
                                         title="First Name"
-                                        [control]="form.get('firstName')"
+                                        [control]="g('firstName')"
                                     ></app-control-messages>
                                 </div>
                             </div>
@@ -45,13 +45,13 @@
                                     <input
                                         type="text"
                                         class="form-control"
-                                        [ngClass]="{ 'form-control-danger': isInvalid(form.get('lastName')) }"
+                                        [ngClass]="{ 'form-control-danger': isInvalid(g('lastName')) }"
                                         placeholder="Last Name"
                                         formControlName="lastName"
                                     />
                                     <app-control-messages
                                         title="Last Name"
-                                        [control]="form.get('lastName')"
+                                        [control]="g('lastName')"
                                     ></app-control-messages>
                                 </div>
                             </div>
@@ -73,11 +73,11 @@
                                     class="form-control"
                                     placeholder="your@email.com"
                                     formControlName="email"
-                                    [ngClass]="{ 'form-control-danger': isInvalid(form.get('email')) }"
+                                    [ngClass]="{ 'form-control-danger': isInvalid(g('email')) }"
                                 />
                                 <app-control-messages
                                     title="Email"
-                                    [control]="form.get('email')"
+                                    [control]="g('email')"
                                 ></app-control-messages>
                             </div>
                             <div class="row">
@@ -87,7 +87,7 @@
                                         <input
                                             type="text"
                                             class="form-control"
-                                            [ngClass]="{ 'form-control-danger': isInvalid(form.get('phone')) }"
+                                            [ngClass]="{ 'form-control-danger': isInvalid(g('phone')) }"
                                             placeholder="+380 xx xxx xxxx"
                                             [validation]="true"
                                             prefix="+380"
@@ -97,7 +97,7 @@
                                         <small>Format +380 xx xxx xxxx</small>
                                         <app-control-messages
                                             title="Phone"
-                                            [control]="form.get('phone')"
+                                            [control]="g('phone')"
                                         ></app-control-messages>
                                     </div>
                                 </div>
@@ -107,13 +107,13 @@
                                         <input
                                             type="text"
                                             class="form-control"
-                                            [ngClass]="{ 'form-control-danger': isInvalid(form.get('facebook')) }"
+                                            [ngClass]="{ 'form-control-danger': isInvalid(g('facebook')) }"
                                             placeholder="https://www.facebook.com/"
                                             formControlName="facebook"
                                         />
                                         <app-control-messages
                                             title="Facebook profile"
-                                            [control]="form.get('facebook')"
+                                            [control]="g('facebook')"
                                         ></app-control-messages>
                                     </div>
                                 </div>
@@ -123,13 +123,13 @@
                                 <input
                                     type="text"
                                     class="form-control"
-                                    [ngClass]="{ 'form-control-danger': isInvalid(form.get('website')) }"
+                                    [ngClass]="{ 'form-control-danger': isInvalid(g('website')) }"
                                     placeholder="https://www.yoursite.com"
                                     formControlName="website"
                                 />
                                 <app-control-messages
                                     title="Website"
-                                    [control]="form.get('website')"
+                                    [control]="g('website')"
                                 ></app-control-messages>
                             </div>
                         </div>
@@ -152,12 +152,12 @@
                                     <i class="fa fa-calendar" aria-hidden="true"></i>
                                 </button>
                                 <span>
-                                    {{ form.get("birthDate").value | date: "dd MMMM yyyy" }}
+                                    {{ g("birthDate").value | date: "dd MMMM yyyy" }}
                                 </span>
                             </div>
                             <app-control-messages
                                 title="Birth Date"
-                                [control]="form.get('birthDate')"
+                                [control]="g('birthDate')"
                             ></app-control-messages>
                         </div>
 

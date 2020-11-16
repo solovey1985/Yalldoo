@@ -1,3 +1,6 @@
+import LocationDto from "../location.dto";
+import { LocationModel } from "../location/event-create-location.model";
+
 export default class UserInformation {
 
     firstName: string;
@@ -6,9 +9,11 @@ export default class UserInformation {
     phone: string;
     facebook: string;
     website: string;
-    birthDate: Date ;
+    birthday: Date ;
     description: string;
     avatarImage: string;
+    favoriteCategories: number[];
+    location: LocationModel
 
     constructor() {
 

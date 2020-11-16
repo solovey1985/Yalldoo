@@ -15,7 +15,7 @@ import { Store } from "@ngrx/store";
 import { AppState, selectAllCategories } from "app/_store/app.states";
 import { Observable } from "rxjs";
 import { CategoriesLoadAction } from "app/_store/actions/category.actions";
-import { EventLocationModel, ELocationType } from "app/_models/location/event-create-location.model";
+import { LocationModel, ELocationType } from "app/_models/location/event-create-location.model";
 
 @Component({
     templateUrl: "./event-create.component.html",
@@ -213,7 +213,7 @@ export class EventCreateComponent implements OnInit {
         event.subCategoryId = this.selectedCategory.id;
         event.categoryId = this.selectedCategory.parrentId;
         event.image = this.image;
-        event.location = new EventLocationModel(
+        event.location = new LocationModel(
             this.location.title,
             this.location.position.lat,
             this.location.position.lng,

@@ -35,6 +35,7 @@ import { UseTermsComponent } from "./pages/policies/use-terms/use-terms.componen
 import { HelpComponent } from "./pages/policies/help/help.component";
 import { EmailConfirmComponent } from "./pages/email-confirm/email-confirm.component";
 import { RegisterSuccessComponent } from "./pages/register-success/register-success.component";
+import { ProfileResolver } from "./core/resolvers/profile.resolver";
 @NgModule({
     imports: [
         CommonModule,
@@ -60,7 +61,7 @@ import { RegisterSuccessComponent } from "./pages/register-success/register-succ
                     { path: "event-edit/:id", component: EventEditComponent },
                     { path: "create", component: EventCreateComponent },
                     { path: "search", component: SearchComponent },
-                    { path: "me", component: EditProfileComponent, canActivate: [AuthGuard] },
+                    { path: "me", component: EditProfileComponent, resolve: {userProfile: ProfileResolver },  canActivate: [AuthGuard] },
                     { path: "twitter", component: TwitterComponent },
                     { path: "preferences", component: CategoriesComponent },
                     { path: "profile", component: ProfileComponent },

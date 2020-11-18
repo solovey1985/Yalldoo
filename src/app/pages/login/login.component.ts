@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators, AbstractControl} from "@angular/forms";
 import { NotifyService } from "app/services/notify-service/notify.service";
 import { Router, ActivatedRoute } from "@angular/router";
 import { ThrowStmt } from "@angular/compiler";
@@ -38,6 +38,9 @@ export class LoginComponent implements OnInit {
     onSubmit() {
         const payload = { email: this.form.get("email").value, password: this.form.get("password").value, returnUrl: this.returnUrl };
         this.store.dispatch(new LoginAction(payload));
+    }
+    isInvalid(control: AbstractControl): boolean {
+        return control.invalid && control.touched
     }
     ngOnDestroy() {}
 }

@@ -10,6 +10,8 @@ import { FormBuilder, FormGroup, Validators, FormControl, AbstractControl } from
 import { DomSanitizer } from "@angular/platform-browser";
 import { ValidationService } from "app/_services/validation/validation.service";
 import { User } from "app/_models/user/user.model";
+import { ProfileService } from "app/_services/profile/profile.service";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
     templateUrl: "./profile-edit.component.html",
@@ -27,47 +29,83 @@ export class EditProfileComponent implements OnInit {
     isRound = false;
     image: string;
     validation_messages: any;
-    constructor(private modal: ModalService,
+    constructor(
+        private route: ActivatedRoute,
+        private modal: ModalService,
         private notify: NotifyService,
+        private service: ProfileService,
         private categoryService: CategoryService,
         private fb: FormBuilder,
-        private sanitizer: DomSanitizer) {
+        private sanitizer: DomSanitizer
+    ) {
         this.locations = new Array<LocationDto>();
-        this.userInfo = new UserInformation();
-        this.userInfo.birthDate = new Date();
         this.handleImageChange = this.handleImageChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.handleRemove = this.handleRemove.bind(this);
         this.state = {
             file: null,
-            imagePreviewUrl: this.image !== undefined ? this.image : (this.isRound ? "./assets/img/placeholder.jpg" : "./assets/img/image_placeholder.jpg")
-        }
+            imagePreviewUrl:
+                this.image !== undefined
+                    ? this.image
+                    : this.isRound
+                    ? "./assets/img/placeholder.jpg"
+                    : "./assets/img/image_placeholder.jpg"
+        };
+        this.route.data.subscribe((data: { userProfile: UserInformation }) => {
+            this.userInfo = data.userProfile;
+            this.buildForm();
+        });
     }
 
     ngOnInit() {
-        this.userInfo.firstName = "";
-        this.userInfo.lastName = "";
-        this.userInfo.description = "";
-        this.userInfo.email = "";
-        this.userInfo.phone = "";
+        
 
-        // TODO: Remove
-        const body = document.getElementsByTagName("body")[0];
-        body.classList.add("settings-page");
-
-        this.categories = this.categoryService.getChildCategories().filter(x => x.id.toLocaleString().endsWith("02"));
-        this.buildForm();
-
+        this.categories = this.categoryService.getCategories();
     }
+
+    private buildForm(): void {
+        console.log("Init Form");
+        console.log(this.userInfo);
+        this.form = this.fb.group(
+            {
+                firstName: [
+                    this.userInfo.firstName,
+                    Validators.compose([
+                        Validators.maxLength(25),
+                        Validators.minLength(2),
+                        ValidationService.namePatternValidator,
+                        Validators.required
+                    ])
+                ],
+                lastName: [
+                    this.userInfo.lastName,
+                    Validators.compose([
+                        Validators.maxLength(25),
+                        Validators.minLength(2),
+                        ValidationService.namePatternValidator,
+                        Validators.required
+                    ])
+                ],
+                email: [this.userInfo.email ?? "", ValidationService.emailPatternValidator],
+                phone: [this.userInfo.phone ?? "", ValidationService.phonePatternValidator],
+                facebook: [this.userInfo.facebook ?? "", Validators.compose([Validators.maxLength(1024)])],
+                website: [this.userInfo.website ?? "", Validators.compose([Validators.maxLength(1024)])],
+                birthDate: [this.userInfo.birthday ?? new Date()],
+                description: [this.userInfo.description ?? "", [Validators.maxLength(256)]],
+                categories: [this.userInfo.favoriteCategories ?? []],
+                places: [[]]
+            },
+            { updateOn: "change" }
+        );
+    }
+
     ngOnDestroy() {
-        // TODO: Remove
-        const body = document.getElementsByTagName("body")[0];
-        body.classList.remove("settings-page");
+       
     }
 
     onPlaceEditClick(location?: LocationDto) {
-        this.modal.openLocationPicker(location).subscribe(result => {
+        this.modal.openLocationPicker(location).subscribe((result) => {
             if (result) {
                 this.locations.splice(this.locations.indexOf(location), 1, result);
             }
@@ -75,11 +113,11 @@ export class EditProfileComponent implements OnInit {
     }
 
     onCategoriesEditClick() {
-        this.modal.openCategoriesPrefernceEditor(this.categories).subscribe(result => {
+        this.modal.openCategoriesPrefernceEditor(this.categories).subscribe((result) => {
             if (result) {
                 this.categories = result;
-           }
-       });
+            }
+        });
     }
 
     onPlacesAddClick() {
@@ -97,70 +135,52 @@ export class EditProfileComponent implements OnInit {
     }
 
     showDatetimepickerModal(): void {
-        this.modal.openDateTimePicker(this.userInfo.birthDate, true, "Select Birthday Date").subscribe((result: string) => {
-            if (result) {
-                this.userInfo.birthDate = new Date(result);
-                this.isDateSelected = true;
-                this.form.get("birthDate").markAsTouched();
-                this.form.get("birthDate").clearValidators();
-                this.form.patchValue({ birthDate: this.userInfo.birthDate });
-            } else {
-                this.form.get("birthDate").markAsTouched();
-                this.form.get("birthDate").setErrors({ required: true });
-            }
-        });
+        this.modal
+            .openDateTimePicker(this.userInfo.birthday, true, "Select Birthday Date")
+            .subscribe((result: string) => {
+                if (result) {
+                    this.userInfo.birthday = new Date(result);
+                    this.isDateSelected = true;
+                    this.form.get("birthDate").markAsTouched();
+                    this.form.get("birthDate").clearValidators();
+                    this.form.patchValue({ birthDate: this.userInfo.birthday });
+                } else {
+                    this.form.get("birthDate").markAsTouched();
+                    this.form.get("birthDate").setErrors({ required: true });
+                }
+            });
     }
 
     onPrivacySet($event) {
         console.log($event);
     }
 
-    private buildForm(): void {
-        this.form = this.fb.group({
-            firstName: [this.userInfo.firstName, Validators.compose([
-                Validators.maxLength(25),
-                Validators.minLength(2),
-               ValidationService.namePatternValidator,
-                Validators.required
-            ])],
-            lastName: [this.userInfo.lastName, Validators.compose([
-                Validators.maxLength(25),
-                Validators.minLength(2),
-                ValidationService.namePatternValidator,
-                Validators.required
-            ])],
-            email: [this.userInfo.email, ValidationService.emailPatternValidator],
-            phone: [this.userInfo.phone, ValidationService.phonePatternValidator],
-            facebook: [this.userInfo.facebook, Validators.compose([
-                Validators.maxLength(1024)
-            ])],
-            website: [this.userInfo.website, Validators.compose([
-                Validators.maxLength(1024)
-            ])],
-            birthDate: [this.userInfo.birthDate],
-            description: [this.userInfo.description, [Validators.maxLength(256)]],
-            categories: [""],
-            places: [""],
-        }, {updateOn: "change"});
+    public g(control: string) {
+        if (this.form) {
+            return this.form.get(control);
+        }
+        return null;
     }
 
     isInvalid(control: AbstractControl): boolean {
-        return control.invalid && control.touched
+        // if (control) {
+        //     return control.invalid && control.touched;
+        // }
+        return false;
     }
 
-
-
     public get descriptionLength(): number {
-        return this.form.get("description").value ? this.form.get("description").value.length : 0;
+        if (this.form) {
+            return this.form.get("description").value ? this.form.get("description").value.length : 0;
+        }
+        return 0;
     }
 
     public get backgroundImage(): any {
-       return this.sanitizer.bypassSecurityTrustStyle(`url(${this.state.imagePreviewUrl})`)
+        return this.sanitizer.bypassSecurityTrustStyle(`url(${this.state.imagePreviewUrl})`);
     }
 
-
-
-        handleImageChange(e) {
+    handleImageChange(e) {
         e.preventDefault();
         const reader = new FileReader();
         const file = e.target.files[0];
@@ -168,7 +188,7 @@ export class EditProfileComponent implements OnInit {
             this.state.file = file;
             this.state.imagePreviewUrl = reader.result;
             // this.state.imagePreviewUrl1 = reader.result;
-        }
+        };
         reader.readAsDataURL(file);
     }
     handleSubmit(e) {
@@ -181,9 +201,13 @@ export class EditProfileComponent implements OnInit {
         input.click();
     }
 
-
     handleRemove() {
         this.state.file = null;
-        this.state.imagePreviewUrl = this.image !== undefined ? this.image : (this.isRound ? "./assets/img/placeholder.jpg" : "./assets/img/image_placeholder.jpg");
+        this.state.imagePreviewUrl =
+            this.image !== undefined
+                ? this.image
+                : this.isRound
+                ? "./assets/img/placeholder.jpg"
+                : "./assets/img/image_placeholder.jpg";
     }
 }

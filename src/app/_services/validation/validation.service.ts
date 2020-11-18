@@ -27,7 +27,7 @@ export class ValidationService {
 
     static creditCardValidator(control: FormControl) {
         if (
-            control.value.match(
+            control && control.value.match(
                 /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/
             )
         ) {
@@ -39,7 +39,7 @@ export class ValidationService {
 
     static emailPatternValidator(control: FormControl) {
         if (
-            control.value && control.value.match(
+            control && control.value && control.value.match(
                 /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
             )
         ) {
@@ -49,7 +49,7 @@ export class ValidationService {
         }
     }
     static phonePatternValidator(control: FormControl) {
-        if (control.value.match(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)) {
+        if (control && control.value.match(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)) {
             return null;
         } else {
             return { invalidPhoneFormat: true };
@@ -57,7 +57,7 @@ export class ValidationService {
     }
 
     static passwordPatternValidator(control: FormControl) {
-        if (control.value.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9!@#$%^&*()]+$/)) {
+        if (control && control.value.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9!@#$%^&*()]+$/)) {
             return null;
         } else {
             return { invalidPassword: true };
@@ -65,7 +65,8 @@ export class ValidationService {
     }
 
     static namePatternValidator(control: FormControl) {
-        if (control.value.match(/^[a-zA-Zа-яА-Я0-9іІїЇєЄ\'\"]*(?:[\s.]*[a-zA-Zа-яА-Я0-9іІїЇєЄ\'\"]*)*$/)) {
+
+        if (control && control.value.match(/^[a-zA-Zа-яА-Я0-9іІїЇєЄ\'\"]*(?:[\s.]*[a-zA-Zа-яА-Я0-9іІїЇєЄ\'\"]*)*$/)) {
             return null;
         } else {
             return { invalidNamePattern: true };
@@ -73,7 +74,7 @@ export class ValidationService {
     }
 
     static checkRequired(control: FormControl) {
-        if (control.value) {
+        if (control && control.value) {
             return null;
         } else {
             return {

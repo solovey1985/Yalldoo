@@ -1,4 +1,4 @@
-export class EventLocationModel {
+export class LocationModel {
     constructor(
         public address: string,
         public latitude: number,

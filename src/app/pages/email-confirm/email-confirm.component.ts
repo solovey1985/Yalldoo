@@ -50,6 +50,7 @@ export class EmailConfirmComponent implements OnInit {
                 (err) => {
                     this.error = err.error;
                     this.isloading = false;
+                    this.isConfirmSuccess = false;
                     this.checkError(err.error);
                     this.cdRef.detectChanges();
                 }
@@ -58,6 +59,10 @@ export class EmailConfirmComponent implements OnInit {
 
     goToApp() {
         this.router.navigate(["/feed"]);
+    }
+
+    gotToSignUp() {
+        this.router.navigate(["/register"]);        
     }
 
     resendEmail() {
@@ -92,10 +97,10 @@ export class EmailConfirmComponent implements OnInit {
         }
     }
     private checkError(error: string) {
-        if (error.toLocaleLowerCase().indexOf("invalid")>-1) {
+        if (error.toLocaleLowerCase().indexOf("invalid") > -1) {
             this.isTokenInvalid = true;
         }
-        if (error.toLocaleLowerCase().indexOf("not found")>-1) {
+        if (error.toLocaleLowerCase().indexOf("not found" ) > -1 || error.toLocaleLowerCase().indexOf("empty") > -1) {
             this.isNotFound = true;
         }
     }

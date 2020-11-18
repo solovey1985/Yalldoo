@@ -54,13 +54,16 @@ export class EditProfileComponent implements OnInit {
         };
         this.route.data.subscribe((data: { userProfile: UserInformation }) => {
             this.userInfo = data.userProfile;
+            var locationModel = new LocationDto();
+            locationModel.title = this.userInfo.location.address;
+            locationModel.position = { lat: this.userInfo.location.latitude, lng: this.userInfo.location.longitude };
+
+            this.locations.push(locationModel);
             this.buildForm();
         });
     }
 
     ngOnInit() {
-        
-
         this.categories = this.categoryService.getCategories();
     }
 
@@ -100,9 +103,7 @@ export class EditProfileComponent implements OnInit {
         );
     }
 
-    ngOnDestroy() {
-       
-    }
+    ngOnDestroy() {}
 
     onPlaceEditClick(location?: LocationDto) {
         this.modal.openLocationPicker(location).subscribe((result) => {

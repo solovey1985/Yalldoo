@@ -26,7 +26,6 @@
             </div>
             <div class="col-md-6 mt-2 ml-auto mr-auto text-center">
                 <editable (update)="updateField()" class="user-description-text">
-<!--                    <ng-template *ngIf="!entity.status" viewMode>Click to edit status</ng-template>-->
                     <ng-template viewMode>{{status}}</ng-template>
                     <ng-template editMode>
                         <textarea [formControl]="getStatusControl()" focusable editableOnEnter cols="65" rows="3" maxlength="140"></textarea>

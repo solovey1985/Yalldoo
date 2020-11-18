@@ -32,7 +32,14 @@
     }
 }
 .user-description-text {
-    padding: 10px;
+    margin-bottom: 10px;
+
+    textarea {
+        width: 100%;
+        padding: 10px;
+        resize: none;
+    }
+
 }
 .no-margin {
     margin-top: 0;

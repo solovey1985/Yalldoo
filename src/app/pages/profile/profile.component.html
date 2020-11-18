@@ -12,8 +12,11 @@
                             alt="Circle Image"
                             class="img-circle img-responsive"
                         />
-                        <button class="btn btn-outline-default btn-round">
+                        <button *ngIf="!canEdit" class="btn btn-outline-default btn-round">
                             <i class="fa fa-plus-circle"></i><span>Follow</span>
+                        </button>
+                        <button *ngIf="canEdit" class="btn btn-outline-default btn-round">
+                            <i class="fa fa-edit"></i><span>Edit</span>
                         </button>
                     </div>
                     <div>
@@ -22,10 +25,12 @@
                 </div>
             </div>
             <div class="col-md-6 mt-2 ml-auto mr-auto text-center">
-                <p class="user-description-text">
-                    Today is a good day to do smth together Today is a good day to do smth d d d d d  togetherToday is a good day to do smth d d d d d dd  togetherToday is a good day to do smth s a a s togetherToday is a good day to do smth togetherToday is a good day to do smth together
-                </p>
-            </div>
+                <editable (update)="updateField()" class="user-description-text">
+                    <ng-template viewMode>{{status}}</ng-template>
+                    <ng-template editMode>
+                        <textarea [formControl]="getStatusControl()" focusable editableOnEnter cols="65" rows="3" maxlength="140"></textarea>
+                    </ng-template>
+                </editable>
             <ngb-accordion #acc="ngbAccordion" activeIds="config-panel-one">
                 <ngb-panel id="config-panel-one" class="yld-profile_card">
                     <ng-template ngbPanelTitle>
@@ -37,7 +42,7 @@
                         </h5>
                     </ng-template>
                     <ng-template ngbPanelContent>
-                        <div class="col-md-6 ml-auto mr-auto text-center">
+                        <div class="ml-auto mr-auto text-center">
                             <div class="description-details">
                                 <ul class="list-unstyled">
                                     <li><i class="fa fa-map-marker mr-2"></i>Chernihiv, Ukraine</li>

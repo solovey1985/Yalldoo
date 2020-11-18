@@ -34,7 +34,6 @@ import { FriendsComponent } from "./friends/friends/friends.component";
 import { FriendComponent } from "./friends/friend/friend.component";
 import { SettingsComponent } from "./settings/settings.component";
 import { NgxMaskModule } from "ngx-mask";
-import { PaginationComponent } from "app/components/pagination/pagination.component";
 import { EventEditComponent } from "./event-edit/event-edit.component";
 import { UseTermsComponent } from "./policies/use-terms/use-terms.component";
 import { CookiesPolicyComponent } from "./policies/cookies-policy/cookies-policy.component";
@@ -44,7 +43,11 @@ import { RegisterSuccessComponent } from "./register-success/register-success.co
 import { EmailConfirmComponent } from "./email-confirm/email-confirm.component";
 import { ProfileFriendsComponent } from "./profile/friends/profile-friends.component";
 import { ProfileEventsComponent } from "./profile/events/profile-events.component";
-
+import { EditInPlaceModule } from "../shared/edit-in-place-input/editable.module";
+import { ViewModeDirective } from "../shared/edit-in-place-input/view-mode.directive";
+import { EditModeDirective } from "../shared/edit-in-place-input/edit-mode.directive";
+import { FocusableDirective } from "../shared/edit-in-place-input/focusable.directive";
+import { EditableOnEnterDirective } from "../shared/edit-in-place-input/editable-on-enter.directive";
 
 @NgModule({
     imports: [
@@ -62,7 +65,8 @@ import { ProfileEventsComponent } from "./profile/events/profile-events.componen
         }),
         ImageUploadModule,
         ComponentsModule,
-        NgxMaskModule
+        NgxMaskModule,
+        EditInPlaceModule,
     ],
     declarations: [
         PagesComponent,
@@ -96,6 +100,10 @@ import { ProfileEventsComponent } from "./profile/events/profile-events.componen
         HelpComponent,
         RegisterSuccessComponent,
         EmailConfirmComponent,
+        ViewModeDirective,
+        EditModeDirective,
+        FocusableDirective,
+        EditableOnEnterDirective,
     ]
 })
 export class PagesModule {}

@@ -31,6 +31,7 @@ export function reducer(state = initialState, action: All): AuthState {
                 errorMessage: null
             };
         }
+        case AuthActionTypes.REGISTER_FAILED:
         case AuthActionTypes.LOGIN_FAILED: {
             return {
                 ...state,

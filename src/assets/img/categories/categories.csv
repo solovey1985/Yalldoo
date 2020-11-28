@@ -1,0 +1,52 @@
+title;description;icon;imageUrl;smallImageUrl
+Football;Soccer;fas fa-futbol;assets/img/categories/football-16-9.jpg;assets/img/categories/football-small.jpg
+Basketball;Basketball;fas fa-basketball-ball;assets/img/categories/basketball-16-9.jpg;assets/img/categories/basketball-small.jpg
+Voleyball;Voleyball;fas fa-volleyball-ball;assets/img/categories/volleyball-16-9.jpg;assets/img/categories/volleyball-small.jpg
+Rugby;Rugby;fas fa-football-ball;assets/img/categories/rugby-16-9.jpg;assets/img/categories/rugby-small.jpg
+Running‌;Running‌;fas fa-running;assets/img/categories/running‌-16-9.jpg;assets/img/categories/running‌-small.jpg
+Cycling;Cycling;fas fa-bicycle;assets/img/categories/cycling-16-9.jpg;assets/img/categories/cycling-small.jpg
+Table tennis;Table tennis;fas fa-volleyball-ball;assets/img/categories/table-tennis-16-9.jpg;assets/img/categories/table-tennis-small.jpg
+Quidditch;Quidditch;fas fa-quidditch;assets/img/categories/quiddich-16-9.jpg;assets/img/categories/quiddich-small.jpg
+Other sports;Other sports;fas fa-bolt;assets/img/categories/other-sports-16-9.jpg;assets/img/categories/other-sports-small.jpg
+Auto ride;Auto ride;fas fa-car;assets/img/categories/auto-ride-16-9.jpg;assets/img/categories/auto-ride-small.jpg
+Moto ride;Moto ride;fas fa-motorcycle;assets/img/categories/moto-ride-16-9.jpg;assets/img/categories/moto-ride-small.jpg
+Cartings;Cartings;fas fa-car-side;assets/img/categories/cartings-16-9.jpg;assets/img/categories/cartings-small.jpg
+Bike rides;Bike rides;fas fa-biking;assets/img/categories/bike-rides-16-9.jpg;assets/img/categories/bike-rides-small.jpg
+Chariot races;Chariot races;fas fa-dragon;assets/img/categories/chariot-races-16-9.jpg;assets/img/categories/chariot-races-small.jpg
+Other auto/moto;Other auto/moto;fas fa-rocket;assets/img/categories/other-auto-moto-16-9.jpg;assets/img/categories/other-auto-moto-small.jpg
+Extreme‌;Extreme‌;fas fa-bomb;assets/img/categories/extreme‌-16-9.jpg;assets/img/categories/extreme‌-small.jpg
+Gym;Gym;fas fa-dumbbell;assets/img/categories/gym-16-9.jpg;assets/img/categories/gym-small.jpg
+Swimming pool;Swimming pool;fas fa-swimmer;assets/img/categories/swimming-pool-16-9.jpg;assets/img/categories/swimming-pool-small.jpg
+Yoga;Yoga;fas fa-spa;assets/img/categories/yoga-16-9.jpg;assets/img/categories/yoga-small.jpg
+Hiking‌;Hiking‌;fas fa-shoe-prints;assets/img/categories/hiking‌-16-9.jpg;assets/img/categories/hiking‌-small.jpg
+Traveling‌;Traveling‌;fas fa-hiking;assets/img/categories/traveling‌-16-9.jpg;assets/img/categories/traveling‌-small.jpg
+Children‌ activities;Children‌ activities;fas fa-baby;assets/img/categories/children‌-activities-16-9.jpg;assets/img/categories/children‌-activities-small.jpg
+Walk the pet;Walk the pet;fas fa-paw;assets/img/categories/walk-the-pet-16-9.jpg;assets/img/categories/walk-the-pet-small.jpg
+Suspicious activities;Suspicious activities;fas fa-user-secret;assets/img/categories/suspicious-activities-16-9.jpg;assets/img/categories/suspicious-activities-small.jpg
+Other activities;Other activities;fas fa-universal-access;assets/img/categories/other-activities-16-9.jpg;assets/img/categories/other-activities-small.jpg
+Quests‌;Quests‌;fas fa-map-signs;assets/img/categories/quests‌-16-9.jpg;assets/img/categories/quests‌-small.jpg
+Table games;Table games;fas fa-dice;assets/img/categories/table-games-16-9.jpg;assets/img/categories/table-games-small.jpg
+Computer games;Computer games;fas fa-gamepad;assets/img/categories/computer-games-16-9.jpg;assets/img/categories/computer-games-small.jpg
+Party‌;Party‌;fas fa-cocktail;assets/img/categories/party‌-16-9.jpg;assets/img/categories/party‌-small.jpg
+Karaoke;Karaoke;fas fa-microphone-alt;assets/img/categories/karaoke-16-9.jpg;assets/img/categories/karaoke-small.jpg
+Disco;Disco;fas fa-music;assets/img/categories/disco-16-9.jpg;assets/img/categories/disco-small.jpg
+Cinema‌;Cinema‌;fas fa-video;assets/img/categories/cinema‌-16-9.jpg;assets/img/categories/cinema‌-small.jpg
+Theater‌;Theater‌;fas fa-theater-masks;assets/img/categories/theater‌-16-9.jpg;assets/img/categories/theater‌-small.jpg
+Concerts‌;Concerts‌;fas fa-guitar;assets/img/categories/concerts‌-16-9.jpg;assets/img/categories/concerts‌-small.jpg
+Festivals‌;Festivals‌;fas fa-fan;assets/img/categories/festivals‌-16-9.jpg;assets/img/categories/festivals‌-small.jpg
+Performances‌;Performances‌;fas fa-person-booth;assets/img/categories/performances‌-16-9.jpg;assets/img/categories/performances‌-small.jpg
+Shopping‌;Shopping‌;fas fa-shopping-bag;assets/img/categories/shopping‌-16-9.jpg;assets/img/categories/shopping‌-small.jpg
+Sport event;Sport event;fas fa-bullhorn;assets/img/categories/sport-event-16-9.jpg;assets/img/categories/sport-event-small.jpg
+Other entertainments;Other entertainments;fab fa-angellist;assets/img/categories/other-entertainments-16-9.jpg;assets/img/categories/other-entertainments-small.jpg
+Hang out;Hang out;fas fa-glass-cheers;assets/img/categories/hang-out-16-9.jpg;assets/img/categories/hang-out-small.jpg
+Picnic;Picnic;fas fa-cookie;assets/img/categories/picnic-16-9.jpg;assets/img/categories/picnic-small.jpg
+Stroll around;Stroll around;fas fa-shoe-prints;assets/img/categories/stroll-around-16-9.jpg;assets/img/categories/stroll-around-small.jpg
+Bar/Pub;Bar/Pub;fas fa-beer;assets/img/categories/bar-pub-16-9.jpg;assets/img/categories/bar-pub-small.jpg
+Cafe/Restaurant;Cafe/Restaurant;fas fa-utensils;assets/img/categories/cafe-restaurant-16-9.jpg;assets/img/categories/cafe-restaurant-small.jpg
+Coffee/Tea;Coffee/Tea;fas fa-coffee;assets/img/categories/coffee-tea-16-9.jpg;assets/img/categories/coffee-tea-small.jpg
+Rendezvous;Rendezvous;fas fa-walking;assets/img/categories/rendezvous-16-9.jpg;assets/img/categories/rendezvous-small.jpg
+Other gatherings;Other gatherings;fas fa-couch;assets/img/categories/other-gatherings-16-9.jpg;assets/img/categories/other-gatherings-small.jpg
+Workshops;Workshops;fas fa-fan;assets/img/categories/workshops-16-9.jpg;assets/img/categories/workshops-small.jpg
+Meetups;Meetups;fas fa-users;assets/img/categories/meetups-16-9.jpg;assets/img/categories/meetups-small.jpg
+Conference;Conference;fas fa-quote-left;assets/img/categories/conference-16-9.jpg;assets/img/categories/conference-small.jpg
+Lecture;Lecture;fas fa-pen-alt;assets/img/categories/lecture-16-9.jpg;assets/img/categories/lecture-small.jpg

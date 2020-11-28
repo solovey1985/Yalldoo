@@ -1,0 +1,80 @@
+Sports
+
+Football <i class="fas fa-futbol"></i>
+Basketball <i class="fas fa-basketball-ball"></i>
+VoleyBall <i class="fas fa-volleyball-ball"></i>
+Rugby <i class="fas fa-football-ball"></i>
+Running‌ <i class="fas fa-running"></i>
+Cycling  <i class="fas fa-bicycle"></i>
+Table tennis <i class="fas fa-table-tennis"></i>
+Quiddich <i class="fas fa-quidditch"></i>
+Other sports <i class="fas fa-bolt"></i>
+
+
+Auto/moto
+
+Auto ride <i class="fas fa-car"></i>
+Moto ride <i class="fas fa-motorcycle"></i>
+Cartings <i class="fas fa-car-side"></i>
+Bike rides <i class="fas fa-biking"></i>
+Chariot races <i class="fas fa-dragon"></i>
+Other auto/moto <i class="fas fa-rocket"></i>
+
+
+Activity
+
+extreme‌ <i class="fas fa-bomb"></i>
+gym <i class="fas fa-dumbbell"></i>
+swimming pool <i class="fas fa-swimmer"></i>
+yoga <i class="fas fa-spa"></i>
+hiking‌ <i class="fas fa-shoe-prints"></i>
+Traveling‌ <i class="fas fa-hiking"></i>
+Children‌ activities <i class="fas fa-baby"></i>
+Walk the pet <i class="fas fa-paw"></i>
+Suspicious activities <i class="fas fa-user-secret"></i>
+other activities <i class="fas fa-universal-access"></i>
+
+
+Entertainment
+
+quests‌ <i class="fas fa-map-signs"></i>
+table games‌ <i class="fas fa-dice"></i>
+computer games <i class="fas fa-gamepad"></i>
+Party‌ <i class="fas fa-cocktail"></i>
+Karaoke <i class="fas fa-microphone-alt"></i>
+Disco <i class="fas fa-music"></i>
+cinema‌ <i class="fas fa-video"></i>
+theater‌ <i class="fas fa-theater-masks"></i>
+concerts‌ <i class="fas fa-guitar"></i>
+festivals‌ <i class="fas fa-fan"></i>
+performances‌ <i class="fas fa-person-booth"></i>
+shopping‌ <i class="fas fa-shopping-bag"></i>
+Sport event <i class="fas fa-bullhorn"></i>
+
+Other entertainments <i class="fab fa-angellist"></i> 
+
+
+Get together
+
+Hang out <i class="fas fa-glass-cheers"></i>
+Picnic <i class="fas fa-cookie"></i>
+stroll around <i class="fas fa-shoe-prints"></i>
+Bar/Pub <i class="fas fa-beer"></i>
+Cafe/Restaurant <i class="fas fa-utensils"></i>
+Coffee/Tea <i class="fas fa-coffee"></i>
+Rendezvous <i class="fas fa-walking"></i>
+Other gatherings <i class="fas fa-couch"></i>
+
+
+Knowledge sharing
+
+Workshops <i class="fas fa-fan"></i>
+Meetups <i class="fas fa-users"></i>
+Conference <i class="fas fa-quote-left"></i>
+Lecture <i class="fas fa-pen-alt"></i>
+
+
+
+
+
+

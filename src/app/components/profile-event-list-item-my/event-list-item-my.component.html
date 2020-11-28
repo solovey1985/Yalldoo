@@ -1,0 +1,33 @@
+<hr>
+<div class="row yld-event-list-item-container">
+    <div class="col-md-3 yld-event-list-item-avatar-container">
+        <img *ngIf="event.image" class="yld-event-list-item-avatar img-rounded" src="{{event.image}}" alt="..."/>
+        <img *ngIf="!event.image" class="yld-event-list-item-avatar img-rounded" src="assets/img/avatar-event.jpg" alt="..."/>
+    </div>
+    <div class="col-md-7 yld-event-list-item-center-block">
+        <a class="yld-event-list-item-title" [routerLink]="['/event', event.id]">{{event.title}}</a>
+        <p class="yld-event-list-item-description">{{event.description}}</p>
+        <div class="yld-event-list-item-data">
+            <p class="yld-event-list-item-data-item">
+                <i class="fa fa-map-marker yld-event-list-item-data-icon" aria-hidden="true"></i>
+                <a *ngIf="event.location" href="">{{event.location.address}}</a>
+            </p>
+            <p class="yld-event-list-item-data-item"><i class="fa fa-clock-o yld-event-list-item-data-icon" aria-hidden="true"></i>{{event.startDate | date: "hh:mm" }}</p>
+            <p class="yld-event-list-item-data-item"><i class="fa fa-calendar-check-o yld-event-list-item-data-icon" aria-hidden="true"></i>{{event.startDate | date: "dd MMM yyyy" }}</p>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="yld-event-list-item-buttons-container">
+            <a href="javascript:void(0)" class="btn btn-just-icon btn-border btn-facebook yld-event-list-item-button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+            <a href="javascript:void(0)" class="btn btn-just-icon btn-border btn-outline-success yld-event-list-item-button"><i class="fa fa-user-plus" aria-hidden="true"></i></a>
+            <a href="javascript:void(0)" class="btn btn-just-icon btn-border btn-youtube yld-event-list-item-button"><i class="nc-icon nc-simple-remove" aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <div class="yld-event-list-item-avatar-user-list">
+        <span class="yld-list-item-avatar-user"><img src="assets/img/faces/kaci-baum-2.jpg" alt="..." placement="bottom" ngbPopover="Friend Name 1"/></span>
+        <span class="yld-list-item-avatar-user"><img src="assets/img/faces/clem-onojeghuo-3.jpg" placement="bottom" ngbPopover="Friend Name 2" alt="..."/></span>
+        <span class="yld-list-item-avatar-user"><img src="assets/img/faces/erik-lucatero-2.jpg" placement="bottom" ngbPopover="Friend Name 3" alt="..."/></span>
+        <span class="yld-list-item-avatar-user"><img src="assets/img/faces/joe-gardner-2.jpg" placement="bottom" ngbPopover="Friend Name 4" alt="..."/></span>
+        <span> - 8 человек</span>
+    </div>
+</div>

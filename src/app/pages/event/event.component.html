@@ -4,7 +4,7 @@
             <div class="col-sm-11 col-xs-11 col-md-10 ml-auto mr-auto yld-event-container card no-transition">
                 <div
                     class="yld-event-image-container d-flex justify-content-between" 
-                    style="background-image: url('./assets/img/sections/roger-keller.jpg')"
+                    style="background-image: url('./{{event.imageUrl}}')"
                 >
                     <div class="block left-align">
                         <button type="button" class="btn btn-move-left btn-round" (click)="goBack()">
@@ -22,7 +22,7 @@
                     <div class="yld-event-title-category badge-success">
                         <div class="row">
                             <span class="col-sm-7 col-8"
-                                ><i class="fa fa-2x mr-5 {{ getIcon() }}"></i>{{ event.category }}</span
+                                ><i class="fa fa-2x mr-5 fa-{{ event.icon }}"></i>{{ event.category }}</span
                             >
                             <div class="d-flex justify-content-between align-self-end col-4 col-sm-5">
                                 <button class="btn btn-just-icon btn-google">
@@ -50,11 +50,11 @@
                     <div class="row">
                         <div class="col-4 yld-event-avatar">
                             <img
-                                *ngIf="!event.image"
-                                src="assets/img/avatar-event.jpg"
+                                *ngIf="!event.smallImageUrl"
+                                src="{{assets/img/avatar-event.jpg}}"
                                 class="img-rounded img-responsive"
                             />
-                            <img *ngIf="event.image" src="{{ event.image }}" class="img-rounded img-responsive" />
+                            <img *ngIf="event.smallImageUrl" src="{{event.smallImageUrl}}" class="img-rounded img-responsive" />
                         </div>
                         <div class="col-8 yld-event-title">
                             <h2>{{ event.title }}</h2>

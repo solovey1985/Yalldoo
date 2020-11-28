@@ -42,6 +42,7 @@ export function reducer(state = initialState, action: any) {
                 isLoading: false
             };
         }
+        case EventActionEnum.CREATE_EVENT_FAILED:
         case UIActionEnum.ERROR_SHOW: {
             return {
                 ...state,

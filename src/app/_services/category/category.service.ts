@@ -102,7 +102,7 @@ export class CategoryService {
     }
 
     public loadAllCategories(): Observable<CategoryDto[]> {
-        const url = `${Config.apiUrl}/someRequestURL`;
+        const url = `${Config.apiUrl}/category`;
         return this.http.get<any>(url)
             .pipe(
                 switchMap((response) => {
@@ -116,7 +116,16 @@ export class CategoryService {
     public getCategories(ammount?: number): CategoryModel[] {
         return categories;
     }
-
+    public saveProfileCategories(categoryIds: number[]) {
+        const url = `${Config.apiUrl}/profile/categories`;
+        return this.http.post<any>(url, {CategoryIds: categoryIds})
+            .pipe(
+                switchMap((response) => {
+                    return of({});
+                }),
+                catchError(err => of(err))
+            );
+    }
     public getChildCategories(parrentId?: number): Array<CategoryModel> {
         if (parrentId) {
             return categories.filter((x) => x.parrentId === parrentId);

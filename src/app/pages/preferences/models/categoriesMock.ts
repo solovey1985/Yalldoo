@@ -5,7 +5,8 @@ export function getCategoriesMock(): CategoryDto[] {
         {
             id: 1,
             description: "Sport Activities",
-            backgroundImage: "assets/img/sections/forest-bg.jpg",
+            smallImageUrl: "assets/img/sections/forest-bg.jpg",
+            imageUrl: "assets/img/sections/forest-bg.jpg",
             icon: "user-run",
             isSelected: false,
             title: "Sport"
@@ -13,7 +14,8 @@ export function getCategoriesMock(): CategoryDto[] {
         {
             id: 2,
             description: "Music Events",
-            backgroundImage: "assets/img/sections/anders-jilden.jpg",
+            smallImageUrl: "assets/img/sections/anders-jilden.jpg",
+            imageUrl: "assets/img/sections/forest-bg.jpg",
             icon: "note-03",
             isSelected: false,
             title: "Music"
@@ -21,7 +23,8 @@ export function getCategoriesMock(): CategoryDto[] {
         {
             id: 3,
             description: "Party events",
-            backgroundImage: "assets/img/sections/daniel-olahs.jpg",
+            smallImageUrl: "assets/img/sections/daniel-olahs.jpg",
+            imageUrl: "assets/img/sections/forest-bg.jpg",
             icon: "air-baloon",
             isSelected: false,
             title: "Party"
@@ -29,7 +32,8 @@ export function getCategoriesMock(): CategoryDto[] {
         {
             id: 4,
             description: "Hang over",
-            backgroundImage: "assets/img/sections/forest-bg.jpg",
+            smallImageUrl: "assets/img/sections/forest-bg.jpg",
+            imageUrl: "assets/img/sections/forest-bg.jpg",
             icon: "satisfied",
             isSelected: false,
             title: "Hang Over"
@@ -37,7 +41,8 @@ export function getCategoriesMock(): CategoryDto[] {
         {
             id: 5,
             description: "Sport Activities",
-            backgroundImage: "assets/img/sections/forest-bg.jpg",
+            smallImageUrl: "assets/img/sections/forest-bg.jpg",
+            imageUrl: "assets/img/sections/forest-bg.jpg",
             icon: "user-run",
             isSelected: false,
             title: "Sport"
@@ -45,7 +50,8 @@ export function getCategoriesMock(): CategoryDto[] {
         {
             id: 6,
             description: "Music Events",
-            backgroundImage: "assets/img/sections/anders-jilden.jpg",
+            smallImageUrl: "assets/img/sections/anders-jilden.jpg",
+            imageUrl: "assets/img/sections/forest-bg.jpg",
             icon: "note-03",
             isSelected: false,
             title: "Music"
@@ -53,7 +59,8 @@ export function getCategoriesMock(): CategoryDto[] {
         {
             id: 7,
             description: "Party events",
-            backgroundImage: "assets/img/sections/daniel-olahs.jpg",
+            smallImageUrl: "assets/img/sections/daniel-olahs.jpg",
+            imageUrl: "assets/img/sections/forest-bg.jpg",
             icon: "air-baloon",
             isSelected: false,
             title: "Party"
@@ -61,7 +68,8 @@ export function getCategoriesMock(): CategoryDto[] {
         {
             id: 8,
             description: "Hang over",
-            backgroundImage: "assets/img/sections/forest-bg.jpg",
+            smallImageUrl: "assets/img/sections/forest-bg.jpg",
+            imageUrl: "assets/img/sections/forest-bg.jpg",
             icon: "satisfied",
             isSelected: false,
             title: "Hang Over"
@@ -69,7 +77,8 @@ export function getCategoriesMock(): CategoryDto[] {
         {
             id: 9,
             description: "Music Events",
-            backgroundImage: "assets/img/sections/anders-jilden.jpg",
+            smallImageUrl: "assets/img/sections/anders-jilden.jpg",
+            imageUrl: "assets/img/sections/forest-bg.jpg",
             icon: "note-03",
             isSelected: false,
             title: "Music"

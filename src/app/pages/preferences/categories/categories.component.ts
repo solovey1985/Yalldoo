@@ -43,7 +43,11 @@ export class CategoriesComponent implements OnInit, OnDestroy {
     }
 
     onPreferencesConfirm(): void {
-        this.notify.info("Preferences were saved");
-        setTimeout(() => this.router.navigate(["/me"]), 2000);
+        const selectedIds = this.preferredCategories.filter(d => d.isSelected).map(x => x.id);
+        this.categoriesService.saveProfileCategories(selectedIds).subscribe(x => {
+            this.notify.info("Preferences were saved");
+            setTimeout(() => this.router.navigate(["/me"]), 3000);    
+        });
+        
     }
 }

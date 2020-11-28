@@ -17,7 +17,9 @@ export class EventModel {
     category: string;
     privacy: EPrivacyEnum;
     location: LocationInDTO;
-    image: string;
+    smallImageUrl: string;
+    imageUrl: string;
+    icon: string;
     invitedIds: number[];
     ownerId: string;
     owner: UserInformation;

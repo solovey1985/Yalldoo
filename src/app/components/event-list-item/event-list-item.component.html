@@ -1,8 +1,8 @@
 <hr>
 <div class="row yld-event-list-item-container">
     <div class="col-md-3 yld-event-list-item-avatar-container">
-        <img *ngIf="event.image" class="yld-event-list-item-avatar img-rounded" src="{{event.image}}" alt="..."/>
-        <img *ngIf="!event.image" class="yld-event-list-item-avatar img-rounded" src="assets/img/avatar-event.jpg" alt="..."/>
+        <img *ngIf="event.smallImageUrl" class="yld-event-list-item-avatar img-rounded" src="{{event.smallImageUrl}}" alt="..."/>
+        <img *ngIf="!event.smallImageUrl" class="yld-event-list-item-avatar img-rounded" src="assets/img/avatar-event.jpg" alt="..."/>
     </div>
     <div class="col-md-6">
         <a [routerLink]="['/event', event.id]"><h3>  {{event.title}}</h3></a>

@@ -39,7 +39,7 @@ if (params && params.length >= 3 && params[2] === 'prod') {
 }
 
 else {
-    const httpPort = 8088;
+    const httpPort = 80;
     const httpServer = http.createServer(app);
     httpServer.listen(httpPort, () => {
         console.log(`HTTP Server running on port ${httpPort}`);

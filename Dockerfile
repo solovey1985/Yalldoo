@@ -1,22 +1,25 @@
-### STAGE 1: Build ###
-FROM yalldoo/yalldoo.spa:base as builder
+# Client App
+FROM johnpapa/angular-cli as client-app
+LABEL authors="John Papa"
+WORKDIR /usr/src/app
+COPY ["package.json", "npm-shrinkwrap.json*", "./"]
+RUN npm install --silent
+COPY . .
+RUN ng build --prod
 
-RUN mkdir /app
+# Node server
+FROM node:12-alpine as node-server
+WORKDIR /usr/src/app
+COPY ["package.json", "npm-shrinkwrap.json*", "./"]
+RUN npm install --production --silent && mv node_modules ../
+COPY server.js .
+COPY /server /usr/src/app/server
 
-COPY ./src ./app
-
-COPY ./package.json ./app
-
-COPY server.js ./app
-
-WORKDIR /app
-
-RUN npm install --include=dev
-
-RUN npm run build-prod
-
-RUN rm -r ./app/dist/assets/scss 
-
-CMD node server.js
-
-EXPOSE 80 443
+# Final image
+FROM node:12-alpine
+WORKDIR /usr/src/app
+COPY --from=node-server /usr/src /usr/src
+COPY --from=client-app /usr/src/app/dist ./
+EXPOSE 3000
+# CMD ["node", "server.js"]
+CMD ["npm", "start"]

@@ -11,6 +11,8 @@ import { EventModel } from "app/_models/events/event.model";
 export class EventListItemMy implements OnInit {
     @Input()
     event = {
+        id: 1,
+        image: "sadasd",
         title: 'Super event',
         description: 'This is the best event in the world ever',
         location: {

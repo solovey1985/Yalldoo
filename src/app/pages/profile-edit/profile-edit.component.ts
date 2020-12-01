@@ -40,7 +40,6 @@ export class EditProfileComponent implements OnInit {
     ) {
         this.locations = new Array<LocationDto>();
         this.handleImageChange = this.handleImageChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.handleRemove = this.handleRemove.bind(this);
         this.state = {

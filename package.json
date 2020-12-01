@@ -24,6 +24,7 @@
     "@angular/platform-browser-dynamic": "9.0.4",
     "@angular/platform-server": "9.0.4",
     "@angular/router": "9.0.4",
+    "@fortawesome/fontawesome-free": "^5.15.1",
     "@kolkov/ngx-gallery": "1.0.10",
     "@ng-bootstrap/ng-bootstrap": "6.0.0",
     "@ngrx/component-store": "^10.0.0",

@@ -20,173 +20,221 @@
             </div>
             <div class="row">
                 <div class="col-md-6 ml-auto mr-auto">
-                    <form class="settings-form" [formGroup]="form">
-                        <div class="row">
-                            <div class="col-md-6 col-sm-6">
-                                <div class="form-group">
-                                    <label>First Name</label>
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        [ngClass]="{ 'form-control-danger': isInvalid(g('firstName')) }"
-                                        placeholder="First Name"
-                                        formControlName="firstName"
-                                    />
-                                    <app-control-messages
-                                        title="First Name"
-                                        [control]="g('firstName')"
-                                    ></app-control-messages>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 col-sm-6">
-                                <div class="form-group">
-                                    <label>Last Name</label>
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        [ngClass]="{ 'form-control-danger': isInvalid(g('lastName')) }"
-                                        placeholder="Last Name"
-                                        formControlName="lastName"
-                                    />
-                                    <app-control-messages
-                                        title="Last Name"
-                                        [control]="g('lastName')"
-                                    ></app-control-messages>
-                                </div>
-                            </div>
-                        </div>
+                    <form class="settings-form" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
                         <div class="yld-profile-edit-contacts-container yld-profile-edit-item-container">
                             <div class="d-flex flex-row justify-content-between">
-                                <h6>Contacts<span class="icon-danger">*</span></h6>
-                                <div class="yld-privacy-container">
-                                    <app-privacy-selector
-                                        [property]="'contacts'"
-                                        (onPrivacySelected)="onPrivacySet($event)"
-                                    ></app-privacy-selector>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label><i class="fa fa fa-envelope-o mr-2"></i>Email</label>
-                                <input
-                                    type="email"
-                                    class="form-control"
-                                    placeholder="your@email.com"
-                                    formControlName="email"
-                                    [ngClass]="{ 'form-control-danger': isInvalid(g('email')) }"
-                                />
-                                <app-control-messages
-                                    title="Email"
-                                    [control]="g('email')"
-                                ></app-control-messages>
+                                <h6>About</h6>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
-                                        <label><i class="fa fa-mobile mr-2"></i>Phone</label>
+                                        <label for="firstName">First Name</label>
                                         <input
-                                            type="text"
-                                            class="form-control"
-                                            [ngClass]="{ 'form-control-danger': isInvalid(g('phone')) }"
-                                            placeholder="+380 xx xxx xxxx"
-                                            [validation]="true"
-                                            prefix="+380"
-                                            mask=" 00 000 0000"
-                                            formControlName="phone"
-                                        />
-                                        <small>Format +380 xx xxx xxxx</small>
+                                                id="firstName"
+                                                type="text"
+                                                class="form-control"
+                                                [ngClass]="{ 'form-control-danger': getControlByName('firstName').invalid }"
+                                                placeholder="First Name"
+                                                formControlName="firstName"
+                                        >
                                         <app-control-messages
-                                            title="Phone"
-                                            [control]="g('phone')"
+                                                title="First Name"
+                                                [control]="getControlByName('firstName')"
                                         ></app-control-messages>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
-                                        <label><i class="fa fa-facebook mr-2"></i>Facebook page</label>
+                                        <label for="lastName">Last Name</label>
                                         <input
-                                            type="text"
-                                            class="form-control"
-                                            [ngClass]="{ 'form-control-danger': isInvalid(g('facebook')) }"
-                                            placeholder="https://www.facebook.com/"
-                                            formControlName="facebook"
-                                        />
+                                                id="lastName"
+                                                type="text"
+                                                class="form-control"
+                                                [ngClass]="{ 'form-control-danger': getControlByName('lastName').invalid }"
+                                                placeholder="Last Name"
+                                                formControlName="lastName"
+                                        >
                                         <app-control-messages
-                                            title="Facebook profile"
-                                            [control]="g('facebook')"
+                                                title="Last Name"
+                                                [control]="getControlByName('lastName')"
                                         ></app-control-messages>
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label><i class="fa fa-globe mr-2"></i>Your website</label>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    [ngClass]="{ 'form-control-danger': isInvalid(g('website')) }"
-                                    placeholder="https://www.yoursite.com"
-                                    formControlName="website"
-                                />
-                                <app-control-messages
-                                    title="Website"
-                                    [control]="g('website')"
-                                ></app-control-messages>
-                            </div>
-                        </div>
-                        <div class="form-group yld-profile-edit-item-container yld-event-birthdate-container">
-                            <div class="d-flex flex-row justify-content-between">
-                                <h6>Birth Date <span class="icon-danger">*</span></h6>
+                            <div class="d-flex flex-row justify-content-between yld-profile-edit-date-container">
+                                <div>
+                                    <h6>Birth Date </h6>
+                                    <button
+                                            type="button"
+                                            class="btn btn-primary btn-just-icon"
+                                            (click)="showDateTimePickerModal()"
+                                    >
+                                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    </button>
+                                    <span>
+                                            {{ getControlByName('birthDate').value | date: "dd MMMM yyyy" }}
+                                    </span>
+                                </div>
                                 <div class="yld-privacy-container">
                                     <app-privacy-selector
-                                        [property]="'places'"
-                                        (onPrivacySelected)="onPrivacySet($event)"
+                                            [property]="'birthDate'"
+                                            (onPrivacySelected)="onPrivacySet($event)"
                                     ></app-privacy-selector>
                                 </div>
                             </div>
-                            <div class="d-flex flex-row align-items-center input-group yld-settings-date-selector">
-                                <button
-                                    type="button"
-                                    class="btn btn-primary btn-just-icon"
-                                    (click)="showDatetimepickerModal()"
-                                >
-                                    <i class="fa fa-calendar" aria-hidden="true"></i>
-                                </button>
-                                <span>
-                                    {{ g("birthDate").value | date: "dd MMMM yyyy" }}
-                                </span>
-                            </div>
                             <app-control-messages
-                                title="Birth Date"
-                                [control]="g('birthDate')"
+                                    title="Birth Date"
+                                    [control]="getControlByName('birthDate')"
                             ></app-control-messages>
-                        </div>
-
-                        <div class="yld-profile-edit-item-container yld-profile-edit-description-container form-group">
+                            <div class="d-flex flex-row align-items-baseline justify-content-between yld-profile-edit-places-container">
+                                <div class="d-flex align-items-baseline justify-content-start">
+                                    <h6>Places</h6>
+                                    <button
+                                            ngbTooltip="Add"
+                                            (click)="onPlacesAddClick()"
+                                            class="btn btn-outline-success btn-just-icon"
+                                    >
+                                        <i class="fa fa-plus-circle"></i>
+                                    </button>
+                                </div>
+                                <div class="yld-privacy-container">
+                                    <app-privacy-selector
+                                            [property]="'places'"
+                                            (onPrivacySelected)="onPrivacySet($event)"
+                                    ></app-privacy-selector>
+                                </div>
+                            </div>
+                            <ul class="list-group list-unstyled">
+                                <li *ngFor="let location of locations">
+                                    <div
+                                            class="yld-profile-edit-place-item d-flex justify-content-between align-items-baseline"
+                                    >
+                                        <i class="fa fa-map-marker"></i>
+                                        <label class="yld-profile-edit-place-item-title text-center">{{
+                                            location.title
+                                            }}</label>
+                                        <div class="yld-profile-edit-place-item-actions">
+                                            <button
+                                                    class="btn btn-just-icon btn-link"
+                                                    (click)="onPlaceEditClick(location)"
+                                                    ngbTooltip="Edit"
+                                            >
+                                                <i class="fa fa-edit"></i>
+                                            </button>
+                                            <button
+                                                    class="btn btn-just-icon btn-link"
+                                                    (click)="onPlaceRemoveClick(location)"
+                                                    ngbTooltip="Remove"
+                                            >
+                                                <i class="fa fa-remove"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
                             <div class="d-flex flex-row align-items-center justify-content-between">
                                 <h6>Tell about yourself</h6>
                                 <div class="yld-privacy-container">
                                     <app-privacy-selector
-                                        [property]="'description'"
-                                        (onPrivacySelected)="onPrivacySet($event)"
+                                            [property]="'description'"
+                                            (onPrivacySelected)="onPrivacySet($event)"
                                     ></app-privacy-selector>
                                 </div>
                             </div>
                             <textarea
-                                formControlName="description"
-                                class="form-control textarea-limited"
-                                placeholder="Tell something about yourself"
-                                rows="3"
-                                maxlength="256"
+                                    formControlName="description"
+                                    class="form-control textarea-limited"
+                                    placeholder="Tell something about yourself"
+                                    rows="5"
+                                    maxlength="256"
                             ></textarea>
                             <h5>
                                 <small>
                                     <span id="textarea-limited-message" class="pull-right"
-                                        >{{ 256 - descriptionLength }} characters left</span
+                                    >{{ 256 - descriptionLength }} characters left</span
                                     >
                                 </small>
                             </h5>
                         </div>
-
+                        <div class="yld-profile-edit-contacts-container yld-profile-edit-item-container yld-profile-edit-about-container">
+                            <div class="d-flex align-items-baseline justify-content-start">
+                                <h6>Contacts</h6>
+                                <button
+                                        ngbTooltip="Edit"
+                                        (click)="onCategoriesEditClick()"
+                                        class="btn btn-outline-success btn-just-icon"
+                                >
+                                    <i class="fa fa-edit"></i>
+                                </button>
+                            </div>
+                            <div class="form-group">
+                                <div class="yld-privacy-container">
+                                    <label><i class="fa fa fa-envelope-o mr-2"></i>Email</label>
+                                    <app-privacy-selector
+                                            [property]="'contacts'"
+                                            (onPrivacySelected)="onPrivacySet($event)"
+                                    ></app-privacy-selector>
+                                </div>
+                                <span class="form-control"> {{getControlByName('email').value}}</span>
+                                <app-control-messages
+                                    title="Email"
+                                    [control]="getControlByName('email')"
+                                ></app-control-messages>
+                            </div>
+                            <div class="form-group">
+                                <div class="yld-privacy-container">
+                                    <label><i class="fa fa fa-mobile mr-2"></i>Phone</label>
+                                    <app-privacy-selector
+                                            [property]="'contacts'"
+                                            (onPrivacySelected)="onPrivacySet($event)"
+                                    ></app-privacy-selector>
+                                </div>
+                                <span class="form-control"> {{getControlByName('phone').value}}</span>
+                                <app-control-messages
+                                        title="Phone"
+                                        [control]="getControlByName('phone')"
+                                ></app-control-messages>
+                            </div>
+                        </div>
+                        <div class="yld-profile-edit-contacts-container yld-profile-edit-item-container">
+                            <div class="d-flex flex-row justify-content-between">
+                                <h6>Social links</h6>
+                                <div class="yld-privacy-container">
+                                    <app-privacy-selector
+                                            [property]="'contacts'"
+                                            (onPrivacySelected)="onPrivacySet($event)"
+                                    ></app-privacy-selector>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fa fa-globe mr-2"></i>Facebook page</label>
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        [ngClass]="{ 'form-control-danger': getControlByName('facebook').invalid }"
+                                        placeholder="https://www.facebook.com/"
+                                        formControlName="facebook"
+                                />
+                                <app-control-messages
+                                        title="Facebook profile"
+                                        [control]="getControlByName('facebook')"
+                                ></app-control-messages>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fa fa-globe mr-2"></i>Your website</label>
+                                <input
+                                        type="text"
+                                        class="form-control"
+                                        [ngClass]="{ 'form-control-danger': getControlByName('website').invalid }"
+                                        placeholder="https://www.yoursite.com"
+                                        formControlName="website"
+                                />
+                                <app-control-messages
+                                        title="Website"
+                                        [control]="getControlByName('website')"
+                                ></app-control-messages>
+                            </div>
+                        </div>
                         <div class="yld-profile-edit-item-container yld-profile-edit-preference-container">
                             <div class="d-flex flex-row align-items-baseline justify-content-between">
                                 <div class="d-flex align-items-baseline justify-content-start">
@@ -213,56 +261,19 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="yld-profile-edit-item-container yld-profile-edit-places-container">
+                        <div class="yld-profile-edit-item-container">
                             <div class="d-flex flex-row align-items-baseline justify-content-between">
                                 <div class="d-flex align-items-baseline justify-content-start">
-                                    <h6>Places</h6>
-                                    <button
-                                        ngbTooltip="Add"
-                                        (click)="onPlacesAddClick()"
-                                        class="btn btn-outline-success btn-just-icon"
-                                    >
-                                        <i class="fa fa-plus-circle"></i>
-                                    </button>
+                                    <h6>Show Event Participation</h6>
                                 </div>
                                 <div class="yld-privacy-container">
                                     <app-privacy-selector
-                                        [property]="'places'"
-                                        (onPrivacySelected)="onPrivacySet($event)"
+                                            [property]="'eventParticipationPrivacy'"
+                                            (onPrivacySelected)="onPrivacySet($event)"
                                     ></app-privacy-selector>
                                 </div>
                             </div>
-                            <ul class="list-group list-unstyled">
-                                <li *ngFor="let location of locations">
-                                    <div
-                                        class="yld-profile-edit-place-item d-flex justify-content-between align-items-baseline"
-                                    >
-                                        <i class="fa fa-map-marker"></i>
-                                        <label class="yld-profile-edit-place-item-title text-center">{{
-                                            location.title
-                                        }}</label>
-                                        <div class="yld-profile-edit-place-item-actions">
-                                            <button
-                                                class="btn btn-just-icon btn-link"
-                                                (click)="onPlaceEditClick(location)"
-                                                ngbTooltip="Edit"
-                                            >
-                                                <i class="fa fa-edit"></i>
-                                            </button>
-                                            <button
-                                                class="btn btn-just-icon btn-link"
-                                                (click)="onPlaceRemoveClick(location)"
-                                                ngbTooltip="Remove"
-                                            >
-                                                <i class="fa fa-remove"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
                         </div>
-
                         <div class="text-center">
                             <button type="submit" class="btn btn-wd btn-info btn-round">Save</button>
                         </div>

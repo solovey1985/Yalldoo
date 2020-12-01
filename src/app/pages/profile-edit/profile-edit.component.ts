@@ -54,7 +54,7 @@ export class EditProfileComponent implements OnInit {
         };
         this.route.data.subscribe((data: { userProfile: UserInformation }) => {
             this.userInfo = data.userProfile;
-            var locationModel = new LocationDto();
+            const locationModel = new LocationDto();
             locationModel.title = this.userInfo.location.address;
             locationModel.position = { lat: this.userInfo.location.latitude, lng: this.userInfo.location.longitude };
 
@@ -73,7 +73,7 @@ export class EditProfileComponent implements OnInit {
         this.form = this.fb.group(
             {
                 firstName: [
-                    this.userInfo.firstName,
+                    this.userInfo.firstName ?? "",
                     Validators.compose([
                         Validators.maxLength(25),
                         Validators.minLength(2),
@@ -82,12 +82,11 @@ export class EditProfileComponent implements OnInit {
                     ])
                 ],
                 lastName: [
-                    this.userInfo.lastName,
+                    this.userInfo.lastName ?? "",
                     Validators.compose([
                         Validators.maxLength(25),
                         Validators.minLength(2),
                         ValidationService.namePatternValidator,
-                        Validators.required
                     ])
                 ],
                 email: [this.userInfo.email ?? "", ValidationService.emailPatternValidator],
@@ -97,6 +96,7 @@ export class EditProfileComponent implements OnInit {
                 birthDate: [this.userInfo.birthday ?? new Date()],
                 description: [this.userInfo.description ?? "", [Validators.maxLength(256)]],
                 categories: [this.userInfo.favoriteCategories ?? []],
+                eventParticipationPrivacy: [""],
                 places: [[]]
             },
             { updateOn: "change" }
@@ -135,44 +135,46 @@ export class EditProfileComponent implements OnInit {
         return this.categoryService.getCategoryIcon(title);
     }
 
-    showDatetimepickerModal(): void {
+    showDateTimePickerModal(): void {
+        const birthDateFormField = this.form.get("birthDateValue");
+
         this.modal
             .openDateTimePicker(this.userInfo.birthday, true, "Select Birthday Date")
             .subscribe((result: string) => {
                 if (result) {
                     this.userInfo.birthday = new Date(result);
                     this.isDateSelected = true;
-                    this.form.get("birthDate").markAsTouched();
-                    this.form.get("birthDate").clearValidators();
+                    birthDateFormField.markAsTouched();
+                    birthDateFormField.clearValidators();
                     this.form.patchValue({ birthDate: this.userInfo.birthday });
                 } else {
-                    this.form.get("birthDate").markAsTouched();
-                    this.form.get("birthDate").setErrors({ required: true });
+                    birthDateFormField.markAsTouched();
+                    birthDateFormField.setErrors({ required: true });
                 }
             });
     }
 
-    onPrivacySet($event) {
-        console.log($event);
+    onPrivacySet($event: {property: string[], privacy: string}) {
+        // @ts-ignore
+        // this.getControlByName(...$event.property).setValue($event.privacy);
     }
 
-    public g(control: string) {
+    public getControlByName(controlName: string, controlGroupName: string = ""): AbstractControl  {
         if (this.form) {
-            return this.form.get(control);
+            if (!!controlGroupName) {
+                return this.form.get(controlGroupName).get(controlName);
+            }
+
+            return this.form.get(controlName);
         }
         return null;
     }
 
-    isInvalid(control: AbstractControl): boolean {
-        // if (control) {
-        //     return control.invalid && control.touched;
-        // }
-        return false;
-    }
-
     public get descriptionLength(): number {
+        const descriptionFieldValue = this.form.get("description").value;
+
         if (this.form) {
-            return this.form.get("description").value ? this.form.get("description").value.length : 0;
+            return descriptionFieldValue ? descriptionFieldValue.length : 0;
         }
         return 0;
     }
@@ -192,9 +194,11 @@ export class EditProfileComponent implements OnInit {
         };
         reader.readAsDataURL(file);
     }
-    handleSubmit(e) {
-        e.preventDefault();
+
+    onSubmit(value: any) {
+        console.log(this.form.value);
     }
+
     handleClick() {
         const input = document.createElement("input");
         input.type = "file";

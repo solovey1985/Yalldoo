@@ -1,5 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from "@angular/core";
-import { FormControl } from "@angular/forms";
+import { Component, ChangeDetectionStrategy, Input } from "@angular/core";
+import { AbstractControl } from "@angular/forms";
 import { ValidationService } from "app/_services/validation/validation.service";
 
 @Component({
@@ -9,7 +9,7 @@ import { ValidationService } from "app/_services/validation/validation.service";
     changeDetection: ChangeDetectionStrategy.Default
 })
 export class ControlMessagesComponent {
-  @Input() control: FormControl;
+  @Input() control: AbstractControl ;
   @Input() title = "";
 
     constructor() {}

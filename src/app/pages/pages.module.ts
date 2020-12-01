@@ -48,6 +48,7 @@ import { ViewModeDirective } from "../shared/edit-in-place-input/view-mode.direc
 import { EditModeDirective } from "../shared/edit-in-place-input/edit-mode.directive";
 import { FocusableDirective } from "../shared/edit-in-place-input/focusable.directive";
 import { EditableOnEnterDirective } from "../shared/edit-in-place-input/editable-on-enter.directive";
+import { RedirectComponent } from './redirect/redirect.component';
 
 @NgModule({
     imports: [
@@ -104,6 +105,7 @@ import { EditableOnEnterDirective } from "../shared/edit-in-place-input/editable
         EditModeDirective,
         FocusableDirective,
         EditableOnEnterDirective,
+        RedirectComponent,
     ]
 })
 export class PagesModule {}

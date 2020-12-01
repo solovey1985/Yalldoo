@@ -58,7 +58,7 @@ export class EmailConfirmComponent implements OnInit {
     }
 
     goToApp() {
-        this.router.navigate(["/feed"]);
+        this.router.navigate(["/redirect"]);
     }
 
     gotToSignUp() {

@@ -1,0 +1,25 @@
+@import "../../../../assets/scss/yld/variables.scss";
+
+.yld-profile {
+    &_events-nav{
+
+        &-item {
+            margin: auto;
+
+            .nav-link.active {
+                color: $yld-color-secondary;
+                font-weight: 400;
+            }
+        }
+    }
+    &_friend-switch {
+        &-text {
+            margin-bottom: 10px;
+        }
+    }
+    &_events-will-container, &_events-my-container{
+        margin: 10px;
+        text-align: left;
+    }
+
+}

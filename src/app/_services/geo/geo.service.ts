@@ -72,7 +72,7 @@ export class GeoService {
                     const lng = Number.parseFloat(position.coords.longitude.toFixed(6));
                     this.center = `${lat},${lng}`;
                 },
-                (error) => console.log(error)
+                (error) => { console.log(error); this.center = Config.defaultMapCenter }
             );
         }
     }

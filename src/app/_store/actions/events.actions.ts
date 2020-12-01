@@ -22,13 +22,15 @@ export class CreateEventAction implements Action {
     constructor(public payload: CreateEventModel) {}
 }
 
-export class CreateEventSuccesstAction implements Action {
+export class CreateEventSuccessAction implements Action {
     readonly type = EventActionEnum.CREATE_EVENT_SUCCESS;
     constructor(public payload: EventModel) {}
 }
 
+
+
 export class CreateEventFailedAction implements Action {
-    readonly type = EventActionEnum.CREATE_EVENT_SUCCESS;
+    readonly type = EventActionEnum.CREATE_EVENT_FAILED;
     constructor(public payload: any) {}
 }
 
@@ -72,7 +74,7 @@ export class ChangeEventIdAction implements Action {
 
 export type All =
     | CreateEventAction
-    | CreateEventSuccesstAction
+    | CreateEventSuccessAction
     | CreateEventFailedAction
     | LoadEventAction
     | LoadEventActionSuccess

@@ -11,6 +11,7 @@ import { RegisterAction } from "app/_store/actions/user.actions";
 import { Store } from "@ngrx/store";
 import { AppState } from "app/_store/app.states";
 import LocationDto from "app/_models/location.dto";
+import { LocationInDTO } from "app/_models/events/event.model";
 
 @Component({
     selector: "app-register",
@@ -72,7 +73,8 @@ export class RegisterComponent implements OnInit {
         userRegisterModel.email = this.form.get("email").value;
         userRegisterModel.password = this.form.get("matchingPasswordsGroup").get("password").value;
         userRegisterModel.confirmPassword = this.form.get("matchingPasswordsGroup").get("confirmPassword").value;
-        userRegisterModel.city = this.form.get("city").value;
+
+        userRegisterModel.city = this.toLocationModel(this.form.get("city").value);
         this.store.dispatch(new RegisterAction(userRegisterModel));
     }
 
@@ -84,13 +86,11 @@ export class RegisterComponent implements OnInit {
         console.log(this.form.get("city").value);
     }
 
-    addSelectedPlace(location: LocationDto) {
+    toLocationModel(location: LocationDto) {
         if (location) {
-            this.form.patchValue({
-                city:location
-            })
-            this.city = location;
+            return location.toEventLocation();
         }
+        return new LocationInDTO();
     }
 
     public get messages() {

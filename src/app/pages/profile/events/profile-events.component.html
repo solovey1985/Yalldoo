@@ -1,4 +1,38 @@
-<h3 class="text-muted">Not following anyone yet :(</h3>
-<br />
-<button class="btn btn-warning btn-round">Find artists</button>
-
+ <ul ngbNav #nav="ngbNav" class="nav-tabs yld-profile_events-nav">
+    <li class="yld-profile_events-nav-item" ngbNavItem>
+      <a ngbNavLink>Owner</a>
+      <ng-template ngbNavContent>
+        <div class="yld-profile_events-my-container">
+            <div class="yld-profile_friend-switch-text">Show only past events</div>
+            <bSwitch 
+                class="yld-profile_friend-switch"
+                [switch-on-color]="'info'"
+                [switch-off-color]="'primary'"
+                [(ngModel)]="only-past-my"
+                switch-on-text="<i class='nc-icon nc-check-2'></i>"
+                switch-off-text="<i class='nc-icon nc-simple-remove'></i>">
+            </bSwitch>
+            <app-event-list-item-my></app-event-list-item-my>
+            <app-event-list-item-my></app-event-list-item-my>
+        </div>
+      </ng-template>
+    </li>
+    <li class="yld-profile_events-nav-item" ngbNavItem>
+      <a ngbNavLink>Member</a>
+      <ng-template ngbNavContent>
+        <div class="yld-profile_events-will-container">
+            <div class="yld-profile_friend-switch-text">Show only past events</div>
+            <bSwitch 
+                class="yld-profile_friend-switch"
+                [switch-on-color]="'info'"
+                [switch-off-color]="'primary'"
+                [(ngModel)]="only-past-other"
+                switch-on-text="<i class='nc-icon nc-check-2'></i>"
+                switch-off-text="<i class='nc-icon nc-simple-remove'></i>">
+            </bSwitch>
+            <app-event-list-item-other></app-event-list-item-other>
+        </div>
+      </ng-template>
+    </li>
+  </ul>
+  <div [ngbNavOutlet]="nav"></div>

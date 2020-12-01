@@ -68,9 +68,7 @@ export class AuthEffects {
                     map((user: User) => {
                         return new RegisterSuccessAction(user);
                     }),
-                    catchError((err) => {
-                        return of(new RegisterFailedAction("Error on user registration"));
-                    })
+                    catchError((err) =>  of(new ErrorShowAction(err)))
                 );
             })
         )

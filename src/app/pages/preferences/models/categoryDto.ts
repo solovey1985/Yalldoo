@@ -3,6 +3,7 @@ export interface CategoryDto {
     title: string;
     description: string;
     icon: string;
-    backgroundImage: string;
     isSelected: boolean;
+    imageUrl: string;
+    smallImageUrl: string;
 }

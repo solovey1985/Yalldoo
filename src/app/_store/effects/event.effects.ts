@@ -2,7 +2,7 @@ import {
     CreateEventAction,
     EventActionEnum,
     CreateEventFailedAction,
-    CreateEventSuccesstAction,
+    CreateEventSuccessAction,
     LoadEventsAction,
     LoadEventActionSuccess,
     LoadEventsActionSuccess,
@@ -18,6 +18,7 @@ import { EventService } from "app/_services/events/event.service";
 import { CreateEventModel } from "app/_models/events/create-event.model";
 import { switchMap, map, catchError, mergeMap } from "rxjs/operators";
 import { EventModel } from "app/_models/events/event.model";
+import { ErrorShowAction } from "../actions/ui.actions";
 
 @Injectable()
 export class EventEffects {
@@ -29,10 +30,10 @@ export class EventEffects {
                     map(
                         (event: EventModel) => {
                             this.router.navigate(["feed"]);
-                            return new CreateEventSuccesstAction(event);
+                            return new CreateEventSuccessAction(event);
                         },
-                        catchError((error) => of(new CreateEventFailedAction(error)))
-                    )
+                    ),
+                    catchError((error) => of(new ErrorShowAction(error)))
                 );
             })
         )

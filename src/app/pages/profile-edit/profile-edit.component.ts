@@ -52,14 +52,30 @@ export class EditProfileComponent implements OnInit {
                     : "./assets/img/image_placeholder.jpg"
         };
         this.route.data.subscribe((data: { userProfile: UserInformation }) => {
-            this.userInfo = data.userProfile;
-            const locationModel = new LocationDto();
-            locationModel.title = this.userInfo.location.address;
-            locationModel.position = { lat: this.userInfo.location.latitude, lng: this.userInfo.location.longitude };
+            this.fillUserInfo(data.userProfile);
 
-            this.locations.push(locationModel);
             this.buildForm();
         });
+    }
+
+    fillUserInfo(userProfile: UserInformation) {
+        this.userInfo = new UserInformation();
+        this.userInfo.firstName = userProfile.firstName ?? "";
+        this.userInfo.lastName = userProfile.lastName ?? "";
+        this.userInfo.birthday = userProfile.birthday ?? new Date(new Date().getFullYear()-18, 1,1);
+        this.userInfo.location = userProfile.location;
+        const locationModel = new LocationDto();
+        if (userProfile.location) {
+            locationModel.title = this.userInfo.location.address ?? "";
+            locationModel.position = {
+                lat: this.userInfo.location?.latitude ?? 0,
+                lng: this.userInfo?.location?.longitude ?? 0
+            };
+        } else {
+            locationModel.title = "";
+            locationModel.position = { lat: 0, lng: 0 };
+        }
+        this.locations.push(locationModel);
     }
 
     ngOnInit() {
@@ -158,13 +174,9 @@ export class EditProfileComponent implements OnInit {
         // this.getControlByName(...$event.property).setValue($event.privacy);
     }
 
-    public getControlByName(controlName: string, controlGroupName: string = ""): AbstractControl  {
+    public getControlByName(control: string) {
         if (this.form) {
-            if (!!controlGroupName) {
-                return this.form.get(controlGroupName).get(controlName);
-            }
-
-            return this.form.get(controlName);
+            return this.form.get(control);
         }
         return null;
     }

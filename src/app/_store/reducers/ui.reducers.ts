@@ -35,12 +35,14 @@ export function reducer(state = initialState, action: any) {
         case EventActionEnum.CREATE_EVENT_FAILED:
         case AuthActionTypes.LOGIN_FAILED:
         case AuthActionTypes.LOGIN_SUCCESS:
+        case AuthActionTypes.REGISTER_FAILED:
         case UIActionEnum.LOADING_FINISHED: {
             return {
                 ...state,
                 isLoading: false
             };
         }
+        case EventActionEnum.CREATE_EVENT_FAILED:
         case UIActionEnum.ERROR_SHOW: {
             return {
                 ...state,

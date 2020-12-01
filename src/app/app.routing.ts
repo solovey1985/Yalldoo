@@ -36,6 +36,7 @@ import { HelpComponent } from "./pages/policies/help/help.component";
 import { EmailConfirmComponent } from "./pages/email-confirm/email-confirm.component";
 import { RegisterSuccessComponent } from "./pages/register-success/register-success.component";
 import { ProfileResolver } from "./core/resolvers/profile.resolver";
+import { RedirectComponent } from "./pages/redirect/redirect.component";
 @NgModule({
     imports: [
         CommonModule,
@@ -85,7 +86,8 @@ import { ProfileResolver } from "./core/resolvers/profile.resolver";
                     { path: "help", component: HelpComponent },
                     { path: "page404", component: Page404Component },
                     { path: "page422", component: Page422Component },
-                    { path: "page500", component: Page500Component }
+                    { path: "page500", component: Page500Component },
+                    { path: "redirect", component: RedirectComponent }
                 ]
             },
 

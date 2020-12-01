@@ -3,8 +3,6 @@ import { FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl } from
 import { CategoryService } from "app/_services/category/category.service";
 import { CategoryModel } from "app/_models/category/category.model";
 import { ModalService } from "app/_services/modal/modal.service";
-import { DateTimePickerComponent } from "app/components/date-time-picker/date-time-picker.component";
-import { NgbDateTimeStruct } from "app/components/date-time-picker/date-time.model";
 import LocationDto from "app/_models/location.dto";
 import { FirendListItem } from "app/_models/friends/friend-list-item.model";
 import { MultiselectItem } from "app/_models/multiselect/multiselect.model";
@@ -82,7 +80,7 @@ export class EventCreateComponent implements OnInit {
             unSelectAllText: "UnSelect All",
             classes: "",
             enableSearchFilter: true,
-            lazyLoading: true
+            lazyLoading: false
         };
         this.privacyList = ["Public", "Friends", "Private"];
     }
@@ -110,10 +108,8 @@ export class EventCreateComponent implements OnInit {
 
     mapCategories(categories: CategoryModel[]): MultiselectItem[] {
         const items = new Array<MultiselectItem>();
-        const parrents = categories.filter((p) => p.parrentId == 0);
-        parrents.map((p) => {
-            const catsByParrent = categories.filter((x) => x.parrentId == p.id);
-            catsByParrent.map((cat) => items.push(this.mapToMultiselectDropdownItem(cat, p)));
+        categories.map((p) => {
+           items.push(this.mapToMultiselectDropdownItem(p));
         });
         return items;
     }
@@ -210,8 +206,7 @@ export class EventCreateComponent implements OnInit {
         event.privacy = this.getFormValue("privacy");
         event.startDate = this.getFormValue("dateTime");
         event.location = this.getFormValue("location");
-        event.subCategoryId = this.selectedCategory.id;
-        event.categoryId = this.selectedCategory.parrentId;
+        event.categoryId = this.selectedCategory.id;
         event.image = this.image;
         event.location = new LocationModel(
             this.location.title,

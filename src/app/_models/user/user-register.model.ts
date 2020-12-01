@@ -1,4 +1,4 @@
-import LocationDto from "../location.dto";
+import { LocationInDTO } from "../events/event.model";
 
 export class UserRegisterModel {
     firstName: string;
@@ -6,5 +6,5 @@ export class UserRegisterModel {
     email: string;
     password: string;
     confirmPassword: string;
-    city: LocationDto;
+    city: LocationInDTO;
 }

@@ -10,11 +10,11 @@ export class PrivacySelectorComponent implements OnInit {
   @Input()
   buttonIcon = "eye"
   @Input()
-    title = "Privacy"
+    title = "Public"
   @Input()
   property: string;
   @Input()
-  defaultValue = "Private";
+  defaultValue = "Public";
   @Output()
   onPrivacySelected = new EventEmitter<any>();
 

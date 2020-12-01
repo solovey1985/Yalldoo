@@ -65,12 +65,18 @@
     }
 }
 .yld-profile-edit-item-container {
-    padding: 8px 16px;
+    padding: 20px;
     border: 1px solid #ccc;
     margin-bottom: 16px;
     border-bottom: 2px solid #ccc;
     box-shadow: 4px 2px 2px #ccc;
     border-radius: 8px;
+
+    textarea {
+        width: 100%;
+        padding: 10px;
+        resize: none;
+    }
 }
 .yld-profile-edit-description-container{
     padding-bottom: 16px;
@@ -85,7 +91,31 @@
     }
 }
 
+.yld-profile-edit-about-container {
+    cursor: default;
+
+    span {
+        background-color: #eee;
+    }
+
+    button {
+        margin-left: 16px;
+    }
+
+    i {
+        font-size: large;
+    }
+}
+
+.yld-profile-edit-date-container {
+    button {
+        margin-right: 16px;
+    }
+}
+
 .yld-profile-edit-places-container {
+    margin-top: 10px;
+
     button {
         margin-left: 16px;
     }
@@ -100,8 +130,12 @@
 .yld-privacy-container {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-between;
     margin-bottom: 8px;
+    label {
+        align-self: flex-end;
+        margin-bottom: unset;
+    }
 }
 
 @media (max-width: 786px) {

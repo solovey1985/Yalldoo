@@ -40,7 +40,6 @@ export class EditProfileComponent implements OnInit {
     ) {
         this.locations = new Array<LocationDto>();
         this.handleImageChange = this.handleImageChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.handleRemove = this.handleRemove.bind(this);
         this.state = {
@@ -65,7 +64,7 @@ export class EditProfileComponent implements OnInit {
         this.userInfo.lastName = userProfile.lastName ?? "";
         this.userInfo.birthday = userProfile.birthday ?? new Date(new Date().getFullYear()-18, 1,1);
         this.userInfo.location = userProfile.location;
-        var locationModel = new LocationDto();
+        const locationModel = new LocationDto();
         if (userProfile.location) {
             locationModel.title = this.userInfo.location.address ?? "";
             locationModel.position = {
@@ -89,7 +88,7 @@ export class EditProfileComponent implements OnInit {
         this.form = this.fb.group(
             {
                 firstName: [
-                    this.userInfo.firstName,
+                    this.userInfo.firstName ?? "",
                     Validators.compose([
                         Validators.maxLength(25),
                         Validators.minLength(2),
@@ -98,12 +97,11 @@ export class EditProfileComponent implements OnInit {
                     ])
                 ],
                 lastName: [
-                    this.userInfo.lastName,
+                    this.userInfo.lastName ?? "",
                     Validators.compose([
                         Validators.maxLength(25),
                         Validators.minLength(2),
                         ValidationService.namePatternValidator,
-                        Validators.required
                     ])
                 ],
                 email: [this.userInfo.email ?? "", ValidationService.emailPatternValidator],
@@ -113,6 +111,7 @@ export class EditProfileComponent implements OnInit {
                 birthDate: [this.userInfo.birthday ?? new Date()],
                 description: [this.userInfo.description ?? "", [Validators.maxLength(256)]],
                 categories: [this.userInfo.favoriteCategories ?? []],
+                eventParticipationPrivacy: [""],
                 places: [[]]
             },
             { updateOn: "change" }
@@ -151,44 +150,42 @@ export class EditProfileComponent implements OnInit {
         return this.categoryService.getCategoryIcon(title);
     }
 
-    showDatetimepickerModal(): void {
+    showDateTimePickerModal(): void {
+        const birthDateFormField = this.form.get("birthDateValue");
+
         this.modal
             .openDateTimePicker(this.userInfo.birthday, true, "Select Birthday Date")
             .subscribe((result: string) => {
                 if (result) {
                     this.userInfo.birthday = new Date(result);
                     this.isDateSelected = true;
-                    this.form.get("birthDate").markAsTouched();
-                    this.form.get("birthDate").clearValidators();
+                    birthDateFormField.markAsTouched();
+                    birthDateFormField.clearValidators();
                     this.form.patchValue({ birthDate: this.userInfo.birthday });
                 } else {
-                    this.form.get("birthDate").markAsTouched();
-                    this.form.get("birthDate").setErrors({ required: true });
+                    birthDateFormField.markAsTouched();
+                    birthDateFormField.setErrors({ required: true });
                 }
             });
     }
 
-    onPrivacySet($event) {
-        console.log($event);
+    onPrivacySet($event: {property: string[], privacy: string}) {
+        // @ts-ignore
+        // this.getControlByName(...$event.property).setValue($event.privacy);
     }
 
-    public g(control: string) {
+    public getControlByName(control: string) {
         if (this.form) {
             return this.form.get(control);
         }
         return null;
     }
 
-    isInvalid(control: AbstractControl): boolean {
-        // if (control) {
-        //     return control.invalid && control.touched;
-        // }
-        return false;
-    }
-
     public get descriptionLength(): number {
+        const descriptionFieldValue = this.form.get("description").value;
+
         if (this.form) {
-            return this.form.get("description").value ? this.form.get("description").value.length : 0;
+            return descriptionFieldValue ? descriptionFieldValue.length : 0;
         }
         return 0;
     }
@@ -208,9 +205,11 @@ export class EditProfileComponent implements OnInit {
         };
         reader.readAsDataURL(file);
     }
-    handleSubmit(e) {
-        e.preventDefault();
+
+    onSubmit(value: any) {
+        console.log(this.form.value);
     }
+
     handleClick() {
         const input = document.createElement("input");
         input.type = "file";
